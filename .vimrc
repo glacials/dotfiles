@@ -29,14 +29,13 @@
 """"'
 
 	inoremap jj <Esc>       " set 'jj' as an alternate escape from insert mode
-	noremap JJJJ <Nop>      "
+//	noremap JJJJ <Nop>      "
 
 """"'
 " Tab Stuff
 """"'
 
-	map <C-h> :tabp<CR>     " set ctrl+h to move one tab left
-	map <C-l> :tabn<CR>     " set ctrl+l to move one tab right
+	map <C-h> :tabp<CR>     " set ctrl+h to move one tab left map <C-l> :tabn<CR>     " set ctrl+l to move one tab right
 
 	map <C-j> <C-w>h        " set ctrl+j to move one vsplit left
 	map <C-k> <C-w>l        " set ctrl+k to move one vsplit right
