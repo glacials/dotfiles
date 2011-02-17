@@ -29,7 +29,7 @@
 """"'
 
 	inoremap jj <Esc>       " set 'jj' as an alternate escape from insert mode
-//	noremap JJJJ <Nop>      "
+"	noremap JJJJ <Nop>      "
 
 """"'
 " Tab Stuff
