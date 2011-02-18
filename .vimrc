@@ -29,28 +29,30 @@
 """"'
 
 	inoremap jj <Esc>       " set 'jj' as an alternate escape from insert mode
-"	noremap JJJJ <Nop>      "
+
+	inoremap ,, <C-x><C-o>  " set ',,' as a shortcut to code auto-complete
 
 """"'
 " Tab Stuff
 """"'
 
-	map <C-h> :tabp<CR>     " set ctrl+h to move one tab left map <C-l> :tabn<CR>     " set ctrl+l to move one tab right
+	map <C-h> :tabp<CR>     " set ctrl+h to move one tab left
+	map <C-l> :tabn<CR>     " set ctrl+l to move one tab right
 
 	map <C-j> <C-w>h        " set ctrl+j to move one vsplit left
 	map <C-k> <C-w>l        " set ctrl+k to move one vsplit right
 
-	set tabpagemax=30       " allow 30 tabs to be opened on launch
+	set tabpagemax=30       " allow 30 tabs to be opened at once
 
 """"'
 " Code-Specific Stuff
 """"'
-	" php syntax highlighting for SQL and HTML
+	" syntax highlighting for SQL and HTML inside PHP strings
 	let php_sql_query=1
 	let php_htmlInStrings=1
 
-	" turn on auto-complete and make it always appear automatically (without key-combo)
-	setlocal omnifunc=syntaxcomplete#Complete
+	" turn on omni-complete
+"	setlocal omnifunc=syntaxcomplete#Complete
 	au CursorMovedI,InsertLeave * if pumvisible() == 0|silent! pclose|endif
 
 	" auto-complete these languages
