@@ -25,6 +25,13 @@
 	set showbreak=>>        " prefix line wraps (only matters if above line is commented)
 
 """"'
+" Visual Settings
+""""'
+	set t_Co=256            " use 256 colors
+
+	color sublime           " change colorscheme
+
+""""'
 " Shortcuts
 """"'
 
@@ -48,11 +55,11 @@
 " Code-Specific Stuff
 """"'
 	" syntax highlighting for SQL and HTML inside PHP strings
-	let php_sql_query=1
+"	let php_sql_query=1
 	let php_htmlInStrings=1
 
 	" turn on omni-complete
-"	setlocal omnifunc=syntaxcomplete#Complete
+	setlocal omnifunc=syntaxcomplete#Complete
 	au CursorMovedI,InsertLeave * if pumvisible() == 0|silent! pclose|endif
 
 	" auto-complete these languages
