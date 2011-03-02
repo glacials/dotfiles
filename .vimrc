@@ -4,7 +4,7 @@
 	set nocompatible        " use vim settings over vi
 
 	syntax on               " turn on syntax highlighting
-	set background=light    " adjust colors for light backgrounds
+	set background=dark     " adjust colors for dark backgrounds
 
 	set number              " display line numbers
 
