@@ -11,10 +11,10 @@
 	set autoindent          " auto-indent newlines based on current line's indentation
 	set smartindent         " guess when to increase/decrease indentations (e.g. curly braces)
 
-	set tabstop=4           " set tab display width to 4
-	set softtabstop=4       " set tab insert width to 4
-	set shiftwidth=4        " set auto-indent width to 4
-	set noexpandtab         " do NOT use spaces in place of tabs
+	set tabstop=2           " set tab display width to 4
+	set softtabstop=2       " set tab insert width to 4
+	set shiftwidth=2        " set auto-indent width to 4
+	set expandtab         " do NOT use spaces in place of tabs
 
 	set incsearch           " live search (i.e. search while typing the search query)
 	set ignorecase          " ignore case when searching
