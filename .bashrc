@@ -106,7 +106,7 @@ alias chief='ssh -X -p 23 ben@sdflg.com'
 alias jag='ssh -X bcarlsson@ect-unix.ecst.csuchico.edu'
 
 # the ls family aliases. aren't they cute!
-alias ls='ls -CF'
+alias ls='ls -CF --color=auto'
 alias ll='ls -l'
 alias l='ll'
 alias lla='ls -al'
