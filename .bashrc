@@ -2,6 +2,11 @@
 # see /usr/share/doc/bash/examples/startup-files (in the package bash-doc)
 # for examples
 
+# attach to our default screen
+#if [ -z "$STY" ]; then
+#  exec byobu
+#fi
+
 # If not running interactively, don't do anything
 [ -z "$PS1" ] && return
 
@@ -65,16 +70,18 @@ xterm*|rxvt*)
     ;;
 esac
 
-# enable color support of ls and also add handy aliases
+# various command overrides for colors, etc.
 if [ -x /usr/bin/dircolors ]; then
-    eval "`dircolors -b`"
-    alias ls='ls --color=auto'
-    #alias dir='dir --color=auto'
-    #alias vdir='vdir --color=auto'
 
-    alias grep='grep --color=auto'
-    #alias fgrep='fgrep --color=auto'
-    #alias egrep='egrep --color=auto'
+  # colors
+  eval "`dircolors -b`"
+  alias ls='ls --color=auto'
+  alias grep='grep --color=auto'
+
+  # human-readable stuff
+  alias ls='ls -h'
+  alias du='du -h'
+
 fi
 
 # enable programmable completion features (you don't need to enable
@@ -99,8 +106,8 @@ alias chief='ssh -X -p 23 ben@sdflg.com'
 alias jag='ssh -X bcarlsson@ect-unix.ecst.csuchico.edu'
 
 # the ls family aliases. aren't they cute!
-alias ls='ls -ChF --color=auto'
-alias la='ls -al'
+alias ls='ls -CF'
 alias ll='ls -l'
-alias lla='ls -al'
 alias l='ll'
+alias lla='ls -al'
+alias la='lla'
