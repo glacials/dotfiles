@@ -1,12 +1,8 @@
 """"'
 " General Settings
 """"'
+
   set nocompatible        " use vim settings over vi
-
-  syntax on               " turn on syntax highlighting
-  set background=dark     " adjust colors for dark backgrounds
-
-  set number              " display line numbers
 
   set autoindent          " auto-indent newlines based on current line's indentation
   set smartindent         " guess when to increase/decrease indentations (e.g. curly braces)
@@ -32,9 +28,14 @@
 """"'
 " Visual Settings
 """"'
+
   set t_Co=256            " use 256 colors
 
-  color sublime           " change colorscheme
+  set background=dark     " adjust colors for dark backgrounds
+  color solarized         " change colorscheme
+
+  syntax on               " turn on syntax highlighting
+  set number              " display line numbers
 
 """"'
 " Shortcuts
@@ -59,8 +60,9 @@
 """"'
 " Code-Specific Stuff
 """"'
+
   " syntax highlighting for SQL and HTML inside PHP strings
-"  let php_sql_query=1
+" let php_sql_query=1
   let php_htmlInStrings=1
 
   " turn on omni-complete

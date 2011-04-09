@@ -101,8 +101,8 @@ alias s='screen -x'
 alias p='ps -A | grep'
 
 # ssh aliases
-alias adama='ssh -X ben@sdflg.com'
-alias chief='ssh -X -p 23 ben@sdflg.com'
+alias adama='ssh -X ben@cslug.net'
+alias chief='ssh -X -p 23 ben@cslug.net'
 alias jag='ssh -X bcarlsson@ect-unix.ecst.csuchico.edu'
 
 # the ls family aliases. aren't they cute!
@@ -111,3 +111,6 @@ alias ll='ls -l'
 alias l='ll'
 alias lla='ls -al'
 alias la='lla'
+
+# prompt tweaks
+
