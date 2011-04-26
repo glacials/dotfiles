@@ -112,5 +112,7 @@ alias l='ll'
 alias lla='ls -al'
 alias la='lla'
 
-# prompt tweaks
+# helper scripts
+export JPY=~/.helpers/j2/j.py # tells j.sh where the python script is
+. ~/.helpers/j2/j.sh          # provides the j() function
 
