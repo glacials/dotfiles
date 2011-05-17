@@ -1,3 +1,9 @@
 [submodule ".vim/bundle/vim-css-color"]
 	path = .vim/bundle/vim-css-color
 	url = git@github.com:skammer/vim-css-color
+[submodule ".vim/autoload"]
+	path = .vim/autoload
+	url = git@github.com:tpope/vim-pathogen
+[submodule ".vim2"]
+	path = .vim2
+	url = git@github.com:tpope/vim-pathogen
