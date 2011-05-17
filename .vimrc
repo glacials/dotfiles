@@ -76,3 +76,5 @@
   au FileType css        set omnifunc=csscomplete#CompleteCSS
   au FileType javascript set omnifunc=javascriptcomplete#CompleteJS
 
+" load plugins
+  call pathogen#runtime_append_all_bundles()
