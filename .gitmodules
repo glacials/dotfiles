@@ -1,9 +1,3 @@
-[submodule ".vim/bundle/vim-css-color"]
-	path = .vim/bundle/vim-css-color
-	url = git@github.com:skammer/vim-css-color
-[submodule ".vim"]
-	path = .vim
-	url = git@github.com:tpope/vim-pathogen
 [submodule ".helpers/j2"]
 	path = .helpers/j2
 	url = git@github.com:rupa/j2

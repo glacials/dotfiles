@@ -76,5 +76,16 @@
   au FileType css        set omnifunc=csscomplete#CompleteCSS
   au FileType javascript set omnifunc=javascriptcomplete#CompleteJS
 
-" load plugins
-  call pathogen#runtime_append_all_bundles()
+" load plugins with vundle
+  filetype off
+  set rtp+=~/.vim/bundle/vundle/
+  call vundle#rc()
+
+  " let vundle manage itself
+  Bundle 'gmarik/vundle'
+
+  " list bundles
+  Bundle 'L9'
+  Bundle 'skammer/vim-css-color'
+
+  filetype plugin indent on
