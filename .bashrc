@@ -99,11 +99,13 @@ alias vi='vim'
 alias c='clear'
 alias s='screen -x'
 alias p='ps -A | grep'
+alias g='git status'
 
 # ssh aliases
-alias adama='ssh -X ben@cslug.net'
-alias chief='ssh -X -p 23 ben@cslug.net'
+alias adama='ssh -X cslug.net'
+alias chief='ssh -X -p 23 cslug.net'
 alias jag='ssh -X bcarlsson@ect-unix.ecst.csuchico.edu'
+alias donna='ssh -X nullpo.cc'
 
 # the ls family aliases. aren't they cute!
 alias ls='ls -CF --color=auto'
@@ -111,9 +113,6 @@ alias ll='ls -l'
 alias l='ll'
 alias lla='ls -al'
 alias la='lla'
-
-# git aliases
-alias g='git status'
 
 # helper scripts
 export JPY=~/.helpers/j2/j.py # tells j.sh where the python script is

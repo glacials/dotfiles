@@ -1,0 +1,3 @@
+[submodule "/home/ben/.helpers/j2a"]
+	path = /home/ben/.helpers/j2a
+	url = git@github.com:rupa/j2
