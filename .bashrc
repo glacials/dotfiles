@@ -33,6 +33,9 @@ if [ -z "$debian_chroot" ] && [ -r /etc/debian_chroot ]; then
     debian_chroot=$(cat /etc/debian_chroot)
 fi
 
+# colorize prompt
+force_color_prompt=yes
+
 # set a fancy prompt (non-color, unless we know we "want" color)
 case "$TERM" in
     xterm-color) color_prompt=yes;;
@@ -83,9 +86,6 @@ fi
 if [ -f /etc/bash_completion ]; then
     . /etc/bash_completion
 fi
-
-# colorize prompt
-force_color_prompt=yes
 
 # set vim as the default editor
 export EDITOR=vim
