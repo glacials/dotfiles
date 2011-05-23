@@ -1,3 +1,6 @@
 [submodule ".helpers/j2"]
 	path = .helpers/j2
 	url = git@github.com:rupa/j2
+[submodule "/home/ben/.helpers/j2"]
+	path = /home/ben/.helpers/j2
+	url = git@github.com:rupa/j2
