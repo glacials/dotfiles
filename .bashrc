@@ -97,12 +97,6 @@ alias s='screen -x'
 alias p='ps -A | grep'
 alias g='git status'
 
-# ssh aliases
-alias adama='ssh -X cslug.net'
-alias chief='ssh -X -p 23 cslug.net'
-alias jag='ssh -X bcarlsson@ect-unix.ecst.csuchico.edu'
-alias donna='ssh -X nullpo.cc'
-
 # the ls family aliases. aren't they cute!
 alias ls='ls -CF --color=auto'
 alias ll='ls -l'
