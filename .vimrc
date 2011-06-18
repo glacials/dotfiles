@@ -82,7 +82,7 @@
   call vundle#rc()
 
   Bundle 'gmarik/vundle'
-  Bundle 'L9'
+  Bundle 'slack/vim-l9'
   Bundle 'skammer/vim-css-color'
 
   filetype plugin indent on

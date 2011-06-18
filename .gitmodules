@@ -4,9 +4,9 @@
 [submodule ".vim/bundle/vundle"]
   path = .vim/bundle/vundle
   url = git@github.com:gmarik/vundle
-[submodule ".vim/bundle/l9"]
+[submodule ".vim/bundle/L9"]
   path = .vim/bundle/L9
-  url = git@github.com:slack/L9
+  url = git@github.com:slack/l9
 [submodule ".vim/bundle/vim-css-color"]
   path = .vim/bundle/vim-css-color
   url = git@github.com:skammer/vim-css-color
