@@ -96,7 +96,7 @@ alias c='clear'
 alias s='screen -x'
 alias p='ps -A | grep'
 alias g='git status'
-alias u='sudo aptitude update -q=2 && sudo aptitude safe-upgrade -y'
+alias u='sudo aptitude update && sudo aptitude safe-upgrade -y'
 
 # the ls family aliases. aren't they cute!
 alias ls='ls -CF --color=auto'
