@@ -100,7 +100,7 @@ alias u='sudo aptitude update && sudo aptitude safe-upgrade -y'
 
 # the ls family aliases. aren't they cute!
 alias ls='ls -CF --color=auto'
-alias ll='ls -l'
+alias ll='ls -lh'
 alias l='ll'
 alias lla='ls -al'
 alias la='lla'
