@@ -29,8 +29,6 @@
 	set background=dark           " adjust colors for dark backgrounds
 	color solarized               " change colorscheme
 
-  set g:solarized_termtrans = 1
-
 	syntax on                     " turn on syntax highlighting
 	set number                    " display line numbers
 
