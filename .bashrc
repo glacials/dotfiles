@@ -94,7 +94,7 @@ export EDITOR=vim
 alias vi='vim'
 alias c='clear'
 alias s='screen -x'
-alias p='ps -A | grep'
+alias p='ps -Af | grep'
 alias g='git status'
 alias u='sudo aptitude update && sudo aptitude safe-upgrade -y'
 
