@@ -68,20 +68,6 @@ xterm*|rxvt*)
     ;;
 esac
 
-# various command overrides for colors, etc.
-if [ -x /usr/bin/dircolors ]; then
-
-  # colors
-  eval "`dircolors -b`"
-  alias ls='ls --color=auto'
-  alias grep='grep --color=auto'
-
-  # human-readable stuff
-  alias ls='ls -h'
-  alias du='du -h'
-
-fi
-
 # enable programmable completion features
 if [ -f /etc/bash_completion ]; then
     . /etc/bash_completion
@@ -91,6 +77,10 @@ fi
 export EDITOR=vim
 
 # common aliases
+alias du='du -h'
+alias grep='grep --color=auto'
+
+# quick aliases
 alias vi='vim'
 alias c='clear'
 alias s='screen -x'
@@ -99,11 +89,11 @@ alias g='git status'
 alias u='sudo aptitude update && sudo aptitude safe-upgrade -y'
 
 # the ls family aliases. aren't they cute!
-alias ls='ls -CF --color=auto'
-alias ll='ls -lh'
+alias ls='ls -CFh --color=auto'
+alias ll='ls -l'
 alias l='ll'
-alias lla='ls -al'
-alias la='lla'
+alias la='ll -a'
+alias lr='ll -R'
 
 # include j
 export JPY=~/.helpers/j2/j.py # tells j.sh where the python script is
