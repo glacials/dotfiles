@@ -33,7 +33,7 @@ if [ -z "$debian_chroot" ] && [ -r /etc/debian_chroot ]; then
     debian_chroot=$(cat /etc/debian_chroot)
 fi
 
-PS1='\[\e[1;32m\][\u@\h \W]\$\[\e[0m\] '
+PS1='\[\e[1;32m\][\u@\h:\w]\$\[\e[0m\] '
 
 # If this is an xterm set the title to user@host:dir
 case "$TERM" in
