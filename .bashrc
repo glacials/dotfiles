@@ -64,15 +64,15 @@ alias p='ps -Af | grep'
 alias g='git status'
 
 # update / upgrade alias; assign based on distro and preference
-if [ -e "/usr/bin/aptitude" ]
+if [ -e "/usr/bin/aptitude" ]; then
 	alias u='sudo aptitude update && sudo aptitude safe-upgrade -y'
-elif [ -e "/usr/bin/apt-get" ]
+elif [ -e "/usr/bin/apt-get" ]; then
 	alias u='sudo apt-get update && sudo aptitude upgrade'
-elif [ -e "/usr/bin/yaourt" ]
+elif [ -e "/usr/bin/yaourt" ]; then
 	alias u='yaourt -Syu'
-elif [ -e "/usr/bin/pacman" ]
+elif [ -e "/usr/bin/pacman" ]; then
 	alias u='sudo pacman -Syu'
-
+fi
 
 # the ls family aliases. aren't they cute!
 alias ls='ls -CFh --color=auto'
