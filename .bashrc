@@ -62,7 +62,17 @@ alias c='clear'
 alias s='screen -x'
 alias p='ps -Af | grep'
 alias g='git status'
-alias u='sudo aptitude update && sudo aptitude safe-upgrade -y'
+
+# update / upgrade alias; assign based on distro and preference
+if [ -e "/usr/bin/aptitude" ]
+	alias u='sudo aptitude update && sudo aptitude safe-upgrade -y'
+elif [ -e "/usr/bin/apt-get" ]
+	alias u='sudo apt-get update && sudo aptitude upgrade'
+elif [ -e "/usr/bin/yaourt" ]
+	alias u='yaourt -Syu'
+elif [ -e "/usr/bin/pacman" ]
+	alias u='sudo pacman -Syu'
+
 
 # the ls family aliases. aren't they cute!
 alias ls='ls -CFh --color=auto'
