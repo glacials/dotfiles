@@ -12,7 +12,8 @@
 	set shiftwidth=2               " set auto-indent width to 2
 	set noexpandtab                " do not use spaces in place of tabs
 
-	set listchars=tab:\>\>,trail:- " display tab characters as >>
+	set list
+	set listchars=tab:»\ ,trail:·  " display tab characters as >>
 
 	set incsearch                  " live search (i.e. search while typing the search query)
 	set ignorecase                 " ignore case when searching
@@ -31,6 +32,12 @@
 
 	syntax on                     " turn on syntax highlighting
 	set number                    " display line numbers
+
+	" paint text that goes beyond 80 columns
+	highlight OverLength ctermfg=white ctermbg=darkred guibg=#592929
+	match OverLength /\%81v.\+/
+
+"	set colorcolumn=80            " highlight the 80th column
 
 """"'
 " Shortcuts
