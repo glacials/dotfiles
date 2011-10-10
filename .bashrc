@@ -62,6 +62,8 @@ alias c='clear'
 alias s='screen -x'
 alias p='ps -Af | grep'
 alias g='git status'
+alias gc='git commit -m'
+alias gp='git push origin'
 
 # update / upgrade alias; assign based on distro and preference
 if [ -e "/usr/bin/aptitude" ]; then
