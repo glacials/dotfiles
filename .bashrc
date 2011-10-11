@@ -62,6 +62,7 @@ alias c='clear'
 alias s='screen -x'
 alias p='ps -Af | grep'
 alias g='git status'
+alias ga='git add'
 alias gc='git commit -m'
 alias gp='git push origin'
 
