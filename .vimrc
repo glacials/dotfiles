@@ -18,7 +18,8 @@
 " Indentation Settings
 """"'
 	
-	inoremap <CR> <CR>x<BS>        " leave whitespace on blank lines alone
+	" leave whitespace on blank lines alone
+	inoremap <CR> <CR>x<BS>
 	
 	set tabstop=2                  " set tab display width to 2
 	set softtabstop=2              " set tab insert width to 2
@@ -57,11 +58,13 @@
 " Tab Stuff
 """"'
 	
-	map <C-h> :tabp<CR>     " set ctrl+h to move one tab left
-	map <C-l> :tabn<CR>     " set ctrl+l to move one tab right
+	" set ctrl+h to move one tab left; ctrl+l to move one tab right
+	map <C-h> :tabp<CR>
+	map <C-l> :tabn<CR>
 	
-	map <C-j> <C-w>h        " set ctrl+j to move one vsplit left
-	map <C-k> <C-w>l        " set ctrl+k to move one vsplit right
+	" set ctrl+j to move one vsplit left; ctrl+k to move one vsplit right
+	map <C-j> <C-w>h
+	map <C-k> <C-w>l
 	
 "	set tabpagemax=50       " allow 30 tabs to be opened at once
 	
