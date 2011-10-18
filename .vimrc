@@ -40,6 +40,8 @@
 	syntax on                     " turn on syntax highlighting
 	set number                    " display line numbers
 	
+	set cursorline                " highlight current line
+	
 	" paint text that goes beyond 80 columns
 "	highlight OverLength ctermfg=white ctermbg=darkred guibg=#592929
 "	match OverLength /\%81v.\+/
