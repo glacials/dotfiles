@@ -1,5 +1,2 @@
-.*
-config.php
-entries/*.txt
-plugins/*
-templates/*
+# ignore everything
+*
