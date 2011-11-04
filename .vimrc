@@ -1,4 +1,11 @@
 """"'
+" Call Pathogen
+""""'
+	
+	call pathogen#runtime_append_all_bundles()
+	call pathogen#helptags()
+	
+""""'
 " General Settings
 """"'
 	
@@ -68,7 +75,7 @@
 	map <C-j> <C-w>h
 	map <C-k> <C-w>l
 	
-"	set tabpagemax=50       " allow 30 tabs to be opened at once
+	set tabpagemax=20             " allow many tabs to be opened at startup
 	
 """"'
 " Code-Specific Stuff
@@ -88,14 +95,5 @@
 	au FileType html       set omnifunc=htmlcomplete#CompleteTags
 	au FileType css        set omnifunc=csscomplete#CompleteCSS
 	
-	" load plugins with vundle
-	filetype off
-	set rtp+=~/.vim/bundle/vundle/
-	call vundle#rc()
-	
-	Bundle 'gmarik/vundle'
-	Bundle 'slack/vim-l9'
-	Bundle 'skammer/vim-css-color'
-	Bundle 'scrooloose/nerdtree'
-	
 	filetype plugin indent on
+	
