@@ -24,12 +24,13 @@ After pulling this repo for the first time,
 
 	git submodule update --init
 
-(which is the same thing as
+or if you like 
 
 	git submodule init
 	git submodule update
 
-), which grabs current versions of all this repo's submodules. You're done!
+which both identically grab current versions of all this repo's submodules.
+You're done!
 
 To upgrade one submodule, `cd` to it and just
 
