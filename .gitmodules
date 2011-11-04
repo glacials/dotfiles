@@ -1,3 +1,6 @@
 [submodule ".vim/bundle/fugitive"]
 	path = .vim/bundle/fugitive
 	url = http://github.com/tpope/vim-fugitive.git
+[submodule ".vim/bundle/css"]
+	path = .vim/bundle/css
+	url = http://github.com/skammer/vim-css-color.git
