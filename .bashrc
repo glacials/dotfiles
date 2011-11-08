@@ -53,6 +53,7 @@ fi
 export EDITOR=vim
 
 # common aliases
+alias df='df -h'
 alias du='du -h'
 alias grep='grep --color=auto'
 
