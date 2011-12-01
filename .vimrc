@@ -49,11 +49,9 @@
 	
 	set cursorline                " highlight current line
 	
-	" paint text that goes beyond 80 columns
-"	highlight OverLength ctermfg=white ctermbg=darkred guibg=#592929
-"	match OverLength /\%81v.\+/
-	
-	set colorcolumn=80            " highlight the 80th column
+	if exists('+colorcolumn')
+		set colorcolumn=80          " highlight the 80th column (if supported)
+	endif
 	
 """"'
 " Shortcuts
