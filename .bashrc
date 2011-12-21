@@ -48,6 +48,7 @@ fi
 
 # set vim as the default editor
 export EDITOR=vim
+export VMAIL_BROWSER=elinks
 
 # common aliases
 alias df='df -h'
