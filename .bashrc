@@ -63,7 +63,7 @@ alias s='screen -x'
 alias p='ps -Af | grep'
 alias g='git status'
 alias ga='git add'
-alias gc='git commit -m'
+alias gc='git commit'
 alias gp='git push origin'
 
 # update / upgrade alias; assign based on distro and preference
