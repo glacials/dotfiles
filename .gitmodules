@@ -4,3 +4,6 @@
 [submodule ".vim/bundle/css-color"]
 	path = .vim/bundle/css-color
 	url = http://github.com/ap/vim-css-color.git
+[submodule ".vim/bundle/solarized"]
+	path = .vim/bundle/solarized
+	url = http://github.com/altercation/vim-colors-solarized.git

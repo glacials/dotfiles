@@ -2,11 +2,6 @@
 # see /usr/share/doc/bash/examples/startup-files (in the package bash-doc)
 # for examples
 
-# attach to our default screen
-#if [ -z "$STY" ]; then
-#  exec byobu
-#fi
-
 # If not running interactively, don't do anything
 [ -z "$PS1" ] && return
 
@@ -28,21 +23,7 @@ shopt -s checkwinsize
 # make less more friendly for non-text input files, see lesspipe(1)
 #[ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
 
-# set variable identifying the chroot you work in (used in the prompt below)
-if [ -z "$debian_chroot" ] && [ -r /etc/debian_chroot ]; then
-    debian_chroot=$(cat /etc/debian_chroot)
-fi
-
-PS1='\[\e[1;32m\][\u@\h:\w]\$\[\e[0m\] '
-
-# If this is an xterm set the title to user@host:dir
-case "$TERM" in
-xterm*|rxvt*)
-    PS1="\[\e]0;${debian_chroot:+($debian_chroot)}\u@\h: \w\a\]$PS1"
-    ;;
-*)
-    ;;
-esac
+PS1='\[\e[1;32m\][\u@\H:\w]\$\[\e[0m\] '
 
 # enable programmable completion features
 if [ -f /etc/bash_completion ]; then
@@ -66,17 +47,6 @@ alias g='git status'
 alias ga='git add'
 alias gc='git commit -m'
 alias gp='git push origin'
-
-# update / upgrade alias; assign based on distro and preference
-if [ -e "/usr/bin/aptitude" ]; then
-	alias u='sudo aptitude update && sudo aptitude safe-upgrade -y'
-elif [ -e "/usr/bin/apt-get" ]; then
-	alias u='sudo apt-get update && sudo aptitude upgrade'
-elif [ -e "/usr/bin/yaourt" ]; then
-	alias u='yaourt -Syu'
-elif [ -e "/usr/bin/pacman" ]; then
-	alias u='sudo pacman -Syu'
-fi
 
 # the ls family aliases. aren't they cute!
 alias ls='ls -CFh --color=auto'
