@@ -20,9 +20,7 @@ shopt -s histappend
 # update the values of LINES and COLUMNS.
 shopt -s checkwinsize
 
-# make less more friendly for non-text input files, see lesspipe(1)
-#[ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
-
+# setup prompt
 PS1='\[\e[1;32m\][\u@\H:\w]\$\[\e[0m\] '
 
 # enable programmable completion features
@@ -30,13 +28,19 @@ if [ -f /etc/bash_completion ]; then
     . /etc/bash_completion
 fi
 
+# unbind ^q and ^s (for rtorrent)
+stty stop undef
+stty start undef
+
 # set vim as the default editor
 export EDITOR=vim
+export VMAIL_BROWSER=elinks
 
 # common aliases
 alias df='df -h'
 alias du='du -h'
 alias grep='grep --color=auto'
+alias less='less -Ni'
 
 # quick aliases
 alias vi='vim'
@@ -45,7 +49,7 @@ alias s='screen -x'
 alias p='ps -Af | grep'
 alias g='git status'
 alias ga='git add'
-alias gc='git commit -m'
+alias gc='git commit'
 alias gp='git push origin'
 
 # the ls family aliases. aren't they cute!
