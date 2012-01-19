@@ -39,12 +39,12 @@
 " Visual Settings
 """"'
 	
-	set t_Co=256                  " use 256 colors
+"	set t_Co=256                  " use 256 colors
+	syntax enable                 " turn on syntax highlighting
 	
 	set background=dark           " adjust colors for dark backgrounds
-	color solarized               " change colorscheme
+	colorscheme solarized               " change colorscheme
 	
-	syntax on                     " turn on syntax highlighting
 	set number                    " display line numbers
 	
 	set cursorline                " highlight current line
