@@ -53,7 +53,7 @@ alias gc='git commit'
 alias gp='git push origin'
 
 # the ls family aliases. aren't they cute!
-alias ls='ls -CFh --color=auto'
+alias ls='ls -CFh'
 alias ll='ls -l'
 alias l='ll'
 alias la='ll -a'
