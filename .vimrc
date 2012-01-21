@@ -39,7 +39,7 @@
 " Visual Settings
 """"'
 	
-"	set t_Co=256                  " use 256 colors
+	set t_Co=256                  " use 256 colors
 	syntax enable                 " turn on syntax highlighting
 	
 	set background=dark           " adjust colors for dark backgrounds
