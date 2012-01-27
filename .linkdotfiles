@@ -3,6 +3,6 @@
 for f in .*; do
 	if [ $f != "." ] && [ $f != ".." ] && [ ! -e $f ]; then
 		echo "adding link to $f"
-		ln -s ./$f ~/test/$f
+		ln -s ./$f ~/$f
 	fi
 done
