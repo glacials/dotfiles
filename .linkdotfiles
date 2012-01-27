@@ -1,8 +1,17 @@
 #!/bin/bash
 
+# Get the current script directory
+SOURCE="${BASH_SOURCE[0]}"
+while [ -h "$SOURCE" ] ; do SOURCE="$(readlink "$SOURCE")"; done
+DIR="$( cd -P "$( dirname "$SOURCE" )" && pwd )"
+
 for f in .*; do
-	if [ $f != "." ] && [ $f != ".." ] && [ ! -e $f ]; then
+	if [ $f != "." ] && [ $f != ".." ]; then
+		if [ -L ~/$f ]; then
+			echo -n "re-"
+			rm ~/$f
+		fi
 		echo "adding link to $f"
-		ln -s ./$f ~/$f
+		ln -s $DIR/$f ~/$f
 	fi
 done

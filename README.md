@@ -1,19 +1,8 @@
 
-pseudo-cloning this repo
+setting up the dotfiles
 ------------------------
-Since this repo is meant *not* to be exclusive under its own directory (`~`),
-we cannot just do a `git clone`, so we need to
-
-	cd
-	git init
-	git remote add origin git@github.com:skoh-fley/dotfiles
-	git pull origin master
-
-and also
-
-	git submodule update --init
-	
-or see below.
+After cloning this repo to the location of your choosing, `cd` to it and execute
+`.linkdotfiles` to generate symlinks from your home directory to these files.
 
 git submodules
 --------------
