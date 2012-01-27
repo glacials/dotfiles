@@ -1,0 +1,8 @@
+#!/bin/bash
+
+for f in .*; do
+	if [ $f != "." ] && [ $f != ".." ] && [ ! -e $f ]; then
+		echo "adding link to $f"
+		ln -s ./$f ~/test/$f
+	fi
+done
