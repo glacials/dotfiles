@@ -58,8 +58,3 @@ alias ll='ls -l'
 alias l='ll'
 alias la='ll -a'
 alias lr='ll -R'
-
-# include j
-export JPY=~/.helpers/j2/j.py # tells j.sh where the python script is
-. ~/.helpers/j2/j.sh          # provides the j() function
-
