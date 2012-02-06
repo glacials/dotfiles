@@ -83,6 +83,9 @@
 "	let php_sql_query=1
 	let php_htmlInStrings=1
 	
+	" syntax highlighting for gpl
+	au BufRead,BufNewFile *.gpl set filetype=gpl
+	
 	" turn on omni-complete
 	setlocal omnifunc=syntaxcomplete#Complete
 	au CursorMovedI,InsertLeave * if pumvisible() == 0|silent! pclose|endif
