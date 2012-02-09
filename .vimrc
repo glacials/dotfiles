@@ -8,17 +8,22 @@
 """"'
 " General Settings
 """"'
+
+	" use vim settings over vi
+	set nocompatible
 	
-	set nocompatible               " use vim settings over vi
+	" auto-indent newlines based on current line's indentation;
+	" guess when to increase/decrease indenations
+	set autoindent
+	set smartindent
 	
-	set autoindent                 " auto-indent newlines based on current line's indentation
-	set smartindent                " guess when to increase/decrease indentations (e.g. curly braces)
+	" live search (i.e. search while typing the search query);
+	" ignore case when searching
+	set incsearch
+	set ignorecase
 	
-	set incsearch                  " live search (i.e. search while typing the search query)
-	set ignorecase                 " ignore case when searching
-	
-	set nowrap                     " don't wrap lines
-	set showbreak=>>               " prefix line wraps (only matters if above line is commented)
+	" don't wrap lines
+	set nowrap
 	
 """"'
 " Indentation Settings
@@ -27,30 +32,37 @@
 	" leave whitespace on blank lines alone
 	inoremap <CR> <CR>x<BS>
 	
-	set tabstop=2                  " set tab display width to 2
-	set softtabstop=2              " set tab insert width to 2
-	set shiftwidth=2               " set auto-indent width to 2
-	set noexpandtab                " do not use spaces in place of tabs
+	set tabstop=2
+	set softtabstop=2
+	set shiftwidth=2
+	set noexpandtab
 	
 	set list
-	set listchars=tab:»\ ,trail:·  " display tab characters as >>
+
+  " display tab characters as >>
+	set listchars=tab:»\ ,trail:·
 	
 """"'
 " Visual Settings
 """"'
 	
-	set t_Co=256                  " use 256 colors
-	syntax enable                 " turn on syntax highlighting
+	" use 256 colors
+	set t_Co=256
+
+	" turn on syntax highlighting
+	syntax enable
 	
-	set background=dark           " adjust colors for dark backgrounds
-	colorscheme solarized         " change colorscheme
+	set background=dark
+	colorscheme solarized
 	
-	set number                    " display line numbers
+	set number
 	
-	set cursorline                " highlight current line
+	" highlight current line
+	set cursorline
 	
+	" if supported, highlight the 80th column
 	if exists('+colorcolumn')
-		set colorcolumn=80          " highlight the 80th column (if supported)
+		set colorcolumn=80
 	endif
 	
 """"'
@@ -94,10 +106,10 @@
 	au CursorMovedI,InsertLeave * if pumvisible() == 0|silent! pclose|endif
 	
 	" auto-complete these languages
-	au FileType php        set omnifunc=phpcomplete#CompletePHP
-	au FileType xml        set omnifunc=xmlcomplete#CompleteTags
-	au FileType html       set omnifunc=htmlcomplete#CompleteTags
-	au FileType css        set omnifunc=csscomplete#CompleteCSS
+	au FileType php  set omnifunc=phpcomplete#CompletePHP
+	au FileType xml  set omnifunc=xmlcomplete#CompleteTags
+	au FileType html set omnifunc=htmlcomplete#CompleteTags
+	au FileType css  set omnifunc=csscomplete#CompleteCSS
 	
 	filetype plugin indent on
 	
