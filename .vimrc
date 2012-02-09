@@ -20,7 +20,6 @@
 	set nowrap                     " don't wrap lines
 	set showbreak=>>               " prefix line wraps (only matters if above line is commented)
 	
-	
 """"'
 " Indentation Settings
 """"'
@@ -35,6 +34,7 @@
 	
 	set list
 	set listchars=tab:»\ ,trail:·  " display tab characters as >>
+	
 """"'
 " Visual Settings
 """"'
@@ -43,7 +43,7 @@
 	syntax enable                 " turn on syntax highlighting
 	
 	set background=dark           " adjust colors for dark backgrounds
-	colorscheme solarized               " change colorscheme
+	colorscheme solarized         " change colorscheme
 	
 	set number                    " display line numbers
 	
@@ -56,9 +56,11 @@
 """"'
 " Shortcuts
 """"'
+
+	" set 'jj' as an alternate escape from insert mode
+	inoremap jj <Esc>
 	
-	inoremap jj <Esc>       " set 'jj' as an alternate escape from insert mode
-	
+	" set ',,' as an alternate auto-complete caller
 	inoremap ,, <C-x><C-o>
 	
 """"'
@@ -73,14 +75,15 @@
 	map <C-j> <C-w>h
 	map <C-k> <C-w>l
 	
-	set tabpagemax=20             " allow many tabs to be opened at startup
+	" allow many tabs to be opened at startup
+	set tabpagemax=20
 	
 """"'
 " Code-Specific Stuff
 """"'
 	
 	" syntax highlighting for SQL and HTML inside PHP strings
-"	let php_sql_query=1
+	"let php_sql_query=1
 	let php_htmlInStrings=1
 	
 	" syntax highlighting for gpl
