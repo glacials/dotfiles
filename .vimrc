@@ -53,7 +53,7 @@
 	syntax enable
 	
 	set background=dark
-	colorscheme solarized
+	colorscheme badwolf
 	
 	set number
 	
