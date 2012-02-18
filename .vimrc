@@ -8,7 +8,7 @@
 """"'
 " General Settings
 """"'
-
+	
 	" use vim settings over vi
 	set nocompatible
 	
@@ -38,8 +38,8 @@
 	set noexpandtab
 	
 	set list
-
-  " display tab characters as >>
+	
+	" display tab characters as » and trailing spaces as ·
 	set listchars=tab:»\ ,trail:·
 	
 """"'
@@ -48,7 +48,7 @@
 	
 	" use 256 colors
 	set t_Co=256
-
+	
 	" turn on syntax highlighting
 	syntax enable
 	
@@ -68,7 +68,7 @@
 """"'
 " Shortcuts
 """"'
-
+	
 	" set 'jj' as an alternate escape from insert mode
 	inoremap jj <Esc>
 	
