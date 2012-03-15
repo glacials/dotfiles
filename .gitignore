@@ -1,2 +1,4 @@
+.config/autostart
+.config/chromium
 .vim/.netrwhist
 *.swp
