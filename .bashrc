@@ -24,13 +24,15 @@ if [ -f /etc/bash_completion ]; then
     . /etc/bash_completion
 fi
 
+# set vim as the default editor
+export EDITOR=vim
+export VMAIL_BROWSER=elinks
+
 # unbind ^q and ^s (for rtorrent)
 stty stop undef
 stty start undef
 
-# set vim as the default editor
-export EDITOR=vim
-export VMAIL_BROWSER=elinks
+alias aurbuild="sudo env EDITOR=\$EDITOR aurbuild"
 
 # common aliases
 alias df='df -h'
