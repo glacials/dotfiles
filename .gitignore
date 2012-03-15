@@ -1,5 +1,6 @@
 .config/autostart
 .config/chromium
+.config/htop
 .config/Trolltech.conf
 .vim/.netrwhist
 *.swp
