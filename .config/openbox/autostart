@@ -18,3 +18,4 @@
 
 tint2 &
 stjerm -m windows -k &
+sh ~/.fehbg
