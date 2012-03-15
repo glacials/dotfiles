@@ -25,6 +25,9 @@
 	" don't wrap lines
 	set nowrap
 	
+	" make :w!! force a write as root
+	ca w!! w !sudo tee > /dev/null "%"
+	
 """"'
 " Indentation Settings
 """"'
