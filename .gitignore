@@ -1,4 +1,5 @@
 .config/autostart
 .config/chromium
+.config/Trolltech.conf
 .vim/.netrwhist
 *.swp

@@ -80,7 +80,7 @@ systray_icon_asb = 100 0 0
 #---------------------------------------------
 time1_format = %H:%M
 time1_font = sans 8
-time2_format = %A %d %B
+time2_format = %d %B
 time2_font = sans 6
 clock_font_color = #ffffff 76
 clock_padding = 1 0
@@ -96,7 +96,7 @@ clock_rclick_command = orage
 # BATTERY
 #---------------------------------------------
 battery = 1
-battery_hide = 98
+battery_hide = 100
 battery_low_status = 10
 battery_low_cmd = notify-send "battery low"
 bat1_font = sans 8
@@ -131,4 +131,4 @@ autohide = 0
 autohide_show_timeout = 0.3
 autohide_hide_timeout = 2
 autohide_height = 4
-strut_policy = follow_size
+#strut_policy = follow_size
