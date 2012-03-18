@@ -1,6 +1,6 @@
-.config/autostart
-.config/chromium
-.config/htop
-.config/Trolltech.conf
+.config/*
+!.config/openbox
+!.config/tint2
+
 .vim/.netrwhist
 *.swp
