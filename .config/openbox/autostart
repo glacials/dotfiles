@@ -1,4 +1,5 @@
-tint2 &
-stjerm -m windows -k w -o 50 -w 100% -h 96% &
 sh ~/.fehbg &
+tint2 &
+stjerm -m windows -k w -o 50 -w 100% -h 96% -ah false &
 bashrun2 --netwmstate hidden &
+xbacklight -set 40
