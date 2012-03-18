@@ -1,2 +1,1 @@
-udiskie &
-exec ck-launch-session openbox-session
+exec ck-launch-session bash -c "udiskie & openbox-session"
