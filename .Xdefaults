@@ -1,6 +1,5 @@
 # stjerm settings
-stjerm.mod:      windows
-stjerm.key:      w
+stjerm.key:      Caps_Lock
 stjerm.width:    100%
 stjerm.height:   96%
 stjerm.opacity:  50
