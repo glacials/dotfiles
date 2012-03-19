@@ -1,0 +1,7 @@
+# stjerm settings
+stjerm.mod:      windows
+stjerm.key:      w
+stjerm.width:    100%
+stjerm.height:   96%
+stjerm.opacity:  50
+stjerm.autohide: false
