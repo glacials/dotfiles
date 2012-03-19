@@ -4,3 +4,4 @@ stjerm &
 bashrun2 --netwmstate hidden &
 xbacklight -set 40
 xkbset nullify lock
+/usr/bin/xmodmap ~/.Xmodmap
