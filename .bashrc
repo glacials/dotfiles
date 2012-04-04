@@ -49,6 +49,7 @@ alias g='git status'
 alias ga='git add'
 alias gc='git commit'
 alias gp='git push origin'
+alias git='hub'
 
 # the ls family aliases. aren't they cute!
 alias ls='ls -CFh --color'
