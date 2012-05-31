@@ -38,12 +38,21 @@
 	set tabstop=2
 	set softtabstop=2
 	set shiftwidth=2
+	
+	" noexpandtab for tabs, expandtab for spaces. make your choice
 	set noexpandtab
 	
 	set list
 	
 	" display tab characters as » and trailing spaces as ·
 	set listchars=tab:»\ ,trail:·
+	
+	" don't display tab characters or trailing spaces differently
+	"set listchars=tab:\ \ ,trail:\ "
+	
+	" settings for vim-indent-guides
+	let g:indent_guides_auto_colors = 0
+	let g:indent_guides_enable_on_vim_startup = 1
 	
 """"'
 " Visual Settings
