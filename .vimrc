@@ -68,6 +68,12 @@
 		set colorcolumn=80
 	endif
 	
+	" show powerline in non-split windows
+	set laststatus=2
+	
+	" tell powerline to use fancy symbols
+	" let g:Powerline_symbols = 'fancy'
+	
 """"'
 " Shortcuts
 """"'
