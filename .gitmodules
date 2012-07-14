@@ -10,6 +10,9 @@
 [submodule ".vim/bundle/badwolf"]
 	path = .vim/bundle/badwolf
 	url = git@github.com:sjl/badwolf
+[submodule ".vim/bundle/powerline"]
+	path = .vim/bundle/powerline
+	url = http://github.com/Lokaltog/vim-powerline.git
 [submodule ".vim/bundle/vim-indent-guides"]
 	path = .vim/bundle/vim-indent-guides
 	url = http://github.com/nathanaelkane/vim-indent-guides.git
