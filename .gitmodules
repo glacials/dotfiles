@@ -16,3 +16,6 @@
 [submodule ".vim/bundle/vim-indent-guides"]
 	path = .vim/bundle/vim-indent-guides
 	url = http://github.com/nathanaelkane/vim-indent-guides.git
+[submodule ".vim/bundle/vim-notes"]
+	path = .vim/bundle/vim-notes
+	url = http://github.com/xolox/vim-notes.git
