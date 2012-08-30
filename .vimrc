@@ -94,21 +94,6 @@
 	inoremap ,, <C-x><C-o>
 	
 """"'
-" Tab Stuff
-""""'
-	
-	" set ctrl+h to move one tab left; ctrl+l to move one tab right
-	map <C-h> :tabp<CR>
-	map <C-l> :tabn<CR>
-	
-	" set ctrl+j to move one vsplit left; ctrl+k to move one vsplit right
-	map <C-j> <C-w>h
-	map <C-k> <C-w>l
-	
-	" allow many tabs to be opened at startup
-	set tabpagemax=20
-	
-""""'
 " Code-Specific Stuff
 """"'
 	
