@@ -51,8 +51,13 @@ alias gc='git commit'
 alias gp='git push origin'
 
 # the ls family aliases. aren't they cute!
-alias ls='ls -CFh --color'
+alias ls='ls -CFhG'
 alias ll='ls -l'
 alias l='ll'
 alias la='ll -a'
 alias lr='ll -R'
+
+export GEM_HOME=~/.gem
+export GEM_PATH=~/.gem
+
+PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
