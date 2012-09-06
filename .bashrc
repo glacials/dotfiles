@@ -27,6 +27,9 @@ fi
 # set vim as the default editor
 export EDITOR=vim
 
+# use vim bindings at prompt (esc to enter command mode)
+set -o vi
+
 # common aliases
 alias df='df -h'
 alias du='du -h'
