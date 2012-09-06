@@ -27,12 +27,6 @@ fi
 # set vim as the default editor
 export EDITOR=vim
 
-# unbind ^q and ^s (for rtorrent)
-stty stop undef
-stty start undef
-
-alias aurbuild="sudo env EDITOR=\$EDITOR aurbuild"
-
 # common aliases
 alias df='df -h'
 alias du='du -h'
