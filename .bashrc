@@ -26,7 +26,6 @@ fi
 
 # set vim as the default editor
 export EDITOR=vim
-export VMAIL_BROWSER=elinks
 
 # unbind ^q and ^s (for rtorrent)
 stty stop undef
