@@ -33,7 +33,7 @@
 """"'
 	
 	" leave whitespace on blank lines alone
-	inoremap <CR> <CR>x<BS>
+	" inoremap <CR> <CR>x<BS>
 	
 	set tabstop=2
 	set softtabstop=2
