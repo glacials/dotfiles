@@ -1,6 +1,3 @@
-.config/*
-!.config/openbox
-!.config/tint2
-
-.vim/.netrwhist
 *.swp
+.vim/.netrwhist
+!*.gitignore
