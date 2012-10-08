@@ -10,9 +10,6 @@
 [submodule ".vim/bundle/badwolf"]
 	path = .vim/bundle/badwolf
 	url = http://github.com/sjl/badwolf.git
-[submodule ".vim/bundle/vim-powerline"]
-	path = .vim/bundle/vim-powerline
-	url = http://github.com/Lokaltog/vim-powerline.git
 [submodule ".vim/bundle/nerdtree"]
 	path = .vim/bundle/nerdtree
 	url = http://github.com/scrooloose/nerdtree.git
