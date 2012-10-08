@@ -46,9 +46,17 @@ function gp
   git push origin $argv
 end;
 
-function ls
-  ls -CFhG $argv
-end;
+uname -a | awk '{print $1}' | read kernel
+switch $kernel
+  case Darwin
+    function ls
+      ls -CFhG $argv
+    end;
+  case '*'
+    function ls
+      ls -CFh --color=auto $argv
+    end;
+end
 
 function ll
   ls -l $argv
