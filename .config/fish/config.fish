@@ -1,69 +1,69 @@
 function df
-	df -h $argv
+  df -h $argv
 end;
 
 function du
-	du -h $argv
+  du -h $argv
 end;
 
 function grep
-	grep --color=auto $argv
+  grep --color=auto $argv
 end;
 
 function less
-	less -Ni $argv
+  less -Ni $argv
 end;
 
 function vi
-	vim $argv
+  vim $argv
 end;
 
 function c
-	clear $argv
+  clear $argv
 end;
 
 function s
-	screen -x $argv
+  screen -x $argv
 end;
 
 function p
-	ps -Af | grep $argv
+  ps -Af | grep $argv
 end;
 
 function g
-	git status $argv
+  git status $argv
 end;
 
 function ga
-	git add $argv
+  git add $argv
 end;
 
 function gc
-	git commit $argv
+  git commit $argv
 end;
 
 function gp
-	git push origin $argv
+  git push origin $argv
 end;
 
 function ls
-	ls -CFhG $argv
+  ls -CFhG $argv
 end;
 
 function ll
-	ls -l $argv
+  ls -l $argv
 end;
 
 function l
-	ll $argv
+  ll $argv
 end;
 
 function la
-	ll -a $argv
+  ll -a $argv
 end;
 
 function lr
-	ll -R $argv
+  ll -R $argv
 end;
 
 function vim
@@ -71,13 +71,13 @@ function vim
 end;
 
 function fish_prompt
-	if test (id -u) -eq "0"
-		set uid_prompt "#"
-	else
-		set uid_prompt "\$"
-	end;
+  if test (id -u) -eq "0"
+    set uid_prompt "#"
+  else
+    set uid_prompt "\$"
+  end;
 
-	printf '%s%s@%s%s%s%s ' (set_color green -o) (whoami) (hostname|cut -d . -f 1):(pwd | sed 's/\/Users\/ben/~/g') (prompt_git) $uid_prompt (set_color normal)
+  printf '%s%s@%s%s%s%s ' (set_color green -o) (whoami) (hostname|cut -d . -f 1):(pwd | sed 's/\/Users\/ben/~/g') (prompt_git) $uid_prompt (set_color normal)
 end
 
 function __fish_git_in_working_tree
