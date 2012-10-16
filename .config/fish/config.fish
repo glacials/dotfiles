@@ -128,5 +128,5 @@ function soy
 end
 
 set SOYWIKI_VIM mvim
-set PATH ~/.rvm/bin $PATH
+set PATH /usr/local/bin ~/.rvm/bin $PATH
 bash ~/.rvm/scripts/rvm
