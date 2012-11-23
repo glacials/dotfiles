@@ -16,3 +16,6 @@
 [submodule ".vim/bundle/vimwiki"]
 	path = .vim/bundle/vimwiki
 	url = http://github.com/vim-scripts/vimwiki.git
+[submodule ".vim/bundle/nxc.vim"]
+	path = .vim/bundle/nxc.vim
+	url = http://github.com/vim-scripts/nxc.vim.git
