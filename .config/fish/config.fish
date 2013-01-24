@@ -74,10 +74,6 @@ function lr
   ll -R $argv
 end;
 
-function vim
-  mvim $argv
-end;
-
 function fish_prompt
   if test (id -u) -eq "0"
     set uid_prompt "#"
