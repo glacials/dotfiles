@@ -40,7 +40,7 @@
 	set shiftwidth=2
 	
 	" noexpandtab for tabs, expandtab for spaces. make your choice
-	set noexpandtab
+	set expandtab
 	
 	set list
 	
