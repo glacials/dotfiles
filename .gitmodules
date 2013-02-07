@@ -19,3 +19,6 @@
 [submodule ".vim/bundle/nxc.vim"]
 	path = .vim/bundle/nxc.vim
 	url = http://github.com/vim-scripts/nxc.vim.git
+[submodule ".vim/bundle/molokai"]
+	path = .vim/bundle/molokai
+	url = http://github.com/tomasr/molokai.git
