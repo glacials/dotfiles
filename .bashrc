@@ -56,4 +56,3 @@ alias lr='ll -R'
 # ruby things
 export GEM_HOME=~/.gem
 export GEM_PATH=~/.gem
-PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
