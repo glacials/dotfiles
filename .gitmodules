@@ -22,3 +22,6 @@
 [submodule ".vim/bundle/molokai"]
 	path = .vim/bundle/molokai
 	url = http://github.com/tomasr/molokai.git
+[submodule ".vim/bundle/YouCompleteMe"]
+	path = .vim/bundle/YouCompleteMe
+	url = http://github.com/Valloric/YouCompleteMe.git
