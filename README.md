@@ -1,8 +1,7 @@
-
 setting up the dotfiles
 -----------------------
 After cloning this repo to the location of your choosing, `cd` to it and execute
-`.linkdotfiles` to generate symlinks from your home directory to these files.
+`linkdotfiles` to generate symlinks from your home directory to these files.
 
 git submodules
 --------------
