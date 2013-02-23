@@ -19,9 +19,9 @@ for f in .*; do
   fi
 done
 
-echo "Initializing submodules..."
-git submodule init --quiet
-echo "Updating submodules..."
-git submodule update --quiet
-echo "Pulling submodules..."
-git submodule foreach git pull origin master --quiet
+# echo "Initializing submodules..."
+# git submodule init --quiet
+# echo "Updating submodules..."
+# git submodule update --quiet
+# echo "Pulling submodules..."
+# git submodule foreach git pull origin master --quiet
