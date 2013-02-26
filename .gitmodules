@@ -25,3 +25,9 @@
 [submodule ".vim/bundle/YouCompleteMe"]
 	path = .vim/bundle/YouCompleteMe
 	url = http://github.com/Valloric/YouCompleteMe.git
+[submodule ".vim/bundle/proton"]
+	path = .vim/bundle/proton
+	url = http://github.com/vim-scripts/proton.git
+[submodule ".vim/bundle/pyte"]
+	path = .vim/bundle/pyte
+	url = http://github.com/vim-scripts/pyte.git
