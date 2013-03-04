@@ -19,7 +19,7 @@ vimrc: .vimrc
 	[ -h ~/.vimrc ] && ln -fs $(shell pwd)/.vimrc ~ || ln -is $(shell pwd)/.vimrc ~
 
 config: .config
-	[ -h ~/.config ] && ln -frs $(shell pwd)/.config ~ || ln -is $(shell pwd)/.config ~
+	[ -h ~/.config ] && ln -fs $(shell pwd)/.config ~ || ln -is $(shell pwd)/.config ~
 
 vim: .vim
 	[ -h ~/.vim ] && ln -fs $(shell pwd)/.vim ~ || ln -is $(shell pwd)/.vim ~
