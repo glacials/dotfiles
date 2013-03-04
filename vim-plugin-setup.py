@@ -5,20 +5,24 @@ import os
 import sys
 
 print(
-"""vim-plugin-setup: What do?
-1. Init and update plugins
-2. Pull each plugin
-3. Add a plugin from GitHub"""
+"""vim-plugin-setup: What would you like to do?
+  1. Init and update plugins
+  2. Pull each plugin
+  3. Add a plugin from GitHub
+  q. Quit"""
 )
+cin = input("Enter an option: ")
 
-cin = int(input("Enter an option: "))
+if cin is "q":
+  sys.exit()
 
-if cin == 1:
+
+if cin is "1":
   subprocess.call(["git", "submodule", "init"])
   subprocess.call(["git", "submodule", "update"])
-if cin == 2:
+if cin is "2":
   subprocess.call(["git", "submodule", "foreach", "git", "pull", "origin", "master"])
-if cin == 3:
+if cin is "3":
   if not os.path.exists(".vim"):
     print("To add a plugin, you must run this script from the directory containing your .vim folder.")
     print("You are currently in", os.getcwd())
