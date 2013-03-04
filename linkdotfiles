@@ -28,4 +28,3 @@ else
 #  git submodule update --quiet
 #  echo "Pulling submodules..."
 #  git submodule foreach git pull origin master --quiet
-fi
