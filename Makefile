@@ -3,9 +3,6 @@ default: Xdefaults Xmodmap bashrc gitconfig irssi vimrc config vim
 plugin:
 	./vim-plugin-setup.py
 
-Xdefaults: .Xdefaults
-	[ -h ~/.Xdefaults ] && ln -fs $(shell pwd)/.Xdefaults ~ || ln -is $(shell pwd)/.Xdefaults ~
-
 Xmodmap: .Xmodmap
 	[ -h ~/.Xmodmap ] && ln -fs $(shell pwd)/.Xmodmap ~ || ln -is $(shell pwd)/.Xmodmap ~
 
