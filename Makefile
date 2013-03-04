@@ -1,4 +1,4 @@
-default: Xdefaults Xmodmap bashrc gitconfig irssi vimrc config vim
+default: Xmodmap bashrc gitconfig irssi vimrc config vim
 
 plugin:
 	./vim-plugin-setup.py
