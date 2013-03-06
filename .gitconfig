@@ -1,3 +1,7 @@
 [user]
 	name = skoh-fley
 	email = qhiiyr@gmail.com
+[diff]
+	tool = vimdiff
+[merge]
+	tool = vimdiff
