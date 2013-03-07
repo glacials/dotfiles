@@ -31,3 +31,6 @@
 [submodule ".vim/bundle/pyte"]
 	path = .vim/bundle/pyte
 	url = http://github.com/vim-scripts/pyte.git
+[submodule ".vim/bundle/vim-gitgutter"]
+	path = .vim/bundle/vim-gitgutter
+	url = http://github.com/airblade/vim-gitgutter
