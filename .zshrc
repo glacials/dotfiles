@@ -78,3 +78,5 @@ alias lr='ll -R'
 # ruby things
 export GEM_HOME=~/.gem
 export GEM_PATH=~/.gem
+
+fortune | cowsay -n
