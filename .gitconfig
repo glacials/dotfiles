@@ -5,3 +5,5 @@
 	tool = vimdiff
 [merge]
 	tool = vimdiff
+[core]
+	editor = vim
