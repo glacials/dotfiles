@@ -64,8 +64,8 @@
   " turn on syntax highlighting
   syntax enable
 
-  set background=light
-  colorscheme proton
+  set background=dark
+  colorscheme molokai
 
   set number
 
