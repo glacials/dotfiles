@@ -21,6 +21,9 @@ irssi: .irssi
 vimrc: .vimrc
 	[ -h ~/.vimrc ]     && ln -fs $(shell pwd)/.vimrc     ~ || ln -is $(shell pwd)/.vimrc     ~
 
+zshrc: .zshrc
+	[ -h ~/.zshrc ]     && ln -fs $(shell pwd)/.zshrc     ~ || ln -is $(shell pwd)/.zshrc     ~
+
 config: .config
 	[ -h ~/.config ]    && ln -fs $(shell pwd)/.config    ~ || ln -is $(shell pwd)/.config    ~
 
