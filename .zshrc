@@ -40,9 +40,9 @@ autoload -U colors && colors
 PROMPT=%{$fg_bold[green]%}[%n@%m:%~]$%{$reset_color%}\ 
 
 # enable programmable completion features
-if [ -f /etc/bash_completion ]; then
-    . /etc/bash_completion
-fi
+#if [ -f /etc/bash_completion ]; then
+#    . /etc/bash_completion
+#fi
 
 # set vim as the default editor
 export EDITOR=vim
@@ -64,12 +64,14 @@ alias p='ps -Af | grep'
 alias g='git status'
 alias ga='git add'
 alias gc='git commit'
-alias gp='git push origin'
+alias push='git push'
+alias pull='git pull'
 
 # the ls family aliases. aren't they cute!
 alias ls='ls -CFh --color=auto'
 alias ll='ls -l'
 alias l='ll'
+alias ld='ll -d'
 alias la='ll -a'
 alias lr='ll -R'
 
