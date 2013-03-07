@@ -1,7 +1,7 @@
 default:
 	echo "Enter one of the following:\n  make links\n  make plugins"
 
-links: Xmodmap bashrc gitconfig irssi vimrc config vim
+links: Xmodmap bashrc gitconfig irssi vimrc zshrc config vim
 
 plugins:
 	./vim-plugin-setup.py
