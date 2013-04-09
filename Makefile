@@ -2,7 +2,7 @@ silent:
 	make -s menu
 
 menu:
-	echo "Enter one of the following:\n  make links\n  make plugins"
+	echo "Enter one of the following:\n  make links (link dotfiles)\n  make plugins (init/update/add plugins)"
 
 links: Xmodmap bashrc gitconfig irssi vimrc zshrc config vim
 
