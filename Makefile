@@ -1,4 +1,7 @@
-default:
+silent:
+	make -s menu
+
+menu:
 	echo "Enter one of the following:\n  make links\n  make plugins"
 
 links: Xmodmap bashrc gitconfig irssi vimrc zshrc config vim
