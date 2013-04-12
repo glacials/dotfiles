@@ -4,13 +4,23 @@ import subprocess
 import os
 import sys
 
-print(
-"""vim-plugin-setup: What would you like to do?
-  1. Init plugins
-  2. Pull each plugin
-  3. Add a plugin from GitHub
-  q. Quit"""
-)
+if os.path.exists(".vim/bundle/YouCompleteMe"):
+  print(
+  """vim-plugin-setup: What would you like to do?
+    1. Init plugins
+    2. Pull each plugin
+    3. Add a plugin from GitHub
+    4. Recompile ycm_core (for YouCompleteMe)
+    q. Quit"""
+  )
+else:
+  print(
+  """vim-plugin-setup: What would you like to do?
+    1. Init plugins
+    2. Pull each plugin
+    3. Add a plugin from GitHub
+    q. Quit"""
+  )
 cin = input("Enter an option: ")
 
 # Quit
@@ -24,12 +34,11 @@ if cin is "1":
 
 # Pull each plugin
 if cin is "2":
-  if os.path.exists(".vim/bundle/YouCompleteMe"):
-    ycm_core = input("Also recompile ycm_core for YouCompleteMe? [y/N] ")
   subprocess.call(["git", "submodule", "foreach", "git", "pull", "origin", "master"])
-  if ycm_core.lower() is 'y':
-    os.chdir(".vim/bundle/YouCompleteMe")
-    subprocess.call(["./install.sh"])
+
+if cin is "4":
+  os.chdir(".vim/bundle/YouCompleteMe")
+  subprocess.call(["./install.sh"])
 
 # Add a plugin from GitHub
 if cin is "3":
