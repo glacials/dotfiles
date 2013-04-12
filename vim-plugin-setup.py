@@ -10,7 +10,7 @@ if os.path.exists(".vim/bundle/YouCompleteMe"):
     1. Init plugins
     2. Pull each plugin
     3. Add a plugin from GitHub
-    4. Recompile ycm_core (for YouCompleteMe)
+    4. (Re)compile ycm_core (for YouCompleteMe)
     q. Quit"""
   )
 else:
@@ -36,10 +36,6 @@ if cin is "1":
 if cin is "2":
   subprocess.call(["git", "submodule", "foreach", "git", "pull", "origin", "master"])
 
-if cin is "4":
-  os.chdir(".vim/bundle/YouCompleteMe")
-  subprocess.call(["./install.sh"])
-
 # Add a plugin from GitHub
 if cin is "3":
   if not os.path.exists(".vim"):
@@ -56,3 +52,8 @@ if cin is "3":
     dir = ".vim/bundle/" + repo
     print("Grabbing", repo, "from", user)
     subprocess.call(["git", "submodule", "add", "-f", url, dir])
+
+# (Re)compile ycm_core (for YouCompleteMe)
+if cin is "4":
+  os.chdir(".vim/bundle/YouCompleteMe")
+  subprocess.call(["./install.sh"])
