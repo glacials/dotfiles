@@ -27,8 +27,8 @@ vimrc: .vimrc
 zshrc: .zshrc
 	[ -h ~/.zshrc ]     && ln -fs $(shell pwd)/.zshrc     ~ || ln -is $(shell pwd)/.zshrc     ~
 
-config: .config
+config:
 	[ -h ~/.config ]    && ln -fs $(shell pwd)/.config    ~ || ln -is $(shell pwd)/.config    ~
 
-vim: .vim
+vim:
 	[ -h ~/.vim ]       && ln -fs $(shell pwd)/.vim       ~ || ln -is $(shell pwd)/.vim       ~
