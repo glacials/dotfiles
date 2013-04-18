@@ -48,7 +48,7 @@ if cin is "3":
     repository = cin.partition("/")
     user = repository[0]
     repo = repository[2]
-    url = "http://github.com/" + user + "/" + repo
+    url = "git@github.com:" + user + "/" + repo
     dir = ".vim/bundle/" + repo
     print("Grabbing", repo, "from", user)
     subprocess.call(["git", "submodule", "add", "-f", url, dir])
