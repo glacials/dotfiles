@@ -33,7 +33,7 @@
 """"'
 
   " leave whitespace on blank lines alone
-  " inoremap <CR> <CR>x<BS>
+  "inoremap <CR> <CR>x<BS>
 
   set tabstop=2
   set softtabstop=2
@@ -49,10 +49,6 @@
 
   " don't display tab characters or trailing spaces differently
   "set listchars=tab:\ \ ,trail:\ "
-
-  " settings for vim-indent-guides
-  let g:indent_guides_auto_colors = 0
-  let g:indent_guides_enable_on_vim_startup = 1
 
 """"'
 " Visual Settings
@@ -70,7 +66,8 @@
   set number
 
   if has('gui_running')
-    set guifont=Terminus:h14
+    "set guifont=Andale
+    set noantialias
   endif
 
   " highlight current line
