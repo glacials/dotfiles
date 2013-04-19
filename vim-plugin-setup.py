@@ -4,48 +4,36 @@ import subprocess
 import os
 import sys
 
-if os.path.exists(".vim/bundle/YouCompleteMe"):
-  print(
-  """vim-plugin-setup: What would you like to do?
-    1. Init plugins
-    2. Pull each plugin
-    3. Add a plugin from GitHub
-    4. (Re)compile ycm_core (for YouCompleteMe)
-    q. Quit"""
-  )
-else:
-  print(
-  """vim-plugin-setup: What would you like to do?
-    1. Init plugins
-    2. Pull each plugin
-    3. Add a plugin from GitHub
-    q. Quit"""
-  )
-cin = input("Enter an option: ")
+cin = None
 
-# Quit
-if cin is "q":
-  sys.exit()
+if len(sys.argv) is 1 or (sys.argv[1] == "add" and len(sys.argv) < 3):
+  if os.path.exists(".vim/bundle/YouCompleteMe"):
+    print("Usage: " + sys.argv[0] + " <command>")
+    print("")
+    print("Commands are:")
+    print("    init              Initialize all Vim plugins")
+    print("    pull              Pull all Vim plugins")
+    print("    add <user/repo>   Add a Vim plugin from GitHub repository at user/repo")
+    print("    ycm_core          Recompile ycm_core for YouCompleteMe")
+    sys.exit()
 
 # Init plugins
-if cin is "1":
+if sys.argv[1] == "init":
   subprocess.call(["git", "submodule", "init"])
   subprocess.call(["git", "submodule", "update"])
 
 # Pull each plugin
-if cin is "2":
+if sys.argv[1] == "pull":
   subprocess.call(["git", "submodule", "foreach", "git", "pull", "origin", "master"])
 
 # Add a plugin from GitHub
-if cin is "3":
+if sys.argv[1] == "add":
   if not os.path.exists(".vim"):
     print("To add a plugin, you must run this script from the directory containing your .vim folder.")
     print("You are currently in", os.getcwd())
     sys.exit()
   else:
-    print("Enter GitHub plugin path in the format Username/Reponame.")
-    cin = input("user/repo: ")
-    repository = cin.partition("/")
+    repository = sys.argv[2].partition("/")
     user = repository[0]
     repo = repository[2]
     url = "git@github.com:" + user + "/" + repo
@@ -54,6 +42,10 @@ if cin is "3":
     subprocess.call(["git", "submodule", "add", "-f", url, dir])
 
 # (Re)compile ycm_core (for YouCompleteMe)
-if cin is "4":
+if sys.argv[1] == "ycm_core":
   os.chdir(".vim/bundle/YouCompleteMe")
   subprocess.call(["./install.sh"])
+
+# Quit
+if cin is "q" or cin is None:
+  sys.exit()

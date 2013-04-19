@@ -1,34 +1,43 @@
-silent:
-	make -s menu
+pwd = $(shell pwd)
 
-menu:
-	echo "Enter one of the following:\n  make links (link dotfiles)\n  make plugins (init/update/add plugins)"
+all:
+	$(MAKE) links
+	$(MAKE) init
+
+init:
+	./vim-plugin-setup.py init
+
+update:
+	./vim-plugin-setup.py update
+
+add:
+	./vim-plugin-setup.py add
+
+ycm_core:
+	./vim-plugin-setup.py ycm_core
 
 links: Xmodmap bashrc gitconfig irssi vimrc zshrc config vim
 
-plugins:
-	./vim-plugin-setup.py
-
 Xmodmap: .Xmodmap
-	[ -h ~/.Xmodmap ]   && ln -fs $(shell pwd)/.Xmodmap   ~ || ln -is $(shell pwd)/.Xmodmap   ~
+	[ -h ~/.Xmodmap ]   && ln -fs $(pwd)/.Xmodmap   ~ || ln -is $(pwd)/.Xmodmap   ~
 
 bashrc: .bashrc
-	[ -h ~/.bashrc ]    && ln -fs $(shell pwd)/.bashrc    ~ || ln -is $(shell pwd)/.bashrc    ~
+	[ -h ~/.bashrc ]    && ln -fs $(pwd)/.bashrc    ~ || ln -is $(pwd)/.bashrc    ~
 
 gitconfig: .gitconfig
-	[ -h ~/.gitconfig ] && ln -fs $(shell pwd)/.gitconfig ~ || ln -is $(shell pwd)/.gitconfig ~
+	[ -h ~/.gitconfig ] && ln -fs $(pwd)/.gitconfig ~ || ln -is $(pwd)/.gitconfig ~
 
 irssi: .irssi
-	[ -h ~/.irssi ]     && ln -fs $(shell pwd)/.irssi     ~ || ln -is $(shell pwd)/.irssi     ~
+	[ -h ~/.irssi ]     && ln -fs $(pwd)/.irssi     ~ || ln -is $(pwd)/.irssi     ~
 
 vimrc: .vimrc
-	[ -h ~/.vimrc ]     && ln -fs $(shell pwd)/.vimrc     ~ || ln -is $(shell pwd)/.vimrc     ~
+	[ -h ~/.vimrc ]     && ln -fs $(pwd)/.vimrc     ~ || ln -is $(pwd)/.vimrc     ~
 
 zshrc: .zshrc
-	[ -h ~/.zshrc ]     && ln -fs $(shell pwd)/.zshrc     ~ || ln -is $(shell pwd)/.zshrc     ~
+	[ -h ~/.zshrc ]     && ln -fs $(pwd)/.zshrc     ~ || ln -is $(pwd)/.zshrc     ~
 
 config:
-	[ -h ~/.config ]    && ln -fs $(shell pwd)/.config    ~ || ln -is $(shell pwd)/.config    ~
+	[ -h ~/.config ]    && ln -fs $(pwd)/.config    ~ || ln -is $(pwd)/.config    ~
 
 vim:
-	[ -h ~/.vim ]       && ln -fs $(shell pwd)/.vim       ~ || ln -is $(shell pwd)/.vim       ~
+	[ -h ~/.vim ]       && ln -fs $(pwd)/.vim       ~ || ln -is $(pwd)/.vim       ~
