@@ -7,8 +7,8 @@ all:
 init:
 	./vim-plugin-setup.py init
 
-update:
-	./vim-plugin-setup.py update
+pull:
+	./vim-plugin-setup.py pull
 
 add:
 	./vim-plugin-setup.py add
