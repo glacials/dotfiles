@@ -20,7 +20,7 @@ if len(sys.argv) is 1 or (sys.argv[1] == "add" and len(sys.argv) < 3):
 # Init plugins
 if sys.argv[1] == "init":
   subprocess.call(["git", "submodule", "init"])
-  subprocess.call(["git", "submodule", "update"])
+  subprocess.call(["git", "submodule", "update", "--recursive"])
 
 # Pull each plugin
 if sys.argv[1] == "pull":
