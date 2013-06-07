@@ -1,20 +1,20 @@
-Setting up
------------------------
-After cloning this repo to the location of your choosing, `cd` to it and
+## Installation
 
-    make links
+    make
 
-to generate symlinks from your home directory to these files.
+will generate all the symlinks it can (without overwriting anything),
+then initialize and pull all submodules. Alternatively, `make links`
+then `make init`.
 
-Submodules
---------------
-I use Git submodules for all my Vim plugins with help from [pathogen][1], so to
-manage plugins just run
+## Updating Vim plugins
 
-    make plugins
+    make pull
 
-You'll want to use option 1 the first time you pull in order to grab all
-submodules. Use option 2 to update once in a while and option 3 to add a new
-plugin from GitHub.
+### YouCompleteMe
+If you get an error about YouCompleteMe's ycm_core whenever you start up
+vim, run
 
-[1]: http://github.com/tpope/vim-pathogen/ "tpope/vim-pathogen"
+    make ycm_core
+    
+to recompile it. This happens usually when YouCompleteMe gets updated, or
+the first time you use it.
