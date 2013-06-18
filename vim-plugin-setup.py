@@ -1,21 +1,21 @@
 #!/usr/bin/env python3
 
-import subprocess
 import os
+import subprocess
 import sys
 
 cin = None
 
 if len(sys.argv) is 1 or (sys.argv[1] == "add" and len(sys.argv) < 3):
+  print("Usage: " + sys.argv[0] + " <command>")
+  print("")
+  print("Commands are:")
+  print("    init              Initialize all Vim plugins")
+  print("    pull              Pull all Vim plugins")
+  print("    add <user/repo>   Add a Vim plugin from GitHub repository at user/repo")
   if os.path.exists(".vim/bundle/YouCompleteMe"):
-    print("Usage: " + sys.argv[0] + " <command>")
-    print("")
-    print("Commands are:")
-    print("    init              Initialize all Vim plugins")
-    print("    pull              Pull all Vim plugins")
-    print("    add <user/repo>   Add a Vim plugin from GitHub repository at user/repo")
     print("    ycm_core          Recompile ycm_core for YouCompleteMe")
-    sys.exit()
+  sys.exit()
 
 # Init plugins
 if sys.argv[1] == "init":
