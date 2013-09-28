@@ -66,8 +66,8 @@
   set number
 
   if has('gui_running')
-    "set guifont=Andale
-    set noantialias
+    set guifont=Source\ Code\ Pro\ ExtraLight:h9
+    "set noantialias
   endif
 
   " highlight current line
@@ -87,6 +87,10 @@
 
   " set ',,' as an alternate auto-complete caller
   inoremap ,, <C-x><C-o>
+
+  " keybindings for ctrlp (fuzzy file search plugin)
+  let g:ctrlp_map = '<c-p>'
+  let g:ctrlp_cmd = 'CtrlP'
 
 """"'
 " Code-Specific Stuff
