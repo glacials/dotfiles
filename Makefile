@@ -16,7 +16,7 @@ add:
 ycm_core:
 	./vim-plugin-setup.py ycm_core
 
-links: Xmodmap bashrc gitconfig irssi vimrc zshrc config vim
+links: Xmodmap bashrc gitconfig irssi vimrc zshrc vim
 
 Xmodmap: .Xmodmap
 	[ -h ~/.Xmodmap ]   && ln -fs $(pwd)/.Xmodmap   ~ || ln -is $(pwd)/.Xmodmap   ~
