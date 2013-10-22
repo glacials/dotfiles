@@ -56,4 +56,6 @@ alias lr='ll -R'
 export GEM_HOME=~/.gem
 export GEM_PATH=~/.gem
 
+. ~/.zshrc_local
+
 fortune | cowsay -n
