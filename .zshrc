@@ -19,7 +19,7 @@ bindkey -v
 autoload -U promptinit
 promptinit
 autoload -U colors && colors
-PROMPT=%{$fg_bold[green]%}[%n@%m:%~]$%{$reset_color%}\ 
+PROMPT=%{$fg_bold[red]%}[%n@%m:%~]$%{$reset_color%}\ 
 
 # set vim as the default editor
 export EDITOR=vim
@@ -44,8 +44,11 @@ alias commit='git commit'
 alias push='git push'
 alias pull='git pull'
 
+# imitate OS X's `open` command
+alias open='xdg-open &>/dev/null'
+
 # the ls family aliases. aren't they cute!
-alias ls='ls -CFh --color=auto'
+alias ls='ls -CFh'
 alias ll='ls -l'
 alias l='ll'
 alias ld='ll -d'
