@@ -59,6 +59,8 @@ alias lr='ll -R'
 export GEM_HOME=~/.gem
 export GEM_PATH=~/.gem
 
-. ~/.zshrc_local
+if [[ -e ~/.zshrc_local ]] then
+  source ~/.zshrc_local
+fi
 
 fortune ~/dotfiles/fortunes | cowsay -n
