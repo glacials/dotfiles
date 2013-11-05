@@ -3,6 +3,7 @@ pwd = $(shell pwd)
 all:
 	$(MAKE) links
 	$(MAKE) init
+	$(MAKE) fortune
 
 init:
 	./vim-plugin-setup.py init
@@ -41,3 +42,7 @@ zshrc: .zshrc
 
 vim:
 	[ -h ~/.vim ]       && ln -fs $(pwd)/.vim       ~ || ln -is $(pwd)/.vim       ~
+
+fortune:
+	ls ~/dotfiles/fortunes &>/dev/null || git clone git@github.com:skoh-fley/fortunes ~/dotfiles/fortunes
+	cd ~/dotfiles/fortunes && ./strfile

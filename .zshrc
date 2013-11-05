@@ -61,4 +61,4 @@ export GEM_PATH=~/.gem
 
 . ~/.zshrc_local
 
-fortune | cowsay -n
+fortune ~/dotfiles/fortunes | cowsay -n
