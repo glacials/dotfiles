@@ -42,17 +42,28 @@ alias c='clear'
 alias s='screen -x'
 alias p='ps -Af | grep'
 alias g='git status'
-alias ga='git add'
-alias gc='git commit'
-alias gp='git push origin'
+alias add='git add'
+alias commit='git commit'
+alias push='git push'
+alias pull='git pull'
+
+# imitate OS X's `open` command
+alias open='xdg-open &>/dev/null'
 
 # the ls family aliases. aren't they cute!
-alias ls='ls -CFh --color=auto'
+if [[ `uname` == "Darwin" ]]; then
+  alias ls='ls -CFhG'
+else
+  alias ls='ls -CFh --color=auto'
+fi
 alias ll='ls -l'
 alias l='ll'
+alias ld='ll -d'
 alias la='ll -a'
 alias lr='ll -R'
 
 # ruby things
 export GEM_HOME=~/.gem
 export GEM_PATH=~/.gem
+
+fortune ~/dotfiles/fortunes | cowsay -n
