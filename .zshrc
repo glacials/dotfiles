@@ -48,7 +48,11 @@ alias pull='git pull'
 alias open='xdg-open &>/dev/null'
 
 # the ls family aliases. aren't they cute!
-alias ls='ls -CFh'
+if [[ `uname` == "Darwin" ]]; then
+  alias ls='ls -CFhG'
+else
+  alias ls='ls -CFh --color=auto'
+fi
 alias ll='ls -l'
 alias l='ll'
 alias ld='ll -d'
