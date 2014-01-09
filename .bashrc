@@ -17,7 +17,7 @@ shopt -s histappend
 shopt -s checkwinsize
 
 # setup prompt
-PS1='\[\e[1;32m\][\u@\H:\w]\$\[\e[0m\] '
+PS1='\[\e[1;32m\][\u@\h:\w]\$\[\e[0m\] '
 
 # enable programmable completion features
 if [ -f /etc/bash_completion ]; then
