@@ -47,7 +47,9 @@ alias push='git push'
 alias pull='git pull'
 
 # imitate OS X's `open` command
-alias open='xdg-open &>/dev/null'
+if [[ `uname` != "Darwin" ]]; then
+  alias open='xdg-open &>/dev/null'
+fi
 
 # the ls family aliases. aren't they cute!
 if [[ `uname` == "Darwin" ]]; then
