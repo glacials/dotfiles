@@ -51,7 +51,7 @@ alias push='git push'
 alias pull='git pull'
 
 # misc aliases
-alias ag='ag --color-line-number 38\;5\;116 --color-path 38\;5\;75
+alias ag='ag --color-line-number 38\;5\;116 --color-path 38\;5\;75'
 
 # imitate OS X's `open` command
 if [[ `uname` != "Darwin" ]]; then
