@@ -43,6 +43,7 @@ alias add='git add'
 alias branch='git branch'
 alias checkout='git checkout'
 alias commit='git commit'
+alias merge='git merge'
 alias push='git push'
 alias pull='git pull'
 
