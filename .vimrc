@@ -93,6 +93,10 @@
   let g:ctrlp_map = '<c-p>'
   let g:ctrlp_cmd = 'CtrlP'
 
+  " ag.vim's `:Ag` opens the first result automatically, which I don't like.
+  " However its `:Ag!` doesn't, so make that the default.
+  ca Ag Ag!
+
 """"'
 " Code-Specific Stuff
 """"'
