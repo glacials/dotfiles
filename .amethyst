@@ -1,0 +1,10 @@
+{
+  "layouts": [
+    "tall",
+    "column"
+  ],
+  "floating": [
+    "com.apple.systempreferences",
+    "com.google.chromecast.setup"
+  ]
+}

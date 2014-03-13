@@ -26,6 +26,9 @@ ycm_core:
 Xmodmap: .Xmodmap
 	[ -h ~/.Xmodmap ]          && ln -fs $(pwd)/.Xmodmap          ~ || ln -is $(pwd)/.Xmodmap          ~
 
+amethyst: .amethyst
+	[ -h ~/.amethyst ]         && ln -fs $(pwd)/.amethyst         ~ || ln -is $(pwd)/.amethyst         ~
+
 bashrc: .bashrc
 	[ -h ~/.bashrc ]           && ln -fs $(pwd)/.bashrc           ~ || ln -is $(pwd)/.bashrc           ~
 
