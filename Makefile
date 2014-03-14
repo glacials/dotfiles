@@ -5,7 +5,7 @@ all:
 	$(MAKE) init
 	$(MAKE) fortune
 
-links: Xmodmap bashrc gitconfig gitignore_global irssi vimrc zshrc vim
+links: Xmodmap amethyst bashrc gitconfig gitignore_global irssi vimrc zshrc vim
 
 init:
 	./vim-plugin-setup.py init
