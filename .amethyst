@@ -8,6 +8,7 @@
     "com.google.chromecast.setup",
     "com.apple.backup.launcher",
     "com.daisydiskapp.DaisyDisk",
-    "com.viscosityvpn.Viscosity"
+    "com.viscosityvpn.Viscosity",
+    "com.apple.appstore"
   ]
 }
