@@ -1,10 +1,12 @@
 {
   "layouts": [
     "tall",
-    "column"
+    "fullscreen"
   ],
   "floating": [
     "com.apple.systempreferences",
-    "com.google.chromecast.setup"
+    "com.google.chromecast.setup",
+    "com.apple.backup.launcher",
+    "com.daisydiskapp.DaisyDisk"
   ]
 }
