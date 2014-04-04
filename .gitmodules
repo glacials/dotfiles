@@ -49,3 +49,9 @@
 [submodule ".vim/bundle/ag.vim"]
 	path = .vim/bundle/ag.vim
 	url = git@github.com:rking/ag.vim
+[submodule ".vim/bundle/vim-coffee-script"]
+	path = .vim/bundle/vim-coffee-script
+	url = git@github.com:kchmck/vim-coffee-script
+[submodule ".vim/bundle/vim-actionscript"]
+	path = .vim/bundle/vim-actionscript
+	url = git@github.com:jeroenbourgois/vim-actionscript
