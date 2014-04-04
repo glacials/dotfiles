@@ -3,6 +3,7 @@ pwd = $(shell pwd)
 all:
 	$(MAKE) links
 	$(MAKE) init
+	$(MAKE) pull
 	$(MAKE) fortune
 
 links: Xmodmap amethyst bashrc gitconfig gitignore_global irssi vimrc zshrc vim
@@ -10,12 +11,12 @@ links: Xmodmap amethyst bashrc gitconfig gitignore_global irssi vimrc zshrc vim
 init:
 	./vim-plugin-setup.py init
 
+pull:
+	./vim-plugin-setup.py pull
+
 fortune:
 	ls ~/dotfiles/fortunes &>/dev/null || git clone git@github.com:skoh-fley/fortunes ~/dotfiles/fortunes
 	cd ~/dotfiles/fortunes && ./strfile
-
-pull:
-	./vim-plugin-setup.py pull
 
 add:
 	./vim-plugin-setup.py add
