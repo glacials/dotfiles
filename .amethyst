@@ -9,6 +9,8 @@
     "com.apple.backup.launcher",
     "com.daisydiskapp.DaisyDisk",
     "com.viscosityvpn.Viscosity",
-    "com.apple.appstore"
+    "com.apple.appstore",
+    "com.apple.finder",
+    "com.apple.airport.airportutility"
   ]
 }
