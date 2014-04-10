@@ -71,7 +71,8 @@ alias la='ll -a'
 alias lr='ll -R'
 
 # ruby things
-export GEM_HOME=~/.gem
-export GEM_PATH=~/.gem
+export PATH="$HOME/.gem/bin:$PATH"
+eval "$(rbenv init -)"
+if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
 
 fortune ~/dotfiles/fortunes | cowsay -n
