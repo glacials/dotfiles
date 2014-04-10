@@ -61,7 +61,7 @@
   syntax enable
 
   set background=dark
-  colorscheme molokai
+  colorscheme jellybeans
 
   set number
 
