@@ -28,6 +28,10 @@
   " make :w!! force a write as root
   ca w!! w !sudo tee > /dev/null "%"
 
+  " store swapfiles elsewhere
+  set backupdir=/tmp
+  set directory=/tmp
+
 """"'
 " Indentation Settings
 """"'
