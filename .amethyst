@@ -11,6 +11,7 @@
     "com.viscosityvpn.Viscosity",
     "com.apple.appstore",
     "com.apple.finder",
-    "com.apple.airport.airportutility"
+    "com.apple.airport.airportutility",
+    "com.valvesoftware.steam"
   ]
 }
