@@ -77,11 +77,13 @@
   " highlight current line
   set cursorline
 
-  " if supported, highlight the 80th column
+  " if supported, highlight the 120th column
   if exists('+colorcolumn')
-    "set colorcolumn=80
     set colorcolumn=120
   endif
+
+  " when we use a wrap command like `gq`, wrap to 120 columns
+  set textwidth=120
 
 """"'
 " Shortcuts
