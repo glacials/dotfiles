@@ -2,7 +2,9 @@
 	name = glacials
 	email = qhiiyr@gmail.com
 [diff]
-	tool = vimdiff
+	tool = mvimdiff
+[difftool "mvimdiff"]
+  cmd = mvim -f -d \"$LOCAL\" \"$REMOTE\"
 [merge]
 	tool = vimdiff
 [core]
