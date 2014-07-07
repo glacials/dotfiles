@@ -114,6 +114,9 @@
   " syntax highlighting for gpl
   au BufRead,BufNewFile *.gpl set filetype=gpl
 
+  " syntax highlighting for rabl
+  au BufRead,BufNewFile *.rabl set filetype=ruby
+
   " turn on omni-complete
   setlocal omnifunc=syntaxcomplete#Complete
   au CursorMovedI,InsertLeave * if pumvisible() == 0|silent! pclose|endif
@@ -125,4 +128,3 @@
   au FileType css  set omnifunc=csscomplete#CompleteCSS
 
   filetype plugin indent on
-
