@@ -3,15 +3,22 @@
     "tall",
     "fullscreen"
   ],
+  "mouse-follows-focus": true,
   "floating": [
-    "com.apple.systempreferences",
-    "com.google.chromecast.setup",
-    "com.apple.backup.launcher",
-    "com.daisydiskapp.DaisyDisk",
-    "com.viscosityvpn.Viscosity",
-    "com.apple.appstore",
-    "com.apple.finder",
+    "com.agilebits.onepassword4",
     "com.apple.airport.airportutility",
-    "com.valvesoftware.steam"
+    "com.apple.appstore",
+    "com.apple.automator",
+    "com.apple.backup.launcher",
+    "com.apple.finder",
+    "com.apple.systempreferences",
+    "com.daisydiskapp.DaisyDisk",
+    "com.google.chromecast.setup",
+    "com.roguelegacy.RogueLegacy",
+    "com.skype.skype",
+    "com.valvesoftware.steam",
+    "com.viscosityvpn.Viscosity",
+    "net.battle.app",
+    "subset.FTL"
   ]
 }
