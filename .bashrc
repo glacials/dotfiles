@@ -59,16 +59,17 @@ if [[ `uname` != "Darwin" ]]; then
 fi
 
 # the ls family aliases. aren't they cute!
-if [[ `uname` == "Darwin" ]]; then
-  alias ls='ls -CFhG'
-else
-  alias ls='ls -CFh --color=auto'
-fi
 alias ll='ls -l'
 alias l='ll'
 alias ld='ll -d'
 alias la='ll -a'
 alias lr='ll -R'
+# gnu ls uses --color=auto but os x ls uses -G
+if [[ `ls --version` == *"ls (GNU coreutils)"* ]]; then
+  alias ls='ls -CFh --color=auto'
+else
+  alias ls='ls -CFhG'
+fi
 
 # ruby things
 export PATH="$HOME/.gem/bin:$PATH"
