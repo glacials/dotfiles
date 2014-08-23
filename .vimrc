@@ -85,6 +85,9 @@
   " when we use a wrap command like `gq`, wrap to 120 columns
   set textwidth=120
 
+  " always show the tab bar, even with just one tab open
+  set showtabline=2
+
 """"'
 " Shortcuts
 """"'
