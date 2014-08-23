@@ -15,7 +15,7 @@ pull:
 	./vim-plugin-setup.py pull
 
 fortune:
-	ls ~/dotfiles/fortunes &>/dev/null || git clone git@github.com:glacials/fortunes ~/dotfiles/fortunes
+	ls ~/dotfiles/fortunes || git clone git@github.com:glacials/fortunes ~/dotfiles/fortunes
 	cd ~/dotfiles/fortunes && ./strfile
 
 add:
