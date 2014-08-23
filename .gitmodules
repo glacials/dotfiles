@@ -1,36 +1,36 @@
 [submodule ".vim/bundle/fugitive"]
 	path = .vim/bundle/fugitive
-	url = http://github.com/tpope/vim-fugitive.git
+	url = git@github.com/tpope/vim-fugitive
 [submodule ".vim/bundle/css-color"]
 	path = .vim/bundle/css-color
-	url = http://github.com/ap/vim-css-color.git
+	url = git@github.com/ap/vim-css-color
 [submodule ".vim/bundle/solarized"]
 	path = .vim/bundle/solarized
-	url = http://github.com/altercation/vim-colors-solarized.git
+	url = git@github.com/altercation/vim-colors-solarized
 [submodule ".vim/bundle/badwolf"]
 	path = .vim/bundle/badwolf
-	url = http://github.com/sjl/badwolf.git
+	url = git@github.com/sjl/badwolf
 [submodule ".vim/bundle/vimwiki"]
 	path = .vim/bundle/vimwiki
-	url = http://github.com/vim-scripts/vimwiki.git
+	url = git@github.com/vim-scripts/vimwiki
 [submodule ".vim/bundle/nxc.vim"]
 	path = .vim/bundle/nxc.vim
-	url = http://github.com/vim-scripts/nxc.vim.git
+	url = git@github.com/vim-scripts/nxc.vim
 [submodule ".vim/bundle/molokai"]
 	path = .vim/bundle/molokai
-	url = http://github.com/tomasr/molokai.git
+	url = git@github.com/tomasr/molokai
 [submodule ".vim/bundle/YouCompleteMe"]
 	path = .vim/bundle/YouCompleteMe
-	url = http://github.com/Valloric/YouCompleteMe.git
+	url = git@github.com/Valloric/YouCompleteMe
 [submodule ".vim/bundle/proton"]
 	path = .vim/bundle/proton
-	url = http://github.com/vim-scripts/proton.git
+	url = git@github.com/vim-scripts/proton
 [submodule ".vim/bundle/pyte"]
 	path = .vim/bundle/pyte
-	url = http://github.com/vim-scripts/pyte.git
+	url = git@github.com/vim-scripts/pyte
 [submodule ".vim/bundle/vim-gitgutter"]
 	path = .vim/bundle/vim-gitgutter
-	url = http://github.com/airblade/vim-gitgutter
+	url = git@github.com/airblade/vim-gitgu
 [submodule ".vim/bundle/jellybeans.vim"]
 	path = .vim/bundle/jellybeans.vim
 	url = git@github.com:nanotech/jellybeans.vim
