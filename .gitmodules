@@ -55,3 +55,12 @@
 [submodule ".vim/bundle/vim-actionscript"]
 	path = .vim/bundle/vim-actionscript
 	url = git@github.com:jeroenbourgois/vim-actionscript
+[submodule ".vim/bundle/vim-varnish"]
+	path = .vim/bundle/vim-varnish
+	url = git@github.com:empanda/vim-varnish
+[submodule ".vim/bundle/vim-rubocop"]
+	path = .vim/bundle/vim-rubocop
+	url = git@github.com:ngmy/vim-rubocop
+[submodule ".vim/bundle/vim-go"]
+	path = .vim/bundle/vim-go
+	url = git@github.com:fatih/vim-go
