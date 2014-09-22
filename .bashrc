@@ -83,6 +83,5 @@ export PATH="/Users/ben/Library/Flex/flex_sdk_4.6/bin":$PATH
 export FLEX_HOME="/Users/ben/Library/Flex/flex_sdk_4.6"
 
 source /usr/local/etc/bash_completion.d/git-completion.bash
-source ~/twitch/web/.twitchenv
 
 source ~/.profile
