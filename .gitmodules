@@ -64,3 +64,12 @@
 [submodule ".vim/bundle/vim-go"]
 	path = .vim/bundle/vim-go
 	url = git@github.com:fatih/vim-go
+[submodule ".vim/bundle/vim-indent-guides"]
+	path = .vim/bundle/vim-indent-guides
+	url = git@github.com:nathanaelkane/vim-indent-guides
+[submodule ".vim/bundle/vim-slim"]
+	path = .vim/bundle/vim-slim
+	url = git@github.com:slim-template/vim-slim
+[submodule ".vim/bundle/vim-rails"]
+	path = .vim/bundle/vim-rails
+	url = git@github.com:tpope/vim-rails

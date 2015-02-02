@@ -1,12 +1,12 @@
 """"'
-" Call Pathogen
+" Call pathogen
 """"'
 
   call pathogen#runtime_append_all_bundles()
   call pathogen#helptags()
 
 """"'
-" General Settings
+" General settings
 """"'
 
   " use vim settings over vi
@@ -33,7 +33,17 @@
   set directory=/tmp
 
 """"'
-" Indentation Settings
+" Operating system behavior settings
+""""'
+
+  " use OS X's clipboard register for yanks by default
+  set clipboard=unnamed
+
+  " allow mouse scrolling and other mouse things
+  set mouse=a
+
+""""'
+" Indentation settings
 """"'
 
   " leave whitespace on blank lines alone
@@ -55,7 +65,7 @@
   "set listchars=tab:\ \ ,trail:\ "
 
 """"'
-" Visual Settings
+" Visual settings
 """"'
 
   " use 256 colors
@@ -77,9 +87,9 @@
   " highlight current line
   set cursorline
 
-  " if supported, highlight the 120th column
+  " if supported, highlight the 121st column (the column after the last column we want to wrap at)
   if exists('+colorcolumn')
-    set colorcolumn=120
+    set colorcolumn=121
   endif
 
   " when we use a wrap command like `gq`, wrap to 120 columns
@@ -87,6 +97,9 @@
 
   " always show the tab bar, even with just one tab open
   set showtabline=2
+
+  " enable vim-indent-guides plugin on startup
+  let g:indent_guides_enable_on_vim_startup = 0
 
 """"'
 " Shortcuts
@@ -106,8 +119,11 @@
   " However its `:Ag!` doesn't, so make that the default.
   ca Ag Ag!
 
+  " default to most-recently-used order for Command-T
+  :nnoremap <silent> <leader>b :CommandTMRU<CR>
+
 """"'
-" Code-Specific Stuff
+" Code-specific stuff
 """"'
 
   " syntax highlighting for SQL and HTML inside PHP strings
