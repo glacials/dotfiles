@@ -79,6 +79,7 @@ if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
 fortune ~/dotfiles/fortunes | cowsay -n
 
 export GOPATH=/Users/ben/go
+export PATH=$GOPATH/bin:$PATH
 export PATH="/Users/ben/Library/Flex/flex_sdk_4.6/bin":$PATH
 export FLEX_HOME="/Users/ben/Library/Flex/flex_sdk_4.6"
 
