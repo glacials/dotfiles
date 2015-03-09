@@ -49,6 +49,7 @@ alias commit='git commit'
 alias merge='git merge'
 alias push='git push'
 alias pull='git pull'
+alias be='bundle exec'
 
 # misc aliases
 alias ag='ag --color-line-number 38\;5\;116 --color-path 38\;5\;75'
