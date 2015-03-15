@@ -1,9 +1,8 @@
 """"'
 " Call pathogen
 """"'
-
-  call pathogen#runtime_append_all_bundles()
-  call pathogen#helptags()
+  runtime bundle/vim-pathogen/autoload/pathogen.vim
+  execute pathogen#infect()
 
 """"'
 " General settings
@@ -101,6 +100,11 @@
   " enable vim-indent-guides plugin on startup
   let g:indent_guides_enable_on_vim_startup = 0
 
+  " powerline
+  python from powerline.vim import setup as powerline_setup
+  python powerline_setup()
+  python del powerline_setup
+
 """"'
 " Shortcuts
 """"'
@@ -123,7 +127,7 @@
   :nnoremap <silent> <leader>b :CommandTMRU<CR>
 
 """"'
-" Code-specific stuff
+" Language-specific stuff
 """"'
 
   " syntax highlighting for SQL and HTML inside PHP strings

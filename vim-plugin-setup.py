@@ -7,10 +7,11 @@ import sys
 cin = None
 
 if len(sys.argv) is 1 or (sys.argv[1] == "add" and len(sys.argv) < 3):
-  print("Usage: " + sys.argv[0] + " <command>")
+  print("Usage: {} <command>".format(sys.argv[0]))
   print("")
   print("Commands are:")
   print("    init              Initialize all Vim plugins")
+  print("    update            Checkout assigned commits in each submodule")
   print("    pull              Pull all Vim plugins")
   print("    add <user/repo>   Add a Vim plugin from GitHub repository at user/repo")
   if os.path.exists(".vim/bundle/YouCompleteMe"):
@@ -22,6 +23,10 @@ if sys.argv[1] == "init":
   subprocess.call(["git", "submodule", "init"])
   subprocess.call(["git", "submodule", "update", "--recursive"])
 
+# Checkout the correct commits in each plugin
+if sys.argv[1] == "pull":
+  subprocess.call(["git", "submodule", "update"])
+
 # Pull each plugin
 if sys.argv[1] == "pull":
   subprocess.call(["git", "submodule", "foreach", "git", "pull", "origin", "master"])
@@ -30,7 +35,7 @@ if sys.argv[1] == "pull":
 if sys.argv[1] == "add":
   if not os.path.exists(".vim"):
     print("To add a plugin, you must run this script from the directory containing your .vim folder.")
-    print("You are currently in", os.getcwd())
+    print("You are currently in {}.".format(os.getcwd()))
     sys.exit()
   else:
     repository = sys.argv[2].partition("/")
@@ -38,7 +43,7 @@ if sys.argv[1] == "add":
     repo = repository[2]
     url = "git@github.com:" + user + "/" + repo
     dir = ".vim/bundle/" + repo
-    print("Grabbing", repo, "from", user)
+    print("Grabbing {} from {}.".format(repo, "from", user))
     subprocess.call(["git", "submodule", "add", "-f", url, dir])
 
 # (Re)compile ycm_core (for YouCompleteMe)

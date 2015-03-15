@@ -3,13 +3,17 @@ pwd = $(shell pwd)
 all:
 	$(MAKE) links
 	$(MAKE) init
+	$(MAKE) update
 	$(MAKE) pull
 	$(MAKE) fortune
 
-links: Xmodmap amethyst bashrc gitconfig gitignore_global irssi vimrc zshrc vim
+links: amethyst bashrc gitconfig gitignore_global irssi vimrc zshrc vim
 
 init:
 	./vim-plugin-setup.py init
+
+update:
+	./vim-plugin-setup.py update
 
 pull:
 	./vim-plugin-setup.py pull
@@ -20,12 +24,6 @@ fortune:
 
 add:
 	./vim-plugin-setup.py add
-
-ycm_core:
-	./vim-plugin-setup.py ycm_core
-
-Xmodmap: .Xmodmap
-	[ -h ~/.Xmodmap ]          && ln -fs $(pwd)/.Xmodmap          ~ || ln -is $(pwd)/.Xmodmap          ~
 
 amethyst: .amethyst
 	[ -h ~/.amethyst ]         && ln -fs $(pwd)/.amethyst         ~ || ln -is $(pwd)/.amethyst         ~
@@ -47,9 +45,6 @@ vimrc: .vimrc
 
 zshrc: .zshrc
 	[ -h ~/.zshrc ]            && ln -fs $(pwd)/.zshrc            ~ || ln -is $(pwd)/.zshrc            ~
-
-#config:
-#	[ -h ~/.config ]           && ln -fs $(pwd)/.config           ~ || ln -is $(pwd)/.config           ~
 
 vim:
 	[ -h ~/.vim ]              && ln -fs $(pwd)/.vim              ~ || ln -is $(pwd)/.vim              ~
