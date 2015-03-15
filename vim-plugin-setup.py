@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 
 import os
 import subprocess
@@ -16,6 +16,8 @@ if len(sys.argv) is 1 or (sys.argv[1] == "add" and len(sys.argv) < 3):
   print("    add <user/repo>   Add a Vim plugin from GitHub repository at user/repo")
   if os.path.exists(".vim/bundle/YouCompleteMe"):
     print("    ycm_core          Recompile ycm_core for YouCompleteMe")
+  if os.path.exists(".vim/bundle/Command-T"):
+    print("    command-t         Compile the C extension for Command-T")
   sys.exit()
 
 # Init plugins
@@ -50,6 +52,11 @@ if sys.argv[1] == "add":
 if sys.argv[1] == "ycm_core":
   os.chdir(".vim/bundle/YouCompleteMe")
   subprocess.call(["./install.sh"])
+
+if sys.argv[1] == "command-t":
+    os.chdir(".vim/bundle/Command-T/ruby/command-t")
+    subprocess.call(["ruby", "extconf.rb"])
+    subprocess.call(["make"])
 
 # Quit
 if cin is "q" or cin is None:

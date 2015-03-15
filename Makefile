@@ -5,6 +5,7 @@ all:
 	$(MAKE) init
 	$(MAKE) update
 	$(MAKE) pull
+	$(MAKE) command-t
 	$(MAKE) fortune
 
 links: amethyst bashrc gitconfig gitignore_global irssi vimrc zshrc vim
@@ -17,6 +18,9 @@ update:
 
 pull:
 	./vim-plugin-setup.py pull
+
+command-t:
+	./vim-plugin-setup.py command-t
 
 fortune:
 	ls ~/dotfiles/fortunes || git clone git@github.com:glacials/fortunes ~/dotfiles/fortunes
