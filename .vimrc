@@ -101,9 +101,9 @@
   let g:indent_guides_enable_on_vim_startup = 0
 
   " powerline
-  python from powerline.vim import setup as powerline_setup
-  python powerline_setup()
-  python del powerline_setup
+  "python from powerline.vim import setup as powerline_setup
+  "python powerline_setup()
+  "python del powerline_setup
 
 """"'
 " Shortcuts

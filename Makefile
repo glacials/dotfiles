@@ -23,8 +23,8 @@ command-t:
 	./vim-plugin-setup.py command-t
 
 fortune:
-	ls ~/dotfiles/fortunes || git clone git@github.com:glacials/fortunes ~/dotfiles/fortunes
-	cd ~/dotfiles/fortunes && ./strfile
+	ls ./fortunes || git clone git@github.com:glacials/fortunes ./fortunes
+	cd ./fortunes && ./strfile
 
 add:
 	./vim-plugin-setup.py add
