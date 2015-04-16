@@ -9,7 +9,7 @@
 	tool = vimdiff
 [core]
 	editor = vim
-	excludesfile = /Users/ben/.gitignore_global
+	excludesfile = /Users/glacials/.gitignore_global
 [filter "media"]
 	clean = git-media-clean %f
 	smudge = git-media-smudge %f

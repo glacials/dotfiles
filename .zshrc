@@ -62,6 +62,8 @@ source $ZSH/oh-my-zsh.sh
 # run history-substituted commands (e.g. containing `!!` or `!$`) without confirmation
 unsetopt histverify
 
+unalias rm
+
 # ruby shims
 export PATH=~/.rbenv/shims:$PATH
 
