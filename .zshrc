@@ -62,7 +62,10 @@ source $ZSH/oh-my-zsh.sh
 # run history-substituted commands (e.g. containing `!!` or `!$`) without confirmation
 unsetopt histverify
 
+alias g=git status
 unalias rm
+
+export EDITOR=vim
 
 # ruby shims
 export PATH=~/.rbenv/shims:$PATH
@@ -70,6 +73,3 @@ export PATH=~/.rbenv/shims:$PATH
 # go
 export GOPATH=~/go
 export PATH=$GOPATH/bin:$PATH
-
-# private
-export HOMEBREW_GITHUB_API_TOKEN=8f69f95d106fc335ded4886418f7ba469389162f
