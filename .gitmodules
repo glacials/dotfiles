@@ -85,3 +85,9 @@
 [submodule ".vim/bundle/vim-handlebars"]
 	path = .vim/bundle/vim-handlebars
 	url = git@github.com:nono/vim-handlebars
+[submodule ".vim/bundle/vim-arcanist"]
+	path = .vim/bundle/vim-arcanist
+	url = git@github.com:jlfwong/vim-arcanist
+[submodule ".vim/bundle/Greplace.vim"]
+	path = .vim/bundle/Greplace.vim
+	url = git@github.com:vim-scripts/Greplace.vim
