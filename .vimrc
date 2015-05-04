@@ -21,6 +21,9 @@
   set incsearch
   set ignorecase
 
+  " pretend certain files aren't there (for rails)
+  set wildignore=coverage/*,log/*,public/*,tmp/*
+
   " don't wrap lines
   set nowrap
 
