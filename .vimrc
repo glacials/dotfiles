@@ -22,7 +22,7 @@
   set ignorecase
 
   " pretend certain files aren't there (for rails)
-  set wildignore=coverage/*,log/*,public/*,tmp/*
+  set wildignore=coverage/*,log/*,public/*,tmp/*,Godeps/*
 
   " don't wrap lines
   set nowrap

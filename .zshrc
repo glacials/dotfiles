@@ -73,3 +73,5 @@ export PATH=~/.rbenv/shims:$PATH
 # go
 export GOPATH=~/go
 export PATH=$GOPATH/bin:$PATH
+
+source ~/.profile
