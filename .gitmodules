@@ -91,3 +91,9 @@
 [submodule ".vim/bundle/Greplace.vim"]
 	path = .vim/bundle/Greplace.vim
 	url = git@github.com:vim-scripts/Greplace.vim
+[submodule ".vim/bundle/vim-endwise"]
+	path = .vim/bundle/vim-endwise
+	url = git@github.com:tpope/vim-endwise
+[submodule ".vim/bundle/vim-closer"]
+	path = .vim/bundle/vim-closer
+	url = git@github.com:rstacruz/vim-closer
