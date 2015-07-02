@@ -60,7 +60,7 @@ irssi:
 	[ -h ~/.irssi ]            && ln -fs $(pwd)/.irssi            ~ || ln -is $(pwd)/.irssi            ~
 
 oh-my-zsh:
-	[ -h ~/.oh-my-zsh ]        && ln -fx $(pwd)/.oh-my-zsh        ~ || ln -is $(pwd)/.oh-my-zsh        ~
+	[ -h ~/.oh-my-zsh ]        && ln -fs $(pwd)/.oh-my-zsh        ~ || ln -is $(pwd)/.oh-my-zsh        ~
 
 vim:
 	[ -h ~/.vim ]              && ln -fs $(pwd)/.vim              ~ || ln -is $(pwd)/.vim              ~
