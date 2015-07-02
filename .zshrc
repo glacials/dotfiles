@@ -66,6 +66,7 @@ alias g=git status
 unalias rm
 
 export EDITOR=vim
+export SHELL=zsh
 
 # ruby shims
 export PATH=~/.rbenv/shims:$PATH
