@@ -97,3 +97,6 @@
 [submodule ".vim/bundle/vim-closer"]
 	path = .vim/bundle/vim-closer
 	url = git@github.com:rstacruz/vim-closer
+[submodule ".vim/bundle/ctrlp.vim"]
+	path = .vim/bundle/ctrlp.vim
+	url = git@github.com:kien/ctrlp.vim
