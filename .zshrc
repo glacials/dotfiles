@@ -69,6 +69,7 @@ export EDITOR=vim
 
 # ruby shims
 export PATH=~/.rbenv/shims:$PATH
+eval "$(rbenv init -)"
 
 # go
 export GOPATH=~/go

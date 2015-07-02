@@ -1,12 +1,20 @@
 pwd = $(shell pwd)
 
 all:
+	$(MAKE) dependencies
+	$(MAKE) ruby
 	$(MAKE) links
 	$(MAKE) init
 	$(MAKE) update
 	$(MAKE) pull
 	$(MAKE) command-t
 	$(MAKE) fortune
+
+dependencies:
+	brew install python3 fortune
+
+ruby:
+	brew install rbenv ruby-build
 
 links: amethyst bashrc gitconfig gitignore_global irssi vimrc zshrc vim
 
