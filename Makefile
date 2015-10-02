@@ -8,6 +8,7 @@ all:
 	$(MAKE) pull
 	$(MAKE) fortune
 	$(MAKE) profile
+	$(MAKE) replace_session
 
 osx-setup:
 	$(MAKE) dependencies
@@ -40,6 +41,9 @@ fortune:
 
 profile:
 	touch ~/.profile
+
+replace_session:
+	zsh
 
 add:
 	./vim-plugin-setup.py add
