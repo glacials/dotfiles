@@ -7,6 +7,7 @@ all:
 	$(MAKE) update
 	$(MAKE) pull
 	$(MAKE) fortune
+	$(MAKE) profile
 
 osx-setup:
 	$(MAKE) dependencies
@@ -36,6 +37,9 @@ pull:
 fortune:
 	ls ./fortunes || git clone git@github.com:glacials/fortunes ./fortunes
 	cd ./fortunes && ./strfile
+
+profile:
+	touch ~/.profile
 
 add:
 	./vim-plugin-setup.py add
