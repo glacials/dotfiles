@@ -6,8 +6,9 @@ all:
 	$(MAKE) init
 	$(MAKE) update
 	$(MAKE) pull
-	$(MAKE) command-t
 	$(MAKE) fortune
+	$(MAKE) profile
+	$(MAKE) replace_session
 
 osx-setup:
 	$(MAKE) dependencies
@@ -34,12 +35,15 @@ update:
 pull:
 	./vim-plugin-setup.py pull
 
-command-t:
-	./vim-plugin-setup.py command-t
-
 fortune:
 	ls ./fortunes || git clone git@github.com:glacials/fortunes ./fortunes
 	cd ./fortunes && ./strfile
+
+profile:
+	touch ~/.profile
+
+replace_session:
+	zsh
 
 add:
 	./vim-plugin-setup.py add
