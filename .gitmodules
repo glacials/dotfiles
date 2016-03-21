@@ -97,3 +97,6 @@
 [submodule ".vim/bundle/ctrlp.vim"]
 	path = .vim/bundle/ctrlp.vim
 	url = git@github.com:kien/ctrlp.vim
+[submodule ".vim/bundle/vim-syntax-terraform"]
+	path = .vim/bundle/vim-syntax-terraform
+	url = git@github.com:L2G/vim-syntax-terraform
