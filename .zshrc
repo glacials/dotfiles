@@ -63,6 +63,7 @@ source $ZSH/oh-my-zsh.sh
 unsetopt histverify
 
 alias g=git status
+alias rebase='export CURRENT_BRANCH=`git name-rev --name-only HEAD` && git checkout master && git pull && git checkout `echo $CURRENT_BRANCH` && git rebase master'
 unalias rm
 
 export EDITOR=vim

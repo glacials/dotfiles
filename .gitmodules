@@ -100,3 +100,6 @@
 [submodule ".vim/bundle/vim-syntax-terraform"]
 	path = .vim/bundle/vim-syntax-terraform
 	url = git@github.com:L2G/vim-syntax-terraform
+[submodule ".vim/bundle/rename.vim"]
+	path = .vim/bundle/rename.vim
+	url = git@github.com:danro/rename.vim
