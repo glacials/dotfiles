@@ -12,11 +12,15 @@ all:
 
 osx-setup:
 	$(MAKE) dependencies
+	$(MAKE) programs
 	$(MAKE) ruby
 	$(MAKE) zsh
 
 dependencies:
 	brew install python3 fortune
+
+programs:
+	brew install ag vim ssh-copy-id
 
 zsh:
 	chsh -s /bin/zsh `whoami`

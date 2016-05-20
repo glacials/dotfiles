@@ -103,3 +103,6 @@
 [submodule ".vim/bundle/rename.vim"]
 	path = .vim/bundle/rename.vim
 	url = git@github.com:danro/rename.vim
+[submodule ".vim/bundle/vim-syntax-vcl"]
+	path = .vim/bundle/vim-syntax-vcl
+	url = git@github.com:pld-linux/vim-syntax-vcl
