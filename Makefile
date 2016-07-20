@@ -17,7 +17,7 @@ osx-setup:
 	$(MAKE) zsh
 
 dependencies:
-	brew install python3 fortune
+	brew install python3 fortune cowsay
 
 programs:
 	brew install ag vim ssh-copy-id
@@ -31,6 +31,7 @@ ruby:
 links: amethyst bashrc gitconfig gitignore_global irssi oh-my-zsh vim vimrc zshrc
 
 init:
+	mkdir -p ~/.config
 	./vim-plugin-setup.py init
 
 update:
@@ -53,28 +54,31 @@ add:
 	./vim-plugin-setup.py add
 
 amethyst:
-	[ -h ~/.amethyst ]         && ln -fs $(pwd)/.amethyst         ~ || ln -is $(pwd)/.amethyst         ~
+	[ -h ~/.amethyst ]         && ln -fs $(pwd)/.amethyst         ~         || ln -is $(pwd)/.amethyst         ~
 
 bashrc:
-	[ -h ~/.bashrc ]           && ln -fs $(pwd)/.bashrc           ~ || ln -is $(pwd)/.bashrc           ~
+	[ -h ~/.bashrc ]           && ln -fs $(pwd)/.bashrc           ~         || ln -is $(pwd)/.bashrc           ~
 
 gitconfig:
-	[ -h ~/.gitconfig ]        && ln -fs $(pwd)/.gitconfig        ~ || ln -is $(pwd)/.gitconfig        ~
+	[ -h ~/.gitconfig ]        && ln -fs $(pwd)/.gitconfig        ~         || ln -is $(pwd)/.gitconfig        ~
 
 gitignore_global:
-	[ -h ~/.gitignore_global ] && ln -fs $(pwd)/.gitignore_global ~ || ln -is $(pwd)/.gitignore_global ~
+	[ -h ~/.gitignore_global ] && ln -fs $(pwd)/.gitignore_global ~         || ln -is $(pwd)/.gitignore_global ~
 
 irssi:
-	[ -h ~/.irssi ]            && ln -fs $(pwd)/.irssi            ~ || ln -is $(pwd)/.irssi            ~
+	[ -h ~/.irssi ]            && ln -fs $(pwd)/.irssi            ~         || ln -is $(pwd)/.irssi            ~
+
+nvim:
+	[ -h ~/.config/nvim ]      && ln -fs $(pwd)/.config/nvim      ~/.config || ln -is $(pwd)/.config/nvim      ~/.config
 
 oh-my-zsh:
-	[ -h ~/.oh-my-zsh ]        && ln -fs $(pwd)/.oh-my-zsh        ~ || ln -is $(pwd)/.oh-my-zsh        ~
+	[ -h ~/.oh-my-zsh ]        && ln -fs $(pwd)/.oh-my-zsh        ~         || ln -is $(pwd)/.oh-my-zsh        ~
 
 vim:
-	[ -h ~/.vim ]              && ln -fs $(pwd)/.vim              ~ || ln -is $(pwd)/.vim              ~
+	[ -h ~/.vim ]              && ln -fs $(pwd)/.vim              ~         || ln -is $(pwd)/.vim              ~
 
 vimrc:
-	[ -h ~/.vimrc ]            && ln -fs $(pwd)/.vimrc            ~ || ln -is $(pwd)/.vimrc            ~
+	[ -h ~/.vimrc ]            && ln -fs $(pwd)/.vimrc            ~         || ln -is $(pwd)/.vimrc            ~
 
 zshrc:
-	[ -h ~/.zshrc ]            && ln -fs $(pwd)/.zshrc            ~ || ln -is $(pwd)/.zshrc            ~
+	[ -h ~/.zshrc ]            && ln -fs $(pwd)/.zshrc            ~         || ln -is $(pwd)/.zshrc            ~

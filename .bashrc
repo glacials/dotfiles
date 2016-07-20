@@ -77,7 +77,7 @@ export PATH="$HOME/.gem/bin:$PATH"
 eval "$(rbenv init -)"
 if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
 
-fortune ~/dotfiles/fortunes | cowsay -n
+fortune ~/pj/dotfiles/fortunes | cowsay -n
 
 export GOPATH=/Users/ben/go
 export PATH=$GOPATH/bin:$PATH

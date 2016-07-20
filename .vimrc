@@ -61,10 +61,10 @@
   set list
 
   " display tab characters as » and trailing spaces as ·
-  set listchars=tab:»\ ,trail:·
+  "set listchars=tab:»\ ,trail:·
 
   " don't display tab characters or trailing spaces differently
-  "set listchars=tab:\ \ ,trail:\ "
+  set listchars=tab:\ \ ,trail:\ "
 
 """"'
 " Visual settings
@@ -107,6 +107,9 @@
   "python from powerline.vim import setup as powerline_setup
   "python powerline_setup()
   "python del powerline_setup
+
+  " when exploring directories, use nerdtree-like style
+  let g:netrw_liststyle=3
 
 """"'
 " Shortcuts

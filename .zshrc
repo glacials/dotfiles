@@ -77,4 +77,5 @@ eval "$(rbenv init -)"
 export GOPATH=~/go
 export PATH=$GOPATH/bin:$PATH
 
+fortune ~/pj/dotfiles/fortunes | cowsay -n
 source ~/.profile

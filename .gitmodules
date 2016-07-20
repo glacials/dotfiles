@@ -106,3 +106,6 @@
 [submodule ".vim/bundle/vim-syntax-vcl"]
 	path = .vim/bundle/vim-syntax-vcl
 	url = git@github.com:pld-linux/vim-syntax-vcl
+[submodule ".vim/bundle/neocomplete.vim"]
+	path = .vim/bundle/neocomplete.vim
+	url = git@github.com:Shougo/neocomplete.vim
