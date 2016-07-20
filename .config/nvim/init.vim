@@ -8,9 +8,7 @@
 " General settings
 """"'
 
-  " auto-indent newlines based on current line's indentation;
   " guess when to increase/decrease indenations
-  set autoindent
   set smartindent
 
   " live search (i.e. search while typing the search query);
