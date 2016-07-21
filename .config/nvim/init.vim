@@ -114,12 +114,23 @@
   let g:ctrlp_map = '<c-p>'
   let g:ctrlp_cmd = 'CtrlP'
 
-  " ag.vim's `:Ag` opens the first result automatically, which I don't like.
-  " However its `:Ag!` doesn't, so make that the default.
+  " ag.vim's `:Ag` opens the first result automatically, which I don't like; however its `:Ag!` doesn't, so make that
+  " the default
   ca Ag Ag!
 
   " default to most-recently-used order for Command-T
   :nnoremap <silent> <leader>b :CommandTMRU<CR>
+
+  " allow Alt+{h,j,k,l} to navigate between windows no matter if they are displaying a normal buffer or a terminal
+  " buffer in terminal mode
+  :tnoremap <A-h> <C-\><C-n><C-w>h
+  :tnoremap <A-j> <C-\><C-n><C-w>j
+  :tnoremap <A-k> <C-\><C-n><C-w>k
+  :tnoremap <A-l> <C-\><C-n><C-w>l
+  :nnoremap <A-h> <C-w>h
+  :nnoremap <A-j> <C-w>j
+  :nnoremap <A-k> <C-w>k
+  :nnoremap <A-l> <C-w>l
 
 """"'
 " Language-specific stuff
