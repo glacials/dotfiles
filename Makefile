@@ -28,7 +28,7 @@ zsh:
 ruby:
 	brew install rbenv ruby-build
 
-links: amethyst bashrc gitconfig gitignore_global irssi oh-my-zsh vim vimrc zshrc
+links: amethyst bashrc gitconfig gitignore_global irssi nvim oh-my-zsh vim vimrc zshrc
 
 init:
 	mkdir -p ~/.config
