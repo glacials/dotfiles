@@ -109,3 +109,9 @@
 [submodule ".vim/bundle/neocomplete.vim"]
 	path = .vim/bundle/neocomplete.vim
 	url = git@github.com:Shougo/neocomplete.vim
+[submodule ".vim/bundle/typescript-vim"]
+	path = .vim/bundle/typescript-vim
+	url = git@github.com:leafgarland/typescript-vim
+[submodule ".config/nvim/bundle/typescript-vim"]
+	path = .config/nvim/bundle/typescript-vim
+	url = git@github.com:leafgarland/typescript-vim

@@ -14,9 +14,9 @@ if len(sys.argv) is 1 or (sys.argv[1] == "add" and len(sys.argv) < 3):
   print("    update            Checkout assigned commits in each submodule")
   print("    pull              Pull all Vim plugins")
   print("    add <user/repo>   Add a Vim plugin from GitHub repository at user/repo")
-  if os.path.exists(".vim/bundle/YouCompleteMe"):
+  if os.path.exists(".config/nvim/bundle/YouCompleteMe"):
     print("    ycm_core          Recompile ycm_core for YouCompleteMe")
-  if os.path.exists(".vim/bundle/Command-T"):
+  if os.path.exists(".config/nvim/bundle/Command-T"):
     print("    command-t         Compile the C extension for Command-T")
   sys.exit()
 
@@ -35,8 +35,8 @@ if sys.argv[1] == "pull":
 
 # Add a plugin from GitHub
 if sys.argv[1] == "add":
-  if not os.path.exists(".vim"):
-    print("To add a plugin, you must run this script from the directory containing your .vim folder.")
+  if not os.path.exists(".config/nvim"):
+    print("To add a plugin, you must run this script from the directory containing your .config/nvim folder.")
     print("You are currently in {}.".format(os.getcwd()))
     sys.exit()
   else:
@@ -44,17 +44,17 @@ if sys.argv[1] == "add":
     user = repository[0]
     repo = repository[2]
     url = "git@github.com:" + user + "/" + repo
-    dir = ".vim/bundle/" + repo
+    dir = ".config/nvim/bundle/" + repo
     print("Grabbing {} from {}.".format(repo, "from", user))
     subprocess.call(["git", "submodule", "add", "-f", url, dir])
 
 # (Re)compile ycm_core (for YouCompleteMe)
 if sys.argv[1] == "ycm_core":
-  os.chdir(".vim/bundle/YouCompleteMe")
+  os.chdir(".config/nvim/bundle/YouCompleteMe")
   subprocess.call(["./install.sh"])
 
 if sys.argv[1] == "command-t":
-    os.chdir(".vim/bundle/Command-T/ruby/command-t")
+    os.chdir(".config/nvim/bundle/Command-T/ruby/command-t")
     subprocess.call(["ruby", "extconf.rb"])
     subprocess.call(["make"])
 

@@ -55,6 +55,7 @@ source $ZSH/oh-my-zsh.sh
 # run history-substituted commands (e.g. containing `!!` or `!$`) without confirmation
 unsetopt histverify
 
+alias vi=vim
 alias vim=nvim
 alias g=git status
 alias rebase='export CURRENT_BRANCH=`git name-rev --name-only HEAD` && git checkout master && git pull && git checkout `echo $CURRENT_BRANCH` && git rebase master'
