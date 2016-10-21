@@ -9,6 +9,7 @@ all:
 	$(MAKE) fortune
 	$(MAKE) profile
 	$(MAKE) replace_session
+	$(MAKE) npm
 
 osx-setup:
 	$(MAKE) dependencies
@@ -49,6 +50,10 @@ profile:
 
 replace_session:
 	zsh
+
+npm:
+	brew install npm
+	npm install -g typescript
 
 add:
 	./vim-plugin-setup.py add

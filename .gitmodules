@@ -115,3 +115,6 @@
 [submodule ".config/nvim/bundle/typescript-vim"]
 	path = .config/nvim/bundle/typescript-vim
 	url = git@github.com:leafgarland/typescript-vim
+[submodule ".config/nvim/bundle/tsuquyomi"]
+	path = .config/nvim/bundle/tsuquyomi
+	url = git@github.com:quramy/tsuquyomi
