@@ -45,8 +45,9 @@ if sys.argv[1] == "add":
     repo = repository[2]
     url = "git@github.com:" + user + "/" + repo
     dir = ".config/nvim/bundle/" + repo
-    print("Grabbing {} from {}.".format(repo, "from", user))
+    print("Grabbing {}/{}.".format(user, repo))
     subprocess.call(["git", "submodule", "add", "-f", url, dir])
+    subprocess.call(["git", "commit", "-m", "Add {}/{}".format(repo, user)])
 
 # (Re)compile ycm_core (for YouCompleteMe)
 if sys.argv[1] == "ycm_core":
