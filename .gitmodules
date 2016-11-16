@@ -118,3 +118,6 @@
 [submodule ".config/nvim/bundle/tsuquyomi"]
 	path = .config/nvim/bundle/tsuquyomi
 	url = git@github.com:quramy/tsuquyomi
+[submodule ".config/nvim/bundle/vim-hardtime"]
+	path = .config/nvim/bundle/vim-hardtime
+	url = git@github.com:takac/vim-hardtime

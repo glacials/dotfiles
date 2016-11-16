@@ -29,6 +29,8 @@
   set backupdir=/tmp
   set directory=/tmp
 
+  let g:hardtime_default_on=1
+
 """"'
 " Operating system behavior settings
 """"'
