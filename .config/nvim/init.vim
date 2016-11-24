@@ -158,4 +158,9 @@
   au FileType html set omnifunc=htmlcomplete#CompleteTags
   au FileType css  set omnifunc=csscomplete#CompleteCSS
 
+  " assume xml for these extensions
+  au BufRead,BufNewFile *.lss setfiletype xml " livesplit
+  au BufRead,BufNewFile *.lsl setfiletype xml " livesplit layout
+  au BufRead,BufNewFile *.lfs setfiletype xml " llanfair (gerad's fork)
+
   filetype plugin indent on
