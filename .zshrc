@@ -12,11 +12,13 @@ alias vi=vim
 alias vim=nvim
 alias g=git status
 alias rebase='export CURRENT_BRANCH=`git name-rev --name-only HEAD` && git checkout master && git pull && git checkout `echo $CURRENT_BRANCH` && git rebase master'
+alias lock='/System/Library/Frameworks/ScreenSaver.framework/Resources/ScreenSaverEngine.app/Contents/MacOS/ScreenSaverEngine'
 unalias rm
 
 # general env vars
 export EDITOR=nvim
 export SHELL=zsh
+export GPG_TTY=$(tty)
 
 # ruby
 export PATH=~/.rbenv/shims:$PATH
