@@ -118,3 +118,6 @@
 [submodule ".config/nvim/bundle/tsuquyomi"]
 	path = .config/nvim/bundle/tsuquyomi
 	url = git@github.com:quramy/tsuquyomi
+[submodule ".config/nvim/bundle/vim-puppet"]
+	path = .config/nvim/bundle/vim-puppet
+	url = git@github.com:rodjek/vim-puppet
