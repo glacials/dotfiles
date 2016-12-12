@@ -121,3 +121,6 @@
 [submodule ".config/nvim/bundle/vim-puppet"]
 	path = .config/nvim/bundle/vim-puppet
 	url = git@github.com:rodjek/vim-puppet
+[submodule ".config/nvim/bundle/vim-terraform"]
+	path = .config/nvim/bundle/vim-terraform
+	url = git@github.com:hashivim/vim-terraform
