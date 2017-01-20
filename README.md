@@ -1,15 +1,15 @@
-## Prerequisites
-
-    fortune
-
 ## Installation
 
     make
 
-will generate all the symlinks it can (without overwriting anything),
-then initialize and pull all submodules. Alternatively, `make links`
-then `make init`.
+Generates all the symlinks it can (without overwriting anything), then initialize and pulls submodules.  Alternatively,
+`make links` then `make init`.
 
-## Updating Vim plugins
+## Update Vim plugins
 
     make pull
+
+## Add a new Vim plugin from GitHub
+```sh
+./vim-plugin-setup.py add <user/repo>
+```

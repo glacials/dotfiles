@@ -18,7 +18,7 @@ osx-setup:
 	$(MAKE) zsh
 
 dependencies:
-	brew install python3 fortune cowsay pinentry-mac gpg
+	brew install python3 pinentry-mac gpg
 
 programs:
 	brew install ag vim ssh-copy-id
@@ -42,8 +42,8 @@ pull:
 	./vim-plugin-setup.py pull
 
 fortune:
-	ls ./fortunes || git clone git@github.com:glacials/fortunes ./fortunes
-	cd ./fortunes && ./strfile
+	brew install fortune cowsay
+	./fortunes/strfile
 
 profile:
 	touch ~/.profile

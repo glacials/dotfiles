@@ -1,0 +1,11 @@
+#!/bin/bash
+
+dir="$( cd "$( dirname "$0" )" && pwd )"
+
+strfile $dir/arrested-development
+#strfile $dir/doctor-who # got tired of this show
+strfile $dir/community
+strfile $dir/misc
+strfile $dir/parks-and-recreation
+strfile $dir/stargate
+strfile $dir/the-flash

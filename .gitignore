@@ -1,7 +1,6 @@
 *.swp
 .vim/.netrwhist
 !*.gitignore
-fortunes
 .config/nvim/.netrwhist
 lock
 lock.m
