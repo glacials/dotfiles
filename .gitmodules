@@ -124,3 +124,6 @@
 [submodule ".config/nvim/bundle/vim-terraform"]
 	path = .config/nvim/bundle/vim-terraform
 	url = git@github.com:hashivim/vim-terraform
+[submodule ".config/nvim/bundle/nerdtree"]
+	path = .config/nvim/bundle/nerdtree
+	url = git@github.com:scrooloose/nerdtree
