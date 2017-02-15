@@ -102,6 +102,9 @@
   " when exploring directories, use nerdtree-like style
   let g:netrw_liststyle=3
 
+  " boot up NERDTree at launch
+  let g:nerdtree_tabs_open_on_console_startup=1
+
 """"'
 " Shortcuts
 """"'
