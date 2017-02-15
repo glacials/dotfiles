@@ -47,7 +47,7 @@ if sys.argv[1] == "add":
     dir = ".config/nvim/bundle/" + repo
     print("Grabbing {}/{}.".format(user, repo))
     subprocess.call(["git", "submodule", "add", "-f", url, dir])
-    subprocess.call(["git", "commit", "-m", "Add {}/{}".format(repo, user)])
+    subprocess.call(["git", "commit", "-m", "Add {}/{}".format(user, repo)])
 
 # (Re)compile ycm_core (for YouCompleteMe)
 if sys.argv[1] == "ycm_core":
