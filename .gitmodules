@@ -127,3 +127,6 @@
 [submodule ".config/nvim/bundle/nerdtree"]
 	path = .config/nvim/bundle/nerdtree
 	url = git@github.com:scrooloose/nerdtree
+[submodule ".config/nvim/bundle/vim-nerdtree-tabs"]
+	path = .config/nvim/bundle/vim-nerdtree-tabs
+	url = git@github.com:jistr/vim-nerdtree-tabs
