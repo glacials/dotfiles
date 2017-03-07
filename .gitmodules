@@ -136,3 +136,6 @@
 [submodule ".config/nvim/bundle/ChocolateLiquor"]
 	path = .config/nvim/bundle/ChocolateLiquor
 	url = git@github.com:vim-scripts/ChocolateLiquor
+[submodule ".config/nvim/bundle/boa.vim"]
+	path = .config/nvim/bundle/boa.vim
+	url = git@github.com:monkoose/boa.vim
