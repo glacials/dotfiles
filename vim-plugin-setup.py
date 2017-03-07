@@ -14,6 +14,7 @@ if len(sys.argv) is 1 or (sys.argv[1] == "add" and len(sys.argv) < 3):
   print("    update            Checkout assigned commits in each submodule")
   print("    pull              Pull all Vim plugins")
   print("    add <user/repo>   Add a Vim plugin from GitHub repository at user/repo")
+  print("    rm <plugin>       Remove a plugin by folder name (from .config/nvim/bundle)")
   if os.path.exists(".config/nvim/bundle/YouCompleteMe"):
     print("    ycm_core          Recompile ycm_core for YouCompleteMe")
   if os.path.exists(".config/nvim/bundle/Command-T"):
@@ -36,7 +37,7 @@ if sys.argv[1] == "pull":
 # Add a plugin from GitHub
 if sys.argv[1] == "add":
   if not os.path.exists(".config/nvim"):
-    print("To add a plugin, you must run this script from the directory containing your .config/nvim folder.")
+    print("To add a plugin, you must run this script from the folder containing your .config/nvim.")
     print("You are currently in {}.".format(os.getcwd()))
     sys.exit()
   else:
@@ -48,6 +49,19 @@ if sys.argv[1] == "add":
     print("Grabbing {}/{}.".format(user, repo))
     subprocess.call(["git", "submodule", "add", "-f", url, dir])
     subprocess.call(["git", "commit", "-m", "Add {}/{}".format(user, repo)])
+
+# Remove a plugin by name
+if sys.argv[1] == "rm":
+  if not os.path.exists(".config/nvim"):
+    print("Error: Can't find .config/nvim. Run this command from the folder containing your .config/nvim.")
+    print("You are currently in {}.".format(os.getcwd()))
+  else:
+    plugin = sys.argv[2]
+    dir = ".config/nvim/bundle/" + plugin
+    print("Removing {}.".format(dir))
+    subprocess.call(["git", "submodule", "deinit", dir])
+    subprocess.call(["git", "rm", "--force", dir])
+    subprocess.call(["git", "commit", "-m", "Remove {} Vim plugin".format(plugin)])
 
 # (Re)compile ycm_core (for YouCompleteMe)
 if sys.argv[1] == "ycm_core":
