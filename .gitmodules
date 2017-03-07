@@ -139,3 +139,6 @@
 [submodule ".config/nvim/bundle/boa.vim"]
 	path = .config/nvim/bundle/boa.vim
 	url = git@github.com:monkoose/boa.vim
+[submodule ".config/nvim/bundle/anderson.vim"]
+	path = .config/nvim/bundle/anderson.vim
+	url = git@github.com:gilgigilgil/anderson.vim
