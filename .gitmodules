@@ -133,3 +133,6 @@
 [submodule ".config/nvim/bundle/nerdtree-git-plugin"]
 	path = .config/nvim/bundle/nerdtree-git-plugin
 	url = git@github.com:xuyuanp/nerdtree-git-plugin
+[submodule ".config/nvim/bundle/minibufexpl.vim"]
+	path = .config/nvim/bundle/minibufexpl.vim
+	url = git@github.com:fholgado/minibufexpl.vim
