@@ -142,3 +142,6 @@
 [submodule ".config/nvim/bundle/anderson.vim"]
 	path = .config/nvim/bundle/anderson.vim
 	url = git@github.com:gilgigilgil/anderson.vim
+[submodule ".config/nvim/bundle/sidonia"]
+	path = .config/nvim/bundle/sidonia
+	url = git@github.com:alessandroyorba/sidonia
