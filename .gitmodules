@@ -142,3 +142,6 @@
 [submodule ".config/nvim/bundle/anderson.vim"]
 	path = .config/nvim/bundle/anderson.vim
 	url = git@github.com:gilgigilgil/anderson.vim
+[submodule ".config/nvim/bundle/colorschemer"]
+	path = .config/nvim/bundle/colorschemer
+	url = git@github.com:jlund3/colorschemer
