@@ -133,3 +133,6 @@
 [submodule ".config/nvim/bundle/minibufexpl.vim"]
 	path = .config/nvim/bundle/minibufexpl.vim
 	url = git@github.com:fholgado/minibufexpl.vim
+[submodule ".config/nvim/bundle/ChocolateLiquor"]
+	path = .config/nvim/bundle/ChocolateLiquor
+	url = git@github.com:vim-scripts/ChocolateLiquor
