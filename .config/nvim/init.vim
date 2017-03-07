@@ -99,11 +99,11 @@
   "python powerline_setup()
   "python del powerline_setup
 
-  " when exploring directories, use nerdtree-like style
-  let g:netrw_liststyle=3
-
   " boot up NERDTree at launch
-  let g:nerdtree_tabs_open_on_console_startup=1
+  autocmd vimenter * NERDTree
+
+  " close Vim if NERDTree is the only window open
+  autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
 """"'
 " Shortcuts
