@@ -18,7 +18,7 @@ osx-setup:
 	$(MAKE) zsh
 
 dependencies:
-	brew install python3 pinentry-mac gpg
+	brew install python3 pinentry-mac gpg neovim/neovim/neovim
 
 programs:
 	brew install ag vim ssh-copy-id
