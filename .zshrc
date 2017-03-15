@@ -19,6 +19,7 @@ unalias rm
 export EDITOR=nvim
 export SHELL=zsh
 export GPG_TTY=$(tty)
+export AWS_DEFAULT_REGION=us-west-2
 
 # ruby
 export PATH=~/.rbenv/shims:$PATH

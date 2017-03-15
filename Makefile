@@ -1,5 +1,10 @@
 pwd = $(shell pwd)
 
+# if you're setting up a machine for the first time and not just re-running make on an existing one, you should do the
+# following manual steps after running make:
+#
+# - visit https://gist.github.com/bmhatfield/cc21ec0a3a2df963bffa3c1f884b676b and follow steps 2 onward
+
 all:
 	$(MAKE) osx-setup # for new OS X machines. remove if you're on linux, and resolve missing dependencies en route.
 	$(MAKE) links
@@ -23,6 +28,14 @@ dependencies:
 programs:
 	brew install ag vim ssh-copy-id neovim/neovim/neovim terraform
 	brew cask install scroll-reverser
+
+configure:
+	git config --global user.name glacials
+	git config --global user.email qhiiyr@gmail.com
+
+gpg-sign-commits:
+	brew install gnupg gpg-agent pinentry-mac
+	git config --global commit.gpgsign true
 
 zsh:
 	chsh -s /bin/zsh `whoami`
