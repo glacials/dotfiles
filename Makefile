@@ -18,10 +18,11 @@ osx-setup:
 	$(MAKE) zsh
 
 dependencies:
-	brew install python3 pinentry-mac gpg neovim/neovim/neovim
+	brew install python3 pinentry-mac gpg
 
 programs:
-	brew install ag vim ssh-copy-id
+	brew install ag vim ssh-copy-id neovim/neovim/neovim terraform
+	brew cask install scroll-reverser
 
 zsh:
 	chsh -s /bin/zsh `whoami`
