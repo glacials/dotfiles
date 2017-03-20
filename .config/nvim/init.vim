@@ -67,8 +67,9 @@
   " turn on syntax highlighting
   syntax enable
 
+  set termguicolors
   set background=dark
-  colorscheme jellybeans
+  colorscheme sidonia
 
   set number
 
