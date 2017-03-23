@@ -4,7 +4,8 @@ pinentry = $(shell which pinentry-mac)
 # if you're setting up a machine for the first time and not just re-running make on an existing one, you should do the
 # following manual steps after running make:
 #
-# - visit https://gist.github.com/bmhatfield/cc21ec0a3a2df963bffa3c1f884b676b and complete the first line of step 2
+# - visit https://gist.github.com/bmhatfield/cc21ec0a3a2df963bffa3c1f884b676b and complete the first line of step 2 by
+#   typing gpg1 --list-keys and copying the part after the slash for your key
 
 all:
 	$(MAKE) macos-setup # for new OS X machines. remove if you're on linux, and resolve missing dependencies en route.
@@ -16,6 +17,7 @@ all:
 	$(MAKE) profile
 	$(MAKE) replace_session
 	$(MAKE) npm
+	$(MAKE) gpg
 
 macos-setup:
 	brew update
