@@ -145,3 +145,9 @@
 [submodule ".config/nvim/bundle/sidonia"]
 	path = .config/nvim/bundle/sidonia
 	url = git@github.com:alessandroyorba/sidonia
+[submodule ".config/nvim/bundle/vim-javascript"]
+	path = .config/nvim/bundle/vim-javascript
+	url = git@github.com:pangloss/vim-javascript
+[submodule ".config/nvim/bundle/vim-jsx"]
+	path = .config/nvim/bundle/vim-jsx
+	url = git@github.com:mxw/vim-jsx
