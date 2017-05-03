@@ -29,6 +29,9 @@
   set backupdir=/tmp
   set directory=/tmp
 
+  " allow using the mouse to set cursor position, highlight, etc.
+  set mouse=a
+
   let g:hardtime_default_on=1
 
 """"'
