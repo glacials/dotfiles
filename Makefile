@@ -40,7 +40,8 @@ dev:
 	git config --global user.email qhiiyr@gmail.com
 
 gpg:
-	brew install gnupg gpg-agent pinentry-mac gpg1
+	brew install gnupg gnupg2 gpg-agent pinentry-mac gpg1
+	git config --global gpg.program gpg2
 	git config --global commit.gpgsign true
 	echo "use-agent" >> ~/.gnupg/gpg.conf
 	echo "\
