@@ -171,3 +171,6 @@
   au BufRead,BufNewFile *.lfs setfiletype xml " llanfair (gerad's fork)
 
   filetype plugin indent on
+
+  " have vim-go run gofmt with -s (simplify code)
+  let g:go_fmt_options = '-s'
