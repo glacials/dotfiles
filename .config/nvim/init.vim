@@ -21,7 +21,7 @@
 
   " don't wrap lines
   set nowrap
-  set formatoptions=-t
+  set formatoptions-=t
 
   " make :w!! force a write as root
   ca w!! w !sudo tee > /dev/null "%"
