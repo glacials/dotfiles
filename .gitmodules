@@ -154,3 +154,6 @@
 [submodule ".config/nvim/bundle/vim-graphql"]
 	path = .config/nvim/bundle/vim-graphql
 	url = git@github.com:jparise/vim-graphql
+[submodule ".config/nvim/bundle/vim-crunchbang"]
+	path = .config/nvim/bundle/vim-crunchbang
+	url = git@github.com:nightsense/vim-crunchbang
