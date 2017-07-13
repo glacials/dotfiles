@@ -157,3 +157,6 @@
 [submodule ".config/nvim/bundle/vim-crunchbang"]
 	path = .config/nvim/bundle/vim-crunchbang
 	url = git@github.com:nightsense/vim-crunchbang
+[submodule ".config/nvim/bundle/fairyfloss.vim"]
+	path = .config/nvim/bundle/fairyfloss.vim
+	url = git@github.com:tssm/fairyfloss.vim
