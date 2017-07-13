@@ -73,7 +73,7 @@
 
   set termguicolors
   set background=dark
-  colorscheme sidonia
+  colorscheme two-firewatch
 
   set number
 
