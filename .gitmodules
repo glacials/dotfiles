@@ -160,3 +160,6 @@
 [submodule ".config/nvim/bundle/fairyfloss.vim"]
 	path = .config/nvim/bundle/fairyfloss.vim
 	url = git@github.com:tssm/fairyfloss.vim
+[submodule ".config/nvim/bundle/vim-two-firewatch"]
+	path = .config/nvim/bundle/vim-two-firewatch
+	url = git@github.com:rakr/vim-two-firewatch
