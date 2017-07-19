@@ -7,6 +7,9 @@ pinentry = $(shell which pinentry-mac)
 # - visit https://gist.github.com/bmhatfield/cc21ec0a3a2df963bffa3c1f884b676b and complete the first line of step 2 by
 #   typing gpg1 --list-keys and copying the part after the slash for your key
 
+.PHONY: all macos-setup dependencies programs dev gpg zsh ruby links init update pull fortune profile replace_session \
+	npm add amethyst bashrc gitconfig gitignore_global gpg-agent irssi nvim oh-my-zsh vim vimrc zshrc
+
 all:
 	$(MAKE) macos-setup # for new OS X machines. remove if you're on linux, and resolve missing dependencies en route.
 	$(MAKE) links
