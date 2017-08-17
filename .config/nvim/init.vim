@@ -1,8 +1,64 @@
 """"'
-" Call pathogen
+" Call vim-plug & plugins
 """"'
-  runtime bundle/vim-pathogen/autoload/pathogen.vim
-  execute pathogen#infect()
+
+  " To install these plugins, open Vim and use :PlugInstall
+  call plug#begin('~/.local/share/nvim/plugged')
+
+  Plug 'ap/vim-css-color'
+  Plug 'ctrlpvim/ctrlp.vim'
+  Plug 'fholgado/minibufexpl.vim'
+  Plug 'gregsexton/gitv'
+  Plug 'milesz/ack.vim'
+  Plug 'monkoose/boa.vim'
+  Plug 'nathanaelkane/vim-indent-guides'
+  Plug 'rstacruz/vim-closer'
+  Plug 'Shougo/deoplete.nvim'
+  Plug 'skwp/greplace.vim'
+  Plug 'terryma/vim-multiple-cursors'
+  Plug 'tlhr/anderson.vim'
+  Plug 'tpope/endwise'
+  Plug 'tpope/sensible'
+  Plug 'tpope/vim-eunuch'
+  Plug 'vim-scripts/ChocolateLiquor'
+  Plug 'vim-scripts/nxc.vim'
+  Plug 'vimwiki/vimwiki'
+
+  " NERDTree
+  Plug 'scrooloose/nerdtree'
+  Plug 'xuyuanp/nerdtree-git-plugin'
+
+  " Language-specific plugins (syntax highlighting, etc.)
+  Plug 'fatih/vim-go'
+  Plug 'hashivim/vim-terraform'
+  Plug 'jeroenbourgois/vim-actionscript'
+  Plug 'jparise/vim-graphql'
+  Plug 'kchmck/vim-coffee-script'
+  Plug 'leafgarland/typescript-vim'
+  Plug 'mustache/vim-mustache-handlebars'
+  Plug 'mxw/vim-jsx'
+  Plug 'ngmy/vim-rubocop'
+  Plug 'pangloss/vim-javascript'
+  Plug 'rodjek/vim-puppet'
+  Plug 'quramy/tsuquyomi'
+  Plug 'rust-lang/rust.vim'
+  Plug 'slim-template/vim-slim'
+  Plug 'smerrill/vcl-vim-plugin'
+  Plug 'tpope/vim-haml'
+  Plug 'tpope/vim-rails'
+
+  " Color schemes
+  Plug 'lifepillar/vim-solarized8'
+  Plug 'nanotech/jellybeans.vim'
+  Plug 'nightsense/vim-crunchbang'
+  Plug 'rakr/vim-two-firewatch'
+  Plug 'sjl/badwolf'
+  Plug 'tomasr/molokai'
+  Plug 'tssm/fairyfloss.vim'
+  Plug 'vim-scripts/proton'
+  Plug 'vim-scripts/pyte'
+
+  call plug#end()
 
 """"'
 " General settings
@@ -124,9 +180,12 @@
   let g:ctrlp_map = '<c-p>'
   let g:ctrlp_cmd = 'CtrlP'
 
-  " ag.vim's `:Ag` opens the first result automatically, which I don't like; however its `:Ag!` doesn't, so make that
-  " the default
-  ca Ag Ag!
+  " ag.vim was deprecated, so use ack.vim with ag as a backend
+  let g:ackprg = 'ag --vimgrep --smart-case'                                                   
+  cnoreabbrev ag Ack                                                                           
+  cnoreabbrev aG Ack                                                                           
+  cnoreabbrev Ag Ack                                                                           
+  cnoreabbrev AG Ack  
 
   " default to most-recently-used order for Command-T
   :nnoremap <silent> <leader>b :CommandTMRU<CR>
