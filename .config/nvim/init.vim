@@ -164,8 +164,9 @@
   "python powerline_setup()
   "python del powerline_setup
 
-  " boot up NERDTree at launch
+  " boot up a NERDTree window at launch (then switch back to main window)
   autocmd vimenter * NERDTree
+  autocmd vimenter * wincmd p
 
   " close Vim if NERDTree is the only window open
   autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
