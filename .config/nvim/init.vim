@@ -131,7 +131,11 @@
   set background=dark
   colorscheme two-firewatch
 
+  " show line numbers
   set number
+
+  " auto-load file changes
+  set autoread
 
   if has('gui_running')
     set guifont=Source\ Code\ Pro\ ExtraLight:h9
@@ -179,13 +183,6 @@
   " keybindings for ctrlp (fuzzy file search plugin)
   let g:ctrlp_map = '<c-p>'
   let g:ctrlp_cmd = 'CtrlP'
-
-  " ag.vim was deprecated, so use ack.vim with ag as a backend
-  let g:ackprg = 'ag --vimgrep --smart-case'                                                   
-  cnoreabbrev ag Ack                                                                           
-  cnoreabbrev aG Ack                                                                           
-  cnoreabbrev Ag Ack                                                                           
-  cnoreabbrev AG Ack  
 
   " default to most-recently-used order for Command-T
   :nnoremap <silent> <leader>b :CommandTMRU<CR>

@@ -8,7 +8,7 @@
 [merge]
 	tool = vimdiff
 [core]
-	editor = vim
+	editor = nvim
 	excludesfile = /Users/glacials/.gitignore_global
 [filter "media"]
 	clean = git-media-clean %f

@@ -35,7 +35,7 @@ dependencies:
 	brew install python3 pinentry-mac gpg
 
 programs:
-	brew install ag vim ssh-copy-id neovim/neovim/neovim terraform
+	brew install ag ack ssh-copy-id neovim/neovim/neovim terraform
 	brew cask install scroll-reverser
 
 dev:
@@ -85,14 +85,16 @@ npm:
 
 links:
 	mkdir -p ~/.config
+	mkdir -p ~/.ssh
 	[ -h ~/.amethyst ]             && ln -fs $(pwd)/.amethyst             ~         || ln -is $(pwd)/.amethyst             ~
 	[ -h ~/.bashrc ]               && ln -fs $(pwd)/.bashrc               ~         || ln -is $(pwd)/.bashrc               ~
+	[ -h ~/.config/nvim ]          && ln -fs $(pwd)/.config/nvim          ~/.config || ln -is $(pwd)/.config/nvim          ~/.config
 	[ -h ~/.gitconfig ]            && ln -fs $(pwd)/.gitconfig            ~         || ln -is $(pwd)/.gitconfig            ~
 	[ -h ~/.gitignore_global ]     && ln -fs $(pwd)/.gitignore_global     ~         || ln -is $(pwd)/.gitignore_global     ~
 	[ -h ~/.gnupg/gpg-agent.conf ] && ln -fs $(pwd)/.gnupg/gpg-agent.conf ~/.gnupg  || ln -is $(pwd)/.gnupg/gpg-agent.conf ~/.gnupg
 	[ -h ~/.irssi ]                && ln -fs $(pwd)/.irssi                ~         || ln -is $(pwd)/.irssi                ~
-	[ -h ~/.config/nvim ]          && ln -fs $(pwd)/.config/nvim          ~/.config || ln -is $(pwd)/.config/nvim          ~/.config
 	[ -h ~/.oh-my-zsh ]            && ln -fs $(pwd)/.oh-my-zsh            ~         || ln -is $(pwd)/.oh-my-zsh            ~
+	[ -h ~/.ssh/config ]           && ln -fs $(pwd)/.ssh/config           ~/.ssh    || ln -is $(pwd)/.ssh/config           ~/.ssh
 	[ -h ~/.vim ]                  && ln -fs $(pwd)/.vim                  ~         || ln -is $(pwd)/.vim                  ~
 	[ -h ~/.vimrc ]                && ln -fs $(pwd)/.vimrc                ~         || ln -is $(pwd)/.vimrc                ~
 	[ -h ~/.zshrc ]                && ln -fs $(pwd)/.zshrc                ~         || ln -is $(pwd)/.zshrc                ~
