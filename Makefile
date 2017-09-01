@@ -35,7 +35,7 @@ dependencies:
 	brew install python3 pinentry-mac gpg
 
 programs:
-	brew install ag ack ssh-copy-id neovim/neovim/neovim terraform jq
+	brew install ag ack ssh-copy-id neovim/neovim/neovim terraform jq awscli
 	brew cask install scroll-reverser
 
 dev:
