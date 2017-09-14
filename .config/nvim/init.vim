@@ -3,13 +3,15 @@
 """"'
 
   " To install these plugins, open Vim and use :PlugInstall
+  " To update, use :PlugUpgrade
   call plug#begin('~/.local/share/nvim/plugged')
+  let g:plug_url_format = 'git@github.com:%s.git'
 
   Plug 'ap/vim-css-color'
   Plug 'ctrlpvim/ctrlp.vim'
   Plug 'fholgado/minibufexpl.vim'
   Plug 'gregsexton/gitv'
-  Plug 'milesz/ack.vim'
+  Plug 'mileszs/ack.vim'
   Plug 'monkoose/boa.vim'
   Plug 'nathanaelkane/vim-indent-guides'
   Plug 'rstacruz/vim-closer'
@@ -17,8 +19,9 @@
   Plug 'skwp/greplace.vim'
   Plug 'terryma/vim-multiple-cursors'
   Plug 'tlhr/anderson.vim'
-  Plug 'tpope/endwise'
-  Plug 'tpope/sensible'
+  Plug 'tpope/vim-endwise'
+  Plug 'tpope/vim-fugitive'
+  Plug 'tpope/vim-sensible'
   Plug 'tpope/vim-eunuch'
   Plug 'vim-scripts/ChocolateLiquor'
   Plug 'vim-scripts/nxc.vim'
