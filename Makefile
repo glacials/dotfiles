@@ -81,7 +81,7 @@ replace_session:
 
 npm:
 	brew install npm
-	npm install -g typescript
+	npm install -g typescript bower
 
 links:
 	mkdir -p ~/.config
