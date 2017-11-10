@@ -35,8 +35,9 @@ dependencies:
 	brew install python3 pinentry-mac gpg
 
 programs:
-	brew install ag ack ssh-copy-id neovim/neovim/neovim terraform jq awscli
+	brew install ag ack ssh-copy-id neovim/neovim/neovim terraform jq awscli redis
 	brew cask install scroll-reverser
+	brew services start redis
 
 dev:
 	git config --global user.name glacials
