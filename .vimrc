@@ -38,7 +38,7 @@
 " Operating system behavior settings
 """"'
 
-  " use OS X's clipboard register for yanks by default
+  " use macOS's clipboard register for yanks by default
   set clipboard=unnamed
 
   " allow mouse scrolling and other mouse things

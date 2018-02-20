@@ -178,8 +178,8 @@
 " Shortcuts
 """"'
 
-  " set 'jj' as an alternate escape from insert mode
-  inoremap jj <Esc>
+  " set 'jk' as an alternate escape from insert mode
+  inoremap jk <Esc>
 
   " set ',,' as an alternate auto-complete caller
   inoremap ,, <C-x><C-o>
