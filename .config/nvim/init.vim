@@ -92,6 +92,9 @@
   " allow using the mouse to set cursor position, highlight, etc.
   set mouse=a
 
+  " when using gqj or other line-joining features, join sentences using one space between them, not two
+  :set nojoinspaces
+
   let g:hardtime_default_on=1
 
 """"'
