@@ -87,6 +87,7 @@ npm:
 links:
 	mkdir -p ~/.config
 	mkdir -p ~/.ssh
+	[ -h ~/.ackrc ]                && ln -fs $(pwd)/.ackrc                ~         || ln -is $(pwd)/.ackrc                ~
 	[ -h ~/.amethyst ]             && ln -fs $(pwd)/.amethyst             ~         || ln -is $(pwd)/.amethyst             ~
 	[ -h ~/.bashrc ]               && ln -fs $(pwd)/.bashrc               ~         || ln -is $(pwd)/.bashrc               ~
 	[ -h ~/.config/nvim ]          && ln -fs $(pwd)/.config/nvim          ~/.config || ln -is $(pwd)/.config/nvim          ~/.config
