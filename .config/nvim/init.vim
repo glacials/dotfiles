@@ -32,6 +32,7 @@
   Plug 'xuyuanp/nerdtree-git-plugin'
 
   " Language-specific plugins (syntax highlighting, etc.)
+  Plug 'digitaltoad/vim-pug'
   Plug 'fatih/vim-go'
   Plug 'hashivim/vim-terraform'
   Plug 'jeroenbourgois/vim-actionscript'
