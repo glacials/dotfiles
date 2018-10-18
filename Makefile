@@ -1,24 +1,25 @@
 pwd = $(shell pwd)
 pinentry = $(shell which pinentry-mac)
 
-# if you're setting up a machine for the first time and not just re-running make on an existing one, you should do the
+# This entire file is idempotent! It is safe to re-run any make command at any time.
+#
+# If you're setting up a machine for the first time and not just re-running make on an existing one, you should do the
 # following manual steps after running make:
 #
-# - gpg --gen-key
-# - visit https://gist.github.com/bmhatfield/cc21ec0a3a2df963bffa3c1f884b676b and complete the first line of step 2 by
-#   typing gpg1 --list-keys and copying the part after the slash for your key
+# 1. gpg --gen-key
+# 2. visit https://gist.github.com/bmhatfield/cc21ec0a3a2df963bffa3c1f884b676b and complete the first line of step 2 by
+#    typing gpg1 --list-keys and copying the part after the slash for your key
 
-.PHONY: all macos-setup dependencies programs dev gpg zsh ruby links init update pull fortune profile replace_session \
-	npm add amethyst bashrc gitconfig gitignore_global gpg-agent irssi nvim oh-my-zsh vim vimrc zshrc
+.PHONY: all macos dependencies programs dev gpg zsh ruby fortune profile replace_session npm links
 
 all:
 	$(MAKE) macos
 	$(MAKE) links
-	$(MAKE) vim
 	$(MAKE) fortune
 	$(MAKE) profile
 	$(MAKE) replace_session
 	$(MAKE) npm
+	$(MAKE) dev
 	$(MAKE) gpg
 
 macos:
@@ -27,7 +28,6 @@ macos:
 	brew upgrade
 	$(MAKE) dependencies
 	$(MAKE) programs
-	$(MAKE) dev
 	$(MAKE) ruby
 	$(MAKE) zsh
 
@@ -35,9 +35,7 @@ dependencies:
 	brew install python3 pinentry-mac gpg
 
 programs:
-	brew install ag ack ssh-copy-id neovim/neovim/neovim terraform jq awscli redis
-	brew cask install scroll-reverser
-	brew services start redis
+	brew install ag ack ssh-copy-id neovim/neovim/neovim terraform jq awscli direnv
 
 dev:
 	git config --global user.name glacials
@@ -85,7 +83,10 @@ npm:
 	npm install -g typescript bower
 
 links:
+	# If creating a symlink to something in a subdirectory of ~, first mkdir -p that directory. Otherwise the symlink
+	# will be at ~/.directory rather than ~/.directory/file.
 	mkdir -p ~/.config
+	mkdir -p ~/.gnupg
 	mkdir -p ~/.ssh
 	[ -h ~/.ackrc ]                && ln -fs $(pwd)/.ackrc                ~         || ln -is $(pwd)/.ackrc                ~
 	[ -h ~/.amethyst ]             && ln -fs $(pwd)/.amethyst             ~         || ln -is $(pwd)/.amethyst             ~

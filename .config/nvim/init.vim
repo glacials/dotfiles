@@ -2,6 +2,13 @@
 " Call vim-plug & plugins
 """"'
 
+  " Install vim-plug if it's not installed (helps with first-time machine setup)
+  if empty(glob('~/.local/share/nvim/site/autoload/plug.vim'))
+    silent !curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs
+      \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+    autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+  endif
+
   " To install these plugins, open Vim and use :PlugInstall
   " To update, use :PlugUpgrade
   call plug#begin('~/.local/share/nvim/plugged')
