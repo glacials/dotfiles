@@ -3,12 +3,15 @@ pinentry = $(shell which pinentry-mac)
 
 # This entire file is idempotent! It is safe to re-run any make command at any time.
 #
-# If you're setting up a machine for the first time and not just re-running make on an existing one, you should do the
-# following manual steps after running make:
+# If you're setting up a machine for the first time, you should do the following manual steps after running make:
 #
 # 1. gpg --gen-key
-# 2. visit https://gist.github.com/bmhatfield/cc21ec0a3a2df963bffa3c1f884b676b and complete the first line of step 2 by
-#    typing gpg1 --list-keys and copying the part after the slash for your key
+# 2. In the output note the key under the line starting with "pub" (you can re-access this later with gpg --list-keys).
+# 3. git config --global user.signingkey KEY_NOTED_FROM_ABOVE
+# 4. gpg --armor --export | pbcopy
+# 5. Paste that in https://github.com/settings/gpg/new
+#
+# (partly from https://gist.github.com/bmhatfield/cc21ec0a3a2df963bffa3c1f884b676b)
 
 .PHONY: all macos dependencies programs dev gpg zsh ruby fortune profile replace_session npm links
 
