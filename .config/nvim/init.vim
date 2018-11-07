@@ -33,6 +33,7 @@
   Plug 'vim-scripts/ChocolateLiquor'
   Plug 'vim-scripts/nxc.vim'
   Plug 'vimwiki/vimwiki'
+  Plug 'zxqfl/tabnine-vim'
 
   " NERDTree
   Plug 'scrooloose/nerdtree'
