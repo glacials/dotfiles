@@ -101,6 +101,4 @@ links:
 	[ -h ~/.irssi ]                && ln -fs $(pwd)/.irssi                ~         || ln -is $(pwd)/.irssi                ~
 	[ -h ~/.oh-my-zsh ]            && ln -fs $(pwd)/.oh-my-zsh            ~         || ln -is $(pwd)/.oh-my-zsh            ~
 	[ -h ~/.ssh/config ]           && ln -fs $(pwd)/.ssh/config           ~/.ssh    || ln -is $(pwd)/.ssh/config           ~/.ssh
-	[ -h ~/.vim ]                  && ln -fs $(pwd)/.vim                  ~         || ln -is $(pwd)/.vim                  ~
-	[ -h ~/.vimrc ]                && ln -fs $(pwd)/.vimrc                ~         || ln -is $(pwd)/.vimrc                ~
 	[ -h ~/.zshrc ]                && ln -fs $(pwd)/.zshrc                ~         || ln -is $(pwd)/.zshrc                ~
