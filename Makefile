@@ -39,6 +39,7 @@ dependencies:
 
 programs:
 	brew install ag ack ssh-copy-id neovim/neovim/neovim terraform jq awscli direnv
+	pip3 install --upgrade neovim # Installs python3 support for neovim, needed for TabNine / YouCompleteMe
 
 dev:
 	git config --global user.name glacials

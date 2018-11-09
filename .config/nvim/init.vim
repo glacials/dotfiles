@@ -33,7 +33,7 @@
   Plug 'vim-scripts/ChocolateLiquor'
   Plug 'vim-scripts/nxc.vim'
   Plug 'vimwiki/vimwiki'
-  Plug 'zxqfl/tabnine-vim'
+  Plug 'zxqfl/tabnine-vim' " TabNine is based on YouCompleteMe
 
   " NERDTree
   Plug 'scrooloose/nerdtree'
@@ -101,16 +101,13 @@
   " allow using the mouse to set cursor position, highlight, etc.
   set mouse=a
 
-  " when using gqj or other line-joining features, join sentences using one space between them, not two
-  :set nojoinspaces
-
   let g:hardtime_default_on=1
 
 """"'
 " Operating system behavior settings
 """"'
 
-  " use OS X's clipboard register for yanks by default
+  " use macOS's clipboard register for yanks by default
   set clipboard=unnamed
 
 """"'
@@ -165,8 +162,11 @@
     set colorcolumn=121
   endif
 
-  " when we use a wrap command like `gq`, wrap to 120 columns
+  " when we use a wrap command like `gqj`, wrap to 120 columns
   set textwidth=120
+
+  " when we use a wrap command like `gqj`, join sentences using one space between them, not two
+  :set nojoinspaces
 
   " always show the tab bar, even with just one tab open
   set showtabline=2
