@@ -18,6 +18,7 @@
   Plug 'ctrlpvim/ctrlp.vim'
   Plug 'fholgado/minibufexpl.vim'
   Plug 'gregsexton/gitv'
+  Plug 'junegunn/vim-easy-align'
   Plug 'mileszs/ack.vim'
   Plug 'monkoose/boa.vim'
   Plug 'nathanaelkane/vim-indent-guides'
@@ -41,6 +42,7 @@
 
   " Language-specific plugins (syntax highlighting, etc.)
   Plug 'digitaltoad/vim-pug'
+  Plug 'elixir-editors/vim-elixir'
   Plug 'fatih/vim-go'
   Plug 'hashivim/vim-terraform'
   Plug 'jeroenbourgois/vim-actionscript'
@@ -213,6 +215,11 @@
   :nnoremap <A-j> <C-w>j
   :nnoremap <A-k> <C-w>k
   :nnoremap <A-l> <C-w>l
+
+  " start interactive EasyAlign in visual mode (e.g. vipga)
+  xmap ga <Plug>(EasyAlign)
+  " start interactive EasyAlign for a motion/text object (e.g. gaip)
+  nmap ga <Plug>(EasyAlign)
 
 """"'
 " Language-specific stuff
