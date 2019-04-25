@@ -71,6 +71,7 @@ zsh:
 
 ruby:
 	brew install rbenv ruby-build
+	rbenv install
 
 fortune:
 	brew install fortune cowsay
