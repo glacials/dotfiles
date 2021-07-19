@@ -9,13 +9,9 @@
 	tool = vimdiff
 [core]
 	editor = nvim
-	excludesfile = /Users/glacials/.gitignore_global
+	excludesfile = ~/.gitignore_global
 [filter "media"]
 	clean = git-media-clean %f
 	smudge = git-media-smudge %f
 [push]
 	default = simple
-[commit]
-	gpgsign = true
-[gpg]
-	program = gpg
