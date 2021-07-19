@@ -23,13 +23,19 @@ export EDITOR=vim
 export GPG_TTY=$(tty)
 export AWS_DEFAULT_REGION=us-east-1
 
-# ruby
-export PATH=~/.rbenv/shims:$PATH
+# Python
+export PYENV_ROOT="$HOME/.pyenv"
+path+=("$PYENV_ROOT/bin:$PATH")
+eval "$(pyenv init --path)"
+eval "$(pyenv init -)"
+
+# Ruby
+path+=("~/.rbenv/shims:$PATH")
 eval "$(rbenv init -)"
 
-# go
+# Go
 export GOPATH=~/go
-export PATH=$GOPATH/bin:$PATH
+path+=("$GOPATH/bin:$PATH")
 
 # fun things at shell boot
 fortune ~/pj/dotfiles/fortunes | cowsay -n
