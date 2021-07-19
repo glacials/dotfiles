@@ -12,13 +12,13 @@ path+=("/home/linuxbrew/.linuxbrew/bin")
 # run history-substituted commands (e.g. containing `!!` or `!$`) without confirmation
 unsetopt histverify
 
+alias amend='git add -p && git commit --amend --no-edit && git push -f'
+alias gs='git status'
+alias rebase='export CURRENT_BRANCH=`git name-rev --name-only HEAD` && git checkout master && git pull && git checkout `echo $CURRENT_BRANCH` && git rebase master'
+alias u='sudo apt-get update -qq && sudo apt-get -yqq upgrade && brew update -qq && brew upgrade -qq'
 alias vi=vim
 alias vim=nvim
 alias vimdiff='vim -d'
-alias gs='git status'
-alias rebase='export CURRENT_BRANCH=`git name-rev --name-only HEAD` && git checkout master && git pull && git checkout `echo $CURRENT_BRANCH` && git rebase master'
-alias amend='git add -p && git commit --amend --no-edit && git push -f'
-alias lock='/System/Library/Frameworks/ScreenSaver.framework/Resources/ScreenSaverEngine.app/Contents/MacOS/ScreenSaverEngine'
 
 # general env vars
 export EDITOR=vim
