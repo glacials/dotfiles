@@ -17,7 +17,7 @@ alias vim=nvim
 alias vimdiff='vim -d'
 alias gs='git status'
 alias rebase='export CURRENT_BRANCH=`git name-rev --name-only HEAD` && git checkout master && git pull && git checkout `echo $CURRENT_BRANCH` && git rebase master'
-alias amend='git add -p && git commit --amend && git push -f'
+alias amend='git add -p && git commit --amend --no-edit && git push -f'
 alias lock='/System/Library/Frameworks/ScreenSaver.framework/Resources/ScreenSaverEngine.app/Contents/MacOS/ScreenSaverEngine'
 
 # general env vars
