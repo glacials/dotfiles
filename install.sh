@@ -81,7 +81,7 @@ $brewinstall rbenv ruby-build
 ### Start application installations ###
 echo "Starting application installations."
 
-$brewinstall direnv
+$brewinstall direnv nvim
 
 ### End application installations ###
 
