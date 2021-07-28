@@ -6,6 +6,7 @@
 [difftool "mvimdiff"]
   cmd = mvim -f -d \"$LOCAL\" \"$REMOTE\"
 [merge]
+  conflictstyle = diff3
 	tool = vimdiff
 [core]
 	editor = nvim

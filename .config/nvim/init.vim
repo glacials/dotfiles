@@ -34,43 +34,15 @@
   Plug 'vim-scripts/ChocolateLiquor'
   Plug 'vim-scripts/nxc.vim'
   Plug 'vimwiki/vimwiki'
-  Plug 'zxqfl/tabnine-vim' " TabNine is based on YouCompleteMe
 
   " NERDTree
   Plug 'scrooloose/nerdtree'
   Plug 'xuyuanp/nerdtree-git-plugin'
 
   " Language-specific plugins (syntax highlighting, etc.)
-  Plug 'digitaltoad/vim-pug'
-  Plug 'elixir-editors/vim-elixir'
-  Plug 'fatih/vim-go'
-  Plug 'hashivim/vim-terraform'
-  Plug 'jeroenbourgois/vim-actionscript'
-  Plug 'jparise/vim-graphql'
-  Plug 'kchmck/vim-coffee-script'
-  Plug 'leafgarland/typescript-vim'
-  Plug 'mustache/vim-mustache-handlebars'
-  Plug 'mxw/vim-jsx'
-  Plug 'ngmy/vim-rubocop'
-  Plug 'pangloss/vim-javascript'
-  Plug 'rodjek/vim-puppet'
-  Plug 'quramy/tsuquyomi'
-  Plug 'rust-lang/rust.vim'
-  Plug 'slim-template/vim-slim'
-  Plug 'smerrill/vcl-vim-plugin'
-  Plug 'tpope/vim-haml'
-  Plug 'tpope/vim-rails'
 
   " Color schemes
-  Plug 'lifepillar/vim-solarized8'
-  Plug 'nanotech/jellybeans.vim'
-  Plug 'nightsense/vim-crunchbang'
   Plug 'rakr/vim-two-firewatch'
-  Plug 'sjl/badwolf'
-  Plug 'tomasr/molokai'
-  Plug 'tssm/fairyfloss.vim'
-  Plug 'vim-scripts/proton'
-  Plug 'vim-scripts/pyte'
 
   call plug#end()
 
@@ -176,11 +148,6 @@
   " enable vim-indent-guides plugin on startup
   let g:indent_guides_enable_on_vim_startup = 0
 
-  " powerline
-  "python from powerline.vim import setup as powerline_setup
-  "python powerline_setup()
-  "python del powerline_setup
-
   " boot up a NERDTree window at launch (then switch back to main window)
   autocmd vimenter * NERDTree
   autocmd vimenter * wincmd p
@@ -224,26 +191,6 @@
 """"'
 " Language-specific stuff
 """"'
-
-  " syntax highlighting for SQL and HTML inside PHP strings
-  "let php_sql_query=1
-  let php_htmlInStrings=1
-
-  " syntax highlighting for gpl
-  au BufRead,BufNewFile *.gpl set filetype=gpl
-
-  " syntax highlighting for rabl
-  au BufRead,BufNewFile *.rabl set filetype=ruby
-
-  " turn on omni-complete
-  setlocal omnifunc=syntaxcomplete#Complete
-  au CursorMovedI,InsertLeave * if pumvisible() == 0|silent! pclose|endif
-
-  " auto-complete these languages
-  au FileType php  set omnifunc=phpcomplete#CompletePHP
-  au FileType xml  set omnifunc=xmlcomplete#CompleteTags
-  au FileType html set omnifunc=htmlcomplete#CompleteTags
-  au FileType css  set omnifunc=csscomplete#CompleteCSS
 
   " assume xml for these extensions
   au BufRead,BufNewFile *.lss setfiletype xml " livesplit
