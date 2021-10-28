@@ -21,6 +21,19 @@
   Plug 'junegunn/vim-easy-align'
   Plug 'mileszs/ack.vim'
   Plug 'monkoose/boa.vim'
+
+  " Telescope (fuzzy file finder)
+  Plug 'nvim-lua/plenary.nvim'
+  Plug 'nvim-telescope/telescope.nvim'
+  nnoremap <leader>ff <cmd>Telescope find_files<cr>
+  nnoremap <leader>fg <cmd>Telescope live_grep<cr>
+  nnoremap <leader>fb <cmd>Telescope buffers<cr>
+  nnoremap <leader>fh <cmd>Telescope help_tags<cr>
+  " Telescope optional dependencies
+  Plug 'kyazdani42/nvim-web-devicons'
+  Plug 'neovim/nvim-lspconfig'
+  Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'make' }
+
   Plug 'nathanaelkane/vim-indent-guides'
   Plug 'rstacruz/vim-closer'
   Plug 'Shougo/deoplete.nvim'
@@ -31,9 +44,7 @@
   Plug 'tpope/vim-fugitive'
   Plug 'tpope/vim-sensible'
   Plug 'tpope/vim-eunuch'
-  Plug 'vim-scripts/ChocolateLiquor'
   Plug 'vim-scripts/nxc.vim'
-  Plug 'vimwiki/vimwiki'
 
   " NERDTree
   Plug 'scrooloose/nerdtree'
@@ -42,7 +53,7 @@
   " Language-specific plugins (syntax highlighting, etc.)
 
   " Color schemes
-  Plug 'rakr/vim-two-firewatch'
+  Plug 'utensils/colors.vim'
 
   call plug#end()
 
@@ -115,7 +126,7 @@
 
   set termguicolors
   set background=dark
-  colorscheme two-firewatch
+  colorscheme boa
 
   " show line numbers
   set number
@@ -164,10 +175,6 @@
 
   " set ',,' as an alternate auto-complete caller
   inoremap ,, <C-x><C-o>
-
-  " keybindings for ctrlp (fuzzy file search plugin)
-  let g:ctrlp_map = '<c-p>'
-  let g:ctrlp_cmd = 'CtrlP'
 
   " default to most-recently-used order for Command-T
   :nnoremap <silent> <leader>b :CommandTMRU<CR>

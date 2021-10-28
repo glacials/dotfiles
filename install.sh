@@ -40,9 +40,11 @@ mkdir -p $HOME/.config
 ### Start package managers ###
 echo "Setting up package managers."
 
-$apt update
-$apt upgrade
-$apt install zsh
+if [[ $(uname -s) == LINUX* ]]; then
+  $apt update
+  $apt upgrade
+  $apt install zsh
+fi
 
 # Linux
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
@@ -50,7 +52,9 @@ $apt install zsh
 # Update path here since we can't source .zshrc yet; we haven't installed every tool it will invoke.
 export PATH=/home/linuxbrew/.linuxbrew/bin:$PATH
 
-$apt install -y build-essential # Homebrew asks for this on install
+if [[ $(uname -s == LINUX*) ]]; then
+  $apt install -y build-essential # Homebrew asks for this on install
+fi
 $brewinstall gcc # Homebrew asks for this on install
 $brew update
 $brew upgrade
@@ -66,12 +70,14 @@ $brewinstall npm
 $npm install -g typescript bower
 
 # Python
-#   Runtime dependencies of pyenv (https://github.com/pyenv/pyenv/wiki#suggested-build-environment)
-$apt install make build-essential libssl-dev zlib1g-dev \
-libbz2-dev libreadline-dev libsqlite3-dev wget curl llvm \
-libncursesw5-dev xz-utils tk-dev libxml2-dev libxmlsec1-dev libffi-dev liblzma-dev
+if [[ $(uname -s == LINUX*) ]]; then
+  #   Runtime dependencies of pyenv (https://github.com/pyenv/pyenv/wiki#suggested-build-environment)
+  $apt install make build-essential libssl-dev zlib1g-dev \
+  libbz2-dev libreadline-dev libsqlite3-dev wget curl llvm \
+  libncursesw5-dev xz-utils tk-dev libxml2-dev libxmlsec1-dev libffi-dev liblzma-dev
+fi
 #   pyenv
-$brewinstall pyenv
+$brewinstall pyenv pyenv-virtualenv
 
 # Ruby
 $brewinstall rbenv ruby-build
@@ -82,6 +88,9 @@ $brewinstall rbenv ruby-build
 echo "Starting application installations."
 
 $brewinstall direnv nvim
+
+# Dependencies for some neovim plugins
+brew install ripgrep fd
 
 ### End application installations ###
 
