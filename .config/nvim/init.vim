@@ -10,19 +10,17 @@
   endif
 
   " To install these plugins, open Vim and use :PlugInstall
-  " To update, use :PlugUpgrade
+  " To update, use :PlugUpgrade and :PlugUpdate
   call plug#begin('~/.local/share/nvim/plugged')
   let g:plug_url_format = 'git@github.com:%s.git'
 
   Plug 'ap/vim-css-color'
-  Plug 'ctrlpvim/ctrlp.vim'
   Plug 'fholgado/minibufexpl.vim'
   Plug 'gregsexton/gitv'
   Plug 'junegunn/vim-easy-align'
-  Plug 'mileszs/ack.vim'
   Plug 'monkoose/boa.vim'
 
-  " Telescope (fuzzy file finder)
+  " Telescope (fuzzy file / text finder)
   Plug 'nvim-lua/plenary.nvim'
   Plug 'nvim-telescope/telescope.nvim'
   nnoremap <leader>ff <cmd>Telescope find_files<cr>
@@ -36,19 +34,31 @@
 
   Plug 'nathanaelkane/vim-indent-guides'
   Plug 'rstacruz/vim-closer'
-  Plug 'Shougo/deoplete.nvim'
   Plug 'skwp/greplace.vim'
   Plug 'terryma/vim-multiple-cursors'
-  Plug 'tlhr/anderson.vim'
   Plug 'tpope/vim-endwise'
+
+  " Git actions
   Plug 'tpope/vim-fugitive'
-  Plug 'tpope/vim-sensible'
+
+  " More holistic shell commands, e.g. :Delete to delete a file + close its buffer
   Plug 'tpope/vim-eunuch'
-  Plug 'vim-scripts/nxc.vim'
+
+  " Language server stuff
+  Plug 'neovim/nvim-lspconfig' " Official collection of common LSP configs
+
+  " Show a lightbulb in the gutter when autocomplete is available
+  Plug 'kosayoda/nvim-lightbulb'
 
   " NERDTree
   Plug 'scrooloose/nerdtree'
   Plug 'xuyuanp/nerdtree-git-plugin'
+  " boot up a NERDTree window at launch (then switch back to main window)
+  autocmd vimenter * NERDTree
+  autocmd vimenter * wincmd p
+  " close Vim if NERDTree is the only window open
+  autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+
 
   " Language-specific plugins (syntax highlighting, etc.)
 
@@ -99,9 +109,6 @@
 " Indentation settings
 """"'
 
-  " leave whitespace on blank lines alone
-  "inoremap <CR> <CR>x<BS>
-
   set tabstop=2
   set softtabstop=2
   set shiftwidth=2
@@ -142,13 +149,13 @@
   " highlight current line
   set cursorline
 
-  " if supported, highlight the 121st column (the column after the last column we want to wrap at)
+  " if supported, highlight the 89th column (the column after the last column we want to wrap at)
   if exists('+colorcolumn')
-    set colorcolumn=121
+    set colorcolumn=89
   endif
 
-  " when we use a wrap command like `gqj`, wrap to 120 columns
-  set textwidth=120
+  " when we use a wrap command like `gqj`, wrap to 88 columns
+  set textwidth=88
 
   " when we use a wrap command like `gqj`, join sentences using one space between them, not two
   :set nojoinspaces
@@ -159,13 +166,6 @@
   " enable vim-indent-guides plugin on startup
   let g:indent_guides_enable_on_vim_startup = 0
 
-  " boot up a NERDTree window at launch (then switch back to main window)
-  autocmd vimenter * NERDTree
-  autocmd vimenter * wincmd p
-
-  " close Vim if NERDTree is the only window open
-  autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
-
 """"'
 " Shortcuts
 """"'
@@ -175,9 +175,6 @@
 
   " set ',,' as an alternate auto-complete caller
   inoremap ,, <C-x><C-o>
-
-  " default to most-recently-used order for Command-T
-  :nnoremap <silent> <leader>b :CommandTMRU<CR>
 
   " allow Alt+{h,j,k,l} to navigate between windows no matter if they are displaying a normal buffer or a terminal
   " buffer in terminal mode
@@ -190,11 +187,6 @@
   :nnoremap <A-k> <C-w>k
   :nnoremap <A-l> <C-w>l
 
-  " start interactive EasyAlign in visual mode (e.g. vipga)
-  xmap ga <Plug>(EasyAlign)
-  " start interactive EasyAlign for a motion/text object (e.g. gaip)
-  nmap ga <Plug>(EasyAlign)
-
 """"'
 " Language-specific stuff
 """"'
@@ -205,6 +197,3 @@
   au BufRead,BufNewFile *.lfs setfiletype xml " llanfair (gerad's fork)
 
   filetype plugin indent on
-
-  " have vim-go run gofmt with -s (simplify code)
-  let g:go_fmt_options = '-s'

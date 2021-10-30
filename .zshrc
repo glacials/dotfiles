@@ -31,6 +31,10 @@ export EDITOR=vim
 export GPG_TTY=$(tty)
 export AWS_DEFAULT_REGION=us-east-1
 
+# Go
+export GOPATH=~/go
+path+=($GOPATH/bin)
+
 # Python
 export PYENV_ROOT="$HOME/.pyenv"
 path+=("$PYENV_ROOT/bin:$PATH")
