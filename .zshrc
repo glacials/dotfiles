@@ -5,13 +5,13 @@ plugins=(bundler brew common-aliases dircycle encode64 gem osx rails ruby vi-mod
 source $ZSH/oh-my-zsh.sh
 
 path+=("$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin")
-path+=("/home/linuxbrew/.linuxbrew/bin")
 
 # run history-substituted commands (e.g. containing `!!` or `!$`) without confirmation
 unsetopt histverify
 
+alias work='git add -p && git commit -m work && git push'
 alias amend='git add -p && git commit --amend --no-edit && git push -f'
-alias gs='git status'
+alias g='git status'
 alias rebase='export CURRENT_BRANCH=`git name-rev --name-only HEAD` && git checkout master && git pull && git checkout `echo $CURRENT_BRANCH` && git rebase master'
 
 if [[ $(uname -s) == LINUX* ]]; then
@@ -37,9 +37,8 @@ path+=($GOPATH/bin)
 
 # Python
 export PYENV_ROOT="$HOME/.pyenv"
-path+=("$PYENV_ROOT/bin:$PATH")
-eval "$(pyenv init --path)"
 eval "$(pyenv init -)"
+eval "$(pyenv init --path)"
 eval "$(pyenv virtualenv-init -)"
 
 # Ruby

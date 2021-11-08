@@ -10,7 +10,7 @@ brew="brew"
 brewinstall="$brew install --quiet"
 npm="npm --silent"
 
-# This entire file is idempotent! It is safe to re-run at any time.
+# This script is idempotent! It is safe to re-run at any time.
 #
 # If you're setting up a machine for the first time, you should do the following manual steps after running this file:
 #
@@ -21,8 +21,10 @@ npm="npm --silent"
 # 5. Paste that in https://github.com/settings/gpg/new
 #
 # (partly from https://gist.github.com/bmhatfield/cc21ec0a3a2df963bffa3c1f884b676b)
+#
+# TODO: Refactor so we only need to invoke `brew install` once.
 
-### Start symlinks ###
+########################################## Start symlinks
 echo "Setting up symbolic links."
 
 
@@ -34,10 +36,9 @@ mkdir -p $HOME/.config
 [ -h $HOME/.config/nvim ]          && ln -fs $(pwd)/.config/nvim          $HOME/.config || ln -is $(pwd)/.config/nvim          $HOME/.config
 [ -h $HOME/.gitconfig ]            && ln -fs $(pwd)/.gitconfig            $HOME         || ln -is $(pwd)/.gitconfig            $HOME
 [ -h $HOME/.gitignore_global ]     && ln -fs $(pwd)/.gitignore_global     $HOME         || ln -is $(pwd)/.gitignore_global     $HOME
+########################################## End symlinks
 
-### End symlinks ###
-
-### Start package managers ###
+########################################## Start package managers
 echo "Setting up package managers."
 
 if [[ $(uname -s) == LINUX* ]]; then
@@ -46,7 +47,7 @@ if [[ $(uname -s) == LINUX* ]]; then
   $apt install zsh
 fi
 
-# Linux
+# Homebrew
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 
 # Update path here since we can't source .zshrc yet; we haven't installed every tool it will invoke.
@@ -55,14 +56,13 @@ export PATH=/home/linuxbrew/.linuxbrew/bin:$PATH
 if [[ $(uname -s == LINUX*) ]]; then
   $apt install -y build-essential # Homebrew asks for this on install
 fi
-$brewinstall gcc # Homebrew asks for this on install
+$brewinstall gcc
 $brew update
 $brew upgrade
 echo "Ignore above messages re: gcc and build-essential; it is done."
+########################################## End package managers
 
-### End package managers ###
-
-### Start languages ###
+########################################## Start languages
 echo "Setting up languages."
 
 # JavaScript
@@ -81,28 +81,24 @@ $brewinstall pyenv pyenv-virtualenv
 
 # Ruby
 $brewinstall rbenv ruby-build
+########################################## End languages
 
-### End languages ###
-
-### Start application installations ###
+########################################## Start application installations
 echo "Starting application installations."
 
-$brewinstall direnv nvim
+$brewinstall awscli direnv nvim
 
-# Dependencies for some neovim plugins
-brew install ripgrep fd
-
-### End application installations ###
-
+# Neovim & Neovim plugin dependencies
+$brewinstall fd ripgrep
 
 # Fortune
 $brewinstall fortune cowsay
 ./fortunes/strfile
+########################################## End application installations
 
+########################################## Start shell configuration
 # Create $HOME/.profile (to put secret things, that shouldn't go in this repository)
 touch $HOME/.profile
-
-### Start shell configuration
 
 # Install oh-my-zsh
 rm -rf $HOME/.oh-my-zsh
@@ -115,5 +111,4 @@ chsh -s /bin/zsh `whoami`
 rm -f $HOME/.zshrc
 [ -h $HOME/.zshrc ] && ln -fs $(pwd)/.zshrc $HOME || ln -is $(pwd)/.zshrc $HOME
 zsh
-
-### End shell configuration
+########################################## End shell configuration

@@ -4,3 +4,4 @@
 .agignore
 .ruby-version
 dump.rdb
+.envrc
