@@ -27,6 +27,12 @@ nnoremap <leader>ff <cmd>Telescope find_files<cr>
 nnoremap <leader>fg <cmd>Telescope live_grep<cr>
 nnoremap <leader>fb <cmd>Telescope buffers<cr>
 nnoremap <leader>fh <cmd>Telescope help_tags<cr>
+" Use Telescope UI for some LSP shortcuts
+nnoremap gr <cmd>Telescope lsp_references<cr>
+nnoremap <space>wa <cmd>Telescope lsp_code_actions<cr>
+nnoremap gi <cmd>Telescope lsp_implementation<cr>
+nnoremap gd <cmd>Telescope lsp_definitions<cr>
+nnoremap gD <cmd>Telescope lsp_type_definitions<cr>
 " Telescope optional dependencies
 Plug 'kyazdani42/nvim-web-devicons'
 Plug 'neovim/nvim-lspconfig'
@@ -43,15 +49,6 @@ Plug 'tpope/vim-fugitive'
 
 " More holistic shell commands, e.g. :Delete to delete a file + close its buffer
 Plug 'tpope/vim-eunuch'
-
-" NERDTree
-Plug 'scrooloose/nerdtree'
-Plug 'xuyuanp/nerdtree-git-plugin'
-" boot up a NERDTree window at launch (then switch back to main window)
-autocmd vimenter * NERDTree
-autocmd vimenter * wincmd p
-" close Vim if NERDTree is the only window open
-autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
 " Color schemes
 Plug 'utensils/colors.vim'
