@@ -183,6 +183,12 @@ set mouse=a
 
 let g:hardtime_default_on=1
 
+" Automatically enter netrw (file browser) if booted without arguments
+augroup ProjectDrawer
+    autocmd!
+    autocmd VimEnter * if argc() == 0 | Explore! | endif
+augroup END
+
 """"'
 " Operating system behavior settings
 """"'
