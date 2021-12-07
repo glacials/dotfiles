@@ -1,0 +1,8 @@
+*.swp
+*.swo
+.DS_Store
+.agignore
+.ruby-version
+.python-version
+dump.rdb
+.envrc
