@@ -14,8 +14,18 @@ endif
 call plug#begin('~/.local/share/nvim/plugged')
 let g:plug_url_format = 'git@github.com:%s.git'
 
+" Colorize e.g. hex codes
 Plug 'ap/vim-css-color'
+
+" Show open buffers at the top of the screen
 Plug 'fholgado/minibufexpl.vim'
+
+" Preview Markdown files inside Neovim
+Plug 'ellisonleao/glow.nvim'
+
+" Preview Markdown files outside Neovim
+Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install' }
+
 Plug 'gregsexton/gitv'
 Plug 'junegunn/vim-easy-align'
 Plug 'monkoose/boa.vim'
@@ -44,7 +54,10 @@ Plug 'skwp/greplace.vim'
 Plug 'terryma/vim-multiple-cursors'
 Plug 'tpope/vim-endwise'
 
-" Git actions
+" netrw enhancements
+Plug 'tpope/vim-vinegar'
+
+" git <subcommand> as :Git <subcommand>
 Plug 'tpope/vim-fugitive'
 
 " More holistic shell commands, e.g. :Delete to delete a file + close its buffer
@@ -58,6 +71,12 @@ Plug 'kosayoda/nvim-lightbulb'
 
 " Language server stuff
 Plug 'neovim/nvim-lspconfig' " Official collection of common LSP configs
+Plug 'dense-analysis/ale' " Async language-agnostic linting server
+
+" Go
+Plug 'fatih/vim-go' " Various Go niceties
+
+" Magic
 Plug 'github/copilot.vim'
 
 call plug#end()
@@ -79,24 +98,23 @@ local on_attach = function(client, bufnr)
   local opts = { noremap=true, silent=true }
 
   -- See `:help vim.lsp.*` for documentation on any of the below functions
-  buf_set_keymap('n', 'gD', '<cmd>lua vim.lsp.buf.declaration()<CR>', opts)
-  buf_set_keymap('n', 'gd', '<cmd>lua vim.lsp.buf.definition()<CR>', opts)
-  buf_set_keymap('n', 'K', '<cmd>lua vim.lsp.buf.hover()<CR>', opts)
-  buf_set_keymap('n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<CR>', opts)
-  buf_set_keymap('n', '<C-k>', '<cmd>lua vim.lsp.buf.signature_help()<CR>', opts)
+  -- buf_set_keymap('n', 'gD',        '<cmd>lua vim.lsp.buf.declaration()<CR>', opts) -- Overridden by Telescope (above)
+  -- buf_set_keymap('n', 'gd',        '<cmd>lua vim.lsp.buf.definition()<CR>', opts) -- Overridden by Telescope (above)
+  buf_set_keymap('n', 'K',         '<cmd>lua vim.lsp.buf.hover()<CR>', opts)
+  -- buf_set_keymap('n', 'gi',        '<cmd>lua vim.lsp.buf.implementation()<CR>', opts) -- Overridden by Telescope (above)
+  buf_set_keymap('n', '<C-k>',     '<cmd>lua vim.lsp.buf.signature_help()<CR>', opts)
   buf_set_keymap('n', '<space>wa', '<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>', opts)
   buf_set_keymap('n', '<space>wr', '<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>', opts)
   buf_set_keymap('n', '<space>wl', '<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>', opts)
-  buf_set_keymap('n', '<space>D', '<cmd>lua vim.lsp.buf.type_definition()<CR>', opts)
+  buf_set_keymap('n', '<space>D',  '<cmd>lua vim.lsp.buf.type_definition()<CR>', opts)
   buf_set_keymap('n', '<space>rn', '<cmd>lua vim.lsp.buf.rename()<CR>', opts)
   buf_set_keymap('n', '<space>ca', '<cmd>lua vim.lsp.buf.code_action()<CR>', opts)
-  buf_set_keymap('n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>', opts)
-  buf_set_keymap('n', '<space>e', '<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>', opts)
-  buf_set_keymap('n', '[d', '<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>', opts)
-  buf_set_keymap('n', ']d', '<cmd>lua vim.lsp.diagnostic.goto_next()<CR>', opts)
-  buf_set_keymap('n', '<space>q', '<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>', opts)
-  buf_set_keymap('n', '<space>f', '<cmd>lua vim.lsp.buf.formatting()<CR>', opts)
-
+  -- buf_set_keymap('n', 'gr',        '<cmd>lua vim.lsp.buf.references()<CR>', opts) -- Overridden by Telescope (above)
+  buf_set_keymap('n', '<space>e',  '<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>', opts)
+  buf_set_keymap('n', '[d',        '<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>', opts)
+  buf_set_keymap('n', ']d',        '<cmd>lua vim.lsp.diagnostic.goto_next()<CR>', opts)
+  buf_set_keymap('n', '<space>q',  '<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>', opts)
+  buf_set_keymap('n', '<space>f',  '<cmd>lua vim.lsp.buf.formatting()<CR>', opts)
 end
 
 local servers = {
@@ -164,7 +182,7 @@ set smartindent
 set incsearch
 set ignorecase
 
-" pretend certain files aren't there (for rails)
+" pretend certain files aren't there
 set wildignore=coverage/*,log/*,public/*,tmp/*,Godeps/*
 
 " don't wrap lines

@@ -42,7 +42,7 @@ eval "$(pyenv init --path)"
 eval "$(pyenv virtualenv-init -)"
 
 # Ruby
-path+=("$HOME/.rbenv/shims:$PATH")
+path+=("$PATH:$HOME/.rbenv/shims")
 eval "$(rbenv init -)"
 
 # fun things at shell boot
