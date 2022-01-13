@@ -112,3 +112,11 @@ rm -f $HOME/.zshrc
 [ -h $HOME/.zshrc ] && ln -fs $(pwd)/.zshrc $HOME || ln -is $(pwd)/.zshrc $HOME
 zsh
 ########################################## End shell configuration
+
+########################################## Start manual setup
+
+echo "Some manual steps are still required:"
+echo "  - Open iTerm2 prefs → General → Preferences and load from ./preferences/iterm
+echo "  - Download Nord color scheme for iTerm2: https://github.com/arcticicestudio/nord-iterm2"
+echo ""
+echo "That's it!"
