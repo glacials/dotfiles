@@ -76,8 +76,8 @@ if [[ $(uname -s == LINUX*) ]]; then
   libbz2-dev libreadline-dev libsqlite3-dev wget curl llvm \
   libncursesw5-dev xz-utils tk-dev libxml2-dev libxmlsec1-dev libffi-dev liblzma-dev
 fi
-#   pyenv
-$brewinstall pyenv pyenv-virtualenv
+$npm install -g pyright # Language server
+$brewinstall pyenv pyenv-virtualenv # pyenv
 
 # Ruby
 $brewinstall rbenv ruby-build
