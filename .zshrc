@@ -26,10 +26,14 @@ alias vi=vim
 alias vim=nvim
 alias vimdiff='vim -d'
 
-# general env vars
+# General env vars
+export AWS_DEFAULT_REGION=us-east-1
 export EDITOR=vim
 export GPG_TTY=$(tty)
-export AWS_DEFAULT_REGION=us-east-1
+
+# Homebrew for Linux
+path+=($HOME/.linuxbrew/bin)
+path+=(/home/linuxbrew/.linuxbrew/bin)
 
 # Go
 export GOPATH=~/go
@@ -42,7 +46,7 @@ eval "$(pyenv init --path)"
 eval "$(pyenv virtualenv-init -)"
 
 # Ruby
-path+=("$PATH:$HOME/.rbenv/shims")
+path+=("$HOME/.rbenv/shims")
 eval "$(rbenv init -)"
 
 # fun things at shell boot

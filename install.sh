@@ -2,11 +2,15 @@
 set -euo pipefail
 set -x # uncomment to print all commands as they happen
 
-uname=$(uname -s)
+uname=$(uname -s | tr "[:upper:]" "[:lower:]")
 pwd=$(pwd)
 
 apt="sudo apt-get --quiet --quiet --assume-yes"
-brew="brew"
+if [[ $uname == linux* ]]; then
+  brew="$HOME/.linuxbrew/bin/brew"
+else
+  brew="brew"
+fi
 brewinstall="$brew install --quiet"
 npm="npm --silent"
 
@@ -41,7 +45,7 @@ mkdir -p $HOME/.config
 ########################################## Start package managers
 echo "Setting up package managers."
 
-if [[ $(uname -s) == LINUX* ]]; then
+if [[ $uname == linux* ]]; then
   $apt update
   $apt upgrade
   $apt install zsh
@@ -50,10 +54,11 @@ fi
 # Homebrew
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 
-# Update path here since we can't source .zshrc yet; we haven't installed every tool it will invoke.
+# Update path for Homebrew for Linux since we can't source .zshrc yet
 export PATH=/home/linuxbrew/.linuxbrew/bin:$PATH
+export PATH=$HOME/.linuxbrew/bin:$PATH
 
-if [[ $(uname -s == LINUX*) ]]; then
+if [[ $uname == linux* ]]; then
   $apt install -y build-essential # Homebrew asks for this on install
 fi
 $brewinstall gcc
@@ -70,7 +75,7 @@ $brewinstall npm
 $npm install -g typescript bower
 
 # Python
-if [[ $(uname -s == LINUX*) ]]; then
+if [[ $uname == linux* ]]; then
   #   Runtime dependencies of pyenv (https://github.com/pyenv/pyenv/wiki#suggested-build-environment)
   $apt install make build-essential libssl-dev zlib1g-dev \
   libbz2-dev libreadline-dev libsqlite3-dev wget curl llvm \
