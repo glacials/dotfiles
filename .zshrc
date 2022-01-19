@@ -1,5 +1,9 @@
+uname=$(uname -s | tr "[:upper:]" "[:lower:]")
+
 # oh-my-zsh setup
 export ZSH=$HOME/.oh-my-zsh
+
+
 ZSH_THEME="pygmalion"
 plugins=(bundler brew common-aliases dircycle encode64 gem osx rails ruby vi-mode zeus zsh-iterm-touchbar)
 source $ZSH/oh-my-zsh.sh
@@ -14,11 +18,11 @@ alias amend='git add -p && git commit --amend --no-edit && git push -f'
 alias g='git status'
 alias rebase='export CURRENT_BRANCH=`git name-rev --name-only HEAD` && git checkout master && git pull && git checkout `echo $CURRENT_BRANCH` && git rebase master'
 
-if [[ $(uname -s) == LINUX* ]]; then
+if [[ $uname == linux* ]]; then
   alias u='sudo apt-get update -qq && sudo apt-get -yqq upgrade && brew update -qq && brew upgrade -qq'
 fi
 
-if [[ $(uname -s) == Darwin ]]; then
+if [[ $uname == Darwin ]]; then
   alias u='brew update && brew upgrade --quiet'
 fi
 

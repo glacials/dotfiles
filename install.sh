@@ -6,12 +6,6 @@ uname=$(uname -s | tr "[:upper:]" "[:lower:]")
 pwd=$(pwd)
 
 apt="sudo apt-get --quiet --quiet --assume-yes"
-if [[ $uname == linux* ]]; then
-  brew="$HOME/.linuxbrew/bin/brew"
-else
-  brew="brew"
-fi
-brewinstall="$brew install --quiet"
 npm="npm --silent"
 
 # This script is idempotent! It is safe to re-run at any time.
@@ -53,6 +47,16 @@ fi
 
 # Homebrew
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+if [[ $uname == linux* ]]; then
+  if [[ -d "/home/linuxbrew" ]]; then
+    brew="/home/linuxbrew/.linuxbrew/bin/brew"
+  else
+    brew="$HOME/.linuxbrew/bin/brew"
+  fi
+else
+  brew="brew"
+fi
+brewinstall="$brew install --quiet"
 
 # Update path for Homebrew for Linux since we can't source .zshrc yet
 export PATH=/home/linuxbrew/.linuxbrew/bin:$PATH

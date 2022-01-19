@@ -1,6 +1,6 @@
 [user]
 	name = glacials
-	email = qhiiyr@gmail.com
+	email = ben@twos.dev
 [diff]
 	tool = vimdiff
 [difftool "mvimdiff"]
