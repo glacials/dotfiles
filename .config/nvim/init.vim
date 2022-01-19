@@ -54,14 +54,17 @@ Plug 'skwp/greplace.vim'
 Plug 'terryma/vim-multiple-cursors'
 Plug 'tpope/vim-endwise'
 
-" netrw enhancements
-Plug 'tpope/vim-vinegar'
-
 " git <subcommand> as :Git <subcommand>
 Plug 'tpope/vim-fugitive'
 
 " More holistic shell commands, e.g. :Delete to delete a file + close its buffer
 Plug 'tpope/vim-eunuch'
+
+" Autodetect the right indentation style based on file
+Plug 'tpope/vim-sleuth'
+
+" netrw enhancements
+Plug 'tpope/vim-vinegar'
 
 " Color schemes
 Plug 'utensils/colors.vim'
