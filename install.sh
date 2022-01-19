@@ -93,7 +93,7 @@ echo "Starting application installations."
 
 $brewinstall awscli direnv nvim
 
-# Neovim & Neovim plugin dependencies
+# Neovim & plugin dependencies
 $brewinstall fd ripgrep
 
 # Fortune
