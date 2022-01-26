@@ -370,7 +370,7 @@
 		</dict>
 	</dict>
 	<key>Default Bookmark Guid</key>
-	<string>7CA10068-F622-49AC-8497-0433A2977C8A</string>
+	<string>24387A2D-BDA1-40CF-AD94-033B365348E1</string>
 	<key>HapticFeedbackForEsc</key>
 	<false/>
 	<key>HotkeyMigratedFromSingleToMulti</key>
@@ -624,8 +624,6 @@
 			<false/>
 			<key>Blur</key>
 			<false/>
-			<key>Blur Radius</key>
-			<real>14.541938164893617</real>
 			<key>Bold Color</key>
 			<dict>
 				<key>Alpha Component</key>

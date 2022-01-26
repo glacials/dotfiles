@@ -46,7 +46,7 @@ if [[ $uname == linux* ]]; then
 fi
 
 # Homebrew
-/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+brew help > /dev/null || /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 if [[ $uname == linux* ]]; then
   if [[ -d "/home/linuxbrew" ]]; then
     brew="/home/linuxbrew/.linuxbrew/bin/brew"
@@ -95,7 +95,8 @@ $brewinstall rbenv ruby-build
 ########################################## Start application installations
 echo "Starting application installations."
 
-$brewinstall awscli direnv nvim
+# Common tools / replacements
+$brewinstall awscli direnv git nvim wget
 
 # Neovim & plugin dependencies
 $brewinstall fd ripgrep
@@ -103,9 +104,6 @@ $brewinstall fd ripgrep
 # Fortune
 $brewinstall fortune cowsay
 ./fortunes/strfile
-
-# Replace stock macOS programs
-$brewinstall git
 
 ########################################## End application installations
 
@@ -120,16 +118,24 @@ rm -rf $HOME/.oh-my-zsh
 [ -h $HOME/.oh-my-zsh ] && ln -fs $(pwd)/.oh-my-zsh $HOME || ln -is $(pwd)/.oh-my-zsh $HOME
 
 # Change to zsh and replace session
+if [[ $(echo $0) == linux* ]]; then
 chsh -s /bin/zsh `whoami`
 rm -f $HOME/.zshrc
 [ -h $HOME/.zshrc ] && ln -fs $(pwd)/.zshrc $HOME || ln -is $(pwd)/.zshrc $HOME
-zsh
 ########################################## End shell configuration
 
 ########################################## Start manual setup
 
 echo "Some manual steps are still required:"
-echo "  - Open iTerm2 prefs → General → Preferences and load from ./preferences/iterm
+echo "  - Open iTerm2 prefs → General → Preferences and load from ./preferences/iterm -> Don't Copy -> Select 'Automatically'"
 echo "  - Download Nord color scheme for iTerm2: https://github.com/arcticicestudio/nord-iterm2"
 echo ""
 echo "That's it!"
+
+########################################## End manual setup
+
+########################################## Start bootstrapping
+
+source ~/.zshrc
+
+########################################## End bootstrapping
