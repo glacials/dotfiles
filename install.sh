@@ -103,6 +103,10 @@ $brewinstall fd ripgrep
 # Fortune
 $brewinstall fortune cowsay
 ./fortunes/strfile
+
+# Replace stock macOS programs
+$brewinstall git
+
 ########################################## End application installations
 
 ########################################## Start shell configuration
