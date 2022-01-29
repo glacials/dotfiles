@@ -22,7 +22,7 @@ if [[ $uname == linux* ]]; then
   alias u='sudo apt-get update -qq && sudo apt-get -yqq upgrade && brew update -qq && brew upgrade -qq'
 fi
 
-if [[ $uname == Darwin ]]; then
+if [[ $uname == darwin ]]; then
   alias u='brew update && brew upgrade --quiet'
 fi
 
