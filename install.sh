@@ -74,6 +74,11 @@ echo "Ignore above messages re: gcc and build-essential; it is done."
 ########################################## Start languages
 echo "Setting up languages."
 
+# Go
+$brewinstall go
+goinstall="go install"
+$goinstall golang.org/x/tools/gopls@latest # Language server
+
 # JavaScript
 $brewinstall npm
 $npm install -g typescript bower
@@ -113,7 +118,7 @@ touch $HOME/.profile
 
 # Install oh-my-zsh
 rm -rf $HOME/.oh-my-zsh
-sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh --unattended)"
+sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 rm -rf $HOME/.oh-my-zsh
 [ -h $HOME/.oh-my-zsh ] && ln -fs $(pwd)/.oh-my-zsh $HOME || ln -is $(pwd)/.oh-my-zsh $HOME
 
