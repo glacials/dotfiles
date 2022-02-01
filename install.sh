@@ -2,12 +2,10 @@
 set -euo pipefail
 set -x # uncomment to print all commands as they happen
 
-uname=$(uname -s)
+uname=$(uname -s | tr "[:upper:]" "[:lower:]")
 pwd=$(pwd)
 
 apt="sudo apt-get --quiet --quiet --assume-yes"
-brew="brew"
-brewinstall="$brew install --quiet"
 npm="npm --silent"
 
 # This script is idempotent! It is safe to re-run at any time.
@@ -41,19 +39,30 @@ mkdir -p $HOME/.config
 ########################################## Start package managers
 echo "Setting up package managers."
 
-if [[ $(uname -s) == LINUX* ]]; then
+if [[ $uname == linux* ]]; then
   $apt update
   $apt upgrade
   $apt install zsh
 fi
 
 # Homebrew
-/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+brew help > /dev/null || /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+if [[ $uname == linux* ]]; then
+  if [[ -d "/home/linuxbrew" ]]; then
+    brew="/home/linuxbrew/.linuxbrew/bin/brew"
+  else
+    brew="$HOME/.linuxbrew/bin/brew"
+  fi
+else
+  brew="brew"
+fi
+brewinstall="$brew install --quiet"
 
-# Update path here since we can't source .zshrc yet; we haven't installed every tool it will invoke.
+# Update path for Homebrew for Linux since we can't source .zshrc yet
 export PATH=/home/linuxbrew/.linuxbrew/bin:$PATH
+export PATH=$HOME/.linuxbrew/bin:$PATH
 
-if [[ $(uname -s == LINUX*) ]]; then
+if [[ $uname == linux* ]]; then
   $apt install -y build-essential # Homebrew asks for this on install
 fi
 $brewinstall gcc
@@ -65,12 +74,17 @@ echo "Ignore above messages re: gcc and build-essential; it is done."
 ########################################## Start languages
 echo "Setting up languages."
 
+# Go
+$brewinstall go
+goinstall="go install"
+$goinstall golang.org/x/tools/gopls@latest # Language server
+
 # JavaScript
 $brewinstall npm
 $npm install -g typescript bower
 
 # Python
-if [[ $(uname -s == LINUX*) ]]; then
+if [[ $uname == linux* ]]; then
   #   Runtime dependencies of pyenv (https://github.com/pyenv/pyenv/wiki#suggested-build-environment)
   $apt install make build-essential libssl-dev zlib1g-dev \
   libbz2-dev libreadline-dev libsqlite3-dev wget curl llvm \
@@ -93,14 +107,16 @@ rbenv global $latest
 ########################################## Start application installations
 echo "Starting application installations."
 
-$brewinstall awscli direnv nvim
+# Common tools / replacements
+$brewinstall awscli direnv git nvim wget
 
-# Neovim & Neovim plugin dependencies
+# Neovim & plugin dependencies
 $brewinstall fd ripgrep
 
 # Fortune
 $brewinstall fortune cowsay
 ./fortunes/strfile
+
 ########################################## End application installations
 
 ########################################## Start shell configuration
@@ -109,21 +125,29 @@ touch $HOME/.profile
 
 # Install oh-my-zsh
 rm -rf $HOME/.oh-my-zsh
-sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh --unattended)"
+sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 rm -rf $HOME/.oh-my-zsh
 [ -h $HOME/.oh-my-zsh ] && ln -fs $(pwd)/.oh-my-zsh $HOME || ln -is $(pwd)/.oh-my-zsh $HOME
 
 # Change to zsh and replace session
+if [[ $(echo $0) == linux* ]]; then
 chsh -s /bin/zsh `whoami`
 rm -f $HOME/.zshrc
 [ -h $HOME/.zshrc ] && ln -fs $(pwd)/.zshrc $HOME || ln -is $(pwd)/.zshrc $HOME
-zsh
 ########################################## End shell configuration
 
 ########################################## Start manual setup
 
 echo "Some manual steps are still required:"
-echo "  - Open iTerm2 prefs → General → Preferences and load from ./preferences/iterm
+echo "  - Open iTerm2 prefs → General → Preferences and load from ./preferences/iterm -> Don't Copy -> Select 'Automatically'"
 echo "  - Download Nord color scheme for iTerm2: https://github.com/arcticicestudio/nord-iterm2"
 echo ""
 echo "That's it!"
+
+########################################## End manual setup
+
+########################################## Start bootstrapping
+
+source ~/.zshrc
+
+########################################## End bootstrapping

@@ -360,7 +360,7 @@
 		</dict>
 	</dict>
 	<key>Default Bookmark Guid</key>
-	<string>7CA10068-F622-49AC-8497-0433A2977C8A</string>
+	<string>24387A2D-BDA1-40CF-AD94-033B365348E1</string>
 	<key>HapticFeedbackForEsc</key>
 	<false/>
 	<key>HideTab</key>
@@ -616,8 +616,6 @@
 			<false/>
 			<key>Blur</key>
 			<false/>
-			<key>Blur Radius</key>
-			<real>14.541938164893617</real>
 			<key>Bold Color</key>
 			<dict>
 				<key>Alpha Component</key>
@@ -704,7 +702,7 @@
 				<real>0.81214725971221924</real>
 			</dict>
 			<key>Guid</key>
-			<string>7CA10068-F622-49AC-8497-0433A2977C8A</string>
+			<string>24387A2D-BDA1-40CF-AD94-033B365348E1</string>
 			<key>Horizontal Spacing</key>
 			<real>1</real>
 			<key>Idle Code</key>
@@ -1022,8 +1020,6 @@
 			<true/>
 			<key>Normal Font</key>
 			<string>Monaco 12</string>
-			<key>Only The Default BG Color Uses Transparency</key>
-			<false/>
 			<key>Option Key Sends</key>
 			<integer>0</integer>
 			<key>Prompt Before Closing 2</key>
@@ -1111,41 +1107,6 @@
 			<string>/Users/glacials</string>
 		</dict>
 	</array>
-	<key>PointerActions</key>
-	<dict>
-		<key>Button,1,1,,</key>
-		<dict>
-			<key>Action</key>
-			<string>kContextMenuPointerAction</string>
-		</dict>
-		<key>Button,2,1,,</key>
-		<dict>
-			<key>Action</key>
-			<string>kPasteFromClipboardPointerAction</string>
-		</dict>
-		<key>Gesture,ThreeFingerSwipeDown,,</key>
-		<dict>
-			<key>Action</key>
-			<string>kPrevWindowPointerAction</string>
-		</dict>
-		<key>Gesture,ThreeFingerSwipeLeft,,</key>
-		<dict>
-			<key>Action</key>
-			<string>kPrevTabPointerAction</string>
-		</dict>
-		<key>Gesture,ThreeFingerSwipeRight,,</key>
-		<dict>
-			<key>Action</key>
-			<string>kNextTabPointerAction</string>
-		</dict>
-		<key>Gesture,ThreeFingerSwipeUp,,</key>
-		<dict>
-			<key>Action</key>
-			<string>kNextWindowPointerAction</string>
-		</dict>
-	</dict>
-	<key>PromptOnQuitEvenIfThereAreNoWindows</key>
-	<false/>
 	<key>SoundForEsc</key>
 	<false/>
 	<key>VisualIndicatorForEsc</key>
