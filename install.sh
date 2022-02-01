@@ -77,10 +77,17 @@ if [[ $(uname -s == LINUX*) ]]; then
   libncursesw5-dev xz-utils tk-dev libxml2-dev libxmlsec1-dev libffi-dev liblzma-dev
 fi
 $npm install -g pyright # Language server
-$brewinstall pyenv pyenv-virtualenv # pyenv
+$brewinstall pyenv pyenv-virtualenv
+latest=$(pyenv install --list | sed -n '/^[[:space:]]*[0-9]\{1,\}\.[0-9]\{1,\}\.[0-9]\{1,\}[[:space:]]*$/ h;${g;p;}')
+pyenv install $latest
+pyenv global $latest
 
 # Ruby
 $brewinstall rbenv ruby-build
+latest=$(rbenv install --list | sed -n '/^[[:space:]]*[0-9]\{1,\}\.[0-9]\{1,\}\.[0-9]\{1,\}[[:space:]]*$/ h;${g;p;}')
+rbenv install $latest
+rbenv global $latest
+
 ########################################## End languages
 
 ########################################## Start application installations
