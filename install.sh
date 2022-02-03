@@ -108,7 +108,7 @@ rbenv global $latest
 echo "Starting application installations."
 
 # Common tools / replacements
-$brewinstall awscli direnv git nvim wget
+$brewinstall ack awscli direnv git nvim wget
 
 # Neovim & plugin dependencies
 $brewinstall fd ripgrep
