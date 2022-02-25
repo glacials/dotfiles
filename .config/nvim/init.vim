@@ -79,6 +79,9 @@ Plug 'dense-analysis/ale' " Async language-agnostic linting server
 " Go
 Plug 'fatih/vim-go' " Various Go niceties
 
+" Navigation
+Plug 'ggandor/lightspeed.nvim'
+
 " Magic
 Plug 'github/copilot.vim'
 
