@@ -299,6 +299,12 @@ nnoremap <A-j> <C-w>j
 nnoremap <A-k> <C-w>k
 nnoremap <A-l> <C-w>l
 
+" map Ctrl+{h,j,k,l} to navigate between windows
+nnoremap <C-h> <C-w>h
+nnoremap <C-j> <C-w>j
+nnoremap <C-k> <C-w>k
+nnoremap <C-l> <C-w>l
+
 " Set '<leader>sv' (usually <leader> is backslash) to source init.vim
 nnoremap <leader>sv :source $MYVIMRC<CR>
 
