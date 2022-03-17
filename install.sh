@@ -116,6 +116,9 @@ $brewinstall fd ripgrep
 $brewinstall fortune cowsay
 ./fortunes/strfile
 
+# GUI apps
+$brewinstall --cask discord docker iterm2 stay
+
 ########################################## End application installations
 
 ########################################## Start shell configuration
