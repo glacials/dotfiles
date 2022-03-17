@@ -68,7 +68,6 @@ fi
 $brewinstall gcc
 $brew update
 $brew upgrade
-echo "Ignore above messages re: gcc and build-essential; it is done."
 ########################################## End package managers
 
 ########################################## Start languages
