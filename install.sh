@@ -139,6 +139,7 @@ fi
 ########################################## Start manual setup
 echo "Some manual steps are still required:"
 echo "  - Open iTerm2 prefs → General → Preferences and load from ./preferences/iterm -> Don't Copy -> Select 'Automatically'"
+echo "  - Close iTerm2 completely, open Terminal.app and \`git restore\` any changes to ./preferences/iterm/*, then re-open iTerm2"
 echo "  - Download Nord color scheme for iTerm2: https://github.com/arcticicestudio/nord-iterm2"
 echo ""
 echo "That's it!"
