@@ -2,7 +2,7 @@
 
     make
 
-Generates all the symlinks it can (without overwriting anything), then initialize and pulls submodules.  Alternatively,
+Generates all the symlinks it can (without overwriting anything), then initializes and pulls submodules.  Alternatively,
 `make links` then `make init`.
 
 ## Update Vim plugins
