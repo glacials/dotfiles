@@ -92,13 +92,13 @@ fi
 $npm install -g pyright # Language server
 $brewinstall pyenv pyenv-virtualenv
 latest=$(pyenv install --list | sed -n '/^[[:space:]]*[0-9]\{1,\}\.[0-9]\{1,\}\.[0-9]\{1,\}[[:space:]]*$/ h;${g;p;}')
-pyenv install $latest
+pyenv install --skip-existing $latest
 pyenv global $latest
 
 # Ruby
 $brewinstall rbenv ruby-build
 latest=$(rbenv install --list | sed -n '/^[[:space:]]*[0-9]\{1,\}\.[0-9]\{1,\}\.[0-9]\{1,\}[[:space:]]*$/ h;${g;p;}')
-rbenv install $latest
+rbenv install --skip-existing $latest
 rbenv global $latest
 
 ########################################## End languages
