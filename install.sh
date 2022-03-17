@@ -147,9 +147,3 @@ echo ""
 echo "That's it!"
 
 ########################################## End manual setup
-
-########################################## Start bootstrapping
-
-source ~/.zshrc
-
-########################################## End bootstrapping
