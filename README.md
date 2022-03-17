@@ -20,10 +20,8 @@ Some software I consider vital isn't installed automatically:
 - [Magnet][2]
 - [1Password][3]
 - [Docker][4]
-- [Backup and Sync][5]
 
 [1]: https://cordlessdog.com/stay/
 [2]: https://itunes.apple.com/us/app/magnet/id441258766?mt=12
 [3]: https://1password.com/
 [4]: https://docker.com/
-[5]: https://www.google.com/drive/download/backup-and-sync/
