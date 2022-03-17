@@ -1,6 +1,6 @@
 #!/bin/bash
 set -euo pipefail
-set -x # uncomment to print all commands as they happen
+# set -x # uncomment to print all commands as they happen
 
 uname=$(uname -s | tr "[:upper:]" "[:lower:]")
 pwd=$(pwd)
@@ -34,6 +34,7 @@ mkdir -p $HOME/.config
 [ -h $HOME/.config/nvim ]          && ln -fs $(pwd)/.config/nvim          $HOME/.config || ln -is $(pwd)/.config/nvim          $HOME/.config
 [ -h $HOME/.gitconfig ]            && ln -fs $(pwd)/.gitconfig            $HOME         || ln -is $(pwd)/.gitconfig            $HOME
 [ -h $HOME/.gitignore_global ]     && ln -fs $(pwd)/.gitignore_global     $HOME         || ln -is $(pwd)/.gitignore_global     $HOME
+[ -h $HOME/.zshrc ]                && ln -fs $(pwd)/.zshrc                $HOME         || ln -is $(pwd)/.zshrc                $HOME
 ########################################## End symlinks
 
 ########################################## Start package managers
@@ -100,7 +101,6 @@ $brewinstall rbenv ruby-build
 latest=$(rbenv install --list | sed -n '/^[[:space:]]*[0-9]\{1,\}\.[0-9]\{1,\}\.[0-9]\{1,\}[[:space:]]*$/ h;${g;p;}')
 rbenv install --skip-existing $latest
 rbenv global $latest
-
 ########################################## End languages
 
 ########################################## Start application installations
@@ -118,7 +118,6 @@ $brewinstall fortune cowsay
 
 # GUI apps
 $brewinstall --cask discord docker iterm2 stay
-
 ########################################## End application installations
 
 ########################################## Start shell configuration
@@ -127,23 +126,20 @@ touch $HOME/.profile
 
 # Install oh-my-zsh
 rm -rf $HOME/.oh-my-zsh
-sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended --keep-zshrc
 rm -rf $HOME/.oh-my-zsh
-[ -h $HOME/.oh-my-zsh ] && ln -fs $(pwd)/.oh-my-zsh $HOME || ln -is $(pwd)/.oh-my-zsh $HOME
+[ -h $HOME/.oh-my-zsh ]            && ln -fs $(pwd)/.oh-my-zsh            $HOME || ln -is $(pwd)/.oh-my-zsh $HOME
 
-# Change to zsh and replace session
+# Change to zsh if needed
 if [[ $(echo $0) == linux* ]]; then
-chsh -s /bin/zsh `whoami`
-rm -f $HOME/.zshrc
-[ -h $HOME/.zshrc ] && ln -fs $(pwd)/.zshrc $HOME || ln -is $(pwd)/.zshrc $HOME
+  chsh -s /bin/zsh `whoami`
+fi
 ########################################## End shell configuration
 
 ########################################## Start manual setup
-
 echo "Some manual steps are still required:"
 echo "  - Open iTerm2 prefs → General → Preferences and load from ./preferences/iterm -> Don't Copy -> Select 'Automatically'"
 echo "  - Download Nord color scheme for iTerm2: https://github.com/arcticicestudio/nord-iterm2"
 echo ""
 echo "That's it!"
-
 ########################################## End manual setup
