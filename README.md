@@ -22,6 +22,6 @@ Some software I consider vital isn't installed automatically:
 - [Docker][4]
 
 [1]: https://cordlessdog.com/stay/
-[2]: https://itunes.apple.com/us/app/magnet/id441258766?mt=12
-[3]: https://1password.com/
+[2]: https://apps.apple.com/us/app/magnet/id441258766?mt=12
+[3]: https://apps.apple.com/us/app/1password-7-password-manager/id1333542190?mt=12
 [4]: https://docker.com/
