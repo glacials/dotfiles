@@ -120,7 +120,7 @@ $brewinstall fortune cowsay
 $brewinstall --cask discord docker iterm2 stay
 ########################################## End application installations
 
-########################################## Start shell configuration
+########################################## Start system configuration
 # Create $HOME/.profile (to put secret things, that shouldn't go in this repository)
 touch $HOME/.profile
 
@@ -134,7 +134,12 @@ rm -rf $HOME/.oh-my-zsh
 if [[ $(echo $0) == linux* ]]; then
   chsh -s /bin/zsh `whoami`
 fi
-########################################## End shell configuration
+
+if [[ $uname == darwin ]]; then
+  # Show full paths in footer of Finder windows
+  defaults write com.apple.finder ShowPathbar -bool true
+fi
+########################################## End system configuration
 
 ########################################## Start manual setup
 echo "Some manual steps are still required:"
