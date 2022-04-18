@@ -8,6 +8,11 @@ ZSH_THEME="pygmalion"
 plugins=(bundler brew common-aliases dircycle encode64 gem osx rails ruby vi-mode zeus zsh-iterm-touchbar)
 source $ZSH/oh-my-zsh.sh
 
+# zsh setup
+autoload -Uz zmv
+alias zcp="zmv -C"
+alias zln="zmv -L"
+
 path+=("$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin")
 
 # run history-substituted commands (e.g. containing `!!` or `!$`) without confirmation
