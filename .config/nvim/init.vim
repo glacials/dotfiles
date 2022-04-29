@@ -43,10 +43,13 @@ nnoremap <space>wa <cmd>Telescope lsp_code_actions<cr>
 nnoremap gi <cmd>Telescope lsp_implementation<cr>
 nnoremap gd <cmd>Telescope lsp_definitions<cr>
 nnoremap gD <cmd>Telescope lsp_type_definitions<cr>
+" Resume last Telescope search
+nnoremap <leader>g <cmd>Telescope resume<cr>
 " Telescope optional dependencies
 Plug 'kyazdani42/nvim-web-devicons'
 Plug 'neovim/nvim-lspconfig'
 Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'make' }
+
 
 Plug 'nathanaelkane/vim-indent-guides'
 Plug 'rstacruz/vim-closer'
@@ -83,6 +86,11 @@ Plug 'fatih/vim-go' " Various Go niceties
 Plug 'github/copilot.vim'
 
 call plug#end()
+
+" Ruby
+let g:ale_fix_on_save = 1
+let g:ale_linters = {'ruby': ['standardrb']} " gem install standardrb
+let g:ale_fixers = {'ruby': ['standardrb']}
 
 " Language server init (must be after plug#end)
 lua << EOF
@@ -121,9 +129,9 @@ local on_attach = function(client, bufnr)
 end
 
 local servers = {
-  'gopls',
-  'pyright', -- npm i -g pyright
-
+  'gopls', -- Go
+  'pyright', -- Python: npm i -g pyright
+  'solargraph', -- Ruby: gem install solargraph
 }
 for _, lsp in ipairs(servers) do
   nvim_lsp[lsp].setup {
@@ -135,10 +143,13 @@ for _, lsp in ipairs(servers) do
 end
 EOF
 
+" Set up Ruby language server
+lua <<EOF
+require'lspconfig'.solargraph.setup{}
+EOF
+
 " Organize Go imports on save
 lua <<EOF
-  -- …
-
   function goimports(timeout_ms)
     local context = { only = { "source.organizeImports" } }
     vim.validate { context = { context, "t", true } }
@@ -168,6 +179,35 @@ lua <<EOF
       vim.lsp.buf.execute_command(action)
     end
   end
+EOF
+
+" Telescope config (must be after plug#end)
+lua << EOF
+require('telescope').setup{
+  pickers = {
+    find_files = {
+      theme = "ivy",
+    },
+    lsp_code_actions = {
+      theme = "cursor",
+    },
+    lsp_definitions = {
+      theme = "cursor",
+    },
+    lsp_implementations = {
+      theme = "cursor",
+    },
+    lsp_range_code_actions = {
+      theme = "cursor",
+    },
+    lsp_references = {
+      theme = "cursor",
+    },
+    lsp_type_definitions = {
+      theme = "cursor",
+    },
+  }
+}
 EOF
 
 autocmd BufWritePre *.go lua goimports(1000)

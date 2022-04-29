@@ -128,7 +128,10 @@ touch $HOME/.profile
 rm -rf $HOME/.oh-my-zsh
 sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended --keep-zshrc
 rm -rf $HOME/.oh-my-zsh
-[ -h $HOME/.oh-my-zsh ]            && ln -fs $(pwd)/.oh-my-zsh            $HOME || ln -is $(pwd)/.oh-my-zsh $HOME
+# symlinks from a Git repo cause oh-my-zsh to fail updates because it needs itself to be
+# a Git repo, so just copy it instead.
+# [ -h $HOME/.oh-my-zsh ]            && ln -fs $(pwd)/.oh-my-zsh            $HOME || ln -is $(pwd)/.oh-my-zsh $HOME
+cp -r $(pwd)/.oh-my-zsh $HOME/.oh-my-zsh
 
 # Change to zsh if needed
 if [[ $(echo $0) == linux* ]]; then
