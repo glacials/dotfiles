@@ -40,9 +40,12 @@ export AWS_DEFAULT_REGION=us-east-1
 export EDITOR=vim
 export GPG_TTY=$(tty)
 
-# Homebrew for Linux
-path+=($HOME/.linuxbrew/bin)
-path+=(/home/linuxbrew/.linuxbrew/bin)
+# Homebrew
+export HOMEBREW_NO_ENV_HINTS=1
+if [[ $uname == linux* ]]; then
+  path+=($HOME/.linuxbrew/bin)
+  path+=(/home/linuxbrew/.linuxbrew/bin)
+fi
 
 # Go
 export GOPATH=~/go
