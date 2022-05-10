@@ -2,43 +2,57 @@
 set -euo pipefail
 # set -x # uncomment to print all commands as they happen
 
+debug="" # set to y to enable more output
 uname=$(uname -s | tr "[:upper:]" "[:lower:]")
-pwd=$(pwd)
+src=$(dirname $0)
 
 apt="sudo apt-get --quiet --quiet --assume-yes"
 npm="npm --silent"
 
-# This script is idempotent! It is safe to re-run at any time.
-#
-# If you're setting up a machine for the first time, you should do the following manual steps after running this file:
-#
-# 1. gpg --gen-key
-# 2. In the output note the key under the line starting with "pub" (you can re-access this later with gpg --list-keys).
-# 3. git config --global user.signingkey KEY_NOTED_FROM_ABOVE
-# 4. gpg --armor --export | pbcopy
-# 5. Paste that in https://github.com/settings/gpg/new
-#
-# (partly from https://gist.github.com/bmhatfield/cc21ec0a3a2df963bffa3c1f884b676b)
-#
 # TODO: Refactor so we only need to invoke `brew install` once.
 
+########################################## Start bootstrap
+sshkey="$HOME/.ssh/id_rsa"
+answer="n"
+
+if [[ ! -d $HOME/pj/dotfiles ]]; then
+  if [[ -f $HOME/.ssh/id_rsa ]]; then
+    echo "Looks like you've already generated an SSH key."
+    read -p "Is it in GitHub yet [y/N]? " answer
+    answer=$(echo "$answer" | tr '[:upper:]' '[:lower:]')
+  else
+    ssh-keygen -f $sshkey -N ""
+  fi
+
+  if [[ $answer != "y" ]]; then
+    # Need to install Homebrew to install gh to auth with GitHub to clone dotfiles :|
+    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+    brew update --quiet
+    brew install gh --quiet
+    gh auth login --git-protocol ssh --hostname github.com --web
+  fi
+
+  git clone git@github.com:glacials/dotfiles $HOME/pj/dotfiles
+fi
+########################################## End bootstrap
+
 ########################################## Start symlinks
-echo "Setting up symbolic links."
+[[ $debug == "y" ]] && echo "Setting up symbolic links."
 
 
 # Symlinks
 # Note: If creating a symlink to something in a subdirectory of ~, first mkdir -p that directory.
 mkdir -p $HOME/.config
-[ -h $HOME/.ackrc ]                && ln -fs $(pwd)/.ackrc                $HOME         || ln -is $(pwd)/.ackrc                $HOME
-[ -h $HOME/.amethyst ]             && ln -fs $(pwd)/.amethyst             $HOME         || ln -is $(pwd)/.amethyst             $HOME
-[ -h $HOME/.config/nvim ]          && ln -fs $(pwd)/.config/nvim          $HOME/.config || ln -is $(pwd)/.config/nvim          $HOME/.config
-[ -h $HOME/.gitconfig ]            && ln -fs $(pwd)/.gitconfig            $HOME         || ln -is $(pwd)/.gitconfig            $HOME
-[ -h $HOME/.gitignore_global ]     && ln -fs $(pwd)/.gitignore_global     $HOME         || ln -is $(pwd)/.gitignore_global     $HOME
-[ -h $HOME/.zshrc ]                && ln -fs $(pwd)/.zshrc                $HOME         || ln -is $(pwd)/.zshrc                $HOME
+[ -h $HOME/.ackrc ]                && ln -fs $src/.ackrc                $HOME         || ln -is $src/.ackrc                $HOME
+[ -h $HOME/.amethyst ]             && ln -fs $src/.amethyst             $HOME         || ln -is $src/.amethyst             $HOME
+[ -h $HOME/.config/nvim ]          && ln -fs $src/.config/nvim          $HOME/.config || ln -is $src/.config/nvim          $HOME/.config
+[ -h $HOME/.gitconfig ]            && ln -fs $src/.gitconfig            $HOME         || ln -is $src/.gitconfig            $HOME
+[ -h $HOME/.gitignore_global ]     && ln -fs $src/.gitignore_global     $HOME         || ln -is $src/.gitignore_global     $HOME
+[ -h $HOME/.zshrc ]                && ln -fs $src/.zshrc                $HOME         || ln -is $src/.zshrc                $HOME
 ########################################## End symlinks
 
 ########################################## Start package managers
-echo "Setting up package managers."
+[[ $debug == "y" ]] && echo "Setting up package managers."
 
 if [[ $uname == linux* ]]; then
   $apt update
@@ -67,12 +81,12 @@ if [[ $uname == linux* ]]; then
   $apt install -y build-essential # Homebrew asks for this on install
 fi
 $brewinstall gcc
-$brew update
-$brew upgrade
+$brew update --quiet
+$brew upgrade --quiet
 ########################################## End package managers
 
 ########################################## Start languages
-echo "Setting up languages."
+[[ $debug == "y" ]] && echo "Setting up languages."
 
 # Go
 $brewinstall go
@@ -104,7 +118,7 @@ rbenv global $latest
 ########################################## End languages
 
 ########################################## Start application installations
-echo "Starting application installations."
+[[ $debug == "y" ]] && echo "Starting application installations."
 
 # Common tools / replacements
 $brewinstall ack awscli direnv gh git jq nvim wget
@@ -114,7 +128,7 @@ $brewinstall fd ripgrep
 
 # Fortune
 $brewinstall fortune cowsay
-./fortunes/strfile
+$src/fortunes/strfile
 
 # GUI apps
 $brewinstall --cask discord docker iterm2 stay
@@ -130,8 +144,9 @@ sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.
 rm -rf $HOME/.oh-my-zsh
 # symlinks from a Git repo cause oh-my-zsh to fail updates because it needs itself to be
 # a Git repo, so just copy it instead.
-# [ -h $HOME/.oh-my-zsh ]            && ln -fs $(pwd)/.oh-my-zsh            $HOME || ln -is $(pwd)/.oh-my-zsh $HOME
-cp -r $(pwd)/.oh-my-zsh $HOME/.oh-my-zsh
+# [ -h $HOME/.oh-my-zsh ]            && ln -fs $src/.oh-my-zsh            $HOME || ln
+# -is $src/.oh-my-zsh $HOME
+cp -r $src/.oh-my-zsh $HOME/.oh-my-zsh
 
 # Change to zsh if needed
 if [[ $(echo $0) == linux* ]]; then
@@ -144,11 +159,18 @@ if [[ $uname == darwin ]]; then
 fi
 ########################################## End system configuration
 
+########################################## Start one-time boots
+open /Applications/iTerm.app
+########################################## End one-time boots
+
 ########################################## Start manual setup
 echo "Some manual steps are still required:"
 echo "  - Open iTerm2 prefs → General → Preferences and load from ./preferences/iterm -> Don't Copy -> Select 'Automatically'"
 echo "  - Close iTerm2 completely, open Terminal.app and \`git restore\` any changes to ./preferences/iterm/*, then re-open iTerm2"
 echo "  - Download Nord color scheme for iTerm2: https://github.com/arcticicestudio/nord-iterm2"
+echo "  - Install Magnet: https://apps.apple.com/us/app/magnet/id441258766"
+echo "  - Install 1Password: https://apps.apple.com/us/app/1password-7-password-manager/id1333542190"
+echo "  - Install Docker: https://docker.com/"
 echo ""
 echo "That's it!"
 ########################################## End manual setup
