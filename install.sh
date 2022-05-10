@@ -4,10 +4,13 @@ set -euo pipefail
 
 debug="" # set to y to enable more output
 uname=$(uname -s | tr "[:upper:]" "[:lower:]")
-src=$(dirname $0)
 
 apt="sudo apt-get --quiet --quiet --assume-yes"
 npm="npm --silent"
+
+# Beware trying to base this on the current script; if the user is running without
+# cloning (see README), this script's directory will not be the repository directory
+dotfiles=$HOME/pj/dotfiles
 
 # TODO: Refactor so we only need to invoke `brew install` once.
 
@@ -28,7 +31,7 @@ if [[ ! -d $HOME/pj/dotfiles ]]; then
     # Need to install Homebrew to install gh to auth with GitHub to clone dotfiles :|
     /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
     brew update --quiet
-    brew install gh --quiet
+    brew install --quiet gh
     gh auth login --git-protocol ssh --hostname github.com --web
   fi
 
@@ -43,12 +46,12 @@ fi
 # Symlinks
 # Note: If creating a symlink to something in a subdirectory of ~, first mkdir -p that directory.
 mkdir -p $HOME/.config
-[ -h $HOME/.ackrc ]                && ln -fs $src/.ackrc                $HOME         || ln -is $src/.ackrc                $HOME
-[ -h $HOME/.amethyst ]             && ln -fs $src/.amethyst             $HOME         || ln -is $src/.amethyst             $HOME
-[ -h $HOME/.config/nvim ]          && ln -fs $src/.config/nvim          $HOME/.config || ln -is $src/.config/nvim          $HOME/.config
-[ -h $HOME/.gitconfig ]            && ln -fs $src/.gitconfig            $HOME         || ln -is $src/.gitconfig            $HOME
-[ -h $HOME/.gitignore_global ]     && ln -fs $src/.gitignore_global     $HOME         || ln -is $src/.gitignore_global     $HOME
-[ -h $HOME/.zshrc ]                && ln -fs $src/.zshrc                $HOME         || ln -is $src/.zshrc                $HOME
+[ -h $HOME/.ackrc ]                && ln -fs $dotfiles/.ackrc                $HOME         || ln -is $dotfiles/.ackrc                $HOME
+[ -h $HOME/.amethyst ]             && ln -fs $dotfiles/.amethyst             $HOME         || ln -is $dotfiles/.amethyst             $HOME
+[ -h $HOME/.config/nvim ]          && ln -fs $dotfiles/.config/nvim          $HOME/.config || ln -is $dotfiles/.config/nvim          $HOME/.config
+[ -h $HOME/.gitconfig ]            && ln -fs $dotfiles/.gitconfig            $HOME         || ln -is $dotfiles/.gitconfig            $HOME
+[ -h $HOME/.gitignore_global ]     && ln -fs $dotfiles/.gitignore_global     $HOME         || ln -is $dotfiles/.gitignore_global     $HOME
+[ -h $HOME/.zshrc ]                && ln -fs $dotfiles/.zshrc                $HOME         || ln -is $dotfiles/.zshrc                $HOME
 ########################################## End symlinks
 
 ########################################## Start package managers
@@ -112,7 +115,7 @@ pyenv global $latest
 
 # Ruby
 $brewinstall rbenv ruby-build
-latest=$(rbenv install --list | sed -n '/^[[:space:]]*[0-9]\{1,\}\.[0-9]\{1,\}\.[0-9]\{1,\}[[:space:]]*$/ h;${g;p;}')
+latest=$(rbenv install --list 2>/dev/null | sed -n '/^[[:space:]]*[0-9]\{1,\}\.[0-9]\{1,\}\.[0-9]\{1,\}[[:space:]]*$/ h;${g;p;}')
 rbenv install --skip-existing $latest
 rbenv global $latest
 ########################################## End languages
@@ -128,7 +131,7 @@ $brewinstall fd ripgrep
 
 # Fortune
 $brewinstall fortune cowsay
-$src/fortunes/strfile
+$dotfiles/fortunes/strfile
 
 # GUI apps
 $brewinstall --cask discord docker iterm2 stay
@@ -138,19 +141,13 @@ $brewinstall --cask discord docker iterm2 stay
 # Create $HOME/.profile (to put secret things, that shouldn't go in this repository)
 touch $HOME/.profile
 
-# Install oh-my-zsh
+# Install oh-my-zsh (manual method)
 rm -rf $HOME/.oh-my-zsh
-sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended --keep-zshrc
-rm -rf $HOME/.oh-my-zsh
-# symlinks from a Git repo cause oh-my-zsh to fail updates because it needs itself to be
-# a Git repo, so just copy it instead.
-# [ -h $HOME/.oh-my-zsh ]            && ln -fs $src/.oh-my-zsh            $HOME || ln
-# -is $src/.oh-my-zsh $HOME
-cp -r $src/.oh-my-zsh $HOME/.oh-my-zsh
+git clone --quiet https://github.com/ohmyzsh/ohmyzsh.git ~/.oh-my-zsh
 
 # Change to zsh if needed
 if [[ $(echo $0) == linux* ]]; then
-  chsh -s /bin/zsh `whoami`
+  chsh -s /bin/zsh $(whoami)
 fi
 
 if [[ $uname == darwin ]]; then
