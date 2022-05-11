@@ -82,6 +82,9 @@ Plug 'dense-analysis/ale' " Async language-agnostic linting server
 " Go
 Plug 'fatih/vim-go' " Various Go niceties
 
+" Ruby
+Plug 'jlcrochet/vim-ruby'
+
 " Magic
 Plug 'github/copilot.vim'
 
@@ -145,7 +148,7 @@ EOF
 
 " Set up Ruby language server
 lua <<EOF
-require'lspconfig'.solargraph.setup{}
+  require'lspconfig'.solargraph.setup{}
 EOF
 
 " Organize Go imports on save
