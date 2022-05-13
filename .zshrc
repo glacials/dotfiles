@@ -5,7 +5,7 @@ export ZSH=$HOME/.oh-my-zsh
 
 
 ZSH_THEME="pygmalion"
-plugins=(bundler brew common-aliases dircycle encode64 gem macos rails ruby vi-mode zeus zsh-iterm-touchbar)
+plugins=(bundler brew common-aliases dircycle encode64 gem macos rails ruby vi-mode zeus)
 source $ZSH/oh-my-zsh.sh
 
 # zsh setup
