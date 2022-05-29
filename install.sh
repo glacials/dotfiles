@@ -124,7 +124,7 @@ rbenv global $latest
 [[ $debug == "y" ]] && echo "Starting application installations."
 
 # Common tools / replacements
-$brewinstall ack awscli direnv gh git jq nvim watch wget
+$brewinstall ack awscli direnv ffmpeg gh git jq nvim watch wget
 
 # Neovim & plugin dependencies
 $brewinstall fd ripgrep

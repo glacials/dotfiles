@@ -50,12 +50,15 @@ Plug 'kyazdani42/nvim-web-devicons'
 Plug 'neovim/nvim-lspconfig'
 Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'make' }
 
-
 Plug 'nathanaelkane/vim-indent-guides'
 Plug 'rstacruz/vim-closer'
 Plug 'skwp/greplace.vim'
 Plug 'terryma/vim-multiple-cursors'
 Plug 'tpope/vim-endwise'
+
+" cs"' to change surrounding double-quotes to single-quotes
+" VS<p> to surround current line with <p></p>
+Plug 'tpope/vim-surround'
 
 " git <subcommand> as :Git <subcommand>
 Plug 'tpope/vim-fugitive'
@@ -304,13 +307,17 @@ endif
 " highlight current line
 set cursorline
 
-" if supported, highlight the 89th column (the column after the last column we want to wrap at)
+" if supported, highlight the 81st column (the column after the last column we want to wrap at)
 if exists('+colorcolumn')
-  set colorcolumn=89
+  set colorcolumn=81
 endif
 
-" when we use a wrap command like `gqj`, wrap to 88 columns
-set textwidth=88
+" When we use a wrap command like `gqj`, wrap to 80 columns
+set textwidth=80
+
+" Move the cursor through soft-wrapped lines, instead of jumping across them
+noremap j gj
+noremap k gk
 
 " when we use a wrap command like `gqj`, join sentences using one space between them, not two
 :set nojoinspaces
@@ -360,5 +367,14 @@ nnoremap <leader>sv :source $MYVIMRC<CR>
 au BufRead,BufNewFile *.lss setfiletype xml " livesplit
 au BufRead,BufNewFile *.lsl setfiletype xml " livesplit layout
 au BufRead,BufNewFile *.lfs setfiletype xml " llanfair (gerad's fork)
+
+" Automatically fold Markdown at headings
+let g:markdown_folding = 1
+
+" Open file with folds unfolded
+au FileType markdown setlocal foldlevel=99
+
+" Highlight fenced code blocks
+let g:markdown_fenced_languages = ['html', 'python', 'bash=sh', 'ruby', 'javascript', 'go']
 
 filetype plugin indent on
