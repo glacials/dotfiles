@@ -28,7 +28,7 @@ Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install' }
 
 Plug 'gregsexton/gitv'
 Plug 'junegunn/vim-easy-align'
-Plug 'monkoose/boa.vim'
+Plug 'arcticicestudio/nord-vim'
 
 " Telescope (fuzzy file / text finder)
 Plug 'nvim-lua/plenary.nvim'
@@ -299,7 +299,7 @@ syntax enable
 
 set termguicolors
 set background=dark
-colorscheme boa
+colorscheme nord
 
 " show line numbers
 set number
