@@ -299,7 +299,7 @@ syntax enable
 
 set termguicolors
 set background=dark
-colorscheme nord
+colorscheme nord " Use https://vimcolorschemes.com to find more
 
 " show line numbers
 set number
