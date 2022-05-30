@@ -78,6 +78,9 @@ Plug 'utensils/colors.vim'
 " Show a lightbulb in the gutter when autocomplete is available
 Plug 'kosayoda/nvim-lightbulb'
 
+" Fix this issue https://www.reddit.com/r/neovim/comments/ugyekq/lsp_autocomplete_fails_after_07_update/
+Plug 'hrsh7th/nvim-cmp'
+
 " Language server stuff
 Plug 'neovim/nvim-lspconfig' " Official collection of common LSP configs
 Plug 'dense-analysis/ale' " Async language-agnostic linting server
@@ -87,6 +90,11 @@ Plug 'fatih/vim-go' " Various Go niceties
 
 " Ruby
 Plug 'jlcrochet/vim-ruby'
+
+" Prettier (formatter for HTML, CSS, JS, TS, GraphQL, Markdown, JSON, ...)
+Plug 'prettier/vim-prettier', { 'do': 'yarn install --frozen-lockfile --production' }
+let g:prettier#autoformat = 1
+let g:prettier#autoformat_require_pragma = 0
 
 " Magic
 Plug 'github/copilot.vim'
