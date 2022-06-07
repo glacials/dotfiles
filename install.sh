@@ -96,6 +96,7 @@ $brew upgrade --quiet
 $brewinstall go
 goinstall="go install"
 $goinstall golang.org/x/tools/gopls@latest # Language server
+$goinstall github.com/segmentio/golines@latest # gofmt w/ line wrapping
 
 # JavaScript
 $brewinstall npm
