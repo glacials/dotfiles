@@ -10,3 +10,6 @@
 [submodule ".config/nvim/bundle/sidonia"]
 	path = .config/nvim/bundle/sidonia
 	url = git@github.com:alessandroyorba/sidonia
+[submodule ".config/kitty/kitty-themes"]
+	path = .config/kitty/kitty-themes
+	url = git@github.com:dexpota/kitty-themes

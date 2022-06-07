@@ -48,6 +48,7 @@ fi
 mkdir -p $HOME/.config
 [ -h $HOME/.ackrc ]                && ln -fs $dotfiles/.ackrc                $HOME         || ln -is $dotfiles/.ackrc                $HOME
 [ -h $HOME/.amethyst ]             && ln -fs $dotfiles/.amethyst             $HOME         || ln -is $dotfiles/.amethyst             $HOME
+[ -h $HOME/.config/kitty ]         && ln -fs $dotfiles/.config/kitty         $HOME/.config || ln -is $dotfiles/.config/kitty         $HOME/.config
 [ -h $HOME/.config/nvim ]          && ln -fs $dotfiles/.config/nvim          $HOME/.config || ln -is $dotfiles/.config/nvim          $HOME/.config
 [ -h $HOME/.gitconfig ]            && ln -fs $dotfiles/.gitconfig            $HOME         || ln -is $dotfiles/.gitconfig            $HOME
 [ -h $HOME/.gitignore_global ]     && ln -fs $dotfiles/.gitignore_global     $HOME         || ln -is $dotfiles/.gitignore_global     $HOME
@@ -124,7 +125,7 @@ rbenv global $latest
 [[ $debug == "y" ]] && echo "Starting application installations."
 
 # Common tools / replacements
-$brewinstall ack awscli direnv ffmpeg gh git jq nvim watch wget
+$brewinstall ack awscli direnv ffmpeg gh git jq kitty nvim watch wget
 
 # Neovim & plugin dependencies
 $brewinstall fd ripgrep
