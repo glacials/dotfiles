@@ -86,13 +86,11 @@ Plug 'neovim/nvim-lspconfig' " Official collection of common LSP configs
 Plug 'dense-analysis/ale' " Async language-agnostic linting server
 
 " Go
-Plug 'fatih/vim-go' " Various Go niceties
-" Amend gofmt to also wrap lines. Requires:
-"   go install github.com/segmentio/golines@latest
+" Various Go niceties (remove 'do' if removing golines as the gofmt command)
+Plug 'fatih/vim-go', { 'do': 'go install github.com/segmentio/golines@latest' }
+" Amend gofmt to also wrap lines
 let g:go_fmt_command = "golines"
-let g:go_fmt_options = {
-    \ 'golines': '-m 80 -t 2',
-    \ }
+let g:go_fmt_options = {'golines': '-m 80 -t 2'}
 
 " Kitty config syntax highlighting. TODO: Replace with fladson/vim-kitty once
 " https://github.com/fladson/vim-kitty/pull/20 is merged
