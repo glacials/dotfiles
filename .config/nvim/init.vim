@@ -88,6 +88,10 @@ Plug 'dense-analysis/ale' " Async language-agnostic linting server
 " Go
 Plug 'fatih/vim-go' " Various Go niceties
 
+" Kitty config syntax highlighting. TODO: Replace with fladson/vim-kitty once
+" https://github.com/fladson/vim-kitty/pull/20 is merged
+Plug 'glacials/vim-kitty'
+
 " Ruby
 Plug 'jlcrochet/vim-ruby'
 
