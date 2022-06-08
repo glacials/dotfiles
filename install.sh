@@ -2,6 +2,9 @@
 set -euo pipefail
 # set -x # uncomment to print all commands as they happen
 
+git submodule init
+git submodule update
+
 debug="" # set to y to enable more output
 uname=$(uname -s | tr "[:upper:]" "[:lower:]")
 
