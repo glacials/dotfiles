@@ -92,9 +92,8 @@ Plug 'fatih/vim-go', { 'do': 'go install github.com/segmentio/golines@latest' }
 let g:go_fmt_command = "golines"
 let g:go_fmt_options = {'golines': '-m 80 -t 2'}
 
-" Kitty config syntax highlighting. TODO: Replace with fladson/vim-kitty once
-" https://github.com/fladson/vim-kitty/pull/20 is merged
-Plug 'glacials/vim-kitty'
+" Kitty config syntax highlighting.
+Plug 'fladson/vim-kitty'
 
 " Ruby
 Plug 'jlcrochet/vim-ruby'
