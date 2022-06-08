@@ -159,17 +159,13 @@ fi
 ########################################## End system configuration
 
 ########################################## Start one-time boots
-open /Applications/iTerm.app
+open /Applications/kitty.app
 ########################################## End one-time boots
 
 ########################################## Start manual setup
 echo "Some manual steps are still required:"
-echo "  - Open iTerm2 prefs → General → Preferences and load from ./preferences/iterm -> Don't Copy -> Select 'Automatically'"
-echo "  - Close iTerm2 completely, open Terminal.app and \`git restore\` any changes to ./preferences/iterm/*, then re-open iTerm2"
-echo "  - Download Nord color scheme for iTerm2: https://github.com/arcticicestudio/nord-iterm2"
 echo "  - Install Magnet: https://apps.apple.com/us/app/magnet/id441258766"
 echo "  - Install 1Password: https://apps.apple.com/us/app/1password-7-password-manager/id1333542190"
-echo "  - Install Docker: https://docker.com/"
 echo ""
 echo "That's it!"
 ########################################## End manual setup
