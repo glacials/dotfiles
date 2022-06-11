@@ -37,7 +37,7 @@ alias vimdiff='vim -d'
 
 # General env vars
 export AWS_DEFAULT_REGION=us-east-1
-export EDITOR=vim
+export EDITOR=nvim
 export GPG_TTY=$(tty)
 
 # Homebrew
