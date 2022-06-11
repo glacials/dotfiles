@@ -18,6 +18,7 @@ dotfiles=$HOME/pj/dotfiles
 # TODO: Refactor so we only need to invoke `brew install` once.
 
 ########################################## Start bootstrap
+# TODO: See if this section can be removed now that we use chezmoi
 sshkey="$HOME/.ssh/id_rsa"
 answer="n"
 
@@ -41,22 +42,6 @@ if [[ ! -d $HOME/pj/dotfiles ]]; then
   git clone git@github.com:glacials/dotfiles $HOME/pj/dotfiles
 fi
 ########################################## End bootstrap
-
-########################################## Start symlinks
-[[ $debug == "y" ]] && echo "Setting up symbolic links."
-
-
-# Symlinks
-# Note: If creating a symlink to something in a subdirectory of ~, first mkdir -p that directory.
-mkdir -p $HOME/.config
-[ -h $HOME/.ackrc ]                && ln -fs $dotfiles/.ackrc                $HOME         || ln -is $dotfiles/.ackrc                $HOME
-[ -h $HOME/.amethyst ]             && ln -fs $dotfiles/.amethyst             $HOME         || ln -is $dotfiles/.amethyst             $HOME
-[ -h $HOME/.config/kitty ]         && ln -fs $dotfiles/.config/kitty         $HOME/.config || ln -is $dotfiles/.config/kitty         $HOME/.config
-[ -h $HOME/.config/nvim ]          && ln -fs $dotfiles/.config/nvim          $HOME/.config || ln -is $dotfiles/.config/nvim          $HOME/.config
-[ -h $HOME/.gitconfig ]            && ln -fs $dotfiles/.gitconfig            $HOME         || ln -is $dotfiles/.gitconfig            $HOME
-[ -h $HOME/.gitignore_global ]     && ln -fs $dotfiles/.gitignore_global     $HOME         || ln -is $dotfiles/.gitignore_global     $HOME
-[ -h $HOME/.zshrc ]                && ln -fs $dotfiles/.zshrc                $HOME         || ln -is $dotfiles/.zshrc                $HOME
-########################################## End symlinks
 
 ########################################## Start package managers
 [[ $debug == "y" ]] && echo "Setting up package managers."
