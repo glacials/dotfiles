@@ -13,7 +13,7 @@ npm="npm --silent"
 
 # Beware trying to base this on the current script; if the user is running without
 # cloning (see README), this script's directory will not be the repository directory
-dotfiles=$HOME/pj/dotfiles
+dotfiles=$(chezmoi source-path)
 
 # TODO: Refactor so we only need to invoke `brew install` once.
 
@@ -22,7 +22,7 @@ dotfiles=$HOME/pj/dotfiles
 sshkey="$HOME/.ssh/id_rsa"
 answer="n"
 
-if [[ ! -d $HOME/pj/dotfiles ]]; then
+if [[ ! -d $HOME/.ssh ]]; then
   if [[ -f $HOME/.ssh/id_rsa ]]; then
     echo "Looks like you've already generated an SSH key."
     read -p "Is it in GitHub yet [y/N]? " answer
@@ -38,8 +38,6 @@ if [[ ! -d $HOME/pj/dotfiles ]]; then
     brew install --quiet gh
     gh auth login --git-protocol ssh --hostname github.com --web
   fi
-
-  git clone git@github.com:glacials/dotfiles $HOME/pj/dotfiles
 fi
 ########################################## End bootstrap
 
