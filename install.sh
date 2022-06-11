@@ -69,6 +69,9 @@ fi
 $brewinstall gcc
 $brew update --quiet
 $brew upgrade --quiet
+
+$brewinstall mas # macOS App Store CLI
+masinstall="mas install"
 ########################################## End package managers
 
 ########################################## Start languages
@@ -117,8 +120,42 @@ $brewinstall fd ripgrep
 $brewinstall fortune cowsay
 sh ~/.config/fortune/strfile
 
-# GUI apps
+# Non-App Store GUI apps
 $brewinstall --cask discord docker iterm2 stay
+
+# App Store apps
+$masinstall 1480068668 # Messenger
+$masinstall 1362171212 # Caffeinated
+$masinstall 1085114709 # Parallels Desktop
+$masinstall 775737590  # iA Writer
+$masinstall 409183694  # Keynote
+$masinstall 441258766  # Magnet
+$masinstall 747648890  # Telegram
+$masinstall 1333542190 # 1Password 7               (
+$masinstall 1482454543 # Twitter
+$masinstall 1510323563 # SketchFighter 4000 Alpha
+$masinstall 920404675  # Monodraw
+$masinstall 883878097  # Server
+$masinstall 411643860  # DaisyDisk
+$masinstall 1534275760 # LanguageTool
+$masinstall 1596283165 # rcmd
+$masinstall 1233861775 # Acorn
+$masinstall 409203825  # Numbers
+$masinstall 497799835  # Xcode
+$masinstall 1588892909 # Send Companion
+$masinstall 409201541  # Pages
+$masinstall 1480933944 # Vimari
+$masinstall 1475387142 # Tailscale
+$masinstall 408981434  # iMovie
+$masinstall 485812721  # TweetDeck
+$masinstall 1176895641 # Spark
+$masinstall 1451544217 # Adobe Lightroom
+$masinstall 1518425043 # Boop
+$masinstall 1507890049 # Pixeur
+$masinstall 1580649368 # Myst
+$masinstall 1246969117 # Steam Link
+$masinstall 569048352  # Liquid
+$masinstall $toinstall
 ########################################## End application installations
 
 ########################################## Start system configuration
@@ -143,11 +180,3 @@ fi
 ########################################## Start one-time boots
 open /Applications/kitty.app
 ########################################## End one-time boots
-
-########################################## Start manual setup
-echo "Some manual steps are still required:"
-echo "  - Install Magnet: https://apps.apple.com/us/app/magnet/id441258766"
-echo "  - Install 1Password: https://apps.apple.com/us/app/1password-7-password-manager/id1333542190"
-echo ""
-echo "That's it!"
-########################################## End manual setup
