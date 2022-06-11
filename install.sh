@@ -11,10 +11,6 @@ uname=$(uname -s | tr "[:upper:]" "[:lower:]")
 apt="sudo apt-get --quiet --quiet --assume-yes"
 npm="npm --silent"
 
-# Beware trying to base this on the current script; if the user is running without
-# cloning (see README), this script's directory will not be the repository directory
-dotfiles=$(chezmoi source-path)
-
 # TODO: Refactor so we only need to invoke `brew install` once.
 
 ########################################## Start bootstrap
@@ -119,7 +115,7 @@ $brewinstall fd ripgrep
 
 # Fortune
 $brewinstall fortune cowsay
-$dotfiles/fortunes/strfile
+sh ~/.config/fortune/strfile
 
 # GUI apps
 $brewinstall --cask discord docker iterm2 stay
