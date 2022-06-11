@@ -86,7 +86,7 @@ Plug 'neovim/nvim-lspconfig' " Official collection of common LSP configs
 Plug 'dense-analysis/ale' " Async language-agnostic linting server
 
 " Chezmoi
-Plug 'alker0/chezmoi-vim' # Syntax highlighting for chezmoi-managed dotfiles
+Plug 'alker0/chezmoi-vim' " Syntax highlighting for chezmoi-managed dotfiles
 
 " Go
 " Various Go niceties (remove 'do' if removing golines as the gofmt command)
