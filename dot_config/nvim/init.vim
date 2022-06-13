@@ -105,7 +105,8 @@ Plug 'jlcrochet/vim-ruby'
 Plug 'prettier/vim-prettier', { 'do': 'yarn install --frozen-lockfile --production' }
 let g:prettier#autoformat = 1
 let g:prettier#autoformat_require_pragma = 0
-autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.gql,*.markdown,*.md,*.mdown,*.mkd,*.mkdn,*.mdx,*.vue,*.svelte,*.yml,*.yaml,*.html,*.php,*.rb,*.ruby,*.xml,*.html.tmpl noautocmd call prettier#Autoformat()
+" With prettier-plugin-go-template installed, also cover those files
+autocmd BufWritePre *.gohtml,*.gotmpl,*.go.tmpl,*.tmpl,*.tpl,*.html.tmpl noautocmd call prettier#Autoformat()
 
 " Magic
 Plug 'github/copilot.vim'
