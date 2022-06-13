@@ -85,7 +85,7 @@ $goinstall github.com/segmentio/golines@latest # gofmt w/ line wrapping
 
 # JavaScript
 $brewinstall npm
-$npm install -g typescript bower
+$npm install -g bower prettier prettier-plugin-go-template typescript
 
 # Python
 if [[ $uname == linux* ]]; then
