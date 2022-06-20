@@ -152,7 +152,6 @@ $masinstall 1507890049 # Pixeur
 $masinstall 1510323563 # SketchFighter 4000 Alpha
 $masinstall 1518425043 # Boop
 $masinstall 1534275760 # LanguageTool
-$masinstall 1580649368 # Myst
 $masinstall 1588892909 # Send Companion
 $masinstall 1596283165 # rcmd
 $masinstall $toinstall
