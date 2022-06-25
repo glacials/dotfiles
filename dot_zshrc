@@ -53,6 +53,7 @@ path+=($GOPATH/bin)
 
 # Node
 eval "$(nodenv init -)"
+path+=("$HOME/.nodenv/shims")
 
 # Python
 export PYENV_ROOT="$HOME/.pyenv"
