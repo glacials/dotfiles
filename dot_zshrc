@@ -51,6 +51,9 @@ fi
 export GOPATH=~/go
 path+=($GOPATH/bin)
 
+# Node
+eval "$(nodenv init -)"
+
 # Python
 export PYENV_ROOT="$HOME/.pyenv"
 eval "$(pyenv init -)"
