@@ -84,7 +84,7 @@ $goinstall golang.org/x/tools/gopls@latest # Language server
 $goinstall github.com/segmentio/golines@latest # gofmt w/ line wrapping
 
 # JavaScript
-$brewinstall npm
+$brewinstall nodenv npm
 $npm install -g bower prettier prettier-plugin-go-template typescript
 
 # Python
