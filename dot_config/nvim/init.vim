@@ -15,7 +15,7 @@ call plug#begin('~/.local/share/nvim/plugged')
 let g:plug_url_format = 'git@github.com:%s.git'
 
 " Colorize e.g. hex codes
-Plug 'ap/vim-css-color'
+Plug 'rrethy/vim-hexokinase', { 'do': 'make hexokinase' }
 
 " Show open buffers at the top of the screen
 Plug 'fholgado/minibufexpl.vim'
