@@ -22,6 +22,7 @@ alias work='git add -p && git commit -m work && git push'
 alias amend='git add -p && git commit --amend --no-edit && git push -f'
 alias g='git status'
 alias rebase='export CURRENT_BRANCH=`git name-rev --name-only HEAD` && git checkout master && git pull && git checkout `echo $CURRENT_BRANCH` && git rebase master'
+alias curl='curl --proto-default https'
 
 if [[ $uname == linux* ]]; then
   alias u='sudo apt-get update -qq && sudo apt-get -yqq upgrade && brew update -qq && brew upgrade -qq'
