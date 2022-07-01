@@ -86,6 +86,9 @@ $goinstall github.com/segmentio/golines@latest # gofmt w/ line wrapping
 # JavaScript
 $brewinstall nodenv npm
 $npm install -g bower prettier prettier-plugin-go-template typescript
+latest=$(nodenv install --list 2>/dev/null | sed -n '/^[[:space:]]*[0-9]\{1,\}\.[0-9]\{1,\}\.[0-9]\{1,\}[[:space:]]*$/ h;${g;p;}')
+nodenv install --skip-existing $latest
+nodenv global $latest
 
 # Python
 if [[ $uname == linux* ]]; then
@@ -154,7 +157,6 @@ $masinstall 1518425043 # Boop
 $masinstall 1534275760 # LanguageTool
 $masinstall 1588892909 # Send Companion
 $masinstall 1596283165 # rcmd
-$masinstall $toinstall
 ########################################## End application installations
 
 ########################################## Start system configuration
