@@ -57,7 +57,7 @@ if [[ $uname == linux* ]]; then
 else
   brew="brew"
 fi
-brewinstall="$brew install --quiet"
+brewinstall="$brew install --quiet --force"
 
 # Update path for Homebrew for Linux since we can't source .zshrc yet
 export PATH=/home/linuxbrew/.linuxbrew/bin:$PATH
@@ -114,7 +114,7 @@ rbenv global $latest
 [[ $debug == "y" ]] && echo "Starting application installations."
 
 # Common tools / replacements
-$brewinstall ack awscli direnv ffmpeg firefox fzf gh git google-chrome jq kitty nvim watch wget
+$brewinstall ack awscli direnv ffmpeg fzf gh git jq nvim watch wget
 
 # Neovim & plugin dependencies
 $brewinstall fd ripgrep
@@ -124,7 +124,7 @@ $brewinstall fortune cowsay
 sh ~/.config/fortune/strfile
 
 # Non-App Store GUI apps
-$brewinstall --cask discord docker iterm2 stay
+$brewinstall discord docker firefox google-chrome iterm2 kitty stay
 
 # App Store apps
 $masinstall 408981434  # iMovie
@@ -176,6 +176,8 @@ if [[ $uname == darwin ]]; then
   # Show full paths in footer of Finder windows
   defaults write com.apple.finder ShowPathbar -bool true
 fi
+
+crontab ./cron
 ########################################## End system configuration
 
 ########################################## Start one-time boots
