@@ -1,0 +1,2 @@
+# chezmoi source-path returns empty string in cron :(
+0 * * * * /Users/glacials/.local/share/chezmoi/update_twos.dev.sh

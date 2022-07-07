@@ -89,6 +89,7 @@ $npm install -g bower prettier prettier-plugin-go-template typescript
 latest=$(nodenv install --list 2>/dev/null | sed -n '/^[[:space:]]*[0-9]\{1,\}\.[0-9]\{1,\}\.[0-9]\{1,\}[[:space:]]*$/ h;${g;p;}')
 nodenv install --skip-existing $latest
 nodenv global $latest
+nodenv global 17.9.1 # Override for GitHub Copilot requirements
 
 # Python
 if [[ $uname == linux* ]]; then
@@ -124,7 +125,7 @@ $brewinstall fortune cowsay
 sh ~/.config/fortune/strfile
 
 # Non-App Store GUI apps
-$brewinstall discord docker firefox google-chrome iterm2 kitty stay
+$brewinstall discord homebrew/cask/docker firefox google-chrome iterm2 kitty stay
 
 # App Store apps
 $masinstall 408981434  # iMovie
