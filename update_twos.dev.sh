@@ -1,4 +1,7 @@
 #!/bin/bash
+
+# Sleep random duration to reduce chances of conflicts w/ multiple machines
+sleep $((RANDOM % 3600))
 PUBLISHED="/Users/glacials/Library/Mobile Documents/27N4MQEA55~pro~writer/Documents/Published/"
 REPO=/tmp/twos.dev
 

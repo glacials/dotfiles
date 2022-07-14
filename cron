@@ -1,2 +1,5 @@
-# chezmoi source-path returns empty string in cron :(
-0 * * * * /Users/glacials/.local/share/chezmoi/update_twos.dev.sh
+# This cron file will be installed with crontab when install.sh is run. Beware,
+# this overwrites existing crons. TODO: Merge them instead.
+
+# Need full path; `chezmoi source-path` returns empty string when run by cron :(
+0 * * * * /Users/glacials/.local/share/chezmoi/update_twos.dev.sh 1>/tmp/cron.out 2>/tmp/cron.err
