@@ -2,9 +2,6 @@
 set -euo pipefail
 # set -x # uncomment to print all commands as they happen
 
-cd "$(dirname "$0")"
-git submodule init
-git submodule update
 
 debug="" # set to y to enable more output
 uname=$(uname -s | tr "[:upper:]" "[:lower:]")
@@ -36,6 +33,10 @@ if [[ ! -d $HOME/.ssh ]]; then
     gh auth login --git-protocol ssh --hostname github.com --web
   fi
 fi
+
+cd "$(dirname "$0")"
+git submodule init
+git submodule update
 ########################################## End bootstrap
 
 ########################################## Start package managers
