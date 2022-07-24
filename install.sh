@@ -2,6 +2,7 @@
 set -euo pipefail
 # set -x # uncomment to print all commands as they happen
 
+cd "$(dirname "$0")"
 git submodule init
 git submodule update
 
