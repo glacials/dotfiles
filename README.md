@@ -16,6 +16,12 @@ key first. Just run:
 sh -c "$(curl -fsLS chezmoi.io/get)" -- init --apply glacials && $(chezmoi source-path)/install.sh
 ```
 
+### Troubleshooting
+
+If the first run fails for some reason and later runs refuse to clone, try `rm
+~/.gitconfig`, as it forces git@github.com over https://github.com, which will
+fail if the installation didn't yet set up SSH keys for you.
+
 ### Updates
 
 To make updates to dotfiles, use `chezmoi edit $FILE`. Updates will be
