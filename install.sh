@@ -16,12 +16,16 @@ npm="npm --silent"
 sshkey="$HOME/.ssh/id_rsa"
 answer="n"
 
-if [[ -f $HOME/.ssh/id_rsa ]]; then
-  echo "Looks like you've already generated an SSH key."
-  read -p "Is it in GitHub yet [y/N]? " answer
-  answer=$(echo "$answer" | tr '[:upper:]' '[:lower:]')
+if gh auth status; then
+	# Already authenticated
 else
-  ssh-keygen -f $sshkey -N ""
+	if [[ -f $HOME/.ssh/id_rsa ]]; then
+	  echo "Looks like you've already generated an SSH key."
+	  read -p "Is it in GitHub yet [y/N]? " answer
+	  answer=$(echo "$answer" | tr '[:upper:]' '[:lower:]')
+	else
+	  ssh-keygen -f $sshkey -N ""
+	fi
 fi
 
 if [[ $answer != "y" ]]; then
@@ -89,7 +93,10 @@ $npm install -g bower prettier prettier-plugin-go-template typescript
 latest=$(nodenv install --list 2>/dev/null | sed -n '/^[[:space:]]*[0-9]\{1,\}\.[0-9]\{1,\}\.[0-9]\{1,\}[[:space:]]*$/ h;${g;p;}')
 nodenv install --skip-existing $latest
 nodenv global $latest
-nodenv global 17.9.1 # Override for GitHub Copilot requirements
+
+# Override for GitHub Copilot requirements
+nodenv install 17.9.1
+nodenv global 17.9.1
 
 # Python
 if [[ $uname == linux* ]]; then
@@ -115,7 +122,7 @@ rbenv global $latest
 [[ $debug == "y" ]] && echo "Starting application installations."
 
 # Common tools / replacements
-$brewinstall ack awscli direnv ffmpeg fzf gh git jq nvim watch wget
+$brewinstall ack awscli chezmoi direnv ffmpeg fzf gh git jq nvim watch wget
 
 # Neovim & plugin dependencies
 $brewinstall fd ripgrep
