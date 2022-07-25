@@ -16,22 +16,20 @@ npm="npm --silent"
 sshkey="$HOME/.ssh/id_rsa"
 answer="n"
 
-if [[ ! -d $HOME/.ssh ]]; then
-  if [[ -f $HOME/.ssh/id_rsa ]]; then
-    echo "Looks like you've already generated an SSH key."
-    read -p "Is it in GitHub yet [y/N]? " answer
-    answer=$(echo "$answer" | tr '[:upper:]' '[:lower:]')
-  else
-    ssh-keygen -f $sshkey -N ""
-  fi
+if [[ -f $HOME/.ssh/id_rsa ]]; then
+  echo "Looks like you've already generated an SSH key."
+  read -p "Is it in GitHub yet [y/N]? " answer
+  answer=$(echo "$answer" | tr '[:upper:]' '[:lower:]')
+else
+  ssh-keygen -f $sshkey -N ""
+fi
 
-  if [[ $answer != "y" ]]; then
-    # Need to install Homebrew to install gh to auth with GitHub to clone dotfiles :|
-    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-    brew update --quiet
-    brew install --quiet gh
-    gh auth login --git-protocol ssh --hostname github.com --web
-  fi
+if [[ $answer != "y" ]]; then
+  # Need to install Homebrew to install gh to auth with GitHub to clone dotfiles :|
+  /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+  brew update --quiet
+  brew install --quiet gh
+  gh auth login --git-protocol ssh --hostname github.com --web
 fi
 
 cd "$(dirname "$0")"
