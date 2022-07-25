@@ -59,7 +59,12 @@ eval "$(nodenv init -)"
 export PYENV_ROOT="$HOME/.pyenv"
 eval "$(pyenv init -)"
 eval "$(pyenv init --path)"
-eval "$(pyenv virtualenv-init -)"
+# This causes slow every command to be slow to return when running some
+# antiviruses e.g. on work machines. Second line (be slow on cd) is a workaround
+# but still not great from
+# https://github.com/pyenv/pyenv-virtualenv/issues/259#issuecomment-1007432346
+# eval "$(pyenv virtualenv-init -)" 
+# eval "$(pyenv virtualenv-init - | sed s/precmd/precwd/g)"
 
 # Ruby
 path+=("$HOME/.rbenv/shims")
