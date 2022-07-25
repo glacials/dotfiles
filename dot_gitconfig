@@ -1,24 +1,2 @@
-[user]
-	name = glacials
-	email = ben@twos.dev
-[diff]
-	tool = vimdiff
-[difftool "mvimdiff"]
-  cmd = mvim -f -d \"$LOCAL\" \"$REMOTE\"
-[merge]
-  conflictstyle = diff3
-	tool = vimdiff
-[core]
-	editor = nvim
-	excludesfile = ~/.gitignore_global
-[filter "media"]
-	clean = git-media-clean %f
-	smudge = git-media-smudge %f
-[push]
-	default = simple
 [pull]
 	rebase = true
-[init]
-	defaultBranch = main
-[url "git@github.com:"]
-	insteadOf = https://github.com/
