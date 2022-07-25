@@ -16,9 +16,7 @@ npm="npm --silent"
 sshkey="$HOME/.ssh/id_rsa"
 answer="n"
 
-if gh auth status; then
-	# Already authenticated
-else
+if ! gh auth status; then
 	if [[ -f $HOME/.ssh/id_rsa ]]; then
 	  echo "Looks like you've already generated an SSH key."
 	  read -p "Is it in GitHub yet [y/N]? " answer
@@ -26,14 +24,14 @@ else
 	else
 	  ssh-keygen -f $sshkey -N ""
 	fi
-fi
 
-if [[ $answer != "y" ]]; then
-  # Need to install Homebrew to install gh to auth with GitHub to clone dotfiles :|
-  /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-  brew update --quiet
-  brew install --quiet gh
-  gh auth login --git-protocol ssh --hostname github.com --web
+	if [[ $answer != "y" ]]; then
+	  # Need to install Homebrew to install gh to auth with GitHub to clone dotfiles :|
+	  /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+	  brew update --quiet
+	  brew install --quiet gh
+	  gh auth login --git-protocol ssh --hostname github.com --web
+	fi
 fi
 
 cd "$(dirname "$0")"
@@ -95,7 +93,7 @@ nodenv install --skip-existing $latest
 nodenv global $latest
 
 # Override for GitHub Copilot requirements
-nodenv install 17.9.1
+nodenv install --skip-existing 17.9.1
 nodenv global 17.9.1
 
 # Python
