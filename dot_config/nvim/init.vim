@@ -64,7 +64,7 @@ Plug 'tpope/vim-surround'
 Plug 'tpope/vim-fugitive'
 
 " More holistic shell commands, e.g. :Delete to delete a file + close its buffer
-Plug 'tpope/vim-eunuch'
+" Plug 'tpope/vim-eunuch' " TODO: Causes issue on Rolo?
 
 " Autodetect the right indentation style based on file
 Plug 'tpope/vim-sleuth'
