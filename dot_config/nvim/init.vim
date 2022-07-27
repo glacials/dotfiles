@@ -54,7 +54,7 @@ Plug 'nathanaelkane/vim-indent-guides'
 Plug 'rstacruz/vim-closer'
 Plug 'skwp/greplace.vim'
 Plug 'terryma/vim-multiple-cursors'
-Plug 'tpope/vim-endwise'
+" Plug 'tpope/vim-endwise' " TODO: Causes issue on Rolo?
 
 " cs"' to change surrounding double-quotes to single-quotes
 " VS<p> to surround current line with <p></p>
