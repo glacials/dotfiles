@@ -188,13 +188,13 @@ require('telescope').setup{
       theme = "cursor",
     },
     lsp_implementations = {
-      theme = "cursor",
+      theme = "dropdown",
     },
     lsp_range_code_actions = {
       theme = "cursor",
     },
     lsp_references = {
-      theme = "cursor",
+      theme = "dropdown",
     },
     lsp_type_definitions = {
       theme = "cursor",
