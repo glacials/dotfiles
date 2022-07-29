@@ -130,13 +130,13 @@ $brewinstall fortune cowsay
 sh ~/.config/fortune/strfile
 
 # Non-App Store GUI apps (only if not installed; casks don't skip automatically)
-brew list discord              || $brewinstall discord
-brew list homebrew/cask/docker || $brewinstall homebrew/cask/docker
-brew list firefox              || $brewinstall firefox
-brew list google-chrome        || $brewinstall google-chrome
-brew list iterm2               || $brewinstall iterm2
-brew list kitty                || $brewinstall kitty
-brew list stay                 || $brewinstall stay
+brew list discord       >/dev/null || $brewinstall discord
+brew list docker        >/dev/null || $brewinstall homebrew/cask/docker
+brew list firefox       >/dev/null || $brewinstall firefox
+brew list google-chrome >/dev/null || $brewinstall google-chrome
+brew list iterm2        >/dev/null || $brewinstall iterm2
+brew list kitty         >/dev/null || $brewinstall kitty
+brew list stay          >/dev/null || $brewinstall stay
 
 # App Store apps
 $masinstall 408981434  # iMovie
@@ -147,28 +147,22 @@ $masinstall 411643860  # DaisyDisk
 $masinstall 441258766  # Magnet
 $masinstall 485812721  # TweetDeck
 $masinstall 497799835  # Xcode
-$masinstall 569048352  # Liquid
 $masinstall 747648890  # Telegram
 $masinstall 775737590  # iA Writer
 $masinstall 883878097  # Server
 $masinstall 920404675  # Monodraw
 $masinstall 1085114709 # Parallels Desktop
-$masinstall 1176895641 # Spark
 $masinstall 1233861775 # Acorn
 $masinstall 1246969117 # Steam Link
-$masinstall 1333542190 # 1Password 7               (
-$masinstall 1362171212 # Caffeinated
+$masinstall 1333542190 # 1Password 7
 $masinstall 1451544217 # Adobe Lightroom
 $masinstall 1475387142 # Tailscale
 $masinstall 1480068668 # Messenger
 $masinstall 1480933944 # Vimari
 $masinstall 1482454543 # Twitter
 $masinstall 1507890049 # Pixeur
-$masinstall 1510323563 # SketchFighter 4000 Alpha
 $masinstall 1518425043 # Boop
 $masinstall 1534275760 # LanguageTool
-$masinstall 1588892909 # Send Companion
-$masinstall 1596283165 # rcmd
 ########################################## End application installations
 
 ########################################## Start system configuration
