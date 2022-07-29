@@ -122,15 +122,21 @@ rbenv global $latest
 # Common tools / replacements
 $brewinstall ack awscli chezmoi direnv ffmpeg fzf gh git jq nvim watch wget
 
-# Neovim & plugin dependencies
+# Neovim & plugin dependencies (TODO: Move these to 'do' hooks in init.vim)
 $brewinstall fd ripgrep
 
 # Fortune
 $brewinstall fortune cowsay
 sh ~/.config/fortune/strfile
 
-# Non-App Store GUI apps
-$brewinstall discord homebrew/cask/docker firefox google-chrome iterm2 kitty stay
+# Non-App Store GUI apps (only if not installed; casks don't skip automatically)
+brew list discord              || $brewinstall discord
+brew list homebrew/cask/docker || $brewinstall homebrew/cask/docker
+brew list firefox              || $brewinstall firefox
+brew list google-chrome        || $brewinstall google-chrome
+brew list iterm2               || $brewinstall iterm2
+brew list kitty                || $brewinstall kitty
+brew list stay                 || $brewinstall stay
 
 # App Store apps
 $masinstall 408981434  # iMovie
