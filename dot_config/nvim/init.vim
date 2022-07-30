@@ -95,6 +95,9 @@ Plug 'fatih/vim-go', { 'do': 'go install github.com/segmentio/golines@latest' }
 let g:go_fmt_command = "golines"
 let g:go_fmt_options = {'golines': '-m 80 -t 2'}
 
+" Java
+Plug 'mfussenegger/nvim-jdtls', { 'do': 'brew install jdtls' }
+
 " Kitty config syntax highlighting.
 Plug 'fladson/vim-kitty'
 
