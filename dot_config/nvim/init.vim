@@ -173,9 +173,10 @@ for _, lsp in ipairs(servers) do
 end
 EOF
 
-" Set up Ruby language server
+" Set up language servers
 lua <<EOF
-  require'lspconfig'.solargraph.setup{}
+  require'lspconfig'.jdtls.setup{}      -- Java
+  require'lspconfig'.solargraph.setup{} -- Ruby
 EOF
 
 " Telescope config (must be after plug#end)
