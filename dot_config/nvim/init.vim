@@ -159,6 +159,7 @@ end
 
 local servers = {
   'gopls', -- Go
+  'jdtls', -- Java
   'pyright', -- Python: npm i -g pyright
   'solargraph', -- Ruby: gem install solargraph
 }
