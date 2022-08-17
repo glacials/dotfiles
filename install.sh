@@ -155,7 +155,6 @@ $masinstall 920404675  # Monodraw
 $masinstall 1085114709 # Parallels Desktop
 $masinstall 1233861775 # Acorn
 $masinstall 1246969117 # Steam Link
-$masinstall 1333542190 # 1Password 7
 $masinstall 1451544217 # Adobe Lightroom
 $masinstall 1475387142 # Tailscale
 $masinstall 1480068668 # Messenger
@@ -164,6 +163,7 @@ $masinstall 1482454543 # Twitter
 $masinstall 1507890049 # Pixeur
 $masinstall 1518425043 # Boop
 $masinstall 1534275760 # LanguageTool
+$masinstall 1569813296 # 1Password for Safari
 ########################################## End application installations
 
 ########################################## Start system configuration
