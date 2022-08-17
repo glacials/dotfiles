@@ -130,6 +130,7 @@ $brewinstall fortune cowsay
 sh ~/.config/fortune/strfile
 
 # Non-App Store GUI apps (only if not installed; casks don't skip automatically)
+brew list 1password     >/dev/null || $brewinstall 1password
 brew list discord       >/dev/null || $brewinstall discord
 brew list docker        >/dev/null || $brewinstall homebrew/cask/docker
 brew list firefox       >/dev/null || $brewinstall firefox
