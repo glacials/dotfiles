@@ -97,7 +97,6 @@ let g:go_fmt_options = {'golines': '-m 80 -t 2'}
 
 " Java
 Plug 'mfussenegger/nvim-jdtls', { 'do': 'brew install jdtls' } " Language server
-Plug 'vim-scripts/JavaBrowser' " Package-based browsing
 
 " Kitty config syntax highlighting.
 Plug 'fladson/vim-kitty'
