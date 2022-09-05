@@ -146,7 +146,6 @@ $masinstall 409201541  # Pages
 $masinstall 409203825  # Numbers
 $masinstall 411643860  # DaisyDisk
 $masinstall 441258766  # Magnet
-$masinstall 485812721  # TweetDeck
 $masinstall 497799835  # Xcode
 $masinstall 747648890  # Telegram
 $masinstall 775737590  # iA Writer
