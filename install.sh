@@ -16,7 +16,7 @@ npm="npm --silent"
 sshkey="$HOME/.ssh/id_rsa"
 answer="n"
 
-if ! gh auth status >/dev/null; then
+if ! gh auth status 1>/dev/null 2>/dev/null; then
 	if [[ -f $HOME/.ssh/id_rsa ]]; then
 	  echo "Looks like you've already generated an SSH key."
 	  read -p "Is it in GitHub yet [y/N]? " answer
