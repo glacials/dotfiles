@@ -24,7 +24,7 @@ fail if the installation didn't yet set up SSH keys for you.
 
 ### Updates
 
-To make updates to dotfiles, use `chezmoi edit $FILE`. Updates will be
+To make updates to dotfiles, use `chezmoi edit --apply $FILE`. Updates will be
 automatically committed and pushed.
 
 ## Caveats
