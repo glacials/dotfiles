@@ -45,6 +45,8 @@ export HOMEBREW_NO_ENV_HINTS=1
 if [[ $uname == linux* ]]; then
   path+=($HOME/.linuxbrew/bin)
   path+=(/home/linuxbrew/.linuxbrew/bin)
+else
+  path=('/opt/homebrew/bin' $path)
 fi
 
 # Go
