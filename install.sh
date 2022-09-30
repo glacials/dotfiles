@@ -145,6 +145,7 @@ $masinstall 409183694  # Keynote
 $masinstall 409201541  # Pages
 $masinstall 409203825  # Numbers
 $masinstall 411643860  # DaisyDisk
+$masinstall 430798174  # HazeOver
 $masinstall 441258766  # Magnet
 $masinstall 497799835  # Xcode
 $masinstall 747648890  # Telegram
