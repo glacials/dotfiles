@@ -157,6 +157,7 @@ $masinstall 1233861775 # Acorn
 $masinstall 1246969117 # Steam Link
 $masinstall 1451544217 # Adobe Lightroom
 $masinstall 1475387142 # Tailscale
+$masinstall 1478821913 # GoLinks for Safari
 $masinstall 1480068668 # Messenger
 $masinstall 1480933944 # Vimari
 $masinstall 1482454543 # Twitter
