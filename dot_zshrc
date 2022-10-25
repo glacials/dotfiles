@@ -40,6 +40,11 @@ alias vimdiff='vim -d'
 export EDITOR=nvim
 export GPG_TTY=$(tty)
 
+# fzf command completion
+export FZF_COMPLETION_TRIGGER=''
+bindkey '^T' fzf-completion
+bindkey '^I' $fzf_default_completion
+
 # Homebrew
 export HOMEBREW_NO_ENV_HINTS=1
 if [[ $uname == linux* ]]; then
