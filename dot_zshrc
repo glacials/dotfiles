@@ -41,7 +41,7 @@ export EDITOR=nvim
 export GPG_TTY=$(tty)
 
 # zsh-fzf-history-search config
-export ZSH_FZF_HISTROY_SEARCH_FZF_EXTRA_ARGS='--height 40%'
+export ZSH_FZF_HISTORY_SEARCH_FZF_EXTRA_ARGS='--height 40%'
 
 # Homebrew
 export HOMEBREW_NO_ENV_HINTS=1
