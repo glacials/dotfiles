@@ -1,7 +1,21 @@
 #!/bin/bash
+set -euxo pipefail
 
-# Sleep random duration to reduce chances of conflicts w/ multiple machines
-sleep $((RANDOM % 3600))
+_setArgs(){
+  while [ "${1:-}" != "" ]; do
+    case "$1" in
+      "--stagger")
+        # shift  # uncomment if this option takes an arg
+        # Sleep random duration to reduce chances of conflicts w/ multiple machines
+        sleep $((RANDOM % 3600))
+        ;;
+    esac
+    shift
+  done
+}
+
+_setArgs $*
+
 PUBLISHED="/Users/glacials/Library/Mobile Documents/27N4MQEA55~pro~writer/Documents/Published/"
 REPO=/tmp/twos.dev
 
