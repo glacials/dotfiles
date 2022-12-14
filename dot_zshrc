@@ -13,7 +13,7 @@ autoload -Uz zmv
 alias zcp="zmv -C"
 alias zln="zmv -L"
 
-path+=("$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin")
+path+=("$HOME/bin:$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin")
 
 # run history-substituted commands (e.g. containing `!!` or `!$`) without confirmation
 unsetopt histverify
