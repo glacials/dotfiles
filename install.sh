@@ -137,6 +137,7 @@ brew list firefox       >/dev/null || $brewinstall firefox
 brew list google-chrome >/dev/null || $brewinstall google-chrome
 brew list iterm2        >/dev/null || $brewinstall iterm2
 brew list kitty         >/dev/null || $brewinstall kitty
+brew list launchcontrol >/dev/null || $brewinstall launchcontrol
 brew list stay          >/dev/null || $brewinstall stay
 
 # App Store apps
