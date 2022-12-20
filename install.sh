@@ -191,8 +191,9 @@ if [ ! -L ~/icloud ]; then
   ln -s ~/Library/Mobile\ Documents/com~apple~CloudDocs ~/icloud
 fi
 
-
+# Cron et al.
 crontab ./cron
+ln -s $(chezmoi source-path)/LaunchAgents/* ~/Library/LaunchAgents
 ########################################## End system configuration
 
 ########################################## Start one-time boots
