@@ -24,14 +24,14 @@ _setArgs $*
 
 REPO=/tmp/pottytrain
 
-if [ -d $REPO ]; then
+if [ -d $REPO && -f $REPO/.git ]; then
   cd $REPO
   git pull
 else
+  rm -rf $REPO
   git clone git@github.com:glacials/pottytrain $REPO
-  cd $REPO
 fi
 
-cp -f ~/icloud/Documents/storage/secrets/mailgun.key /tmp/pottytrain/mailgun.key
-
-/tmp/pottytrain/main.py $extraArgs
+cp -f ~/icloud/Documents/storage/secrets/mailgun.key $REPO/mailgun.key
+~/.pyenv/shims/pip install -r $REPO/requirements.txt
+~/.pyenv/shims/python $REPO/main.py $extraArgs

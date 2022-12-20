@@ -2,26 +2,27 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-    <key>Label</key>
-    <string>dev.twos.PottyTrain</string>
-    <key>ProgramArguments</key>
-    <array>
-        <string>/Users/glacials/.local/share/chezmoi/run_pottytrain.sh</string>
-        <string>--email</string>
-        <string>--stagger</string>
-    </array>
-    <key>StartCalendarInterval</key>
-    <dict>
-        <key>Weekday</key>
-        <integer>0</integer>
-        <key>Hour</key>
-        <integer>0</integer>
-        <key>Minute</key>
-        <integer>0</integer>
-    </dict>
-    <key>StandardOutPath</key>
-    <string>/tmp/launchagent.out</string>
-    <key>StandardErrorPath</key>
-    <string>/tmp/launchagent.err</string>
+	<key>Label</key>
+	<string>dev.twos.PottyTrain</string>
+	<key>ProgramArguments</key>
+	<array>
+		<string>/usr/local/bin/fdautil</string>
+		<string>exec</string>
+		<string>/Users/glacials/.local/share/chezmoi/run_pottytrain.sh</string>
+		<string>--email</string>
+	</array>
+	<key>StandardErrorPath</key>
+	<string>/tmp/launchagent.err</string>
+	<key>StandardOutPath</key>
+	<string>/tmp/launchagent.out</string>
+	<key>StartCalendarInterval</key>
+  <dict>
+      <key>Weekday</key>
+      <integer>0</integer>
+      <key>Hour</key>
+      <integer>0</integer>
+      <key>Minute</key>
+      <integer>0</integer>
+  </dict>
 </dict>
 </plist>
