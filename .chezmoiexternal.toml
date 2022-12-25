@@ -3,4 +3,3 @@ type = "archive"
 url = "https://github.com/doomemacs/doomemacs/archive/master.tar.gz"
 exact = true 
 stripComponents = 1
-refreshPeriod = "168h"
