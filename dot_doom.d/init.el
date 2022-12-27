@@ -24,6 +24,7 @@
 (provide 'init)
 
 (setq gofmt-command "goimports")
+(add-to-list 'auto-mode-alist '("\\.go\\'" . go-mode))
 (add-hook 'before-save-hook 'gofmt-before-save)
 
 ;;; init.el ends here
