@@ -23,6 +23,7 @@
 
 (provide 'init)
 
-(add-hook 'before-save-hook #'gofmt-before-save)
+(setq gofmt-command "goimports")
+(add-hook 'before-save-hook 'gofmt-before-save)
 
 ;;; init.el ends here
