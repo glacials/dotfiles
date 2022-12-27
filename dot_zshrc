@@ -37,8 +37,7 @@ alias vim=nvim
 alias vimdiff='vim -d'
 
 # General env vars
-# export EDITOR='open -a /Applications/Emacs.app' # TODO: Doesn't work w chezmoi
-export EDITOR='nvim'
+export EDITOR='emacsclient'
 export GPG_TTY=$(tty)
 
 # zsh-fzf-history-search config
