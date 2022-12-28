@@ -192,3 +192,7 @@
        :config
        ;;literate
        (default +bindings +smartparens))
+
+(setq gofmt-command "goimports")
+(add-to-list 'auto-mode-alist '("\\.go\\'" . go-mode))
+(add-hook 'before-save-hook 'gofmt-before-save)
