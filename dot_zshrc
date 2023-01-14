@@ -54,6 +54,7 @@ alias curl='curl --proto-default https'
 alias g='git status'
 alias l='ls -l --color=auto'
 alias rebase='export CURRENT_BRANCH=`git name-rev --name-only HEAD` && git checkout master && git pull && git checkout `echo $CURRENT_BRANCH` && git rebase master'
+alias s="kitty +kitten ssh"
 alias work='git add -p && git commit -m work && git push'
 
 if [[ $uname == linux* ]]; then
