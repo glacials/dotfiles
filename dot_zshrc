@@ -78,7 +78,7 @@ export ZSH_FZF_HISTORY_SEARCH_FZF_EXTRA_ARGS='--height 40%'
 
 # Emacs
 path+=("$HOME/.config/emacs/bin")
-alias e='emacsclient -n'
+alias e='emacsclient --no-wait'
 
 
 # Homebrew
