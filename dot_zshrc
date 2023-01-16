@@ -78,6 +78,8 @@ export ZSH_FZF_HISTORY_SEARCH_FZF_EXTRA_ARGS='--height 40%'
 
 # Emacs
 path+=("$HOME/.config/emacs/bin")
+alias e='emacsclient -n'
+
 
 # Homebrew
 export HOMEBREW_NO_ENV_HINTS=1

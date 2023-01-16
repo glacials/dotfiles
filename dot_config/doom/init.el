@@ -193,6 +193,9 @@
        ;;literate
        (default +bindings +smartparens))
 
+
+(setq evil-respect-visual-line-mode t) ; make jk move by visual lines, not logical lines
+
 (setq gofmt-command "goimports")
 (add-to-list 'auto-mode-alist '("\\.go\\'" . go-mode))
 (add-hook 'before-save-hook 'gofmt-before-save)
