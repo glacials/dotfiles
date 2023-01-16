@@ -1,5 +1,7 @@
 ;;; init.el -*- lexical-binding: t; -*-
 
+(setq evil-respect-visual-line-mode t) ; make jk move by visual lines, not logical lines
+
 ;; This file controls what Doom modules are enabled and what order they load
 ;; in. Remember to run 'doom sync' after modifying it!
 
@@ -193,8 +195,6 @@
        ;;literate
        (default +bindings +smartparens))
 
-
-(setq evil-respect-visual-line-mode t) ; make jk move by visual lines, not logical lines
 
 (setq gofmt-command "goimports")
 (add-to-list 'auto-mode-alist '("\\.go\\'" . go-mode))
