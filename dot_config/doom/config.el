@@ -4,7 +4,7 @@
 ;; sync' after modifying this file!
 
 (setq evil-respect-visual-line-mode t) ; make jk move by visual lines, not logical lines
-(setq org-journal-dir "~/Documents/notes/journal")
+(setq org-directory "~/Documents/notes/org")
 
 ;; Some functionality uses this to identify you, e.g. GPG configuration, email
 ;; clients, file templates and snippets. It is optional.
