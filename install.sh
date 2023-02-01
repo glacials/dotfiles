@@ -120,7 +120,7 @@ rbenv global $latest
 [[ $debug == "y" ]] && echo "Starting application installations."
 
 # Common tools / replacements
-$brewinstall ack awscli chezmoi direnv ffmpeg fzf gh git jq nvim starship tmux watch visual-studio-code wget
+$brewinstall ack awscli chezmoi direnv ffmpeg fzf gh git jq nvim starship syncthing tmux watch visual-studio-code wget
 
 # Neovim & plugin dependencies (TODO: Move these to 'do' hooks in init.vim)
 $brewinstall fd ripgrep
@@ -131,6 +131,9 @@ $brewinstall railwaycat/emacsmacport/emacs-mac
 # Fortune
 $brewinstall fortune cowsay
 sh ~/.config/fortune/strfile
+
+# Services
+brew services start syncthing
 
 # Non-App Store GUI apps (only if not installed; casks don't skip automatically)
 brew list 1password     >/dev/null || $brewinstall 1password
