@@ -51,6 +51,7 @@ unsetopt histverify
 
 alias amend='git add -p && git commit --amend --no-edit && git push -f'
 alias curl='curl --proto-default https'
+alias e="$EDITOR"
 alias g='git status'
 alias l='ls -l --color=auto'
 alias rebase='export CURRENT_BRANCH=`git name-rev --name-only HEAD` && git checkout master && git pull && git checkout `echo $CURRENT_BRANCH` && git rebase master'

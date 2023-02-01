@@ -125,6 +125,9 @@ $brewinstall ack awscli chezmoi direnv ffmpeg fzf gh git jq nvim starship tmux w
 # Neovim & plugin dependencies (TODO: Move these to 'do' hooks in init.vim)
 $brewinstall fd ripgrep
 
+# Emacs
+$brewinstall railwaycat/emacsmacport/emacs-mac
+
 # Fortune
 $brewinstall fortune cowsay
 sh ~/.config/fortune/strfile
