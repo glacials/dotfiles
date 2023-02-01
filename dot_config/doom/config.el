@@ -3,11 +3,13 @@
 ;; Place your private configuration here! Remember, you do not need to run 'doom
 ;; sync' after modifying this file!
 
+(setq evil-respect-visual-line-mode t) ; make jk move by visual lines, not logical lines
+(setq org-journal-dir "~/Documents/notes/journal")
 
 ;; Some functionality uses this to identify you, e.g. GPG configuration, email
 ;; clients, file templates and snippets. It is optional.
-(setq user-full-name "John Doe"
-      user-mail-address "john@doe.com")
+(setq user-full-name "Ben Carlsson"
+      user-mail-address "ben@twos.dev")
 
 ;; Doom exposes five (optional) variables for controlling fonts in Doom:
 ;;
