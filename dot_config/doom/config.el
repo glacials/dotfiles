@@ -5,6 +5,7 @@
 
 (setq evil-respect-visual-line-mode t) ; make jk move by visual lines, not logical lines
 (setq org-directory "~/Documents/notes/org")
+(setq org-default-notes-file (concat org-directory "/capture.org"))
 
 ;; Some functionality uses this to identify you, e.g. GPG configuration, email
 ;; clients, file templates and snippets. It is optional.
