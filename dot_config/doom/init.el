@@ -1,8 +1,5 @@
 ;;; init.el -*- lexical-binding: t; -*-
 
-(setq evil-respect-visual-line-mode t) ; make jk move by visual lines, not logical lines
-(setq org-journal-dir concatenate '(getenv "HOME") "/Documents/notes/journal")
-
 ;; This file controls what Doom modules are enabled and what order they load
 ;; in. Remember to run 'doom sync' after modifying it!
 
