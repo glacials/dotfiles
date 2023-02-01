@@ -4,7 +4,6 @@
 ;; sync' after modifying this file!
 
 (setq evil-respect-visual-line-mode t) ; make jk move by visual lines, not logical lines
-(setq org-directory "~/Documents/notes/org")
 (setq org-default-notes-file (concat org-directory "/capture.org"))
 
 ;; Some functionality uses this to identify you, e.g. GPG configuration, email
@@ -77,3 +76,5 @@
 ;;
 ;; You can also try 'gd' (or 'C-c c d') to jump to their definition and see how
 ;; they are implemented.
+
+(setq org-directory "~/Documents/notes/org")
