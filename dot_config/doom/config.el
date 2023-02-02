@@ -5,6 +5,9 @@
 
 (setq evil-respect-visual-line-mode t) ; make jk move by visual lines, not logical lines
 
+; Autosave org-mode buffers after todo item states change
+(advice-add 'org-todo :after 'org-save-all-org-buffers)
+
 ;; Some functionality uses this to identify you, e.g. GPG configuration, email
 ;; clients, file templates and snippets. It is optional.
 (setq user-full-name "Ben Carlsson"
