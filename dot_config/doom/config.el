@@ -8,6 +8,13 @@
 ; Autosave org-mode buffers after todo item states change
 (advice-add 'org-todo :after 'org-save-all-org-buffers)
 
+(setq org-capture-templates
+      '(("t" "Blank TODO entry for today" entry (file+olp+datetree "~/org/notes.org" "Daily log")
+        "* TODO %?")
+        ("n" "Blank note for today" item (file+olp+datetree "~/org/notes.org" "Daily log")
+        "%?")
+       ))
+
 ;; Some functionality uses this to identify you, e.g. GPG configuration, email
 ;; clients, file templates and snippets. It is optional.
 (setq user-full-name "Ben Carlsson"
