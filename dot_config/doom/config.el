@@ -20,6 +20,8 @@
 (setq user-full-name "Ben Carlsson"
       user-mail-address "ben@twos.dev")
 
+(mac-pseudo-daemon-mode)
+
 ;; Doom exposes five (optional) variables for controlling fonts in Doom:
 ;;
 ;; - `doom-font' -- the primary font to use
