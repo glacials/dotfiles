@@ -13,7 +13,6 @@
 (package! chezmoi)  ; Dotfiles management
 
 (package! mac-pseudo-daemon) ; Stop macOS Emacs from quitting when last frame exits
-; (mac-pseudo-daemon-mode)
 
 ;; To install a package directly from a remote git repo, you must specify a
 ;; `:recipe'. You'll find documentation on what `:recipe' accepts here:
