@@ -9,7 +9,8 @@
 ;; To install SOME-PACKAGE from MELPA, ELPA or emacsmirror:
 ;(package! some-package)
 
-(package! hcl-mode)
+(package! hcl-mode) ; HashiCorp Configuration Language
+(package! chezmoi)  ; Dotfiles management
 
 ;; To install a package directly from a remote git repo, you must specify a
 ;; `:recipe'. You'll find documentation on what `:recipe' accepts here:
