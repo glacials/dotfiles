@@ -5,13 +5,11 @@
 
 (setq evil-respect-visual-line-mode t) ; make jk move by visual lines, not logical lines
 
-(after! org-mode
-        (advice-add 'org-todo :after 'org-save-all-org-buffers)
-        (setq org-todo-keywords
-                '((sequence "?(?)" "TODO(t!)"  "BLKD(b@)" "STRT(s!)" "|" "CNCL(c@)" "DONE(d!)")
-                (sequence "[ ](T!)" "[-](S!)" "[?](W!)" "|" "[X](D!)")
-                (sequence "|" "OK(o!)" "YES (y!)" "NO (n!)")))
-)
+(advice-add 'org-todo :after 'org-save-all-org-buffers)
+(setq org-todo-keywords
+        '((sequence "?(?)" "TODO(t!)"  "BLKD(b@)" "STRT(s!)" "|" "CNCL(c@)" "DONE(d!)")
+        (sequence "[ ](T!)" "[-](S!)" "[?](W!)" "|" "[X](D!)")
+        (sequence "|" "OK(o!)" "YES (y!)" "NO (n!)")))
 
 
 (setq org-todo-keyword-faces
