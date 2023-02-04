@@ -12,13 +12,12 @@
         (sequence "|" "OK(o!)" "YES (y!)" "NO (n!)")))
 )
 
-(after! org 
-(setq org-todo-keyword-faces
-      '(("?" . org-todo)
-        ("TODO" . org-todo)
-        ("BLKD" . org-onhold)
+(after! org (setq org-todo-keyword-faces
+      '(("?" . +org-todo)
+        ("TODO" . +org-todo)
+        ("BLKD" . +org-onhold)
         ("STRT" . +org-todo-active)
-        ("[ ]" . org-todo)
+        ("[ ]" . +org-todo)
         ("[-]" . +org-todo-active)
         ("[?]" . +org-todo-onhold)
         ("NO" . +org-todo-cancel)))
