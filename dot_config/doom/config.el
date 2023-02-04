@@ -13,13 +13,13 @@
 )
 
 (after! org (setq org-todo-keyword-faces
-      '(("?" . org-todo-onhold)
+      '(("?" . org-todo-warning)
         ("TODO" . org-todo)
         ("BLKD" . org-warning)
         ("STRT" . org-todo-active)
         ("[ ]" . org-todo)
         ("[-]" . org-todo-active)
-        ("[?]" . org-todo-onhold)
+        ("[?]" . org-todo-warning)
         ("NO" . org-todo-cancel)))
 )
 
