@@ -9,9 +9,9 @@
 ;; To install SOME-PACKAGE from MELPA, ELPA or emacsmirror:
 ;(package! some-package)
 
-(package! hcl-mode) ; HashiCorp Configuration Language
 (package! chezmoi)  ; Dotfiles management
-
+(package! go-mode)  ; Go support
+(package! hcl-mode) ; HashiCorp Configuration Language
 (package! mac-pseudo-daemon) ; Stop macOS Emacs from quitting when last frame exits
 
 ;; To install a package directly from a remote git repo, you must specify a
