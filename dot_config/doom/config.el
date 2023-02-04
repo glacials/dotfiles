@@ -14,8 +14,8 @@
 
 (after! org (setq org-todo-keyword-faces
       '(("?" . +org-todo)
-        ("TODO" . +org-todo)
-        ("BLKD" . +org-warning)
+        ("TODO" . org-todo)
+        ("BLKD" . org-warning)
         ("STRT" . +org-todo-active)
         ("[ ]" . +org-todo)
         ("[-]" . +org-todo-active)
