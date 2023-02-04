@@ -6,12 +6,13 @@
 (setq evil-respect-visual-line-mode t) ; make jk move by visual lines, not logical lines
 
 (advice-add 'org-todo :after 'org-save-all-org-buffers)
-(setq org-todo-keywords
+(after! org (setq org-todo-keywords
         '((sequence "?(?)" "TODO(t!)"  "BLKD(b@)" "STRT(s!)" "|" "CNCL(c@)" "DONE(d!)")
         (sequence "[ ](T!)" "[-](S!)" "[?](W!)" "|" "[X](D!)")
         (sequence "|" "OK(o!)" "YES (y!)" "NO (n!)")))
+)
 
-
+(after! org 
 (setq org-todo-keyword-faces
       '(("?" . org-todo)
         ("TODO" . org-todo)
@@ -21,6 +22,7 @@
         ("[-]" . +org-todo-active)
         ("[?]" . +org-todo-onhold)
         ("NO" . +org-todo-cancel)))
+)
 
 (setq org-log-into-drawer "LOGBOOK") ; When toggling TODOs, log the change in a drawer
 
