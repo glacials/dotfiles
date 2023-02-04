@@ -46,6 +46,10 @@ alias zln="zmv -L"
 
 path+=("$HOME/bin:$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin")
 
+if [[ $uname == darwin  ]]; then
+  path+=("/Applications/Tailscale.app/Contents/MacOS/Tailscale")
+fi
+
 # run history-substituted commands (e.g. containing `!!` or `!$`) without confirmation
 unsetopt histverify
 
