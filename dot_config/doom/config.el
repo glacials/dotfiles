@@ -6,6 +6,7 @@
 (setq evil-respect-visual-line-mode t) ; make jk move by visual lines, not logical lines
 
 (advice-add 'org-todo :after 'org-save-all-org-buffers)
+(after! go-mode (add-hook 'go-mode-hook 'lsp-deferred))
 (after! org (setq org-todo-keywords
         '((sequence "?(?)" "TODO(t!)"  "BLKD(b@)" "STRT(s!)" "|" "CNCL(c@)" "DONE(d!)")
         (sequence "[ ](T!)" "[-](S!)" "[?](W!)" "|" "[X](D!)")
