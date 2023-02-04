@@ -13,7 +13,7 @@
 )
 
 (after! org (setq org-todo-keyword-faces
-      '(("?" . +org-todo-project)
+      '(("?" . +org-todo-onhold)
         ("TODO" . org-todo)
         ("BLKD" . +org-todo-onhold)
         ("STRT" . +org-todo-active)
