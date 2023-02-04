@@ -40,7 +40,7 @@
 
 ; Open my index org file with C-c o
 (global-set-key (kbd "C-c o") (lambda () (interactive) (find-file "~/org/notes.org")))
-(global-set-key (kbd "K") (lsp-ui-doc-glance))
+(global-set-key [K] 'lsp-ui-doc-glance)
 
 ;; Some functionality uses this to identify you, e.g. GPG configuration, email
 ;; clients, file templates and snippets. It is optional.
