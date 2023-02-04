@@ -2,6 +2,8 @@
 
 ;; Place your private configuration here! Remember, you do not need to run 'doom
 ;; sync' after modifying this file!
+;;
+(add-to-list 'exec-path "~/go/bin")
 
 (setq evil-respect-visual-line-mode t) ; make jk move by visual lines, not logical lines
 
