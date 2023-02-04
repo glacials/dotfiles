@@ -5,15 +5,36 @@
 
 (setq evil-respect-visual-line-mode t) ; make jk move by visual lines, not logical lines
 
-; Autosave org-mode buffers after todo item states change
-(advice-add 'org-todo :after 'org-save-all-org-buffers)
+(after! org-mode
+        (advice-add 'org-todo :after 'org-save-all-org-buffers)
+        (setq org-todo-keywords
+                '((sequence "?(?)" "TODO(t!)"  "BLKD(b@)" "STRT(s!)" "|" "CNCL(c@)" "DONE(d!)")
+                (sequence "[ ](T!)" "[-](S!)" "[?](W!)" "|" "[X](D!)")
+                (sequence "|" "OK(o!)" "YES (y!)" "NO (n!)")))
+)
+
+
+(setq org-todo-keyword-faces
+      '(("?" . org-todo)
+        ("TODO" . org-todo)
+        ("BLKD" . org-onhold)
+        ("STRT" . +org-todo-active)
+        ("[ ]" . org-todo)
+        ("[-]" . +org-todo-active)
+        ("[?]" . +org-todo-onhold)
+        ("NO" . +org-todo-cancel)))
+
+(setq org-log-into-drawer "LOGBOOK") ; When toggling TODOs, log the change in a drawer
 
 (setq org-capture-templates
-      '(("t" "Blank TODO entry for today" entry (file+olp+datetree "~/org/notes.org" "Daily log")
+      '(("t" "Log TODO" entry (file+olp+datetree "~/org/notes.org" "Daily log")
         "* TODO %?")
-        ("n" "Blank note for today" item (file+olp+datetree "~/org/notes.org" "Daily log")
+        ("n" "Log note" item (file+olp+datetree "~/org/notes.org" "Daily log")
         "%?")
        ))
+
+; Open my index org file with C-c o
+(global-set-key (kbd "C-c o") (lambda () (interactive) (find-file "~/org/notes.org")))
 
 ;; Some functionality uses this to identify you, e.g. GPG configuration, email
 ;; clients, file templates and snippets. It is optional.
