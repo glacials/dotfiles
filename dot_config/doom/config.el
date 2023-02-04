@@ -17,9 +17,12 @@
         ("TODO" . org-todo)
         ("BLKD" . org-warning)
         ("STRT" . org-active)
+        ("CNCL" . org-done)
+        ("DONE" . org-done)
         ("[ ]" . org-todo)
         ("[-]" . org-active)
         ("[?]" . org-warning)
+        ("[X]" . org-done)
         ("NO" . org-todo-cancel)))
 )
 
