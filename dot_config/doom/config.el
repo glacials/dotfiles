@@ -13,7 +13,7 @@
 )
 
 (after! org (setq org-todo-keyword-faces
-      '(("?" . org-warning)
+      '(("?" . +org-todo-project)
         ("TODO" . org-todo)
         ("BLKD" . +org-todo-onhold)
         ("STRT" . +org-todo-active)
@@ -23,7 +23,7 @@
         ("[-]" . +org-todo-active)
         ("[?]" . +org-todo-onhold)
         ("[X]" . org-done)
-        ("NO" . org-todo-cancel)))
+        ("NO" . +org-todo-cancel)))
 )
 
 (setq org-log-into-drawer "LOGBOOK") ; When toggling TODOs, log the change in a drawer
