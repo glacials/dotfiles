@@ -31,12 +31,12 @@
 
 (setq org-log-into-drawer "LOGBOOK") ; When toggling TODOs, log the change in a drawer
 
-(setq org-capture-templates
+(after! org (setq org-capture-templates
       '(("t" "Log TODO" entry (file+olp+datetree "~/org/notes.org" "Daily log")
         "* TODO %?")
         ("n" "Log note" item (file+olp+datetree "~/org/notes.org" "Daily log")
         "%?")
-       ))
+       )))
 
 ; Open my index org file with C-c o
 (global-set-key (kbd "C-c o") (lambda () (interactive) (find-file "~/org/notes.org")))
