@@ -38,7 +38,7 @@
         "%?")
        )))
 
-; Open my index org file with C-c o
+; Open index org file with C-c o
 (global-set-key (kbd "C-c o") (lambda () (interactive) (find-file "~/org/notes.org")))
 
 ;; Some functionality uses this to identify you, e.g. GPG configuration, email
@@ -46,7 +46,13 @@
 (setq user-full-name "Ben Carlsson"
       user-mail-address "ben@twos.dev")
 
+; When quitting the last window/frame on macOS, keep the app open
 (mac-pseudo-daemon-mode)
+
+; Ido mode (fuzzy search for everything)
+(setq ido-enable-flex-matching t)
+(setq ido-everywhere t)
+(ido-mode 1)
 
 ;; Doom exposes five (optional) variables for controlling fonts in Doom:
 ;;
@@ -77,9 +83,7 @@
 ;; numbers are disabled. For relative line numbers, set this to `relative'.
 (setq display-line-numbers-type t)
 
-;; If you use `org' and don't want your org files in the default location below,
-;; change `org-directory'. It must be set before org loads!
-(setq org-directory "~/org/")
+(setq org-directory "~/org/") ; Must be set before org loads
 
 
 ;; Whenever you reconfigure a package, make sure to wrap your config in an
