@@ -10,6 +10,8 @@
 ;(package! some-package)
 
 (package! chezmoi)  ; Dotfiles management
+(package! copilot   ; GitHub Copilot (unofficial)
+  :recipe (:host github :repo "zerolfx/copilot.el" :files ("*.el" "dist")))
 (package! go-mode)  ; Go support
 (package! hcl-mode) ; HashiCorp Configuration Language
 (package! mac-pseudo-daemon) ; Stop macOS Emacs from quitting when last frame exits
