@@ -1,10 +1,18 @@
 [user]
        name = glacials
        email = ben@twos.dev
-[diff]
-       tool = vimdiff
-[difftool "mvimdiff"]
-  cmd = mvim -f -d \"$LOCAL\" \"$REMOTE\"
+
+### Diff config ###
+[diff] # Use this tool for `git diff`
+       external = difft
+[difftool "difftastic"] # Use this tool for `git difftool`
+       cmd = difft "$LOCAL" "$REMOTE"
+[pager] # Use a pager for large output, just like other git commands
+       difftool = true
+[alias] # `git dft` is less to type than `git difftool`
+       dft = difftool
+### End diff config ###
+
 [merge]
   conflictstyle = diff3
        tool = vimdiff
