@@ -29,6 +29,15 @@
         ("NO" . +org-todo-cancel)))
 )
 
+;; accept completion from copilot and fallback to company
+(use-package! copilot
+  :hook (prog-mode . copilot-mode)
+  :bind (("C-TAB" . 'copilot-accept-completion-by-word)
+         ("C-<tab>" . 'copilot-accept-completion-by-word)
+         :map copilot-completion-map
+         ("<tab>" . 'copilot-accept-completion)
+         ("TAB" . 'copilot-accept-completion)))
+
 (setq org-log-into-drawer "LOGBOOK") ; When toggling TODOs, log the change in a drawer
 
 (after! org (setq org-capture-templates
