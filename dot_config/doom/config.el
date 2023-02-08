@@ -60,7 +60,7 @@
          ("<tab>" . 'copilot-accept-completion)
          ("TAB" . 'copilot-accept-completion)))
 
-(setq org-log-into-drawer "LOGBOOK") ; When toggling TODOs, log the change in a drawer
+; (setq org-log-into-drawer "LOGBOOK") ; When toggling TODOs, log the change in a drawer
 
 (after! org (setq org-capture-templates
       '(("t" "Log TODO" entry (file+olp+datetree "~/org/notes.org" "Daily log")
@@ -85,8 +85,8 @@
 (setq ido-everywhere t)
 (ido-mode 1)
 
-;; Make pressing enter in an org-mode headings, list items, etc. create another one,
-;; instead of a blank line.
+;; Make pressing enter in org-mode headings, list items, etc. create another
+;; one, instead of a blank line. (TODO: Also allow for pressing evil-mode's o or O.)
 ;;
 ;; From https://kitchingroup.cheme.cmu.edu/blog/2017/04/09/A-better-return-in-org-mode/
 (require 'org-inlinetask)
