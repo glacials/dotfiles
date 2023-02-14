@@ -1,5 +1,5 @@
-[".config/emacs"]
-type = "archive"
-url = "https://github.com/doomemacs/doomemacs/archive/master.tar.gz"
-exact = true 
-stripComponents = 1
+# [".config/emacs"]
+# type = "archive"
+# url = "https://github.com/doomemacs/doomemacs/archive/master.tar.gz"
+# exact = true
+# stripComponents = 1
