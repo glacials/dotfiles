@@ -6,3 +6,8 @@
 .python-version
 dump.rdb
 .envrc
+
+# Emacs
+*~ 
+.\#*
+
