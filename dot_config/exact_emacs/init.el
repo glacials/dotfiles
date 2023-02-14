@@ -1,3 +1,4 @@
+					; straight-use-package bootstrap; allows us to load a blank Emacs and have all our packages get installed just by seeing this files
 (defvar bootstrap-version)
 (let ((bootstrap-file
        (expand-file-name "straight/repos/straight.el/bootstrap.el" user-emacs-directory))
@@ -11,19 +12,74 @@
       (eval-print-last-sexp)))
   (load bootstrap-file nil 'nomessage))
 
+;; START Install and configure packages ;;
 (straight-use-package 'chezmoi)  ; Dotfiles management
+
+; GitHub Copilot (unofficial)
 (straight-use-package '(copilot :type git :host github :repo "zerolfx/copilot.el"))
+(add-hook 'prog-mode-hook 'copilot-mode)
+(defun my/copilot-tab () (interactive) (or (copilot-accept-completion) (indent-for-tab-comment)))
+(with-eval-after-load 'copilot (define-key copilot-mode-map (kbd "<tab>") #'my/copilot-tab))
 
 ; Set theme
 (straight-use-package 'doom-themes)
 (setq doom-themes-enable-bold t doom-themes-enable-italic t)
-(load-theme 'doom-monokai-pro)
+(load-theme 'doom-monokai-pro t)
 
 (straight-use-package 'go-mode)  ; Go support
 (straight-use-package 'hcl-mode) ; HashiCorp Configuration Language
-(straight-use-package 'mac-pseudo-daemon) ; Stop macOS Emacs from quitting when last frame exits
-(straight-use-package 'magit :ensure t)
-(straight-use-package 'org :ensure t)
 
-					; Visual customizations
+					; Stop macOS Emacs from quitting when last frame exits (disabled until I prove to myself I need it)
+; (straight-use-package 'mac-pseudo-daemon)
+; (mac-psuedo-daemon-mode)
+
+(straight-use-package 'magit)
+
+; org-mode
+(straight-use-package 'org)
+(setq org-directory "~/org")
+(setq org-default-notes-file (concat org-directory "/notes.org"))
+(setq org-startup-indented t) ; Hide the first n-1 stars on level n headings
+(global-set-key (kbd "C-c o") (lambda () (interactive) (find-file "~/org/notes.org"))) ; Access org-mode index with C-c o
+(global-set-key (kbd "C-c c") 'org-capture)
+(setq org-capture-templates ; Set org-capture
+      '(("t" "Log a TODO entry" entry (file+olp+datetree "~/org/notes.org" "Daily log") "* TODO %?")
+	("h" "Log a new heading" entry (file+olp+datetree "~/org/notes.org" "Daily log") "* %?")))
+(setq org-refile-targets '((nil :maxlevel . 99) (org-agenda-files :maxlevel . 99))) ; Allow refiling to any heading level (up to 99) up from default of 1
+(advice-add 'org-todo :after 'org-save-all-org-buffers) ; Save org-mode buffers after changing a TODO state
+(defun datetree-jump () ; Define M-x datetree-jump, which jumps to today in a datetree. See below for C-c t shortcut.
+  (interactive)
+  (let ((point (point)))
+    (catch 'found
+      (goto-char (point-max))
+      (while (outline-previous-heading)
+        (let* ((hl (org-element-at-point))
+               (title (org-element-property :raw-value hl)))
+          (when (member title (datetree-dates))
+            (org-show-context)
+            (setq point (point))
+            (throw 'found t)))))
+    (goto-char point)))
+(defun datetree-dates ()
+  (let (dates
+        (day (string-to-number (format-time-string "%d")))
+        (month (string-to-number (format-time-string "%m")))
+        (year (string-to-number (format-time-string "%Y"))))
+    (dotimes (i 365)
+      (push (format-time-string "%F %A" (encode-time 1 1 0 (- day i) month year))
+            dates))
+    (nreverse dates)))
+(global-set-key (kbd "C-c t") 'datetree-jump) ; Jump to today in the current buffer's datetree (using the above function) with C-c t
+
+; Add "frecency" to M-x completion
+(straight-use-package 'smex)
+(global-set-key (kbd "M-x") 'smex)
+;; END Install and configure packages ;;
+
+;; START General configuration ;;
+(setq user-full-name "Benjamin Carlsson" user-mail-address "ben@twos.dev")
+(ido-mode 1) ; Autocomplete M-x among other things
 (tool-bar-mode -1) ; Don't show the GUI toolbar
+(setq display-line-numbers-type t) ; Show line numbers
+(setq ido-enable-flex-matching t) ; Don't require exact matches in ido-mode
+;; END General configuration ;;
