@@ -8,7 +8,7 @@
 	<array>
 		<string>/usr/local/bin/fdautil</string>
 		<string>exec</string>
-		<string>/Users/glacials/.local/share/chezmoi/run_pottytrain.sh</string>
+		<string>/Users/glacials/.local/share/chezmoi/pottytrain.sh</string>
 		<string>--email</string>
 	</array>
 	<key>StandardErrorPath</key>
