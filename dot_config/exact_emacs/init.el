@@ -15,8 +15,13 @@
 ;; START Install and configure packages ;;
 (straight-use-package 'chezmoi)  ; Dotfiles management
 
+; Autocompletion
+(straight-use-package 'company)
+(setq company-idle-delay 0)
+(setq company-minimum-prefix-length 1)
+
 ; GitHub Copilot (unofficial)
-(straight-use-package '(copilot :type git :host github :repo "zerolfx/copilot.el"))
+(straight-use-package '(copilot :type git :host github :repo "zerolfx/copilot.el" :files ("dist" "*.el")))
 (add-hook 'prog-mode-hook 'copilot-mode)
 (defun my/copilot-tab () (interactive) (or (copilot-accept-completion) (indent-for-tab-comment)))
 (with-eval-after-load 'copilot (define-key copilot-mode-map (kbd "<tab>") #'my/copilot-tab))
@@ -26,8 +31,18 @@
 (setq doom-themes-enable-bold t doom-themes-enable-italic t)
 (load-theme 'doom-monokai-pro t)
 
-(straight-use-package 'go-mode)  ; Go support
+(straight-use-package 'exec-path-from-shell) ; Use $PATH from shell, even if booted from e.g. dock. Needed to find e.g. LSP servers
+(when (memq window-system '(mac ns x)) (exec-path-from-shell-initialize))
+
+; Go
+(straight-use-package 'go-mode)
+(defun lsp-go-install-save-hooks () (add-hook 'before-save-hook #'lsp-format-buffer t t) (add-hook 'before-save-hook #'lsp-organize-imports t t))
+(add-hook 'go-mode-hook #'lsp-go-install-save-hooks)
+(add-hook 'go-mode-hook #'lsp-deferred)
+
 (straight-use-package 'hcl-mode) ; HashiCorp Configuration Language
+(straight-use-package 'lsp-mode) ; Language Server Protocol
+(straight-use-package 'lsp-ui)   ; LSP UI upgrades
 
 					; Stop macOS Emacs from quitting when last frame exits (disabled until I prove to myself I need it)
 ; (straight-use-package 'mac-pseudo-daemon)
@@ -74,6 +89,8 @@
 ; Add "frecency" to M-x completion
 (straight-use-package 'smex)
 (global-set-key (kbd "M-x") 'smex)
+
+(straight-use-package 'which-key) ; Show available key sequence paths forward in minibuffer
 ;; END Install and configure packages ;;
 
 ;; START General configuration ;;
@@ -82,4 +99,7 @@
 (tool-bar-mode -1) ; Don't show the GUI toolbar
 (setq display-line-numbers-type t) ; Show line numbers
 (setq ido-enable-flex-matching t) ; Don't require exact matches in ido-mode
+
+					; Modifier keys
+(setq mac-option-modifier 'super) ; Make Option key act as Super
 ;; END General configuration ;;
