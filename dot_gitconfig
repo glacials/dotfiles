@@ -18,7 +18,7 @@
        tool = vimdiff
 [core]
        editor = nvim
-       excludesfile = ~/.gitignore_global
+       excludesfile = ~/.config/git/ignore
 [filter "media"]
        clean = git-media-clean %f
        smudge = git-media-smudge %f

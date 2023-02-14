@@ -1,7 +1,0 @@
-*.swp
-*.swo
-.DS_Store
-.agignore
-.ruby-version
-dump.rdb
-.envrc
