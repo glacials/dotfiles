@@ -13,6 +13,10 @@
   (load bootstrap-file nil 'nomessage))
 
 ;; START Install and configure packages ;;
+(straight-use-package 'aggressive-indent)
+(global-aggressive-indent-mode 1)
+(add-to-list 'aggressive-indent-excluded-modes 'html-mode)
+
 (straight-use-package 'chezmoi)  ; Dotfiles management
 
 ; Autocompletion
@@ -50,9 +54,13 @@
 ; (straight-use-package 'mac-pseudo-daemon)
 ; (mac-psuedo-daemon-mode)
 
-(straight-use-package 'magit)
+(straight-use-package 'magit) ; Git in Emacs
 
-; org-mode
+; Docstrings in M-x et al.
+(straight-use-package 'marginalia)
+(marginalia-mode)
+
+					;################################################## org-mode start #
 (straight-use-package 'org)
 (setq org-directory "~/org")
 (setq org-default-notes-file (concat org-directory "/notes.org"))
@@ -64,6 +72,10 @@
 	("h" "Log a new heading" entry (file+olp+datetree "~/org/notes.org" "Daily log") "* %?")))
 (setq org-refile-targets '((nil :maxlevel . 99) (org-agenda-files :maxlevel . 99))) ; Allow refiling to any heading level (up to 99) up from default of 1
 (advice-add 'org-todo :after 'org-save-all-org-buffers) ; Save org-mode buffers after changing a TODO state
+(defun open-today () ; Open org file to today
+  (find-file 'org-default-notes-file)
+  (datetree-jump)
+  )
 (defun datetree-jump () ; Define M-x datetree-jump, which jumps to today in a datetree. See below for C-c t shortcut.
   (interactive)
   (let ((point (point)))
@@ -86,13 +98,43 @@
       (push (format-time-string "%F %A" (encode-time 1 1 0 (- day i) month year))
             dates))
     (nreverse dates)))
-(global-set-key (kbd "C-c t") 'datetree-jump) ; Jump to today in the current buffer's datetree (using the above function) with C-c t
+(global-set-key (kbd "C-c t") 'open-today) ; Jump to today in the current buffer's datetree (using the above function) with C-c t
 
-; Add "frecency" to M-x completion
-(straight-use-package 'smex)
-(global-set-key (kbd "M-x") 'smex)
+					; org-todo
+(setq org-todo-keywords '(
+			  (sequence "TODO(t)" "STRT(s)" "BLKD(b)" "|" "DONE(d)" "CNCL(c)")
+			  (sequence "[ ](T)" "[-](S)" "[?](B)" "|" "[X](D)" "[C](C)")
+			  ))
+					;################################################## org-mode end #
 
-(straight-use-package 'which-key) ; Show available key sequence paths forward in minibuffer
+					; Project management
+(straight-use-package 'projectile)
+(require 'projectile)
+(define-key projectile-mode-map (kbd "s-p") 'projectile-command-map)
+(projectile-mode +1)
+
+					; Colorful parentheses
+(straight-use-package 'rainbow-delimiters)
+(add-hook 'prog-mode-hook #'rainbow-delimiters-mode)
+
+(straight-use-package 'savehist) ; Save minibuffer histories; pairs with frecency of vertico
+(straight-use-package 'try) ; Try out packages without installing them
+
+; Better undo w/ history
+(straight-use-package 'undo-fu)
+(global-unset-key (kbd "C-z"))
+(global-set-key (kbd "C-z")   'undo-fu-only-undo)
+(global-set-key (kbd "C-S-z") 'undo-fu-only-redo)
+(straight-use-package 'undo-fu-session)
+(undo-fu-session-global-mode)
+
+; Better completion than Ido
+(straight-use-package 'vertico)
+(vertico-mode)
+
+					; Show available key sequence paths forward in minibuffer
+(straight-use-package 'which-key)
+(which-key-mode)
 ;; END Install and configure packages ;;
 
 ;; START General configuration ;;
@@ -104,4 +146,5 @@
 
 					; Modifier keys
 (setq mac-option-modifier 'super) ; Make Option key act as Super
+(setq ring-bell-function 'ignore) ; Disable the audible bell
 ;; END General configuration ;;
