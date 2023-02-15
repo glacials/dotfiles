@@ -118,7 +118,7 @@ path+=("$HOME/.rbenv/shims")
 eval "$(rbenv init -)"
 
 # fun things at shell boot
-fortune ~/.config/fortune | cowsay -n
+fortune ~/.config/fortune | cowsay -n -f small
 source ~/.profile
 
 # direnv
