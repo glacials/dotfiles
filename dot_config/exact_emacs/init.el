@@ -26,6 +26,8 @@
 (defun my/copilot-tab () (interactive) (or (copilot-accept-completion) (indent-for-tab-comment)))
 (with-eval-after-load 'copilot (define-key copilot-mode-map (kbd "<tab>") #'my/copilot-tab))
 
+(straight-use-package 'dockerfile-mode) ; Dockerfile syntax highlighting
+
 ; Set theme
 (straight-use-package 'doom-themes)
 (setq doom-themes-enable-bold t doom-themes-enable-italic t)
