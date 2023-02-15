@@ -12,14 +12,21 @@
       (eval-print-last-sexp)))
   (load bootstrap-file nil 'nomessage))
 
+					; Start server
+(load "server")
+(unless (server-running-p) (server-start))
+
 ;; START Install and configure packages ;;
+
+					; Smart & opinionated indentation
 (straight-use-package 'aggressive-indent)
 (global-aggressive-indent-mode 1)
 (add-to-list 'aggressive-indent-excluded-modes 'html-mode)
 
 (straight-use-package 'chezmoi)  ; Dotfiles management
+(require 'chezmoi)
 
-; Autocompletion
+					; Autocompletion
 (straight-use-package 'company)
 (setq company-idle-delay 0)
 (setq company-minimum-prefix-length 1)
