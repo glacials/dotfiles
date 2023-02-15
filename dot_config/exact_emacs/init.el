@@ -23,8 +23,8 @@
 (global-aggressive-indent-mode 1)
 (add-to-list 'aggressive-indent-excluded-modes 'html-mode)
 
-(straight-use-package 'chezmoi)  ; Dotfiles management
-(require 'chezmoi)
+; (straight-use-package 'chezmoi)  ; Dotfiles management
+; (require 'chezmoi)
 
 					; Autocompletion
 (straight-use-package 'company)
@@ -37,6 +37,18 @@
 (defun my/copilot-tab () (interactive) (or (copilot-accept-completion) (indent-for-tab-comment)))
 (with-eval-after-load 'copilot (define-key copilot-mode-map (kbd "<tab>") #'my/copilot-tab))
 
+; Startup screen w/ agenda, recent files, etc.
+(straight-use-package 'dashboard)
+(setq dashboard-items '((recents . 5)
+												(agenda . 5)
+												(bookmarks . 5)
+												(projects . 5)
+												(registers . 5)))
+(setq dashboard-banner-logo-title (shell-command-to-string "fortune ~/.config/fortune"))
+(setq dashboard-startup-banner 'logo)
+(require 'dashboard)
+(dashboard-setup-startup-hook)
+
 (straight-use-package 'dockerfile-mode) ; Dockerfile syntax highlighting
 
 ; Set theme
@@ -44,7 +56,13 @@
 (setq doom-themes-enable-bold t doom-themes-enable-italic t)
 (load-theme 'doom-monokai-pro t)
 
-(straight-use-package 'exec-path-from-shell) ; Use $PATH from shell, even if booted from e.g. dock. Needed to find e.g. LSP servers
+																				; Modeline
+(straight-use-package 'doom-modeline)
+(require 'doom-modeline)
+(doom-modeline-mode 1)
+
+																				; Use $PATH from shell, even if booted from e.g. dock. Needed to find e.g. LSP servers
+(straight-use-package 'exec-path-from-shell)
 (when (memq window-system '(mac ns x)) (exec-path-from-shell-initialize))
 
 ; Go
@@ -54,12 +72,17 @@
 (add-hook 'go-mode-hook #'lsp-deferred)
 
 (straight-use-package 'hcl-mode) ; HashiCorp Configuration Language
+
+																				; Highlight indentation
+(straight-use-package 'highlight-indent-guides)
+(add-hook 'prog-mode-hook 'highlight-indent-guides-mode)
+
 (straight-use-package 'lsp-mode) ; Language Server Protocol
 (straight-use-package 'lsp-ui)   ; LSP UI upgrades
 
 					; Stop macOS Emacs from quitting when last frame exits (disabled until I prove to myself I need it)
-; (straight-use-package 'mac-pseudo-daemon)
-; (mac-psuedo-daemon-mode)
+					; (straight-use-package 'mac-pseudo-daemon)
+					; (mac-psuedo-daemon-mode)
 
 (straight-use-package 'magit) ; Git in Emacs
 
@@ -114,6 +137,8 @@
 			  ))
 					;################################################## org-mode end #
 
+(straight-use-package 'project-explorer) ; File explorer in sidebar
+
 					; Project management
 (straight-use-package 'projectile)
 (require 'projectile)
@@ -150,6 +175,7 @@
 (tool-bar-mode -1) ; Don't show the GUI toolbar
 (setq display-line-numbers-type t) ; Show line numbers
 (setq ido-enable-flex-matching t) ; Don't require exact matches in ido-mode
+(setq-default tab-width 2) ; Set tab character width to 2 spaces
 
 					; Modifier keys
 (setq mac-option-modifier 'super) ; Make Option key act as Super
