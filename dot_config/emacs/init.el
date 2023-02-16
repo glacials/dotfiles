@@ -177,7 +177,10 @@
 (setq ido-enable-flex-matching t) ; Don't require exact matches in ido-mode
 (setq-default tab-width 2) ; Set tab character width to 2 spaces
 
-					; Modifier keys
+																				; Make dired mouseclicks open in same window, not a new one. See https://emacs.stackexchange.com/questions/35536/dired-mouse-click-open-folder-in-the-same-window for why it's mouse-2 and not mouse-1.
+(define-key dired-mode-map [mouse-2] 'dired-mouse-find-file)
+
+																				; Modifier keys
 (setq mac-option-modifier 'super) ; Make Option key act as Super
 (setq ring-bell-function 'ignore) ; Disable the audible bell
 ;; END General configuration ;;
