@@ -73,6 +73,7 @@ fi
 alias vi=vim
 alias vim=nvim
 alias vimdiff='vim -d'
+alias diff='difft' # Difftastic
 
 # General env vars
 export EDITOR='emacsclient'
