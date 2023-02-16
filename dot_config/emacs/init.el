@@ -23,8 +23,8 @@
 (global-aggressive-indent-mode 1)
 (add-to-list 'aggressive-indent-excluded-modes 'html-mode)
 
-; (straight-use-package 'chezmoi)  ; Dotfiles management
-; (require 'chezmoi)
+(straight-use-package 'chezmoi)  ; Dotfiles management
+(require 'chezmoi)
 
 					; Autocompletion
 (straight-use-package 'company)
@@ -156,7 +156,7 @@
 (straight-use-package 'undo-fu)
 (global-unset-key (kbd "C-z"))
 (global-set-key (kbd "C-z")   'undo-fu-only-undo)
-(global-set-key (kbd "C-S-z") 'undo-fu-only-redo)
+(global-set-key (kbd "C-s-z") 'undo-fu-only-redo)
 (straight-use-package 'undo-fu-session)
 (undo-fu-session-global-mode)
 
