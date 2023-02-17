@@ -1,4 +1,4 @@
-					; straight-use-package bootstrap; allows us to load a blank Emacs and have all our packages get installed just by seeing this files
+																				; straight-use-package bootstrap; allows us to load a blank Emacs and have all our packages get installed just by seeing this files
 (defvar bootstrap-version)
 (let ((bootstrap-file
        (expand-file-name "straight/repos/straight.el/bootstrap.el" user-emacs-directory))
@@ -12,32 +12,33 @@
       (eval-print-last-sexp)))
   (load bootstrap-file nil 'nomessage))
 
-					; Start server
+																				; Start server
 (load "server")
 (unless (server-running-p) (server-start))
 
 ;; START Install and configure packages ;;
 
-					; Smart & opinionated indentation
+																				; Smart & opinionated indentation
 (straight-use-package 'aggressive-indent)
 (global-aggressive-indent-mode 1)
 (add-to-list 'aggressive-indent-excluded-modes 'html-mode)
 
+(straight-use-package 'magit) ; Git in Emacs; MUST be before chezmoi so chezmoi can load chezmoi-magit
 (straight-use-package 'chezmoi)  ; Dotfiles management
 (require 'chezmoi)
 
-					; Autocompletion
+																				; Autocompletion
 (straight-use-package 'company)
 (setq company-idle-delay 0)
 (setq company-minimum-prefix-length 1)
 
-; GitHub Copilot (unofficial)
+																				; GitHub Copilot (unofficial)
 (straight-use-package '(copilot :type git :host github :repo "zerolfx/copilot.el" :files ("dist" "*.el")))
 (add-hook 'prog-mode-hook 'copilot-mode)
 (defun my/copilot-tab () (interactive) (or (copilot-accept-completion) (indent-for-tab-comment)))
 (with-eval-after-load 'copilot (define-key copilot-mode-map (kbd "<tab>") #'my/copilot-tab))
 
-; Startup screen w/ agenda, recent files, etc.
+																				; Startup screen w/ agenda, recent files, etc.
 (straight-use-package 'dashboard)
 (setq dashboard-items '((recents . 5)
 												(agenda . 5)
@@ -51,7 +52,7 @@
 
 (straight-use-package 'dockerfile-mode) ; Dockerfile syntax highlighting
 
-; Set theme
+																				; Set theme
 (straight-use-package 'doom-themes)
 (setq doom-themes-enable-bold t doom-themes-enable-italic t)
 (load-theme 'doom-monokai-pro t)
@@ -65,7 +66,7 @@
 (straight-use-package 'exec-path-from-shell)
 (when (memq window-system '(mac ns x)) (exec-path-from-shell-initialize))
 
-; Go
+																				; Go
 (straight-use-package 'go-mode)
 (defun lsp-go-install-save-hooks () (add-hook 'before-save-hook #'lsp-format-buffer t t) (add-hook 'before-save-hook #'lsp-organize-imports t t))
 (add-hook 'go-mode-hook #'lsp-go-install-save-hooks)
@@ -84,9 +85,8 @@
 					; (straight-use-package 'mac-pseudo-daemon)
 					; (mac-psuedo-daemon-mode)
 
-(straight-use-package 'magit) ; Git in Emacs
 
-; Docstrings in M-x et al.
+					; Docstrings in M-x et al.
 (straight-use-package 'marginalia)
 (marginalia-mode)
 
@@ -103,10 +103,11 @@
 (setq org-refile-targets '((nil :maxlevel . 99) (org-agenda-files :maxlevel . 99))) ; Allow refiling to any heading level (up to 99) up from default of 1
 (advice-add 'org-todo :after 'org-save-all-org-buffers) ; Save org-mode buffers after changing a TODO state
 (defun open-today () ; Open org file to today
-  (find-file 'org-default-notes-file)
+	(interactive)
+  (find-file org-default-notes-file)
   (datetree-jump)
   )
-(defun datetree-jump () ; Define M-x datetree-jump, which jumps to today in a datetree. See below for C-c t shortcut.
+(defun datetree-jump () ; Define M-x datetree-jump, which jumps to today in a datetree
   (interactive)
   (let ((point (point)))
     (catch 'found
@@ -150,6 +151,7 @@
 (add-hook 'prog-mode-hook #'rainbow-delimiters-mode)
 
 (straight-use-package 'savehist) ; Save minibuffer histories; pairs with frecency of vertico
+(straight-use-package 'terraform-mode) ; Terraform (inherits from hcl-mode and adds more)
 (straight-use-package 'try) ; Try out packages without installing them
 
 ; Better undo w/ history
@@ -179,6 +181,7 @@
 
 																				; Make dired mouseclicks open in same window, not a new one. See https://emacs.stackexchange.com/questions/35536/dired-mouse-click-open-folder-in-the-same-window for why it's mouse-2 and not mouse-1.
 (define-key dired-mode-map [mouse-2] 'dired-mouse-find-file)
+(global-set-key (kbd "C-c i") (lambda () (interactive) (find-file "~/.config/emacs/init.el"))) ; Access init.el with C-c i
 
 																				; Modifier keys
 (setq mac-option-modifier 'super) ; Make Option key act as Super
