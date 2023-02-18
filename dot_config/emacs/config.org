@@ -31,7 +31,7 @@ The following block makes dired mouseclicks open in same window, not a new one.
 (For why this binds mouse-2 even though we're trying to affect mouse-1, see [[https://emacs.stackexchange.com/questions/35536/dired-mouse-click-open-folder-in-the-same-window][this link]].)
   
 #+BEGIN_SRC emacs-lisp
-  (define-key dired-mode-map [mouse-2] 'dired-mouse-find-file)
+	(eval-after-load "dired" '(progn (define-key dired-mode-map [mouse-2] 'dired-mouse-find-file)))
 #+END_SRC
 
 #+BEGIN_SRC emacs-lisp
