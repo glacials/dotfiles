@@ -1,3 +1,9 @@
+# The following tags are for twos.dev, which automatically pulls and
+# deploys this file to twos.dev/emacs_config.html.
+#+FILENAME: config.html
+#+TYPE: page
+#+DATE: 2023-02-20
+
 This is my =init.org= file, which effectively takes the place of my
 =init.el= using literate programming. In other words, my Emacs config
 file and the documentation for my Emacs config file are the same file,
