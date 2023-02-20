@@ -7,9 +7,34 @@ debug="" # set to y to enable more output
 uname=$(uname -s | tr "[:upper:]" "[:lower:]")
 
 apt="sudo apt-get --quiet --quiet --assume-yes"
+brew="brew"
+brewinstall="$brew install --quiet --force"
 npm="npm --silent"
 
 # TODO: Refactor so we only need to invoke `brew install` once.
+
+function install_homebrew () {
+  if ! brew help > /dev/null; then
+    NONINTERACTIVE=1 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+    if [[ $uname == linux ]]; then
+      (echo; echo 'eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"') >> /home/glacials/.profile
+      
+      # Update path for Homebrew for Linux
+      eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+      
+      # Homebrew asks for these on install
+      brew install gcc
+      $apt install -y build-essential
+      
+      if [[ -d "/home/linuxbrew" ]]; then
+        brew="/home/linuxbrew/.linuxbrew/bin/brew"
+      else
+        brew="$HOME/.linuxbrew/bin/brew"
+      fi
+    fi
+    brewinstall="$brew install --quiet --force"
+  fi
+}
 
 ########################################## Start bootstrap
 # TODO: See if this section can be removed now that we use chezmoi
@@ -17,21 +42,20 @@ sshkey="$HOME/.ssh/id_rsa"
 answer="n"
 
 if ! gh auth status 1>/dev/null 2>/dev/null; then
-	if [[ -f $HOME/.ssh/id_rsa ]]; then
-	  echo "Looks like you've already generated an SSH key."
-	  read -p "Is it in GitHub yet [y/N]? " answer
-	  answer=$(echo "$answer" | tr '[:upper:]' '[:lower:]')
-	else
-	  ssh-keygen -f $sshkey -N ""
-	fi
+  if [[ -f $HOME/.ssh/id_rsa ]]; then
+    echo "Looks like you've already generated an SSH key."
+    read -p "Is it in GitHub yet [y/N]? " answer
+    answer=$(echo "$answer" | tr '[:upper:]' '[:lower:]')
+  else
+    ssh-keygen -f $sshkey -N ""
+  fi
 
-	if [[ $answer != "y" ]]; then
-	  # Need to install Homebrew to install gh to auth with GitHub to clone dotfiles :|
-	  NONINTERACTIVE=1 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-	  brew update --quiet
-	  brew install --quiet gh
-	  gh auth login --git-protocol ssh --hostname github.com --web
-	fi
+  if [[ $answer != "y" ]]; then
+    # Need to install Homebrew to install gh to auth with GitHub to clone dotfiles :|
+    install_homebrew
+    $brewinstall gh
+    gh auth login --git-protocol ssh --hostname github.com --web
+  fi
 fi
 
 cd "$(dirname "$0")"
@@ -49,28 +73,7 @@ if [[ $uname == linux* ]]; then
 fi
 
 # Homebrew
-brew help > /dev/null || NONINTERACTIVE=1 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-if [[ $uname == linux* ]]; then
-  if [[ -d "/home/linuxbrew" ]]; then
-    brew="/home/linuxbrew/.linuxbrew/bin/brew"
-  else
-    brew="$HOME/.linuxbrew/bin/brew"
-  fi
-else
-  brew="brew"
-fi
-brewinstall="$brew install --quiet --force"
-
-# Update path for Homebrew for Linux since we can't source .zshrc yet
-export PATH=/home/linuxbrew/.linuxbrew/bin:$PATH
-export PATH=$HOME/.linuxbrew/bin:$PATH
-
-if [[ $uname == linux* ]]; then
-  $apt install -y build-essential # Homebrew asks for this on install
-fi
-$brewinstall gcc
-$brew update --quiet
-$brew upgrade --quiet
+install_homebrew
 
 $brewinstall mas # macOS App Store CLI
 masinstall="mas install"
