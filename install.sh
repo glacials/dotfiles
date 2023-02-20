@@ -27,7 +27,7 @@ if ! gh auth status 1>/dev/null 2>/dev/null; then
 
 	if [[ $answer != "y" ]]; then
 	  # Need to install Homebrew to install gh to auth with GitHub to clone dotfiles :|
-	  /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+	  NONINTERACTIVE=1 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 	  brew update --quiet
 	  brew install --quiet gh
 	  gh auth login --git-protocol ssh --hostname github.com --web
@@ -49,7 +49,7 @@ if [[ $uname == linux* ]]; then
 fi
 
 # Homebrew
-brew help > /dev/null || /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+brew help > /dev/null || NONINTERACTIVE=1 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 if [[ $uname == linux* ]]; then
   if [[ -d "/home/linuxbrew" ]]; then
     brew="/home/linuxbrew/.linuxbrew/bin/brew"
