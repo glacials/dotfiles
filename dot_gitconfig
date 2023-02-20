@@ -28,5 +28,9 @@
        rebase = true
 [init]
        defaultBranch = main
-[url "git@github.com:"]
-       insteadOf = https://github.com/
+# Can uncomment once installing dotfiles on a fresh machine is very stable.
+# Until then, a single failure screws install.sh up because this replacement
+# stops Homebrew from being installed until your SSH key is in GitHub, which
+# requires gh to do from CLI, which requires Homebrew to install (:
+#[url "git@github.com:"]
+#       insteadOf = https://github.com/
