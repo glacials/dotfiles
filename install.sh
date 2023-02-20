@@ -14,7 +14,7 @@ npm="npm --silent"
 # TODO: Refactor so we only need to invoke `brew install` once.
 
 function install_homebrew () {
-  if ! brew help > /dev/null; then
+  if ! $brew help > 1>/dev/null 2>/dev/null; then
     NONINTERACTIVE=1 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
     if [[ $uname == linux ]]; then
       (echo; echo 'eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"') >> /home/glacials/.profile
@@ -22,17 +22,17 @@ function install_homebrew () {
       # Update path for Homebrew for Linux
       eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
       
-      # Homebrew asks for these on install
-      brew install gcc
-      $apt install -y build-essential
-      
       if [[ -d "/home/linuxbrew" ]]; then
         brew="/home/linuxbrew/.linuxbrew/bin/brew"
       else
         brew="$HOME/.linuxbrew/bin/brew"
       fi
+      brewinstall="$brew install --quiet --force"
+      
+      # Homebrew asks for these on install
+      $brewinstall gcc
+      $apt install -y build-essential
     fi
-    brewinstall="$brew install --quiet --force"
   fi
 }
 
