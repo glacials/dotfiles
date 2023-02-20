@@ -34,8 +34,10 @@ The following block makes dired mouseclicks open in same window, not a new one.
 	(eval-after-load "dired" '(progn (define-key dired-mode-map [mouse-2] 'dired-mouse-find-file)))
 #+END_SRC
 
+And finally, to open my config (the file you're reading) in Emacs quickly:
+
 #+BEGIN_SRC emacs-lisp
-  (global-set-key (kbd "C-c i") (lambda () (interactive) (find-file "~/.config/emacs/init.el"))) ; Access init.el with C-c i
+  (global-set-key (kbd "C-c i") (lambda () (interactive) (find-file "~/.config/emacs/config.org")))
 #+END_SRC
 
 ** Get Things Out of My Face
@@ -125,7 +127,7 @@ zerolfx has a pretty good unofficial one.
 #+BEGIN_SRC emacs-lisp
 (straight-use-package '(copilot :type git :host github :repo "zerolfx/copilot.el" :files ("dist" "*.el")))
 (add-hook 'prog-mode-hook 'copilot-mode)
-(defun my/copilot-tab () (interactive) (or (copilot-accept-completion) (indent-for-tab-comment)))
+(defun my/copilot-tab () (interactive) (or (copilot-accept-completion) (indent-for-tab-command)))
 (with-eval-after-load 'copilot (define-key copilot-mode-map (kbd "<tab>") #'my/copilot-tab))
 #+END_SRC
 
@@ -157,8 +159,8 @@ This section loads various types of support for programming languages, markups, 
 And how can we do any of that without the miracle of LSP and an appropriate UI for it?
 
 #+BEGIN_SRC emacs-lisp
-(straight-use-package 'lsp-mode)
-(straight-use-package 'lsp-ui)
+  (straight-use-package 'lsp-mode)
+  (straight-use-package 'lsp-ui)
 #+END_SRC
 
 For Go, we need to do some work to automatically run =gofmt= and friends.
@@ -170,8 +172,19 @@ For Go, we need to do some work to automatically run =gofmt= and friends.
   (add-hook 'go-mode-hook #'lsp-deferred)
 #+END_SRC
 
-Finally, some support for miscellaneous languages whose packages have
-good enough defaults that I don't need to configure anything.
+For YAML:
+
+#+BEGIN_SRC emacs-lisp
+  (straight-use-package 'yaml-mode)
+  (require 'yaml-mode)
+  (add-to-list 'auto-mode-alist '("\\.yml\\'" . yaml-mode))
+  (add-hook 'yaml-mode-hook
+            '(lambda ()
+               (define-key yaml-mode-map "\C-m" 'newline-and-indent)))
+#+END_SRC
+
+  Finally, some support for miscellaneous languages whose packages have
+  good enough defaults that I don't need to configure anything.
 
 #+BEGIN_SRC emacs-lisp
   (straight-use-package 'dockerfile-mode)
