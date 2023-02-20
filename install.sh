@@ -75,8 +75,10 @@ fi
 # Homebrew
 install_homebrew
 
-$brewinstall mas # macOS App Store CLI
-masinstall="mas install"
+if [[ $uname == darwin ]]; then
+  $brewinstall mas # macOS App Store CLI
+  masinstall="mas install"
+fi
 ########################################## End package managers
 
 ########################################## Start languages
@@ -150,31 +152,33 @@ brew list launchcontrol >/dev/null || $brewinstall launchcontrol
 brew list stay          >/dev/null || $brewinstall stay
 
 # App Store apps
-$masinstall 408981434  # iMovie
-$masinstall 409183694  # Keynote
-$masinstall 409201541  # Pages
-$masinstall 409203825  # Numbers
-$masinstall 411643860  # DaisyDisk
-$masinstall 430798174  # HazeOver
-$masinstall 441258766  # Magnet
-$masinstall 497799835  # Xcode
-$masinstall 747648890  # Telegram
-$masinstall 775737590  # iA Writer
-$masinstall 883878097  # Server
-$masinstall 920404675  # Monodraw
-$masinstall 1085114709 # Parallels Desktop
-$masinstall 1233861775 # Acorn
-$masinstall 1246969117 # Steam Link
-$masinstall 1451544217 # Adobe Lightroom
-$masinstall 1475387142 # Tailscale
-$masinstall 1478821913 # GoLinks for Safari
-$masinstall 1480068668 # Messenger
-$masinstall 1480933944 # Vimari
-$masinstall 1482454543 # Twitter
-$masinstall 1507890049 # Pixeur
-$masinstall 1518425043 # Boop
-$masinstall 1534275760 # LanguageTool
-$masinstall 1569813296 # 1Password for Safari
+if [[ $uname == darwin ]]; then
+  $masinstall 408981434  # iMovie
+  $masinstall 409183694  # Keynote
+  $masinstall 409201541  # Pages
+  $masinstall 409203825  # Numbers
+  $masinstall 411643860  # DaisyDisk
+  $masinstall 430798174  # HazeOver
+  $masinstall 441258766  # Magnet
+  $masinstall 497799835  # Xcode
+  $masinstall 747648890  # Telegram
+  $masinstall 775737590  # iA Writer
+  $masinstall 883878097  # Server
+  $masinstall 920404675  # Monodraw
+  $masinstall 1085114709 # Parallels Desktop
+  $masinstall 1233861775 # Acorn
+  $masinstall 1246969117 # Steam Link
+  $masinstall 1451544217 # Adobe Lightroom
+  $masinstall 1475387142 # Tailscale
+  $masinstall 1478821913 # GoLinks for Safari
+  $masinstall 1480068668 # Messenger
+  $masinstall 1480933944 # Vimari
+  $masinstall 1482454543 # Twitter
+  $masinstall 1507890049 # Pixeur
+  $masinstall 1518425043 # Boop
+  $masinstall 1534275760 # LanguageTool
+  $masinstall 1569813296 # 1Password for Safari
+fi
 ########################################## End application installations
 
 ########################################## Start system configuration
