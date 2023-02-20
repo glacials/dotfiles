@@ -7,10 +7,10 @@
 
 * =config.org=
 
-This is my Emacs config, expressed in literate programming. In other
-words, my Emacs config file and the documentation for my Emacs config
-file are the same file, and it's the one you're reading right now.
-[[https://twos.dev/winter][Winter]] has rendered it to HTML.
+This is my Emacs config, expressed in [[https://en.wikipedia.org/wiki/Literate_programming][literate programming]]. Put
+another way, words, my Emacs config file and the documentation for my
+Emacs config file are the same file, and it's the one you're reading.
+[[https://twos.dev/winter][Winter]] has rendered it from Org to HTML.
 
 ** Traditional Configuration
 
