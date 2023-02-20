@@ -3,15 +3,14 @@
 #+FILENAME: config.html
 #+TYPE: page
 #+DATE: 2023-02-20
+#+TOC: true
 
-This is my =init.org= file, which effectively takes the place of my
-=init.el= using literate programming. In other words, my Emacs config
-file and the documentation for my Emacs config file are the same file,
-and it's the one you're reading right now.
+* =config.org=
 
-* The Basics
-
-Let's get the boring stuff out of the way.
+This is my Emacs config, expressed in literate programming. In other
+words, my Emacs config file and the documentation for my Emacs config
+file are the same file, and it's the one you're reading right now.
+[[https://twos.dev/winter][Winter]] has rendered it to HTML.
 
 ** Traditional Configuration
 
@@ -64,7 +63,7 @@ And finally, to open my config (the file you're reading) in Emacs quickly:
   (setq delete-old-versions t)
 #+END_SRC
 
-* Install and configure packages
+** Packages
 
 The following package and settings aggressively fix indentation in
 realtime while programming, all the way down to adding an indentation
@@ -96,7 +95,7 @@ Note that Magit /must/ be loaded before =chezmoi=, as =chezmoi= needs
 to load =chezmoi-magit= which depends on =magit=.
 
 #+BEGIN_SRC emacs-lisp
-(straight-use-package 'magit)
+  (straight-use-package 'magit)
 #+END_SRC
 
 Chezmoi is a CLI tool unrelated to Emacs that helps manage
@@ -110,8 +109,8 @@ The =chezmoi= Emacs package adds some of its feature set to Emacs, but
 don't use it unless you're already a =chezmoi= user.
 
 #+BEGIN_SRC emacs-lisp
-(straight-use-package 'chezmoi)  ; Dotfiles management
-(require 'chezmoi)
+  (straight-use-package 'chezmoi)  ; Dotfiles management
+  (require 'chezmoi)
 #+END_SRC
 
 The next code block sets up autocompletion with =company=, the most
@@ -120,9 +119,9 @@ servers will call out to =company= to display autocompletions in a
 minibuffer near point.
 
 #+BEGIN_SRC emacs-lisp
-(straight-use-package 'company)
-(setq company-idle-delay 0)
-(setq company-minimum-prefix-length 1)
+  (straight-use-package 'company)
+  (setq company-idle-delay 0)
+  (setq company-minimum-prefix-length 1)
 #+END_SRC
 
 GitHub Copilot has its issues, but there's nothing like autocompleting
@@ -131,13 +130,13 @@ when writing Go. There's no official Copilot package for GitHub, but
 zerolfx has a pretty good unofficial one.
 
 #+BEGIN_SRC emacs-lisp
-(straight-use-package '(copilot :type git :host github :repo "zerolfx/copilot.el" :files ("dist" "*.el")))
-(add-hook 'prog-mode-hook 'copilot-mode)
-(defun my/copilot-tab () (interactive) (or (copilot-accept-completion) (indent-for-tab-command)))
-(with-eval-after-load 'copilot (define-key copilot-mode-map (kbd "<tab>") #'my/copilot-tab))
+  (straight-use-package '(copilot :type git :host github :repo "zerolfx/copilot.el" :files ("dist" "*.el")))
+  (add-hook 'prog-mode-hook 'copilot-mode)
+  (defun my/copilot-tab () (interactive) (or (copilot-accept-completion) (indent-for-tab-command)))
+  (with-eval-after-load 'copilot (define-key copilot-mode-map (kbd "<tab>") #'my/copilot-tab))
 #+END_SRC
 
-** Splash Screen
+*** Splash Screen
 
 The following code sets up the splash screen that shows when Emacs
 boots, which is usually an empty buffer. It pulls some info from
@@ -146,19 +145,19 @@ history like recent files and projects opened, and some info from
 out to =fortune= to render a random quote from my [[https://github.com/glacials/dotfiles][dotfiles repo]].
 
 #+BEGIN_SRC emacs-lisp
-(straight-use-package 'dashboard)
-(setq dashboard-items '((recents . 5)
-												(agenda . 5)
-												(bookmarks . 5)
-												(projects . 5)
-												(registers . 5)))
-(setq dashboard-banner-logo-title (shell-command-to-string "fortune ~/.config/fortune"))
-(setq dashboard-startup-banner 'logo)
-(require 'dashboard)
-(dashboard-setup-startup-hook)
+  (straight-use-package 'dashboard)
+  (setq dashboard-items '((recents . 5)
+                          (agenda . 5)
+                          (bookmarks . 5)
+                          (projects . 5)
+                          (registers . 5)))
+  (setq dashboard-banner-logo-title (shell-command-to-string "fortune ~/.config/fortune"))
+  (setq dashboard-startup-banner 'logo)
+  (require 'dashboard)
+  (dashboard-setup-startup-hook)
 #+END_SRC
 
-** Language Support
+*** Language Support
 
 This section loads various types of support for programming languages, markups, and similar.
 
@@ -198,7 +197,7 @@ For YAML:
   (straight-use-package 'terraform-mode)
 #+END_SRC
 
-** Display
+*** Display
 
 A beautiful editor is important to me whether it was made in 2015 or 1976.
 
@@ -241,7 +240,7 @@ And some final small tweaks:
   (add-hook 'prog-mode-hook #'rainbow-delimiters-mode)
 #+END_SRC
 
-** System Tweaks
+*** System Tweaks
 
 When Emacs is booted it inherits a copy of the environment it was
 created in. This is fine when you run =emacs= from the command line,
@@ -297,7 +296,7 @@ later.
   ;; (mac-psuedo-daemon-mode)
 #+END_SRC
 
-** Org Mode
+*** Org Mode
 
 Org Mode has already been loaded by the =straight.el= package in
 =init.el=, so we don't need to do that here. Let's set up the rest of
@@ -443,7 +442,7 @@ is to get my calendar and email readable and writable inside Emacs.
   (require 'org-gcal)
 #+END_SRC
 
-** Project management
+*** Project management
 
 Because Emacs runs as a daemon with any number of frames connected to
 it, it doesn't place the same emphasis on a working directory as
@@ -473,7 +472,7 @@ test file, closing every buffer for a project, etc.
   (projectile-mode +1)
 #+END_SRC
 
-** Newbie Helpers
+*** Newbie Helpers
 
 These packages help me out as a new Emacs user.
 
@@ -486,7 +485,7 @@ These packages help me out as a new Emacs user.
   (which-key-mode)
 #+END_SRC
 
-** Modern Niceties
+*** Modern Niceties
 
 Generically allow saving minibuffer histories (e.g. frecency data) across restarts.
 
