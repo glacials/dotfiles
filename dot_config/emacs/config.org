@@ -7,52 +7,71 @@
 
 * =config.org=
 
-This is my Emacs config, expressed in [[https://en.wikipedia.org/wiki/Literate_programming][literate programming]]. Put
-another way, words, my Emacs config file and the documentation for my
-Emacs config file are the same file, and it's the one you're reading.
-[[https://twos.dev/winter][Winter]] has rendered it from Org to HTML.
+This is my Emacs config, expressed in [[https://en.wikipedia.org/wiki/Literate_programming][literate programming]]. That is,
+my Emacs config and the documentation for my Emacs config are the same
+file, and it's the one you're reading ([[https://github.com/glacials/dotfiles/blob/main/dot_config/emacs/config.org][source]]). [[https://twos.dev/winter][Winter]] has rendered it
+from Org to HTML.
+
+# TODO: Add syntax highlighting for emacs-lisp
 
 ** Traditional Configuration
 
+Get the boring stuff out of the way first:
+
 #+BEGIN_SRC emacs-lisp
   (setq user-full-name "Benjamin Carlsson" user-mail-address "ben@twos.dev")
-  (setq-default tab-width 2) ; Set tab character width to 2 spaces
+  (setq-default tab-width 2)
   (tool-bar-mode -1) ; Don't show the GUI toolbar
-  (setq mac-option-modifier 'super) ; Make Option key act as Super
+  (setq mac-option-modifier 'super) ; Make Option act as Super
   (setq ring-bell-function 'ignore) ; Disable the audible bell
-  (setq sentence-end-double-space nil) ; End sentences with single spaces, not double
+  (setq sentence-end-double-space nil) ; End sentences with single spaces
+  (setq display-line-numbers-type t) ; Show line numbers
 #+END_SRC
 
 ** Small Efficiencies
 
+Now we'll start with some of the less obvious stuff.
+
 #+BEGIN_SRC emacs-lisp
-  (setq display-line-numbers-type t) ; Show line numbers
   (ido-mode 1) ; Autocomplete M-x among other things
   (setq ido-enable-flex-matching t) ; Don't require exact matches in ido-mode
 #+END_SRC
 
-The following block makes dired mouseclicks open in same window, not a new one.
+The following block makes dired mouseclicks open the in same window,
+not a new one.
 
-(For why this binds mouse-2 even though we're trying to affect mouse-1, see [[https://emacs.stackexchange.com/questions/35536/dired-mouse-click-open-folder-in-the-same-window][this link]].)
+For details on why this binds mouse-2 even though we're trying to
+affect mouse-1, see [[https://emacs.stackexchange.com/questions/35536/dired-mouse-click-open-folder-in-the-same-window][this link]].
   
 #+BEGIN_SRC emacs-lisp
-	(eval-after-load "dired" '(progn (define-key dired-mode-map [mouse-2] 'dired-mouse-find-file)))
+  (eval-after-load "dired"
+    '(progn
+       (define-key
+         dired-mode-map
+         [mouse-2]
+         'dired-mouse-find-file)))
 #+END_SRC
 
-And finally, to open my config (the file you're reading) in Emacs quickly:
+The last small thing: open this config file with =C-c i=:
 
 #+BEGIN_SRC emacs-lisp
-  (global-set-key (kbd "C-c i") (lambda () (interactive) (find-file "~/.config/emacs/config.org")))
+  (global-set-key
+   (kbd "C-c i")
+   (lambda () (interactive)
+     (find-file "~/.config/emacs/config.org")))
 #+END_SRC
 
 ** Get Things Out of My Face
+
+This section deals with minimizing visual noise.
 
 #+BEGIN_SRC emacs-lisp
   ;; Delete-auto-save-files
   (setq delete-auto-save-files t)
 
   ;; Don't pollute project directories; save backup files in a central location.
-  (when (not (file-exists-p "~/.cache/emacs")) (make-directory "~/.cache/emacs"))
+  (when (not (file-exists-p "~/.cache/emacs"))
+    (make-directory "~/.cache/emacs"))
 
   (setq-default backup-directory-alist
                 '((".*" . "~/.cache/emacs")))
@@ -65,12 +84,14 @@ And finally, to open my config (the file you're reading) in Emacs quickly:
 
 ** Packages
 
-The following package and settings aggressively fix indentation in
-realtime while programming, all the way down to adding an indentation
-to the rest of the file when you type ~if {~ and then removing it when
-you finally type ~}~. It can be distracting, but it's like breaking
-out a piece of =gofmt= and applyig it to everything, so I enjoy it
-overall.
+The meat of it.
+
+The following package and associated settings aggressively fix
+indentation in realtime while programming, all the way down to adding
+an indentation to the rest of the file when you type ~if {~ and then
+removing it when you finally type ~}~. It can be distracting, but I
+appreciate the staunchness of =gofmt= especially when learning a new
+language, so I enjoy it overall.
 
 (It has settings to make it less aggressive than that example, though.)
 
@@ -83,13 +104,13 @@ overall.
 Magit is the de facto Git interface in Emacs. This package surprised
 me with its convenience; having come from Vim I was expecting
 something along the lines of [[https://github.com/tpope/vim-fugitive][fugitive.vim]], but Magit is far more
-efficient than that. Once you're in a Magit buffer, you can do
-things like stage files with =s=, commit with =c c=, push with =p
-p=, and all of it with way more nuance than that happy path I just
-mentioned.
+efficient than that. It's even more efficient to open Emacs and use
+Magit than it is to use Git at the command line.
 
-I'm a born git add -p= user, and a Magit diff buffer is basically the
-better version of that.
+Once you're in a Magit buffer, you can do things like stage files with
+=s=, commit with =c c=, push with =p p=, and all of it with way more
+nuance than that happy path. I'm a born =git add -p= user, and a Magit
+diff buffer is basically the better version of that.
 
 Note that Magit /must/ be loaded before =chezmoi=, as =chezmoi= needs
 to load =chezmoi-magit= which depends on =magit=.
@@ -98,12 +119,11 @@ to load =chezmoi-magit= which depends on =magit=.
   (straight-use-package 'magit)
 #+END_SRC
 
-Chezmoi is a CLI tool unrelated to Emacs that helps manage
-dotfiles. It takes the rigmarole of managing them with a Git
-repository and adds some quality-of-life improvements to it, like
-~chezmoi edit --apply ~/path/to/dotfile~ to open your file in
-=$EDITOR=, then immediately add, commit, and push it without any
-further interaction.
+Chezmoi is a CLI tool unrelated to Emacs that helps manage dotfiles.
+It takes the rigmarole of managing them with a Git repository and adds
+some quality-of-life improvements to it, like ~chezmoi edit --apply
+~/path/to/dotfile~ to open your file in =$EDITOR=, then (once closed)
+immediately add, commit, and push it without any further interaction.
 
 The =chezmoi= Emacs package adds some of its feature set to Emacs, but
 don't use it unless you're already a =chezmoi= user.
@@ -130,10 +150,20 @@ when writing Go. There's no official Copilot package for GitHub, but
 zerolfx has a pretty good unofficial one.
 
 #+BEGIN_SRC emacs-lisp
-  (straight-use-package '(copilot :type git :host github :repo "zerolfx/copilot.el" :files ("dist" "*.el")))
+  (straight-use-package
+   '(copilot
+     :type git
+     :host github
+     :repo "zerolfx/copilot.el"
+     :files ("dist" "*.el")))
   (add-hook 'prog-mode-hook 'copilot-mode)
-  (defun my/copilot-tab () (interactive) (or (copilot-accept-completion) (indent-for-tab-command)))
-  (with-eval-after-load 'copilot (define-key copilot-mode-map (kbd "<tab>") #'my/copilot-tab))
+  (defun my/copilot-tab ()
+    (interactive)
+    (or (copilot-accept-completion) (indent-for-tab-command)))
+  (with-eval-after-load 'copilot
+    (define-key copilot-mode-map
+      (kbd "<tab>")
+      #'my/copilot-tab))
 #+END_SRC
 
 *** Splash Screen
@@ -145,16 +175,17 @@ history like recent files and projects opened, and some info from
 out to =fortune= to render a random quote from my [[https://github.com/glacials/dotfiles][dotfiles repo]].
 
 #+BEGIN_SRC emacs-lisp
-  (straight-use-package 'dashboard)
-  (setq dashboard-items '((recents . 5)
-                          (agenda . 5)
-                          (bookmarks . 5)
-                          (projects . 5)
-                          (registers . 5)))
-  (setq dashboard-banner-logo-title (shell-command-to-string "fortune ~/.config/fortune"))
-  (setq dashboard-startup-banner 'logo)
-  (require 'dashboard)
-  (dashboard-setup-startup-hook)
+   (straight-use-package 'dashboard)
+   (setq dashboard-items '((recents . 5)
+                           (agenda . 5)
+                           (bookmarks . 5)
+                           (projects . 5)
+                           (registers . 5)))
+   (setq dashboard-banner-logo-title
+         (shell-command-to-string "fortune ~/.config/fortune"))
+   (setq dashboard-startup-banner 'logo)
+   (require 'dashboard)
+   (dashboard-setup-startup-hook)
 #+END_SRC
 
 *** Language Support
@@ -168,13 +199,15 @@ And how can we do any of that without the miracle of LSP and an appropriate UI f
   (straight-use-package 'lsp-ui)
 #+END_SRC
 
-For Go, we need to do some work to automatically run =gofmt= and friends.
+For Go, we need to do some work to automatically run =gofmt= and friends:
 
 #+BEGIN_SRC emacs-lisp
-  (straight-use-package 'go-mode)
-  (defun lsp-go-install-save-hooks () (add-hook 'before-save-hook #'lsp-format-buffer t t) (add-hook 'before-save-hook #'lsp-organize-imports t t))
-  (add-hook 'go-mode-hook #'lsp-go-install-save-hooks)
-  (add-hook 'go-mode-hook #'lsp-deferred)
+    (straight-use-package 'go-mode)
+    (defun lsp-go-install-save-hooks ()
+      (add-hook 'before-save-hook #'lsp-format-buffer t t)
+      (add-hook 'before-save-hook #'lsp-organize-imports t t))
+    (add-hook 'go-mode-hook #'lsp-go-install-save-hooks)
+    (add-hook 'go-mode-hook #'lsp-deferred)
 #+END_SRC
 
 For YAML:
@@ -202,11 +235,10 @@ For YAML:
 A beautiful editor is important to me whether it was made in 2015 or 1976.
 
 I started my Emacs journey with [[https://doomemacs.org][Doom]] and eventually migrated to
-vanilla, but missed the Doom themeset. It turns out that most of the
-functionality and form they add to Emacs is available in independent
-packages! So I shamelessly import and use =doom-monokai-pro=; in some
-way shape or form I've been using Monokai on and off for well over a
-decade.
+vanilla, but missed the Doom themeset. Thankfully, Doom is very
+modular and much of their custom code is available as individual
+packages. I import and use =doom-monokai-pro=; in some way shape or
+form I've been using Monokai on and off for well over a decade.
 
 #+BEGIN_SRC emacs-lisp
   (straight-use-package 'doom-themes)
@@ -244,7 +276,8 @@ And some final small tweaks:
 
 When Emacs is booted it inherits a copy of the environment it was
 created in. This is fine when you run =emacs= from the command line,
-but when you start Emacs from somewhere like the macOS dock, we're missing a lot.
+but when you start Emacs from somewhere like the macOS dock, it's
+missing a lot.
 
 The most important missing variable is =$PATH=, as it means Emacs
 can't access any CLI tools installed with Homebrew, Go, or the
@@ -261,16 +294,17 @@ explicitly.
 
 =highlight-indent-guides= makes indentation levels visually distinct
 columns down down the left side of the file, making it easy to tell at
-a glance whether something 50 lines away is at the same indentation
-level as you.
+a glance whether something 50 lines away is at a given indentation
+level.
 
 #+BEGIN_SRC emacs-lisp
   (straight-use-package 'highlight-indent-guides)
   (add-hook 'prog-mode-hook 'highlight-indent-guides-mode)
 #+END_SRC
 
-Start the Emacs server. This allows future invocations of =emacs= to
-open in the existing instance rather than starting a new one.
+The following code starts the Emacs server. This allows future
+invocations of =emacs= to open in the existing instance rather than
+starting a new one.
 
 #+BEGIN_SRC emacs-lisp
   (load "server")
@@ -278,18 +312,17 @@ open in the existing instance rather than starting a new one.
 #+END_SRC
 
 =mac-pseudo-daaemon= goes one step further by refusing to stop the
-server even after a =⌘-q=. This prevents an error when invoking Emacs
-from the command line without the application already running, as the
-Emacs command line isn't integrated with macOS well enough to boot the
-app bundle in that case.
+server even after the application quits. This prevents an error when
+invoking Emacs from the command line without the application already
+running, as the Emacs command line isn't integrated with macOS well
+enough to boot the app bundle in that case.
 
 I have this disabled because it does this by pretending to quit the
-application without actually doing so, so if you /actually/ want to
-quit Emacs you have to do a weird song and dance. While starting out
-on Emacs I'm finding that I want to completely quit it at least a
-couple of times per day to make sure my startup configs still work as
-intended, so the benefit wasn't worth the sacrifice. This may change
-later.
+application without actually doing so, so if you actually want to quit
+Emacs you have to do a weird song and dance. While starting out on
+Emacs I'm finding that I want to completely quit it often to make sure
+my startup configs still work as intended, so the benefit wasn't worth
+the sacrifice. This may change later.
 
 #+BEGIN_SRC emacs-lisp
   ;; (straight-use-package 'mac-pseudo-daemon)
@@ -299,8 +332,9 @@ later.
 *** Org Mode
 
 Org Mode has already been loaded by the =straight.el= package in
-=init.el=, so we don't need to do that here. Let's set up the rest of
-Org.
+=init.el= (that's how the Org file you're reading was tangled into an
+=.el= file), so we don't need to do that here. Let's set up the rest
+of Org.
 
 First, we'll set up some basic configuration.
 
@@ -319,7 +353,12 @@ And clean it up visually. Hide the first n-1 stars on level n headlines:
 Now, for some shortcuts to skip around Org Mode.
 
 #+BEGIN_SRC emacs-lisp
-  (global-set-key (kbd "C-c o") (lambda () (interactive) (find-file "~/org/notes.org"))) ; Access org-mode index with C-c o
+  ;; Access org-mode index with C-c o
+  (global-set-key
+   (kbd "C-c o")
+   (lambda ()
+     (interactive)
+     (find-file "~/org/notes.org")))
 #+END_SRC
 
 Capture is a feature built into Org Mode that allows quick insertion
@@ -341,11 +380,27 @@ in my main Org file that looks like this:
   ,***** DONE Including finished ones
 #+END_SRC
 
+Here's how we'll set up the templates. =C-c c t= to create a new TODO
+entry, or =C-c c h= to create a new generic note.
+
 #+BEGIN_SRC emacs-lisp
   (global-set-key (kbd "C-c c") 'org-capture)
   (setq org-capture-templates
-        '(("t" "Log a TODO entry" entry (file+olp+datetree "~/org/notes.org" "Daily log") "* TODO %?")
-          ("h" "Log a new headline" entry (file+olp+datetree "~/org/notes.org" "Daily log") "* %?")))
+        '(("t"
+           "Log a TODO entry"
+           entry
+           (file+olp+datetree
+            "~/org/notes.org"
+            "Daily log")
+           "* TODO %?"
+           )
+          ("h"
+           "Log a new headline"
+           entry
+           (file+olp+datetree
+            "~/org/notes.org"
+            "Daily log")
+           "* %?")))
 #+END_SRC
 
 By default, the Org refile command (=C-c C-w=) can only refile to
@@ -353,13 +408,14 @@ shallow headlines. I currently use headlines for just about every line
 of notes I take from small jots to tasks to actual headlines, so it's
 important for me to be able to refile to any depth.
 
-(I'm trying to break this habit; I just don't have the foresight to
-know when a note will need subnotes inside it or not. I'm also
-confused about why Org only supports tasks in headlines by
-default. Let me know if you can help me with either of these things.)
+(I'm trying to break this habit. I don't have the foresight to know
+when a note will need subnotes inside it. I'm also confused about why
+Org only supports tasks in headlines by default. Let me know if you
+can help me with either of these things.)
 
 #+BEGIN_SRC emacs-lisp
-  (setq org-refile-targets '((nil :maxlevel . 99) (org-agenda-files :maxlevel . 99)))
+   (setq org-refile-targets
+         '((nil :maxlevel . 99) (org-agenda-files :maxlevel . 99)))
 #+END_SRC
 
 We'll also set up our preferred TODO keywords, and have Org autosave
@@ -367,17 +423,17 @@ our Org file whenever we update a TODO item.
 
 #+BEGIN_SRC emacs-lisp
   (advice-add 'org-todo :after 'org-save-all-org-buffers)
-  (setq org-todo-keywords '(
-                            (sequence "TODO(t)" "STRT(s)" "BLKD(b)" "|" "DONE(d)" "CNCL(c)")
-                            (sequence "[ ](T)" "[-](S)" "[?](B)" "|" "[X](D)" "[C](C)")
-                            ))
+  (setq org-todo-keywords
+        '(
+          (sequence "TODO(t)" "STRT(s)" "BLKD(b)" "|" "DONE(d)" "CNCL(c)")
+          (sequence "[ ](T)" "[-](S)" "[?](B)" "|" "[X](D)" "[C](C)")
+          ))
 #+END_SRC
 
 It's time to get serious about the date tree. Because I'm always
-logging notes for basically anything in a nested headline for today, I
-want it to be super easy to get there. Capture helps us /put things/
-there, but I often want to see the whole day's notes with context, or
-edit previous entries, etc.
+logging notes in a nested headline for today, I want it to be easy to
+get there. Capture helps us /put things/ there, but I often want to
+see the whole day's notes with context, edit previous entries, etc.
 
 First, we'll define a function =datetree-dates= to generate the title
 for today's date tree headline.
@@ -389,8 +445,11 @@ for today's date tree headline.
           (month (string-to-number (format-time-string "%m")))
           (year (string-to-number (format-time-string "%Y"))))
       (dotimes (i 365)
-        (push (format-time-string "%F %A" (encode-time 1 1 0 (- day i) month year))
-              dates))
+        (push
+         (format-time-string
+          "%F %A"
+          (encode-time 1 1 0 (- day i) month year))
+         dates))
       (nreverse dates)))
 #+END_SRC
 
@@ -412,9 +471,9 @@ buffer's date tree.
        (goto-char point)))
 #+END_SRC
 
-Then we'll wrap that with a new function =open-today= to open the
-default Org file which has that date tree in it, then calls
-=datetree-jump=.
+We'll wrap =datetree-jump= with a new function we'll call =open-today=
+to open the default Org file which has that date tree in it, then
+call =datetree-jump=.
 
 #+BEGIN_SRC emacs-lisp
   (defun open-today () ; Open org file to today
@@ -424,21 +483,32 @@ default Org file which has that date tree in it, then calls
 #+END_SRC
 
 Finally, we'll bring it all together with =C-c t= to open the default
-Org file and jump to today.
+Org file, generate a heading for today's log if needed, and jump to
+it.
 
 #+BEGIN_SRC emacs-lisp
-  (global-set-key (kbd "C-c t") 'open-today) ; Jump to today in the current buffer's datetree (using the above function) with C-c t
+  ;; Jump to today in the date tree with C-c t
+  (global-set-key (kbd "C-c t") 'open-today)
 #+END_SRC
 
 This last section of my Org config is still in progress, but the goal
 is to get my calendar and email readable and writable inside Emacs.
 
 #+BEGIN_SRC emacs-lisp
-  (setq plstore-cache-passphrase-for-symmetric-encryption t) ; Required to not get prompted for Touch ID every boot
+  ;; Required to not get prompted for Touch ID every boot
+  (setq plstore-cache-passphrase-for-symmetric-encryption t)
+
   (straight-use-package 'org-gcal)
-  (setq org-gcal-client-id (string-trim (shell-command-to-string "op item get 'Emacs Google Client' --fields username"))
-        org-gcal-client-secret (string-trim (shell-command-to-string "op item get 'Emacs Google Client' --fields password"))
-        org-gcal-fetch-file-alist '(("ben@twos.dev" .  "~/org/schedule.org")))
+  (setq
+   org-gcal-client-id
+   (string-trim
+    (shell-command-to-string
+     "op item get 'Emacs Google Client' --fields username"))
+   org-gcal-client-secret
+   (string-trim
+    (shell-command-to-string
+     "op item get 'Emacs Google Client' --fields password"))
+   org-gcal-fetch-file-alist '(("ben@twos.dev" .  "~/org/schedule.org")))
   (require 'org-gcal)
 #+END_SRC
 
@@ -453,12 +523,13 @@ while looking at =~/myproject/config/dev.yml=; you'd generally expect
 the starting directory for the search to be =~/myproject=, but Emacs
 instead starts at =~/myproject/config=, not knowing the difference in
 significance between the two and being unable to lean on a stable
-working directory.
+working directory given that you also have =~/anotherproject/main.go=
+open in another buffer.
 
 [[https://github.com/bbatsov/projectile][=projectile=]] is a fantastic Emacs package that fixes this. At its most
 basic level it brings a hidden Emacs feature (=project.el=) into the
-limelight and attaches a bunch of modern quality-of-life features to
-it. It uses a combination of autodetection and prompts to establish
+limelight and attaches a bunch of modern quality-of-life improvements
+to it. It uses a combination of autodetection and prompts to establish
 what project a given file belongs to.
 
 With that new relationship comes project-scoped commands and actions,
@@ -487,13 +558,14 @@ These packages help me out as a new Emacs user.
 
 *** Modern Niceties
 
-Generically allow saving minibuffer histories (e.g. frecency data) across restarts.
+=savehist= generically allows saving minibuffer histories (e.g.
+frecency data) across restarts:
 
 #+BEGIN_SRC emacs-lisp
 (straight-use-package 'savehist) ; Save minibuffer histories; pairs with frecency of vertico
 #+END_SRC
 
-Make Emacs's undo feature more modern.
+=undo-fu= makes Emacs's undo feature more modern:
 
 #+BEGIN_SRC emacs-lisp                                        
   (straight-use-package 'undo-fu)
@@ -504,11 +576,15 @@ Make Emacs's undo feature more modern.
   (undo-fu-session-global-mode)
 #+END_SRC
 
-Better (and better-looking) completion than Ido, the built-in fuzzy completion enginer:
+And =vertico= has better (and better-looking) completion than Ido, the
+built-in fuzzy engine:
 
 #+BEGIN_SRC emacs-lisp
 (straight-use-package 'vertico)
 (vertico-mode)
 #+END_SRC
 
+** The End
 
+Thanks for reading my Emacs config! Please let me know if you have any
+questions or improvement suggestions! [[mailto:ben@twos.dev][ben@twos.dev]]
