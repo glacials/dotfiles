@@ -4,3 +4,6 @@
 .config/nvim/.netrwhist
 lock
 lock.m
+
+# Emacs
+\#*\#
