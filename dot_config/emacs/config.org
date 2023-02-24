@@ -1,5 +1,5 @@
 # The following tags are for twos.dev, which automatically pulls and
-# deploys this file to twos.dev/emacs_config.html.
+# deploys this file to twos.dev/config.html.
 #+FILENAME: config.html
 #+TYPE: page
 #+DATE: 2023-02-20
@@ -324,6 +324,16 @@ And some final small tweaks:
   ;; Show Git changes in the gutter
   (straight-use-package diff-hl-mode)
   (global-diff-hl-mode)
+
+  ;; Show trailing whitespace
+  (straight-use-package
+   whitespace :ensure nil
+   :hook
+   (prog-mode . whitespace-mode)
+   (text-mode . whitespace-mode)
+   :custom
+   (whitespace-style
+    '(face empty indentation::space tab trailing)))
 #+END_SRC
 
 *** System Tweaks
