@@ -58,7 +58,7 @@ affect mouse-1, see [[https://emacs.stackexchange.com/questions/35536/dired-mous
 Some keybinds:
 
 #+BEGIN_SRC emacs-lisp
-  (global-set (kbd "C-c a") 'org-agenda)
+  (global-set-key (kbd "C-c a") 'org-agenda)
 #+END_SRC
 
   The last small thing: open this config file with =C-c i=:
@@ -74,60 +74,61 @@ Some keybinds:
 This section deals with minimizing visual noise.
 
 #+BEGIN_SRC emacs-lisp
-  ;; Delete-auto-save-files
-  (setq delete-auto-save-files t)
+	;; Delete-auto-save-files
+	(setq delete-auto-save-files t)
 
-  ;; Don't pollute project directories; save backup files in a central location.
-  (when (not (file-exists-p "~/.cache/emacs"))
-    (make-directory "~/.cache/emacs"))
+	;; Don't pollute project directories; save backup files in a central location.
+	(when (not (file-exists-p "~/.cache/emacs"))
+		(make-directory "~/.cache/emacs"))
 
-  (setq-default backup-directory-alist
-                '((".*" . "~/.cache/emacs")))
-  (setq auto-save-file-name-transforms
-        '((".*" "~/.cache/emacs/" t)))
+	(setq-default backup-directory-alist
+								'((".*" . "~/.cache/emacs")))
+	(setq auto-save-file-name-transforms
+				'((".*" "~/.cache/emacs/" t)))
 
-  ;; Delete old backups silently.
-  (setq delete-old-versions t)
+	;; Delete old backups silently.
+	(setq delete-old-versions t)
 
-  ;; Ligatures, to be provided by major modes.
-  (global-prettify-symbols-mode +1)
+	;; Ligatures, to be provided by major modes.
+	(global-prettify-symbols-mode +1)
 
-  ;; Custom ligatures
-  (setq prettify-symbols-alist
-        '(("TODO" . "")
-          ("BLKD" . "")        
-          ("CNCL" . "")
-          ("DONE" . "")
-          ("->>"  . "↠")
-          ("->"   . "→")
-          ("<-"   . "←")
-          ("<-"   . "←")
-          ("=>"   . "⇒")
-          ("<="   . "≤")
-          (">="   . "≥")
-          ;; Below are commented until/unless I start using them frequently.
-  ;				("[#A]" . "")
-  ;				("[#B]" . "")
-  ;				("[#C]" . "")
-  ;				("[ ]" . "")
-  ;				("[X]" . "")
-  ;				("[-]" . "")
-  ;				("#+BEGIN_SRC" . "")
-  ;				("#+END_SRC" . "―")
-  ;				(":PROPERTIES:" . "")
-  ;				(":END:" . "―")
-  ;				("#+STARTUP:" . "")
-  ;				("#+TITLE: " . "")
-  ;				("#+RESULTS:" . "")
-  ;				("#+NAME:" . "")
-  ;				("#+ROAM_TAGS:" . "")
-  ;				("#+FILETAGS:" . "")
-  ;				("#+HTML_HEAD:" . "")
-  ;				("#+SUBTITLE:" . "")
-  ;				("#+AUTHOR:" . "")
-  ;				(":Effort:" . "")
-  ;				("SCHEDULED:" . "")
-  ;				("DEADLINE:" . "")))
+	;; Custom ligatures
+	(setq prettify-symbols-alist
+				'(("TODO" . "")
+					("BLKD" . "")        
+					("CNCL" . "")
+					("DONE" . "")
+					("->>"  . "↠")
+					("->"   . "→")
+					("<-"   . "←")
+					("<-"   . "←")
+					("=>"   . "⇒")
+					("<="   . "≤")
+					(">="   . "≥")
+					;; Below are commented until/unless I start using them frequently.
+	;				("[#A]" . "")
+	;				("[#B]" . "")
+	;				("[#C]" . "")
+	;				("[ ]" . "")
+	;				("[X]" . "")
+	;				("[-]" . "")
+	;				("#+BEGIN_SRC" . "")
+	;				("#+END_SRC" . "―")
+	;				(":PROPERTIES:" . "")
+	;				(":END:" . "―")
+	;				("#+STARTUP:" . "")
+	;				("#+TITLE: " . "")
+	;				("#+RESULTS:" . "")
+	;				("#+NAME:" . "")
+	;				("#+ROAM_TAGS:" . "")
+	;				("#+FILETAGS:" . "")
+	;				("#+HTML_HEAD:" . "")
+	;				("#+SUBTITLE:" . "")
+	;				("#+AUTHOR:" . "")
+	;				(":Effort:" . "")
+	;				("SCHEDULED:" . "")
+	;				("DEADLINE:" . "")
+					))
 #+END_SRC
 
 ** Packages
@@ -322,18 +323,11 @@ And some final small tweaks:
   (straight-use-package 'rainbow-mode)
 
   ;; Show Git changes in the gutter
-  (straight-use-package diff-hl-mode)
+  (straight-use-package 'diff-hl)
   (global-diff-hl-mode)
 
   ;; Show trailing whitespace
-  (straight-use-package
-   whitespace :ensure nil
-   :hook
-   (prog-mode . whitespace-mode)
-   (text-mode . whitespace-mode)
-   :custom
-   (whitespace-style
-    '(face empty indentation::space tab trailing)))
+  (straight-use-package  'whitespace)
 #+END_SRC
 
 *** System Tweaks
