@@ -135,6 +135,8 @@ This section deals with minimizing visual noise.
 
 The meat of it.
 
+*** Formatting
+
 The following package and associated settings aggressively fix
 indentation in realtime while programming, all the way down to adding
 an indentation to the rest of the file when you type ~if {~ and then
@@ -148,6 +150,13 @@ language, so I enjoy it overall.
   (straight-use-package 'ws-butler)
   (require 'ws-butler)
   (add-hook 'prog-mode-hook #'ws-butler-mode)
+#+END_SRC
+
+#+BEGIN_SRC emacs-lisp
+  (straight-use-package 'auto-indent-mode)
+  (setq auto-indent-on-visit-file t)
+  (require 'auto-indent-mode)
+  (auto-indent-global-mode)
 #+END_SRC
 
 *** Integrations
