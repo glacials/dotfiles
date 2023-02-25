@@ -689,6 +689,7 @@ bindings. It has these effects:
 
 #+begin_src emacs-lisp
   (straight-use-package 'god-mode)
+  (global-set-key (kbd "<escape>") #'god-local-mode)
   (setq god-mode-enable-function-key-translation nil) ; Except function keys
   (require 'god-mode)
   (god-mode)
