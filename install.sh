@@ -143,17 +143,18 @@ sh ~/.config/fortune/strfile
 brew services start syncthing
 
 # Casks (casks still install even if already installed, so we skip here if so)
-brew list 1password           >/dev/null || $brewinstall 1password
-brew list discord             >/dev/null || $brewinstall discord
-brew list docker              >/dev/null || $brewinstall homebrew/cask/docker
-brew list firefox             >/dev/null || $brewinstall firefox
-brew list font-hack-nerd-font >/dev/null || $brewinstall homebrew/cask-fonts/font-hack-nerd-font
-brew list font-jetbrains-mono >/dev/null || $brewinstall homebrew/cask-fonts/font-jetbrains-mono
-brew list google-chrome       >/dev/null || $brewinstall google-chrome
-brew list iterm2              >/dev/null || $brewinstall iterm2
-brew list kitty               >/dev/null || $brewinstall kitty
-brew list launchcontrol       >/dev/null || $brewinstall launchcontrol
-brew list stay                >/dev/null || $brewinstall stay
+brew list 1password            >/dev/null || $brewinstall 1password
+brew list discord              >/dev/null || $brewinstall discord
+brew list docker               >/dev/null || $brewinstall homebrew/cask/docker
+brew list firefox              >/dev/null || $brewinstall firefox
+brew list font-hack-nerd-font  >/dev/null || $brewinstall homebrew/cask-fonts/font-hack-nerd-font
+brew list font-jetbrains-mono  >/dev/null || $brewinstall homebrew/cask-fonts/font-jetbrains-mono
+brew list font-source-code-pro >/dev/null || $brewinstall homebrew/cask-fonts/font-source-code-pro
+brew list google-chrome        >/dev/null || $brewinstall google-chrome
+brew list iterm2               >/dev/null || $brewinstall iterm2
+brew list kitty                >/dev/null || $brewinstall kitty
+brew list launchcontrol        >/dev/null || $brewinstall launchcontrol
+brew list stay                 >/dev/null || $brewinstall stay
 
 # App Store apps
 if [[ $uname == darwin ]]; then
