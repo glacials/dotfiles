@@ -541,6 +541,7 @@ And add some Org packages:
 
   (straight-use-package 'org-roam)
   (straight-use-package 'emacsql)
+  (org-roam-db-autosync-mode)
   (setq org-roam-directory "~/sync/org-roam")
 #+END_SRC
 
