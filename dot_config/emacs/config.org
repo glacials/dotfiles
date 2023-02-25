@@ -30,6 +30,16 @@ Get the boring stuff out of the way first:
   (add-hook 'prog-mode-hook #'auto-fill-mode) ; Autowrap when coding
   (add-hook 'text-mode-hook #'auto-fill-mode) ; Autowrap when writing
   (global-hl-line-mode 1) ; Highlight cursor line
+
+  ;; Unicode everywhere
+  (set-charset-priority 'unicode)
+  (set-default-coding-systems 'utf-8)
+  (set-terminal-coding-system 'utf-8)
+  (set-keyboard-coding-system 'utf-8)
+  (set-selection-coding-system 'utf-8)
+  (prefer-coding-system 'utf-8)
+  (setq-default buffer-file-coding-system 'utf-8)
+  (setq default-process-coding-system '(utf-8-unix . utf-8-unix))
 #+END_SRC
 
 ** Small Efficiencies
@@ -38,6 +48,8 @@ Now we'll start with some of the less obvious stuff.
 #+BEGIN_SRC emacs-lisp
   (ido-mode 1) ; Autocomplete M-x among other things
   (setq ido-enable-flex-matching t) ; Don't require exact matches in ido-mode
+  (defalias 'yes-or-no-p 'y-or-n-p) ; Allow y/n in yes/no prompts
+  (global-set-key (kbd "C-x k") #'kill-this-buffer) ; Make C-x k kill focused buffer instead of promptingexpand-region
 #+END_SRC
 
 The following block makes dired mouseclicks open the in same window,
@@ -70,65 +82,70 @@ Some keybinds:
      (find-file "~/.config/emacs/config.org")))
 #+END_SRC
 
-** Get Things Out of My Face
-This section deals with minimizing visual noise.
+** Visuals
+This section deals with minimizing visual noise and making things pretty.
 
 #+BEGIN_SRC emacs-lisp
-	;; Delete-auto-save-files
-	(setq delete-auto-save-files t)
+  (add-to-list 'default-frame-alist '(font . "JetBrains Mono" ))
+  (set-face-attribute 'default t :font "JetBrains Mono" )
+#+END_SRC
 
-	;; Don't pollute project directories; save backup files in a central location.
-	(when (not (file-exists-p "~/.cache/emacs"))
-		(make-directory "~/.cache/emacs"))
+#+BEGIN_SRC emacs-lisp
+  ;; Delete-auto-save-files
+  (setq delete-auto-save-files t)
 
-	(setq-default backup-directory-alist
-								'((".*" . "~/.cache/emacs")))
-	(setq auto-save-file-name-transforms
-				'((".*" "~/.cache/emacs/" t)))
+  ;; Don't pollute project directories; save backup files in a central location.
+  (when (not (file-exists-p "~/.cache/emacs"))
+    (make-directory "~/.cache/emacs"))
 
-	;; Delete old backups silently.
-	(setq delete-old-versions t)
+  (setq-default backup-directory-alist
+                '((".*" . "~/.cache/emacs")))
+  (setq auto-save-file-name-transforms
+        '((".*" "~/.cache/emacs/" t)))
 
-	;; Ligatures, to be provided by major modes.
-	(global-prettify-symbols-mode +1)
+  ;; Delete old backups silently.
+  (setq delete-old-versions t)
 
-	;; Custom ligatures
-	(setq prettify-symbols-alist
-				'(("TODO" . "")
-					("BLKD" . "")        
-					("CNCL" . "")
-					("DONE" . "")
-					("->>"  . "↠")
-					("->"   . "→")
-					("<-"   . "←")
-					("<-"   . "←")
-					("=>"   . "⇒")
-					("<="   . "≤")
-					(">="   . "≥")
-					;; Below are commented until/unless I start using them frequently.
-	;				("[#A]" . "")
-	;				("[#B]" . "")
-	;				("[#C]" . "")
-	;				("[ ]" . "")
-	;				("[X]" . "")
-	;				("[-]" . "")
-	;				("#+BEGIN_SRC" . "")
-	;				("#+END_SRC" . "―")
-	;				(":PROPERTIES:" . "")
-	;				(":END:" . "―")
-	;				("#+STARTUP:" . "")
-	;				("#+TITLE: " . "")
-	;				("#+RESULTS:" . "")
-	;				("#+NAME:" . "")
-	;				("#+ROAM_TAGS:" . "")
-	;				("#+FILETAGS:" . "")
-	;				("#+HTML_HEAD:" . "")
-	;				("#+SUBTITLE:" . "")
-	;				("#+AUTHOR:" . "")
-	;				(":Effort:" . "")
-	;				("SCHEDULED:" . "")
-	;				("DEADLINE:" . "")
-					))
+  ;; Ligatures, to be provided by major modes.
+  (global-prettify-symbols-mode +1)
+
+  ;; Custom ligatures
+  (setq prettify-symbols-alist
+        '(("TODO" . "")
+          ("BLKD" . "")        
+          ("CNCL" . "")
+          ("DONE" . "")
+          ("->>"  . "↠")
+          ("->"   . "→")
+          ("<-"   . "←")
+          ("<-"   . "←")
+          ("=>"   . "⇒")
+          ("<="   . "≤")
+          (">="   . "≥")
+          ;; Below are commented until/unless I start using them frequently.
+  ;				("[#A]" . "")
+  ;				("[#B]" . "")
+  ;				("[#C]" . "")
+  ;				("[ ]" . "")
+  ;				("[X]" . "")
+  ;				("[-]" . "")
+  ;				("#+BEGIN_SRC" . "")
+  ;				("#+END_SRC" . "―")
+  ;				(":PROPERTIES:" . "")
+  ;				(":END:" . "―")
+  ;				("#+STARTUP:" . "")
+  ;				("#+TITLE: " . "")
+  ;				("#+RESULTS:" . "")
+  ;				("#+NAME:" . "")
+  ;				("#+ROAM_TAGS:" . "")
+  ;				("#+FILETAGS:" . "")
+  ;				("#+HTML_HEAD:" . "")
+  ;				("#+SUBTITLE:" . "")
+  ;				("#+AUTHOR:" . "")
+  ;				(":Effort:" . "")
+  ;				("SCHEDULED:" . "")
+  ;				("DEADLINE:" . "")
+          ))
 #+END_SRC
 
 ** Packages
@@ -458,20 +475,26 @@ entry, or =C-c c h= to create a new generic note.
   (global-set-key (kbd "C-c c") 'org-capture)
   (setq org-capture-templates
         '(("t"
-           "Log a TODO entry"
+           "Task"
            entry
            (file+olp+datetree
             "~/org/notes.org"
             "Daily log")
-           "* TODO %?"
-           )
+           "* TODO %?")
           ("h"
-           "Log a new headline"
+           "Headline"
            entry
            (file+olp+datetree
             "~/org/notes.org"
             "Daily log")
-           "* %?")))
+           "* %?")
+          ("m"
+           "Meeting"
+           entry
+           (file+olp+datetree
+            "~/org/notes.org"
+            "Daily log")
+           "* %t %? :meeting:")))
 #+END_SRC
 
 By default, the Org refile command (=C-c C-w=) can only refile to
@@ -517,6 +540,8 @@ And add some Org packages:
   (add-hook 'org-agenda-finalize-hook #'org-modern-agenda)
 
   (straight-use-package 'org-roam)
+  (straight-use-package 'emacsql)
+  (setq org-roam-directory "~/sync/org-roam")
 #+END_SRC
 
 It's time to get serious about the date tree. Because I'm always
@@ -645,6 +670,30 @@ These packages help me out as a new Emacs user.
   (which-key-mode)
 #+END_SRC
 
+*** Efficiencies
+Use =C-== to smartly select based on semantics of the language being selected.
+
+#+BEGIN_SRC emacs-lisp
+  (straight-use-package 'expand-region)
+  (global-set-key (kbd "C-=") 'er/expand-region)
+#+END_SRC
+
+Use [[https://github.com/emacsorphanage/god-mode][=god-mode=]], which is like normal mode in Vim but using traditional Emacs
+bindings. It has these effects:
+
+- All =C-== are removed from commands
+- =g= modifies the next keystroke with =M-= (e.g. =g x= performs =M-x=)
+- =G= modifies the next keystroke with =C-M-= (e.g. =G x= performs =C-M-x=)
+- =SPC= prevents all of the above for the remainder of the key sequence (e.g. =x
+  SPC s= performs =C-x s=)
+
+#+begin_src emacs-lisp
+  (straight-use-package 'god-mode)
+  (setq god-mode-enable-function-key-translation nil) ; Except function keys
+  (require 'god-mode)
+  (god-mode)
+#+end_src
+
 *** Modern Niceties
 Emacs was written in 1976, and it takes a bit of configuration to get
 up to speed with modern standard practices.
@@ -667,8 +716,8 @@ up to speed with modern standard practices.
   (undo-fu-session-global-mode)
 #+END_SRC
 
-And =vertico= has better (and better-looking) completion than Ido, the
-built-in fuzzy engine:
+And [[https://github.com/minad/vertico][=vertico=]] has better (and better-looking) completion than Ido, the built-in
+fuzzy engine:
 
 #+BEGIN_SRC emacs-lisp
 (straight-use-package 'vertico)
