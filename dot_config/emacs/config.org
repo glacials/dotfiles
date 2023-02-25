@@ -145,10 +145,12 @@ language, so I enjoy it overall.
 (It has settings to make it less aggressive than that example, though.)
 
 #+BEGIN_SRC emacs-lisp
-(straight-use-package 'aggressive-indent)
-(global-aggressive-indent-mode 1)
-(add-to-list 'aggressive-indent-excluded-modes 'html-mode)
+  (straight-use-package 'ws-butler)
+  (require 'ws-butler)
+  (add-hook 'prog-mode-hook #'ws-butler-mode)
 #+END_SRC
+
+*** Integrations
 
 Magit is the de facto Git interface in Emacs. This package surprised
 me with its convenience; having come from Vim I was expecting
@@ -181,6 +183,8 @@ don't use it unless you're already a =chezmoi= user.
   (straight-use-package 'chezmoi)  ; Dotfiles management
   (require 'chezmoi)
 #+END_SRC
+
+*** Autocompletion
 
 The next code block sets up autocompletion with =company=, the most
 popular generic autocompletion package for Emacs. Generally, LSP
