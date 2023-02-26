@@ -73,6 +73,13 @@ Some keybinds:
   (global-set-key (kbd "C-c a") 'org-agenda)
 #+END_SRC
 
+Some keybinds that work in macOS but are overridden by Emacs's use of modifiers:
+
+#+begin_src emacs-lisp
+  (global-set-key (kbd "s--") (lambda () (interactive) (insert "–"))) ; En dash
+  (global-set-key (kbd "s-_") (lambda () (interactive) (insert "—"))) ; Em dash
+#+end_src
+
   The last small thing: open this config file with =C-c i=:
 
 #+BEGIN_SRC emacs-lisp
@@ -548,6 +555,8 @@ And add some Org packages:
   (straight-use-package 'emacsql)
   (setq org-roam-directory "~/sync/org-roam")
   (org-roam-db-autosync-mode)
+
+  (straight-use-package 'org-roam-ui)
 #+END_SRC
 
 It's time to get serious about the date tree. Because I'm always
@@ -710,7 +719,7 @@ up to speed with modern standard practices.
   =savehist= generically allows saving minibuffer histories (e.g.
   frecency data) across restarts:
 
-  ,#+BEGIN_SRC emacs-lisp
+#+BEGIN_SRC emacs-lisp
   (straight-use-package 'savehist) ; Save minibuffer histories; pairs with frecency of vertico
 #+END_SRC
 
