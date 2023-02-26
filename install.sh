@@ -171,6 +171,7 @@ if [[ $uname == darwin ]]; then
 		$masinstall 775737590  # iA Writer
 		$masinstall 883878097  # Server
 		$masinstall 920404675  # Monodraw
+		$masinstall 1046095491 # Freeze - for Amazon Glacier
 		$masinstall 1085114709 # Parallels Desktop
 		$masinstall 1233861775 # Acorn
 		$masinstall 1246969117 # Steam Link
