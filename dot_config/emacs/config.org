@@ -447,6 +447,11 @@ Now, for some shortcuts to skip around Org Mode.
    (lambda ()
      (interactive)
      (find-file "~/org/notes.org")))
+
+  ;; Drag and drop images into Org mode
+  (straight-use-package 'org-download)
+  (require 'org-download)
+  (add-hook 'dired-mode-hook 'org-download-enable)
 #+END_SRC
 
 Capture is a feature built into Org Mode that allows quick insertion
@@ -541,8 +546,8 @@ And add some Org packages:
 
   (straight-use-package 'org-roam)
   (straight-use-package 'emacsql)
-  (org-roam-db-autosync-mode)
   (setq org-roam-directory "~/sync/org-roam")
+  (org-roam-db-autosync-mode)
 #+END_SRC
 
 It's time to get serious about the date tree. Because I'm always
@@ -682,12 +687,14 @@ Use =C-== to smartly select based on semantics of the language being selected.
 Use [[https://github.com/emacsorphanage/god-mode][=god-mode=]], which is like normal mode in Vim but using traditional Emacs
 bindings. It has these effects:
 
-- All =C-== are removed from commands
+- All =C-= are removed from commands (e.g. =x s= performs =C-x C-s=)
 - =g= modifies the next keystroke with =M-= (e.g. =g x= performs =M-x=)
 - =G= modifies the next keystroke with =C-M-= (e.g. =G x= performs =C-M-x=)
 - =SPC= prevents all of the above for the remainder of the key sequence (e.g. =x
   SPC s= performs =C-x s=)
-
+- Starting a key sequence with =C-= stops God mode from affecting that sequence
+  (e.g. =C-x C-s= performs itself: =C-x C-s=)
+  
 #+begin_src emacs-lisp
   (straight-use-package 'god-mode)
   (global-set-key (kbd "<escape>") #'god-local-mode)
