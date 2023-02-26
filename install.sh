@@ -127,7 +127,7 @@ rbenv global $latest
 [[ $debug == "y" ]] && echo "Starting application installations."
 
 # Common tools / replacements
-$brewinstall ack awscli chezmoi difftastic direnv ffmpeg fzf gh git jq nvim starship syncthing tmux watch visual-studio-code wget
+$brewinstall ack awscli chezmoi difftastic direnv ffmpeg fzf gh git jq nvim starship syncthing tmux watch visual-studio-code wget youtube-dl
 
 # Neovim & plugin dependencies (TODO: Move these to 'do' hooks in init.vim)
 $brewinstall fd ripgrep
@@ -155,6 +155,7 @@ brew list iterm2               >/dev/null || $brewinstall iterm2
 brew list kitty                >/dev/null || $brewinstall kitty
 brew list launchcontrol        >/dev/null || $brewinstall launchcontrol
 brew list stay                 >/dev/null || $brewinstall stay
+brew list vlc                  >/dev/null || $brewinstall vlc
 
 # App Store apps
 if [[ $uname == darwin ]]; then
