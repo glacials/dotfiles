@@ -709,7 +709,11 @@ bindings. It has these effects:
   (global-set-key (kbd "<escape>") #'god-local-mode)
   (setq god-mode-enable-function-key-translation nil) ; Except function keys
   (require 'god-mode)
-  (god-mode)
+
+  ;; Change cursor to box outside god mode, bar inside it
+  (defun my-god-mode-update-cursor-type ()
+    (setq cursor-type (if (or god-local-mode buffer-read-only) 'box 'bar)))
+  (add-hook 'post-command-hook #'my-god-mode-update-cursor-type)
 #+end_src
 
 *** Modern Niceties
