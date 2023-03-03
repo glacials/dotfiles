@@ -161,14 +161,8 @@ The meat of it.
 
 *** Formatting
 
-The following package and associated settings aggressively fix
-indentation in realtime while programming, all the way down to adding
-an indentation to the rest of the file when you type ~if {~ and then
-removing it when you finally type ~}~. It can be distracting, but I
-appreciate the staunchness of =gofmt= especially when learning a new
-language, so I enjoy it overall.
-
-(It has settings to make it less aggressive than that example, though.)
+The following package and associated settings deal with indentation and
+formatting on a language-agnostic basis.
 
 #+BEGIN_SRC emacs-lisp
   (straight-use-package 'ws-butler)
@@ -283,6 +277,10 @@ And how can we do any of that without the miracle of LSP and an appropriate UI f
   (straight-use-package 'lsp-mode)
   (straight-use-package 'lsp-ui)
 #+END_SRC
+
+#+begin_src emacs-lisp
+  (straight-use-package 'flycheck)
+#+end_src
 
 For Go, we need to do some work to automatically run =gofmt= and friends:
 
