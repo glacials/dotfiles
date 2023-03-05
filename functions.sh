@@ -71,6 +71,6 @@ trap install_packages_now ${pkgs:-} EXIT
 # installation process. Otherwise, prefer install_package to avoid the overhead
 # of invoking the package manager multiple times.
 function install_package_now() {
-    test -n $1 && $pkgins $1
+    test -z $1 || $pkgins $1
 }
 alias install_packages_now=install_package_now
