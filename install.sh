@@ -2,22 +2,6 @@
 set -euo pipefail
 # set -x # uncomment to print all commands as they happen
 
-# Install Chezmoi if not present. This lets us run this without having checked
-# out the dotfiles repo.
-install_homebrew
-sh -c "$(curl -fsLS chezmoi.io/get)" -- init --apply glacials
-$(chezmoi source-path)/install.sh
-
-debug="" # set to y to enable more output
-uname=$(uname -s | tr "[:upper:]" "[:lower:]")
-
-apt="sudo apt-get --quiet --quiet --assume-yes"
-brew="brew"
-brewinstall="$brew install --quiet --force"
-npm="npm --silent"
-
-# TODO: Refactor so we only need to invoke `brew install` once.
-
 function install_homebrew () {
     if ! $brew help 1>/dev/null 2>/dev/null; then
         NONINTERACTIVE=1 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
@@ -40,6 +24,22 @@ function install_homebrew () {
         fi
     fi
 }
+
+# Install Chezmoi if not present. This lets us run this without having checked
+# out the dotfiles repo.
+install_homebrew
+sh -c "$(curl -fsLS chezmoi.io/get)" -- init --apply glacials
+$(chezmoi source-path)/install.sh
+
+debug="" # set to y to enable more output
+uname=$(uname -s | tr "[:upper:]" "[:lower:]")
+
+apt="sudo apt-get --quiet --quiet --assume-yes"
+brew="brew"
+brewinstall="$brew install --quiet --force"
+npm="npm --silent"
+
+# TODO: Refactor so we only need to invoke `brew install` once.
 
 ########################################## Start bootstrap
 # TODO: See if this section can be removed now that we use chezmoi
