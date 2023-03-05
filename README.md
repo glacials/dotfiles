@@ -19,7 +19,7 @@ sh -c "$(curl https://raw.githubusercontent.com/glacials/dotfiles/main/install.s
 ### Troubleshooting
 
 If the first run fails for some reason and later runs refuse to clone, try `rm
-~/.gitconfig`, as it forces git@github.com over https://github.com, which will
+~/.gitconfig`, as it forces `git@github.com` over `https://github.com`, which will
 fail if the installation didn't yet set up SSH keys for you.
 
 ### Updates
