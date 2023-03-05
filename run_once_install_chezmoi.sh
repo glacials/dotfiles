@@ -21,5 +21,5 @@ d="$(dirname $0)"
 test -f $d/$f || (curl -fsSL $cdn/$f > /tmp/$f && d=/tmp)
 . $d/$f
 
-install_package chezmoi
+install_package_now chezmoi
 chezmoi init --apply glacials

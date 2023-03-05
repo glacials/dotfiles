@@ -28,12 +28,6 @@ fi
 ########################################## Start languages
 [[ $debug == "y" ]] && echo "Setting up languages."
 
-# Go
-$brewinstall go
-goinstall="go install"
-$goinstall golang.org/x/tools/gopls@latest # Language server
-$goinstall github.com/segmentio/golines@latest # gofmt w/ line wrapping
-
 # JavaScript
 $brewinstall nodenv npm
 $npm install -g bower prettier prettier-plugin-go-template typescript

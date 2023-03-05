@@ -1,12 +1,17 @@
 #!/bin/bash
 
 set -euo pipefail
-test -z ${DEBUG:-} || set -x
+test -n ${DEBUG:-} && set -x
 
 # This script defines several functions used by other scripts. It does not do
 # anything on its own.
 #
-# To import these functions in another script, use the following snippet:
+# To import these functions in another script, use:
+#
+#     . $(dirname $0)/functions.sh
+#
+# To import these funcitons in a script that may or may not be running before
+# the dotfiles repo has been cloned, use:
 #
 #     cdn="https://raw.githubusercontent.com/glacials/dotfiles/main"
 #     f="functions.sh"
@@ -33,9 +38,8 @@ else
     pkgins="$pkgmgr install --quiet --force"
 fi
 
-# run_script runs a script from the dotfiles repo. The first argument must be
-# $0, i.e. the directory of the running script. The second argument is the name
-# of the script to run, relative to that directory.
+# run_script runs a script from the dotfiles repo. The first and only argument
+# is the name of the script to run, relative to the dotfiles repo root.
 #
 # If the script is available locally it is run directly. If not, it is
 # downloaded and run. This is helpful when bootstrapping, as the dotfiles repo
@@ -48,6 +52,25 @@ function run_script() {
     fi
 }
 
+# install_package installs a package using the right package manager for the
+# current system.
+#
+# The installation is deferred until the end of the run so as to avoid the
+# overhead of invoking the package manager multiple times. If you need a package
+# right away, use install_package_now.
 function install_package() {
-    $pkgins $1
+    pkgs="${pkgs:-} $1"
 }
+alias install_packages=install_package
+trap install_packages_now ${pkgs:-} EXIT
+
+# install_package_now immediately installs a package using the right package
+# manager for the current system.
+#
+# This should only be used if the package is required during the dotfiles
+# installation process. Otherwise, prefer install_package to avoid the overhead
+# of invoking the package manager multiple times.
+function install_package_now() {
+    test -n $1 && $pkgins $1
+}
+alias install_packages_now=install_package_now

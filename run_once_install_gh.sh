@@ -10,6 +10,6 @@ test -f $0/$f && . $0/$f || . <($curl -fsSL $cdn/$f)
 
 if ! gh --version 1>/dev/null 2>/dev/null; then
     # Install Homebrew
-    run_script $0 run_once_install_homebrew.sh
+    run_script run_once_install_homebrew.sh
     $brewinstall gh
 fi

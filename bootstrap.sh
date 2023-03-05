@@ -3,7 +3,7 @@
 set -euo pipefail
 test -z ${DEBUG:-} || set -x
 
-# This file is meant to be run before the user has the dotfiles repository
+# This script is meant to be run before the user has the dotfiles repository
 # cloned, as the first and only step in the installation process.
 #
 # Its goals are therefore:
