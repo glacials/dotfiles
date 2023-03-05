@@ -10,77 +10,6 @@ brewinstall="$brew install --quiet --force"
 npm="npm --silent"
 yum="sudo yum --quiet --quiet --assumeyes"
 
-uname=$(uname -s | tr "[:upper:]" "[:lower:]")
-if [[ $uname == linux ]]; then
-    if apt-get --version 1>/dev/null 2>/dev/null; then
-        pkgmgr="apt-get"
-    else
-        pkgmgr="yum"
-    fi
-fi
-
-function install_homebrew () {
-    if ! $brew help 1>/dev/null 2>/dev/null; then
-        NONINTERACTIVE=1 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-        if [[ $uname == linux ]]; then
-            (echo; echo 'eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"'
-            ) >> /home/glacials/.profile
-
-            # Update path for Homebrew for Linux
-            eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
-
-            if [[ -d "/home/linuxbrew" ]]; then
-                brew="/home/linuxbrew/.linuxbrew/bin/brew"
-            else
-                brew="$HOME/.linuxbrew/bin/brew"
-            fi
-            brewinstall="$brew install --quiet --force"
-
-            # Homebrew asks for these on install
-            $brewinstall gcc
-            if [[ $pkgmgr == apt ]]; then
-                $apt install -y build-essential
-            else
-                $yum groupinstall 'Development Tools'
-            fi
-        fi
-    fi
-}
-
-# Install Chezmoi if not present. This lets us run this without having checked
-# out the dotfiles repo.
-install_homebrew
-sh -c "$(curl -fsLS chezmoi.io/get)" -- init --apply glacials
-
-# TODO: Refactor so we only need to invoke `brew install` once.
-
-########################################## Start bootstrap
-# TODO: See if this section can be removed now that we use chezmoi
-sshkey="$HOME/.ssh/id_rsa"
-answer="n"
-
-if ! gh auth status 1>/dev/null 2>/dev/null; then
-    if [[ -f $HOME/.ssh/id_rsa ]]; then
-        echo "Looks like you've already generated an SSH key."
-        read -p "Is it in GitHub yet [y/N]? " answer
-        answer=$(echo "$answer" | tr '[:upper:]' '[:lower:]')
-    else
-        ssh-keygen -f $sshkey -N ""
-    fi
-
-    if [[ $answer != "y" ]]; then
-        # Need to install Homebrew to install gh to auth with GitHub to clone dotfiles :|
-        install_homebrew
-        $brewinstall gh
-        gh auth login --git-protocol ssh --hostname github.com --web
-    fi
-fi
-
-chezmoi cd
-git submodule init
-git submodule update
-########################################## End bootstrap
-
 ########################################## Start package managers
 [[ $debug == "y" ]] && echo "Setting up package managers."
 
@@ -89,9 +18,6 @@ if [[ $uname == linux* ]]; then
     $apt upgrade
     $apt install zsh
 fi
-
-# Homebrew
-install_homebrew
 
 if [[ $uname == darwin ]]; then
     $brewinstall mas # macOS App Store CLI
