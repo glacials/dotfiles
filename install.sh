@@ -2,6 +2,14 @@
 set -euo pipefail
 # set -x # uncomment to print all commands as they happen
 
+debug="" # set to y to enable more output
+uname=$(uname -s | tr "[:upper:]" "[:lower:]")
+
+apt="sudo apt-get --quiet --quiet --assume-yes"
+brew="brew"
+brewinstall="$brew install --quiet --force"
+npm="npm --silent"
+
 function install_homebrew () {
     if ! $brew help 1>/dev/null 2>/dev/null; then
         NONINTERACTIVE=1 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
@@ -29,15 +37,6 @@ function install_homebrew () {
 # out the dotfiles repo.
 install_homebrew
 sh -c "$(curl -fsLS chezmoi.io/get)" -- init --apply glacials
-$(chezmoi source-path)/install.sh
-
-debug="" # set to y to enable more output
-uname=$(uname -s | tr "[:upper:]" "[:lower:]")
-
-apt="sudo apt-get --quiet --quiet --assume-yes"
-brew="brew"
-brewinstall="$brew install --quiet --force"
-npm="npm --silent"
 
 # TODO: Refactor so we only need to invoke `brew install` once.
 
