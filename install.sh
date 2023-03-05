@@ -2,6 +2,11 @@
 set -euo pipefail
 # set -x # uncomment to print all commands as they happen
 
+# Install Chezmoi if not present. This lets us run this without having checked
+# out the dotfiles repo.
+install_homebrew
+sh -c "$(curl -fsLS chezmoi.io/get)" -- init --apply glacials
+$(chezmoi source-path)/install.sh
 
 debug="" # set to y to enable more output
 uname=$(uname -s | tr "[:upper:]" "[:lower:]")
@@ -14,26 +19,26 @@ npm="npm --silent"
 # TODO: Refactor so we only need to invoke `brew install` once.
 
 function install_homebrew () {
-  if ! $brew help 1>/dev/null 2>/dev/null; then
-    NONINTERACTIVE=1 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-    if [[ $uname == linux ]]; then
-      (echo; echo 'eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"') >> /home/glacials/.profile
-      
-      # Update path for Homebrew for Linux
-      eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
-      
-      if [[ -d "/home/linuxbrew" ]]; then
-        brew="/home/linuxbrew/.linuxbrew/bin/brew"
-      else
-        brew="$HOME/.linuxbrew/bin/brew"
-      fi
-      brewinstall="$brew install --quiet --force"
-      
-      # Homebrew asks for these on install
-      $brewinstall gcc
-      $apt install -y build-essential
+    if ! $brew help 1>/dev/null 2>/dev/null; then
+        NONINTERACTIVE=1 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+        if [[ $uname == linux ]]; then
+            (echo; echo 'eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"') >> /home/glacials/.profile
+
+            # Update path for Homebrew for Linux
+            eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+
+            if [[ -d "/home/linuxbrew" ]]; then
+                brew="/home/linuxbrew/.linuxbrew/bin/brew"
+            else
+                brew="$HOME/.linuxbrew/bin/brew"
+            fi
+            brewinstall="$brew install --quiet --force"
+
+            # Homebrew asks for these on install
+            $brewinstall gcc
+            $apt install -y build-essential
+        fi
     fi
-  fi
 }
 
 ########################################## Start bootstrap
@@ -42,20 +47,20 @@ sshkey="$HOME/.ssh/id_rsa"
 answer="n"
 
 if ! gh auth status 1>/dev/null 2>/dev/null; then
-  if [[ -f $HOME/.ssh/id_rsa ]]; then
-    echo "Looks like you've already generated an SSH key."
-    read -p "Is it in GitHub yet [y/N]? " answer
-    answer=$(echo "$answer" | tr '[:upper:]' '[:lower:]')
-  else
-    ssh-keygen -f $sshkey -N ""
-  fi
+    if [[ -f $HOME/.ssh/id_rsa ]]; then
+        echo "Looks like you've already generated an SSH key."
+        read -p "Is it in GitHub yet [y/N]? " answer
+        answer=$(echo "$answer" | tr '[:upper:]' '[:lower:]')
+    else
+        ssh-keygen -f $sshkey -N ""
+    fi
 
-  if [[ $answer != "y" ]]; then
-    # Need to install Homebrew to install gh to auth with GitHub to clone dotfiles :|
-    install_homebrew
-    $brewinstall gh
-    gh auth login --git-protocol ssh --hostname github.com --web
-  fi
+    if [[ $answer != "y" ]]; then
+        # Need to install Homebrew to install gh to auth with GitHub to clone dotfiles :|
+        install_homebrew
+        $brewinstall gh
+        gh auth login --git-protocol ssh --hostname github.com --web
+    fi
 fi
 
 cd "$(dirname "$0")"
@@ -67,17 +72,17 @@ git submodule update
 [[ $debug == "y" ]] && echo "Setting up package managers."
 
 if [[ $uname == linux* ]]; then
-  $apt update
-  $apt upgrade
-  $apt install zsh
+    $apt update
+    $apt upgrade
+    $apt install zsh
 fi
 
 # Homebrew
 install_homebrew
 
 if [[ $uname == darwin ]]; then
-  $brewinstall mas # macOS App Store CLI
-  masinstall="mas install"
+    $brewinstall mas # macOS App Store CLI
+    masinstall="mas install"
 fi
 ########################################## End package managers
 
@@ -103,12 +108,12 @@ nodenv global 17.9.1
 
 # Python
 if [[ $uname == linux* ]]; then
-  # Runtime dependencies of pyenv (https://github.com/pyenv/pyenv/wiki#suggested-build-environment)
-  $apt install make build-essential libssl-dev zlib1g-dev \
-  libbz2-dev libreadline-dev libsqlite3-dev wget curl llvm \
-  libncursesw5-dev xz-utils tk-dev libxml2-dev libxmlsec1-dev libffi-dev liblzma-dev
-  export LDFLAGS="-L/home/linuxbrew/.linuxbrew/opt/openssl@3/lib"
-  export CPPFLAGS="-I/home/linuxbrew/.linuxbrew/opt/openssl@3/include"
+    # Runtime dependencies of pyenv (https://github.com/pyenv/pyenv/wiki#suggested-build-environment)
+    $apt install make build-essential libssl-dev zlib1g-dev \
+         libbz2-dev libreadline-dev libsqlite3-dev wget curl llvm \
+         libncursesw5-dev xz-utils tk-dev libxml2-dev libxmlsec1-dev libffi-dev liblzma-dev
+    export LDFLAGS="-L/home/linuxbrew/.linuxbrew/opt/openssl@3/lib"
+    export CPPFLAGS="-I/home/linuxbrew/.linuxbrew/opt/openssl@3/include"
 fi
 $npm install -g pyright # Language server
 $brewinstall pyenv pyenv-virtualenv
@@ -159,32 +164,32 @@ brew list vlc                  >/dev/null || $brewinstall vlc
 
 # App Store apps
 if [[ $uname == darwin ]]; then
-		$masinstall 408981434  # iMovie
-		$masinstall 409183694  # Keynote
-		$masinstall 409201541  # Pages
-		$masinstall 409203825  # Numbers
-		$masinstall 411643860  # DaisyDisk
-		$masinstall 430798174  # HazeOver
-		$masinstall 441258766  # Magnet
-		$masinstall 497799835  # Xcode
-		$masinstall 747648890  # Telegram
-		$masinstall 775737590  # iA Writer
-		$masinstall 883878097  # Server
-		$masinstall 920404675  # Monodraw
-		$masinstall 1046095491 # Freeze - for Amazon Glacier
-		$masinstall 1085114709 # Parallels Desktop
-		$masinstall 1233861775 # Acorn
-		$masinstall 1246969117 # Steam Link
-		$masinstall 1451544217 # Adobe Lightroom
-		$masinstall 1475387142 # Tailscale
-		$masinstall 1478821913 # GoLinks for Safari
-		$masinstall 1480068668 # Messenger
-		$masinstall 1480933944 # Vimari
-		$masinstall 1482454543 # Twitter
-		$masinstall 1507890049 # Pixeur
-		$masinstall 1518425043 # Boop
-		$masinstall 1534275760 # LanguageTool
-		$masinstall 1569813296 # 1Password for Safari
+    $masinstall 408981434  # iMovie
+    $masinstall 409183694  # Keynote
+    $masinstall 409201541  # Pages
+    $masinstall 409203825  # Numbers
+    $masinstall 411643860  # DaisyDisk
+    $masinstall 430798174  # HazeOver
+    $masinstall 441258766  # Magnet
+    $masinstall 497799835  # Xcode
+    $masinstall 747648890  # Telegram
+    $masinstall 775737590  # iA Writer
+    $masinstall 883878097  # Server
+    $masinstall 920404675  # Monodraw
+    $masinstall 1046095491 # Freeze - for Amazon Glacier
+    $masinstall 1085114709 # Parallels Desktop
+    $masinstall 1233861775 # Acorn
+    $masinstall 1246969117 # Steam Link
+    $masinstall 1451544217 # Adobe Lightroom
+    $masinstall 1475387142 # Tailscale
+    $masinstall 1478821913 # GoLinks for Safari
+    $masinstall 1480068668 # Messenger
+    $masinstall 1480933944 # Vimari
+    $masinstall 1482454543 # Twitter
+    $masinstall 1507890049 # Pixeur
+    $masinstall 1518425043 # Boop
+    $masinstall 1534275760 # LanguageTool
+    $masinstall 1569813296 # 1Password for Safari
 fi
 ########################################## End application installations
 
@@ -198,17 +203,17 @@ git clone --quiet https://github.com/ohmyzsh/ohmyzsh.git ~/.oh-my-zsh
 
 # Change to zsh if needed
 if [[ $(echo $0) == linux* ]]; then
-  chsh -s /bin/zsh $(whoami)
+    chsh -s /bin/zsh $(whoami)
 fi
 
 if [[ $uname == darwin ]]; then
-  # Show full paths in footer of Finder windows
-  defaults write com.apple.finder ShowPathbar -bool true
+    # Show full paths in footer of Finder windows
+    defaults write com.apple.finder ShowPathbar -bool true
 fi
 
 # Point ~/icloud to iCloud Drive
 if [ ! -L ~/icloud ]; then
-  ln -s ~/Library/Mobile\ Documents/com~apple~CloudDocs ~/icloud
+    ln -s ~/Library/Mobile\ Documents/com~apple~CloudDocs ~/icloud
 fi
 
 # Cron et al.

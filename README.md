@@ -13,7 +13,7 @@ This repository does not need to be cloned and you do not need to set up an SSH
 key first. Just run:
 
 ```sh
-sh -c "$(curl -fsLS chezmoi.io/get)" -- init --apply glacials && $(chezmoi source-path)/install.sh
+sh -c "$(curl https://raw.githubusercontent.com/glacials/dotfiles/main/install.sh")
 ```
 
 ### Troubleshooting
