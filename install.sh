@@ -3,18 +3,28 @@ set -euo pipefail
 # set -x # uncomment to print all commands as they happen
 
 debug="" # set to y to enable more output
-uname=$(uname -s | tr "[:upper:]" "[:lower:]")
 
 apt="sudo apt-get --quiet --quiet --assume-yes"
 brew="brew"
 brewinstall="$brew install --quiet --force"
 npm="npm --silent"
+yum="sudo yum --quiet --quiet --assumeyes"
+
+uname=$(uname -s | tr "[:upper:]" "[:lower:]")
+if [[ $uname == linux ]]; then
+    if apt-get --version 1>/dev/null 2>/dev/null; then
+        pkgmgr="apt-get"
+    else
+        pkgmgr="yum"
+    fi
+fi
 
 function install_homebrew () {
     if ! $brew help 1>/dev/null 2>/dev/null; then
         NONINTERACTIVE=1 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
         if [[ $uname == linux ]]; then
-            (echo; echo 'eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"') >> /home/glacials/.profile
+            (echo; echo 'eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"'
+            ) >> /home/glacials/.profile
 
             # Update path for Homebrew for Linux
             eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
@@ -28,7 +38,11 @@ function install_homebrew () {
 
             # Homebrew asks for these on install
             $brewinstall gcc
-            $apt install -y build-essential
+            if [[ $pkgmgr == apt ]]; then
+                $apt install -y build-essential
+            else
+                $yum groupinstall 'Development Tools'
+            fi
         fi
     fi
 }
