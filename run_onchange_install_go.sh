@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 set -euo pipefail
-test -z ${DEBUG:-} && set -x
+test -z ${DEBUG:-} || set -x
 
 # This script installs Go and several tools in the Go ecosystem.
 
