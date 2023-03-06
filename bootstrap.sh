@@ -17,7 +17,7 @@ test -z ${DEBUG:-} || set -x
 cdn="https://raw.githubusercontent.com/glacials/dotfiles/main"
 d=$(dirname $0)
 f="functions.sh"
-test -f $d/$f && . $d/$f || curl -fsSL $cdn/$f | bash
+test -f $d/$f && . $d/$f || source <(curl -fsSL $cdn/$f)
 
 run_script run_once_install_chezmoi.sh
 
