@@ -46,7 +46,7 @@ fi
 # may not be cloned yet.
 function run_script() {
     if test -f "$(chezmoi source-path)/$1"; then
-        sh $(chezmoi source-path "$0")/$1
+        sh "$(chezmoi source-path)/$1"
     else
         sh -c "$($curl $cdn/$1)"
     fi
