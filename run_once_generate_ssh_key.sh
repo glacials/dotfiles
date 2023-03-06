@@ -9,7 +9,7 @@ test -z ${DEBUG:-} || set -x
 cdn="https://raw.githubusercontent.com/glacials/dotfiles/main"
 f="functions.sh"
 d="$(dirname $0)"
-test -f $d/$f && . $d/$f || source <(curl -s "$cdn/$f")
+test -f $d/$f && . $d/$f || (curl -s "$cdn/$f" > /tmp/$f && . /tmp/$f)
 
 sshkey="$HOME/.ssh/id_rsa"
 
