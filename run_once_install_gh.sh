@@ -6,7 +6,7 @@
 
 cdn="https://raw.githubusercontent.com/glacials/dotfiles/main"
 f="functions.sh"
-test -f $0/$f && . $0/$f || . <($curl -fsSL $cdn/$f)
+test -f $0/$f && . $0/$f || . <(curl -s $cdn/$f)
 
 if ! gh --version 1>/dev/null 2>/dev/null; then
     # Install Homebrew
