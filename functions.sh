@@ -1,7 +1,7 @@
 #!/bin/bash
 
 set -euo pipefail
-test -n ${DEBUG:-} && set -x
+test -z ${DEBUG:-} || set -x
 
 # This script defines several functions used by other scripts. It does not do
 # anything on its own.
