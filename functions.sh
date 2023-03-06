@@ -75,4 +75,4 @@ function install_package() {
     pkgs="${pkgs:-} $1"
 }
 alias install_packages=install_package
-trap install_packages_now ${pkgs:-} EXIT
+trap install_package_now ${pkgs:-} EXIT
