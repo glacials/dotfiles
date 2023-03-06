@@ -1,7 +1,7 @@
 #!/bin/bash
 
 set -euo pipefail
-test -n ${DEBUG:-} && set -x
+test -z ${DEBUG:-} || set -x
 
 # This script generates an SSH key for the user if needed, then puts it in
 # GitHub and sets up gh to use it if needed.
