@@ -19,7 +19,7 @@ d=$(dirname $0)
 f="functions.sh"
 test -f $d/$f && . $d/$f || (curl -s "$cdn/$f" > /tmp/$f && . /tmp/$f)
 
-install_package_now "chezmoi"
+install_now "chezmoi"
 chezmoi init --apply glacials
 
 cd $(chezmoi source-path)

@@ -28,13 +28,6 @@ fi
 ########################################## Start languages
 [[ $debug == "y" ]] && echo "Setting up languages."
 
-# JavaScript
-$brewinstall nodenv npm
-$npm install -g bower prettier prettier-plugin-go-template typescript
-latest=$(nodenv install --list 2>/dev/null | sed -n '/^[[:space:]]*[0-9]\{1,\}\.[0-9]\{1,\}\.[0-9]\{1,\}[[:space:]]*$/ h;${g;p;}')
-nodenv install --skip-existing $latest
-nodenv global $latest
-
 # Override for GitHub Copilot requirements
 nodenv install --skip-existing 17.9.1
 nodenv global 17.9.1
