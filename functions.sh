@@ -46,8 +46,10 @@ fi
 # may not be cloned yet.
 function run_script() {
     if test -f "$(chezmoi source-path)/$1"; then
+				echo "Running $1 locally"
         sh "$(chezmoi source-path)/$1"
     else
+				echo "Running $1 from GitHub"
         sh -c "$($curl $cdn/$1)"
     fi
 }
