@@ -9,11 +9,11 @@ test -z ${DEBUG:-} || set -x
 cdn="https://raw.githubusercontent.com/glacials/dotfiles/main"
 f="functions.sh"
 d="$(dirname $0)"
-test -f $d/$f && . $d/$ || curl -fsSL $cdn/$f | bash
+test -f $d/$f && . $d/$f || curl -fsSL $cdn/$f | bash
 
 sshkey="$HOME/.ssh/id_rsa"
 
-if [[ ! -f $HOME/.ssh/id_rsa ]]; then
+if ! test -f $HOME/.ssh/id_rsa; then
     ssh-keygen -f $sshkey -N ""
 fi
 
