@@ -64,11 +64,7 @@ function install_package_now() {
     test -z ${1:-} || $pkgins $1
 }
 alias install_packages_now=install_package_now
-
-function install_deferred_packages() {
-		install_package_now ${pkgs:-}
-}
-trap install_deferred_packages EXIT
+trap install_package_now ${pkgs:-} EXIT
 
 # install_package installs a package using the right package manager for the
 # current system.

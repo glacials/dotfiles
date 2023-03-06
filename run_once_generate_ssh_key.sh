@@ -9,7 +9,7 @@ test -z ${DEBUG:-} || set -x
 echo "Setting up SSH key for GitHub..."
 cdn="https://raw.githubusercontent.com/glacials/dotfiles/main"
 f="functions.sh"
-d="$(dirname $0)"
+d="$(chezmoi source-path)"
 test -f $d/$f && . $d/$f || (curl -s "$cdn/$f" > /tmp/$f && . /tmp/$f)
 
 sshkey="$HOME/.ssh/id_rsa"

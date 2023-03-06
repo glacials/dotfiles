@@ -19,7 +19,8 @@ d=$(dirname $0)
 f="functions.sh"
 test -f $d/$f && . $d/$f || (curl -s "$cdn/$f" > /tmp/$f && . /tmp/$f)
 
-run_script run_once_install_chezmoi.sh
+install_package_now "chezmoi"
+chezmoi init --apply glacials
 
 cd $(chezmoi source-path)
 git submodule init
