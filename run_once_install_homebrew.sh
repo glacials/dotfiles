@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 uname=$(uname -s | tr "[:upper:]" "[:lower:]")
 

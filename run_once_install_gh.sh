@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 # This script installs gh, the GitHub CLI. This is helpful to be in its own
 # script because we use it to install an SSH key into GitHub, which is one of

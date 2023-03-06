@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 dir="$( cd "$( dirname "$0" )" && pwd )"
 strfile="strfile -s"

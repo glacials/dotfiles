@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 set -euo pipefail
 # set -x # uncomment to print all commands as they happen
 
@@ -65,7 +65,7 @@ rbenv global $latest
 [[ $debug == "y" ]] && echo "Starting application installations."
 
 # Common tools / replacements
-$brewinstall ack awscli chezmoi difftastic direnv ffmpeg fzf gh git jq nvim starship syncthing tmux watch visual-studio-code wget youtube-dl
+$brewinstall ack awscli bash chezmoi difftastic direnv ffmpeg fzf gh git jq nvim starship syncthing tmux watch visual-studio-code wget youtube-dl zsh
 
 # Neovim & plugin dependencies (TODO: Move these to 'do' hooks in init.vim)
 $brewinstall fd ripgrep
