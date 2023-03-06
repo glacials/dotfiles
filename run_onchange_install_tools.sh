@@ -21,6 +21,7 @@ brew install --quiet --force \
 		 fzf `# Fuzzy finder` \
 		 gh `# GitHub CLI` \
 		 git `# macOS ships with an older version` \
+		 imagemagick `# Image manipulation` \
 		 jq `# JSON manipulation` \
 		 nvim `# Neovim` \
 		 railwaycat/emacsmacport/emacs-mac `# macOS-native Emacs UI` \
