@@ -17,7 +17,7 @@ if [[ ! -f $HOME/.ssh/id_rsa ]]; then
     ssh-keygen -f $sshkey -N ""
 fi
 
-run_script run_once_install_gh.sh
+run_script $0 run_once_install_gh.sh
 if ! gh auth status 1>/dev/null 2>/dev/null; then
     gh auth login --git-protocol ssh --hostname github.com --web
 fi

@@ -45,8 +45,8 @@ fi
 # downloaded and run. This is helpful when bootstrapping, as the dotfiles repo
 # may not be cloned yet.
 function run_script() {
-    if test -f "$(dirname "$0")/$1"; then
-        sh $(dirname "$0")/$1
+    if test -f "$(chezmoi source-path)/$1"; then
+        sh $(chezmoi source-path "$0")/$1
     else
         sh -c "$($curl $cdn/$1)"
     fi
