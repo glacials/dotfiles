@@ -18,8 +18,7 @@ test -z ${DEBUG:-} || set -x
 cdn="https://raw.githubusercontent.com/glacials/dotfiles/main"
 f="functions.sh"
 d="$(dirname $0)"
-test -f $d/$f || (curl -fsSL $cdn/$f > /tmp/$f && d=/tmp)
-. $d/$f
+test -f $d/$f && . $d/$f || curl -fsSL $cdn/$f | bash
 
-install_package_now chezmoi
+install_package_now "chezmoi"
 chezmoi init --apply glacials

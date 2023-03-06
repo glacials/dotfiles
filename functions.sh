@@ -52,6 +52,17 @@ function run_script() {
     fi
 }
 
+# install_package_now immediately installs a package using the right package
+# manager for the current system.
+#
+# This should only be used if the package is required during the dotfiles
+# installation process. Otherwise, prefer install_package to avoid the overhead
+# of invoking the package manager multiple times.
+function install_package_now() {
+    test -z ${1:-} || $pkgins $1
+}
+alias install_packages_now=install_package_now
+
 # install_package installs a package using the right package manager for the
 # current system.
 #
@@ -63,14 +74,3 @@ function install_package() {
 }
 alias install_packages=install_package
 trap install_packages_now ${pkgs:-} EXIT
-
-# install_package_now immediately installs a package using the right package
-# manager for the current system.
-#
-# This should only be used if the package is required during the dotfiles
-# installation process. Otherwise, prefer install_package to avoid the overhead
-# of invoking the package manager multiple times.
-function install_package_now() {
-    test -z $1 || $pkgins $1
-}
-alias install_packages_now=install_package_now
