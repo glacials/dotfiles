@@ -14,11 +14,12 @@ if ! $brew --version 1>/dev/null 2>/dev/null; then
         eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 
         if [[ -d "/home/linuxbrew" ]]; then
-            brew="/home/linuxbrew/.linuxbrew/bin/brew"
+						linuxbrew_home="/home/linuxbrew/.linuxbrew"
         else
-            brew="$HOME/.linuxbrew/bin/brew"
+						linuxbrew_home="$HOME/.linuxbrew"
         fi
-        brewinstall="$brew install --quiet --force"
+        brew="$(linuxbrew_home)/.linuxbrew/bin/brew"
+				brewinstall="$brew install --quiet --force"
 
         # Homebrew asks for these on install
         $brewinstall gcc

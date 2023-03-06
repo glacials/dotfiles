@@ -26,12 +26,6 @@ fi
 ########################################## End package managers
 
 ########################################## Start languages
-[[ $debug == "y" ]] && echo "Setting up languages."
-
-# Override for GitHub Copilot requirements
-nodenv install --skip-existing 17.9.1
-nodenv global 17.9.1
-
 # Python
 if [[ $uname == linux* ]]; then
     # Runtime dependencies of pyenv (https://github.com/pyenv/pyenv/wiki#suggested-build-environment)
@@ -46,12 +40,6 @@ $brewinstall pyenv pyenv-virtualenv
 latest=$(pyenv install --list | sed -n '/^[[:space:]]*[0-9]\{1,\}\.[0-9]\{1,\}\.[0-9]\{1,\}[[:space:]]*$/ h;${g;p;}')
 pyenv install --skip-existing $latest
 pyenv global $latest
-
-# Ruby
-$brewinstall rbenv ruby-build solargraph
-latest=$(rbenv install --list 2>/dev/null | sed -n '/^[[:space:]]*[0-9]\{1,\}\.[0-9]\{1,\}\.[0-9]\{1,\}[[:space:]]*$/ h;${g;p;}')
-rbenv install --skip-existing $latest
-rbenv global $latest
 ########################################## End languages
 
 ########################################## Start application installations
