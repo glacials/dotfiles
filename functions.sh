@@ -50,7 +50,7 @@ function run_script() {
         sh "$(chezmoi source-path)/$1"
     else
 				echo "Running $1 from GitHub"
-        sh -c "$($curl $cdn/$1)"
+        sh -c "$(curl -fsSL $cdn/$1)"
     fi
 }
 
