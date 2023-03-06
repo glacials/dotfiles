@@ -5,7 +5,7 @@ test -z ${DEBUG:-} && set -x
 
 # This script installs Go and several tools in the Go ecosystem.
 
-. $(dirname $0)/functions.sh
+. $(chezmoi source-path)/functions.sh
 
 install_package_now go
 goinstall="go install"
