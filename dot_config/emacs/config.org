@@ -1,9 +1,10 @@
 # The following tags are for twos.dev, which automatically pulls and
 # deploys this file to twos.dev/config.html.
-#+FILENAME: config.html
-#+TYPE: page
+#+CATEGORY: living document
 #+DATE: 2023-02-20
 #+TOC: true
+#+TYPE: post
+UPDATED: 2023-03-06
 
 * =config.org=
 
