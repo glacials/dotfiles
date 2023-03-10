@@ -550,7 +550,7 @@ We'll also add [[https://www.orgroam.com/][Org-roam]], which is like wiki mode f
   (straight-use-package 'org-roam-ui)
   (setq-default org-roam-directory "~/sync/org-roam")
   (org-roam-db-autosync-mode)
-  (org-roam-completion-everywhere t)
+  (setq-default org-roam-completion-everywhere t)
 #+end_src
 
 And add some more Org packages:
