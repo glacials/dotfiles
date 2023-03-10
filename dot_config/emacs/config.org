@@ -4,9 +4,9 @@
 #+DATE: 2023-02-20
 #+TOC: true
 #+TYPE: post
-#+UPDATED: 2023-03-06
+#+UPDATED: 2023-03-09
 
-* =config.org=
+* Emacs Config
 
 This is my Emacs config, expressed in [[https://en.wikipedia.org/wiki/Literate_programming][literate programming]]. That is,
 my Emacs config and the documentation for my Emacs config are the same
