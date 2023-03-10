@@ -4,7 +4,7 @@
 #+DATE: 2023-02-20
 #+TOC: true
 #+TYPE: post
-UPDATED: 2023-03-06
+#+UPDATED: 2023-03-06
 
 * =config.org=
 
@@ -19,7 +19,9 @@ from Org to HTML.
 Get the boring stuff out of the way first:
 
 #+BEGIN_SRC emacs-lisp
-  (setq-default user-full-name "Benjamin Carlsson" user-mail-address "ben@twos.dev")
+  (setq-default
+   user-full-name "Benjamin Carlsson"
+   user-mail-address "ben@twos.dev")
   (setq-default tab-width 2)
   (tool-bar-mode -1) ; Don't show the GUI toolbar
   (setq-default mac-option-modifier 'super) ; Make Option act as Super
@@ -50,7 +52,8 @@ Now we'll start with some of the less obvious stuff.
   (ido-mode 1) ; Autocomplete M-x among other things
   (setq-default ido-enable-flex-matching t) ; Don't require exact matches in ido-mode
   (defalias 'yes-or-no-p 'y-or-n-p) ; Allow y/n in yes/no prompts
-  (global-set-key (kbd "C-x k") #'kill-this-buffer) ; Make C-x k kill focused buffer instead of promptingexpand-region
+  ;; Make C-x k kill focused buffer instead of promptingexpand-region
+  (global-set-key (kbd "C-x k") #'kill-this-buffer)
 #+END_SRC
 
 The following block makes dired mouseclicks open the in same window,
@@ -540,20 +543,25 @@ headline a bit:
           ))
 #+END_SRC
 
-And add some Org packages:
+We'll also add [[https://www.orgroam.com/][Org-roam]], which is like wiki mode for Org mode:
+
+#+begin_src emacs-lisp
+  (straight-use-package 'org-roam)
+  (straight-use-package 'org-roam-ui)
+  (setq-default org-roam-directory "~/sync/org-roam")
+  (org-roam-db-autosync-mode)
+  (org-roam-completion-everywhere t)
+#+end_src
+
+And add some more Org packages:
 
 #+BEGIN_SRC emacs-lisp
   ;; Various visual improvements to Org
   (straight-use-package 'org-modern)
   (add-hook 'org-mode-hook #'org-modern-mode)
   (add-hook 'org-agenda-finalize-hook #'org-modern-agenda)
-
-  (straight-use-package 'org-roam)
   (straight-use-package 'emacsql)
-  (setq-default org-roam-directory "~/sync/org-roam")
-  (org-roam-db-autosync-mode)
-
-  (straight-use-package 'org-roam-ui)
+  
 #+END_SRC
 
 It's time to get serious about the date tree. Because I'm always
@@ -735,8 +743,13 @@ up to speed with modern standard practices.
   (undo-fu-session-global-mode)
 #+END_SRC
 
-And [[https://github.com/minad/vertico][=vertico=]] has better (and better-looking) completion than Ido, the built-in
-fuzzy engine:
+We'll install [[https://github.com/oantolin/orderless][=orderless=]] for completion:
+
+#+begin_src emacs-lisp
+  (straight-use-package 'orderless)
+#+end_src
+
+And [[https://github.com/minad/vertico][=vertico=]] for more completion improvements:
 
 #+BEGIN_SRC emacs-lisp
 (straight-use-package 'vertico)
