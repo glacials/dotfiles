@@ -25,7 +25,7 @@ if [[ $uname == darwin ]]; then
 		fi
 
 		# Better cron for macOS (smartly handles sleep etc.)
-		ln -s $(chezmoi source-path)/LaunchAgents/* ~/Library/LaunchAgents
+	  ln -fs $(chezmoi source-path)/LaunchAgents/* ~/Library/LaunchAgents
 fi
 
 # Cron et al.
