@@ -6,6 +6,7 @@
 
 cdn="https://raw.githubusercontent.com/glacials/dotfiles/main"
 f="functions.sh"
+d="$(chezmoi source-path)"
 test -f $d/$f && . $d/$f || (curl -s "$cdn/$f" > /tmp/$f && . /tmp/$f)
 
 if ! gh --version 1>/dev/null 2>/dev/null; then
