@@ -177,7 +177,6 @@ formatting on a language-agnostic basis.
 
 #+BEGIN_SRC emacs-lisp
     (straight-use-package 'aggressive-indent-mode)
-    (add-hook 'prog-mode-hook 'aggressive-indent-mode)
 #+END_SRC
 
 *** Integrations
