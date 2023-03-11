@@ -63,7 +63,6 @@ function run_script() {
 function install_now() {
     test -z ${1:-} || $pkgins $1
 }
-trap install_now ${pkgs:-} EXIT
 
 # install installs a package using the right package manager for the
 # current system.
@@ -73,4 +72,12 @@ trap install_now ${pkgs:-} EXIT
 # right away, use install_now.
 function install() {
     pkgs="${pkgs:-} $1"
+}
+trap install_now ${pkgs:-} EXIT
+
+# upgrade upgrades installed packaged using the right package manager for the
+# current system.
+function upgrade() {
+		$pkgmgr update
+		$pkgmgr upgrade
 }
