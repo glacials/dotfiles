@@ -11,8 +11,8 @@ test -z ${DEBUG:-} || set -x
 touch $HOME/.profile
 
 # Change to zsh if needed
-if [[ $(echo $0) != linux* ]]; then
-    chsh -s /bin/zsh $(whoami)
+if [[ $SHELL != */zsh ]]; then
+		chsh -s /bin/zsh $(whoami)
 fi
 
 if [[ $uname == darwin ]]; then
