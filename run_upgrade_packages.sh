@@ -8,6 +8,6 @@ test -z ${DEBUG:-} || set -x
 
 . $(chezmoi source-path)/functions.sh
 
-[[ $debug == "y" ]] && echo "Updating packages."
+[[ ${debug:-} == "y" ]] && echo "Updating packages."
 
 upgrade
