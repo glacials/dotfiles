@@ -39,3 +39,11 @@ brew install --quiet --force \
 # Misc followups to above
 brew services start syncthing
 sh ~/.config/fortune/strfile
+
+# Make a fortune database from bash.org quotes
+MINSCORE=500
+sqlite3 \
+		../sql/sqlite3.db \
+		"select quote from quotes where score > $MINSCORE" \
+		| sed -E 's/^$/%/' > ./dot_config/fortune/bashorg
+strfile ./dot_config/fortune/bashorg
