@@ -25,10 +25,13 @@ cask google-chrome # Browser
 cask iterm2 # Terminal emulator
 cask kitty # Terminal emulator
 cask launchcontrol # App launcher
+cask railwaycat/emacsmacport/emacs-mac # macOS-native Emacs UI
 cask stay # Restore window positions when displays change
+cask syncthing # Sync files between devices
+cask visual-studio-code # Code editor
 cask vlc # Video player
 
 # Install all casks at once, to avoid the overhead of multiple invocations/
 if ! test -z ${casks:-}; then
-    brew install --force --quiet "${casks:-}"
+		brew install --force --quiet "${casks:-}"
 fi

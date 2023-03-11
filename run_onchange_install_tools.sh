@@ -24,26 +24,15 @@ brew install --quiet --force \
 		 imagemagick `# Image manipulation` \
 		 jq `# JSON manipulation` \
 		 nvim `# Neovim` \
-		 railwaycat/emacsmacport/emacs-mac `# macOS-native Emacs UI` \
 		 ripgrep `# A better grep` \
 		 starship `# Opinionated pre-configured prompt` \
-		 syncthing `# Sync files between devices` \
 		 tmux `# Terminal multiplexer` \
 		 tree `# Pretty-print directory hierarchies` \
 		 watch `# Run a command repeatedly` \
-		 visual-studio-code `# Code editor` \
 		 wget `# Download files` \
 		 youtube-dl `# Download videos from YouTube` \
 		 zsh `# macOS ships with an older version`
 
 # Misc followups to above
-brew services start syncthing
+brew services start --quiet syncthing 1>/dev/null
 sh ~/.config/fortune/strfile
-
-# Make a fortune database from bash.org quotes
-MINSCORE=500
-sqlite3 \
-		../sql/sqlite3.db \
-		"select quote from quotes where score > $MINSCORE" \
-		| sed -E 's/^$/%/' > ./dot_config/fortune/bashorg
-strfile ./dot_config/fortune/bashorg
