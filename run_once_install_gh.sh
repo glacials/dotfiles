@@ -11,6 +11,6 @@ test -f $d/$f && . $d/$f || (curl -s "$cdn/$f" > /tmp/$f && . /tmp/$f)
 
 if ! gh --version 1>/dev/null 2>/dev/null; then
     # Install Homebrew
-    run_script $0 run_once_install_homebrew.sh
-    $brewinstall gh
+    run_script run_once_install_homebrew.sh
+		install_now gh
 fi
