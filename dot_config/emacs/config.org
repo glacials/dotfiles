@@ -711,6 +711,8 @@ bindings. It has these effects:
   
 #+begin_src emacs-lisp
   (straight-use-package 'god-mode)
+  (define-key god-local-mode-map (kbd "i") #'god-local-mode)
+  (define-key god-local-mode-map (kbd ".") #'repeat)
   (global-set-key (kbd "<escape>") #'god-local-mode)
   (setq-default god-mode-enable-function-key-translation nil) ; Except function keys
   (require 'god-mode)
