@@ -14,6 +14,8 @@ function cask() {
 		brew list "$1" >/dev/null || casks="${casks:-} $1"
 }
 
+brew tap homebrew/cask-fonts # For font-* casks below
+
 cask 1password # Password manager
 cask discord # Chat app
 cask docker # Containerization
@@ -32,6 +34,6 @@ cask visual-studio-code # Code editor
 cask vlc # Video player
 
 # Install all casks at once, to avoid the overhead of multiple invocations/
-if ! test -z ${casks:-}; then
+if ! test -z "${casks:-}"; then
 		brew install --force --quiet "${casks:-}"
 fi
