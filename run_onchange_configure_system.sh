@@ -20,7 +20,7 @@ if [[ $uname == darwin ]]; then
     defaults write com.apple.finder ShowPathbar -bool true
 
 		# Point ~/icloud to iCloud Drive
-		if [ ! -L ~/icloud ]; then
+		if ! test -e ~/icloud; then
 				ln -s ~/Library/Mobile\ Documents/com~apple~CloudDocs ~/icloud
 		fi
 
