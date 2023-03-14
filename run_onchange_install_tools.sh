@@ -13,6 +13,7 @@ brew install --quiet --force \
 		 bash `# macOS ships with an olerd version` \
 		 chezmoi `# Probably already installed, but for good measure` \
 		 cowsay `# Make animals say things` \
+		 defaultbrowser `# Set default web browser from CLI` \
 		 difftastic `# A better diff` \
 		 direnv `# Auto-source .envrc files` \
 		 fd `# A better find` \
@@ -36,3 +37,4 @@ brew install --quiet --force \
 # Misc followups to above
 brew services start --quiet syncthing 1>/dev/null
 sh ~/.config/fortune/strfile
+defaultbrowser chrome
