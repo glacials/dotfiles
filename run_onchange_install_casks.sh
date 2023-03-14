@@ -10,7 +10,7 @@ echo "Installing casks"
 . $(chezmoi source-path)/functions.sh
 
 # Save the `brew list` output so we don't have to call out to brew so much
-brewlist=$(brew list)
+brewlist=$(brew list --casks)
 function cask() {
 		# brew install on a cask installs even if alrady installed, so we'll skip
 		# it ourselves if that's the case.
