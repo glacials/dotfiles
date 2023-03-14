@@ -13,7 +13,7 @@ function cask() {
 		# brew install on a cask installs even if alrady installed, so we'll skip
 		# it ourselves if that's the case.
 
-		pkg_with_tap = $1
+		pkg_with_tap=$1
 		pkg=$(echo "$pkg_with_tap" | sed -e 's/.*\///')
 		brew list "$pkg" >/dev/null || casks="${casks:-}$pkg_with_tap "
 }
