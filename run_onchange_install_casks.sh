@@ -10,11 +10,11 @@ test -z ${DEBUG:-} || set -x
 
 function cask() {
 		# brew install on a cask installs even if alrady installed, so we'll skip
-		# that ourselves if that's the case.
+		# it ourselves if that's the case.
 
-		# Strip the tap name; `brew list` doesn't want it
-		pkg=$(echo "$1" | sed -e 's/.*\///')
-		brew list "$pkg" >/dev/null || casks="${casks:-}$1 "
+		pkg_with_tap = $1
+		pkg=$(echo "$pkg_with_tap" | sed -e 's/.*\///')
+		brew list "$pkg" >/dev/null || casks="${casks:-}$pkg_with_tap "
 }
 
 cask 1password # Password manager
