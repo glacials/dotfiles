@@ -44,6 +44,9 @@ Get the boring stuff out of the way first:
   (prefer-coding-system 'utf-8)
   (setq-default buffer-file-coding-system 'utf-8)
   (setq-default default-process-coding-system '(utf-8-unix . utf-8-unix))
+
+  (when (and (eq system-type 'darwin) (display-graphic-p))
+  (setq mac-option-modifier nil mac-command-modifier 'meta))
 #+END_SRC
 
 ** Small Efficiencies
@@ -548,6 +551,8 @@ We'll also add [[https://www.orgroam.com/][Org-roam]], which is like wiki mode f
 #+begin_src emacs-lisp
   (straight-use-package 'org-roam)
   (straight-use-package 'org-roam-ui)
+  (straight-use-package 'emacsql)
+  (straight-use-package 'emacsql-sqlite)
   (setq-default org-roam-directory "~/sync/org-roam")
   (org-roam-db-autosync-mode)
   (setq-default org-roam-completion-everywhere t)
@@ -560,8 +565,6 @@ And add some more Org packages:
   (straight-use-package 'org-modern)
   (add-hook 'org-mode-hook #'org-modern-mode)
   (add-hook 'org-agenda-finalize-hook #'org-modern-agenda)
-  (straight-use-package 'emacsql)
-  
 #+END_SRC
 
 It's time to get serious about the date tree. Because I'm always
@@ -711,11 +714,11 @@ bindings. It has these effects:
   
 #+begin_src emacs-lisp
   (straight-use-package 'god-mode)
+  (require 'god-mode)
   (define-key god-local-mode-map (kbd "i") #'god-local-mode)
   (define-key god-local-mode-map (kbd ".") #'repeat)
   (global-set-key (kbd "<escape>") #'god-local-mode)
   (setq-default god-mode-enable-function-key-translation nil) ; Except function keys
-  (require 'god-mode)
 
   ;; Change cursor to box outside god mode, bar inside it
   (defun my-god-mode-update-cursor-type ()
