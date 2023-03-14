@@ -1,5 +1,11 @@
 #!/usr/bin/env bash
 
+set -euo pipefail
+test -z ${DEBUG:-} || set -x
+
+# This script installs Homebrew.
+echo "Installing Homebrew"
+
 uname=$(uname -s | tr "[:upper:]" "[:lower:]")
 
 brew="brew"

@@ -3,6 +3,7 @@
 # This script installs gh, the GitHub CLI. This is helpful to be in its own
 # script because we use it to install an SSH key into GitHub, which is one of
 # the first steps of bootstrapping before we can clone the rest of the repo.
+echo "Installing gh"
 
 cdn="https://raw.githubusercontent.com/glacials/dotfiles/main"
 f="functions.sh"

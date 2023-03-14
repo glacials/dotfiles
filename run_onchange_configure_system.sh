@@ -4,6 +4,7 @@ set -euo pipefail
 test -z ${DEBUG:-} || set -x
 
 # This script sets miscellaneous system preferences.
+echo "Setting preferences"
 
 . $(chezmoi source-path)/functions.sh
 

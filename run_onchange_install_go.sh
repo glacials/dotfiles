@@ -4,6 +4,7 @@ set -euo pipefail
 test -z ${DEBUG:-} || set -x
 
 # This script installs Go and several tools in the Go ecosystem.
+echo "Installing Go"
 
 . $(chezmoi source-path)/functions.sh
 

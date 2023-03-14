@@ -5,6 +5,7 @@ test -z ${DEBUG:-} || set -x
 
 # This script installs casks, i.e. macOS apps available in Homebrew but not in
 # the App Store.
+echo "Installing casks"
 
 . $(chezmoi source-path)/functions.sh
 

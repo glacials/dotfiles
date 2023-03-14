@@ -4,6 +4,7 @@ set -euo pipefail
 test -z ${DEBUG:-} || set -x
 
 # This script installs JavaScript and several tools in the JavaScript ecosystem.
+echo "Installing JavaScript and friends"
 
 . $(chezmoi source-path)/functions.sh
 

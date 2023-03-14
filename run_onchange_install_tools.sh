@@ -4,6 +4,7 @@ set -euo pipefail
 test -z ${DEBUG:-} || set -x
 
 # This script installs various CLI tools.
+echo "Installing CLI tools"
 
 . $(chezmoi source-path)/functions.sh
 

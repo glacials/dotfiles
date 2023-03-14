@@ -4,6 +4,7 @@ set -euo pipefail
 test -z ${DEBUG:-} || set -x
 
 # This script installs Python and several tools in the Python ecosystem.
+echo "Installing Python and friends"
 
 . $(chezmoi source-path)/functions.sh
 

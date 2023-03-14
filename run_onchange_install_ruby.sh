@@ -4,6 +4,7 @@ set -euo pipefail
 test -z ${DEBUG:-} || set -x
 
 # This script installs Ruby and several tools in the Ruby ecosystem.
+echo "Installing Ruby and friends"
 
 . $(chezmoi source-path)/functions.sh
 

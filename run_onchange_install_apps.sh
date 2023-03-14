@@ -6,6 +6,7 @@ test -z ${DEBUG:-} || set -x
 # This script installs macOS apps from the app store. Note that because of App
 # Store API limitations, this script can only install apps that have previously
 # been installed by the current user's Apple ID.
+echo "Installing App Store apps"
 
 . $(chezmoi source-path)/functions.sh
 
@@ -13,7 +14,7 @@ if [[ $uname == darwin ]]; then
 		install_now mas # macOS App Store CLI
 
     mas install \
-				408981434  `# iMovie` \
+        408981434  `# iMovie` \
         409183694  `# Keynote` \
         409201541  `# Pages` \
         409203825  `# Numbers` \
