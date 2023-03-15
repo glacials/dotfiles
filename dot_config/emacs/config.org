@@ -439,7 +439,7 @@ First, we'll set up some basic configuration.
 #+BEGIN_SRC emacs-lisp
   (setq-default org-directory "~/org")
   (setq-default org-default-notes-file (concat org-directory "/notes.org"))
-  (setq-default org-agenda-files '("~/org/notes.org"))
+  (setq-default org-agenda-files '("~/org/notes.org" "~/sync/org-roam"))
 #+END_SRC
 
 And clean it up visually. Hide the first n-1 stars on level n headlines:
