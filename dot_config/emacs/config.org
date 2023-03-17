@@ -25,7 +25,14 @@ Get the boring stuff out of the way first:
    user-mail-address "ben@twos.dev")
   (setq-default tab-width 2)
   (tool-bar-mode -1) ; Don't show the GUI toolbar
-  (setq-default mac-option-modifier 'super) ; Make Option act as Super
+
+  ;; Modifier keys
+  (setq-default mac-command-modifier 'meta)       ; Make Command act as Meta
+  (setq-default mac-option-modifier 'super)       ; Make Option act as Super
+  (setq-default mac-control-modifier 'control)    ; Make Control act as Control
+  (setq-default mac-right-option-modifier 'hyper) ; Make Right Option act as Hyper
+  (setq-default ns-function-modifier 'hyper)      ; Make Fn act as Hyper
+
   (setq-default ring-bell-function 'ignore) ; Disable the audible bell
   (setq-default sentence-end-double-space nil) ; End sentences with single spaces
   (setq-default display-line-numbers t) ; Show line numbers
@@ -46,7 +53,7 @@ Get the boring stuff out of the way first:
   (setq-default default-process-coding-system '(utf-8-unix . utf-8-unix))
 
   (when (and (eq system-type 'darwin) (display-graphic-p))
-  (setq mac-option-modifier nil mac-command-modifier 'meta))
+
 #+END_SRC
 
 ** Small Efficiencies
@@ -178,9 +185,18 @@ formatting on a language-agnostic basis.
   (add-hook 'prog-mode-hook #'ws-butler-mode)
 #+END_SRC
 
+Some automatic indentation:
+
 #+BEGIN_SRC emacs-lisp
-    (straight-use-package 'aggressive-indent-mode)
+  (straight-use-package 'aggressive-indent-mode)
 #+END_SRC
+
+And some tools to better format copied text (via =ox-clip-formatted-copy=):
+
+#+begin_src emacs-lisp
+  (straight-use-package 'ox-clip)
+  (global-set-key (kbd "H-k") 'ox-clip-formatted-copy)
+#+end_src
 
 *** Integrations
 
