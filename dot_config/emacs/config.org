@@ -442,10 +442,15 @@ First, we'll set up some basic configuration.
   (setq-default org-agenda-files '("~/org/notes.org" "~/sync/org-roam"))
 #+END_SRC
 
-And clean it up visually. Hide the first n-1 stars on level n headlines:
+And clean it up visually a bit:
 
 #+BEGIN_SRC emacs-lisp
+  ; Hide the first n-1 asterisks in level n headings
   (setq-default org-startup-indented t)
+
+  ; Don't wrap lines in plaintext exports of Org files
+  (setq-default org-export-preserve-breaks nil)
+  (setq-default org-ascii-text-width 99999)
 #+END_SRC
 
 Now, for some shortcuts to skip around Org Mode.
