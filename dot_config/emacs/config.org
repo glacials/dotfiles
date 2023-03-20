@@ -20,39 +20,39 @@ from Org to HTML.
 Get the boring stuff out of the way first:
 
 #+BEGIN_SRC emacs-lisp
-  (setq-default
-   user-full-name "Benjamin Carlsson"
-   user-mail-address "ben@twos.dev")
-  (setq-default tab-width 2)
-  (tool-bar-mode -1) ; Don't show the GUI toolbar
+	(setq-default
+	 user-full-name "Benjamin Carlsson"
+	 user-mail-address "ben@twos.dev")
+	(setq-default tab-width 2)
+	(tool-bar-mode -1) ; Don't show the GUI toolbar
 
-  ;; Modifier keys
-  (setq-default mac-command-modifier 'meta)       ; Make Command act as Meta
-  (setq-default mac-option-modifier 'super)       ; Make Option act as Super
-  (setq-default mac-control-modifier 'control)    ; Make Control act as Control
-  (setq-default mac-right-option-modifier 'hyper) ; Make Right Option act as Hyper
-  (setq-default ns-function-modifier 'hyper)      ; Make Fn act as Hyper
+	;; Modifier keys
+	(setq-default mac-command-modifier 'meta)       ; Make Command act as Meta
+	(setq-default mac-option-modifier 'super)       ; Make Option act as Super
+	(setq-default mac-control-modifier 'control)    ; Make Control act as Control
+	(setq-default mac-right-option-modifier 'hyper) ; Make Right Option act as Hyper
+	(setq-default ns-function-modifier 'hyper)      ; Make Fn act as Hyper
 
-  (setq-default ring-bell-function 'ignore) ; Disable the audible bell
-  (setq-default sentence-end-double-space nil) ; End sentences with single spaces
-  (setq-default display-line-numbers t) ; Show line numbers
-  (delete-selection-mode 1) ; Delete selected text when starting to type
-  (setq-default fill-column 80) ; Wrap at 80 characters
-  (add-hook 'prog-mode-hook #'auto-fill-mode) ; Autowrap when coding
-  (add-hook 'text-mode-hook #'auto-fill-mode) ; Autowrap when writing
-  (global-hl-line-mode 1) ; Highlight cursor line
+	(setq-default ring-bell-function 'ignore) ; Disable the audible bell
+	(setq-default sentence-end-double-space nil) ; End sentences with single spaces
+	(setq-default display-line-numbers t) ; Show line numbers
+	(delete-selection-mode 1) ; Delete selected text when starting to type
+	(setq-default fill-column 80) ; Wrap at 80 characters
+	(add-hook 'prog-mode-hook #'auto-fill-mode) ; Autowrap when coding
+	(add-hook 'text-mode-hook #'auto-fill-mode) ; Autowrap when writing
+	(global-hl-line-mode 1) ; Highlight cursor line
 
-  ;; Unicode everywhere
-  (set-charset-priority 'unicode)
-  (set-default-coding-systems 'utf-8)
-  (set-terminal-coding-system 'utf-8)
-  (set-keyboard-coding-system 'utf-8)
-  (set-selection-coding-system 'utf-8)
-  (prefer-coding-system 'utf-8)
-  (setq-default buffer-file-coding-system 'utf-8)
-  (setq-default default-process-coding-system '(utf-8-unix . utf-8-unix))
+	;; Unicode everywhere
+	(set-charset-priority 'unicode)
+	(set-default-coding-systems 'utf-8)
+	(set-terminal-coding-system 'utf-8)
+	(set-keyboard-coding-system 'utf-8)
+	(set-selection-coding-system 'utf-8)
+	(prefer-coding-system 'utf-8)
+	(setq-default buffer-file-coding-system 'utf-8)
+	(setq-default default-process-coding-system '(utf-8-unix . utf-8-unix))
 
-  (when (and (eq system-type 'darwin) (display-graphic-p))
+	(when (and (eq system-type 'darwin) (display-graphic-p)))
 
 #+END_SRC
 
