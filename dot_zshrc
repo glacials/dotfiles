@@ -76,7 +76,7 @@ alias vimdiff='vim -d'
 # alias diff='difft' # Difftastic; commented out because it messes with Magit in Emacs
 
 # General env vars
-export EDITOR='emacsclient'
+export EDITOR='vim'
 export GPG_TTY=$(tty)
 
 # zsh-fzf-history-search config
