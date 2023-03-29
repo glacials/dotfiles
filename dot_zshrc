@@ -53,6 +53,11 @@ fi
 # run history-substituted commands (e.g. containing `!!` or `!$`) without confirmation
 unsetopt histverify
 
+# General env vars
+export EDITOR='vim'
+export GPG_TTY=$(tty)
+
+# Aliases
 alias amend='git add -p && git commit --amend --no-edit && git push -f'
 alias curl='curl --proto-default https'
 alias e="$EDITOR"
@@ -74,10 +79,6 @@ alias vi=vim
 alias vim=nvim
 alias vimdiff='vim -d'
 # alias diff='difft' # Difftastic; commented out because it messes with Magit in Emacs
-
-# General env vars
-export EDITOR='vim'
-export GPG_TTY=$(tty)
 
 # zsh-fzf-history-search config
 export ZSH_FZF_HISTORY_SEARCH_FZF_EXTRA_ARGS='--height 40%'
