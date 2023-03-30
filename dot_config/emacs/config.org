@@ -191,13 +191,6 @@ Some automatic indentation:
   (straight-use-package 'aggressive-indent-mode)
 #+END_SRC
 
-And some tools to better format copied text (via =ox-clip-formatted-copy=):
-
-#+begin_src emacs-lisp
-  (straight-use-package 'ox-clip)
-  (global-set-key (kbd "H-k") 'ox-clip-formatted-copy)
-#+end_src
-
 *** Integrations
 
 Magit is the de facto Git interface in Emacs. This package surprised
