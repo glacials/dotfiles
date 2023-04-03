@@ -43,3 +43,7 @@ cask vlc # Video player
 if ! test -z "${casks:-}"; then
 		brew install --force --quiet ${casks}
 fi
+
+# Follow-ups
+defaults write com.googlecode.iterm2.plist PrefsCustomFolder -string "~/.config/iterm2"
+defaults write com.googlecode.iterm2.plist LoadPrefsFromCustomFolder -bool true
