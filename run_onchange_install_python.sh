@@ -2,6 +2,7 @@
 
 set -euo pipefail
 test -z ${DEBUG:-} || set -x
+uname=$(uname -s | tr "[:upper:]" "[:lower:]")
 
 # This script installs Python and several tools in the Python ecosystem.
 echo "Installing Python and friends"
@@ -23,7 +24,9 @@ if [[ $uname == linux* ]]; then
     export CPPFLAGS="-I$linuxbrew_home/opt/openssl@3/include"
 fi
 
-npm install -g pyright # Language server
+if [[ $uname == darwin ]]; then
+	npm install -g pyright # Language server
+fi
 
 install_now pyenv pyenv-virtualenv
 latest=$(pyenv install --list | sed -n '/^[[:space:]]*[0-9]\{1,\}\.[0-9]\{1,\}\.[0-9]\{1,\}[[:space:]]*$/ h;${g;p;}')
