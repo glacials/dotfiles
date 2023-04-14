@@ -10,18 +10,18 @@ echo "Installing App Store apps"
 
 . $(chezmoi source-path)/functions.sh
 
-list=$(mas list)
-appids_to_install=""
-function app() {
-    # mas install installs the app even if it is already installed, so we'll
-    # skip those manually here.
-    app_id=$1
-    if [[ "$list" != *"$app_id"* ]]; then
-        appids_to_install="$appids_to_install$app_id "
-    fi
-}
-
 if [[ $uname == darwin ]]; then
+
+    list=$(mas list)
+    appids_to_install=""
+    function app() {
+        # mas install installs the app even if it is already installed, so we'll
+        # skip those manually here.
+        app_id=$1
+        if [[ "$list" != *"$app_id"* ]]; then
+            appids_to_install="$appids_to_install$app_id "
+        fi
+    }
     install_now mas # macOS App Store CLI
 
     # app 408981434  # iMovie -- For some reason iMovie always reinstalls. Have
