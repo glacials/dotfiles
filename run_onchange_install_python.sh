@@ -10,7 +10,7 @@ echo "Installing Python and friends"
 
 if [[ $uname == linux* ]]; then
     # Runtime dependencies of pyenv (https://github.com/pyenv/pyenv/wiki#suggested-build-environment)
-    $apt install make build-essential libssl-dev zlib1g-dev \
+    pkginstall make build-essential libssl-dev zlib1g-dev \
          libbz2-dev libreadline-dev libsqlite3-dev wget curl llvm \
          libncursesw5-dev xz-utils tk-dev libxml2-dev libxmlsec1-dev libffi-dev
 		liblzma-dev
