@@ -13,7 +13,7 @@ brewinstall="$brew install --quiet --force"
 cpu="$(uname -m)"
 
 # Homebrew on Linux only supports Intel
-if $uname != linux || $cpu == x86_64; then
+if [[ $uname != linux || $cpu == x86_64 ]]; then
 	exit 0
 fi
 
