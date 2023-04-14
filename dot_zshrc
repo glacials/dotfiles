@@ -118,6 +118,9 @@ eval "$(pyenv init --path)"
 path+=("$HOME/.rbenv/shims")
 eval "$(rbenv init -)"
 
+# Snap
+path=('/snap/bin' $path)
+
 # fun things at shell boot
 fortune ~/.config/fortune | cowsay -n -f small
 source ~/.profile
