@@ -100,6 +100,7 @@ export GOPATH=~/go
 path+=($GOPATH/bin)
 
 # Node
+path+=($HOME/.nodenv/bin)
 eval "$(nodenv init -)"
 
 # Python
