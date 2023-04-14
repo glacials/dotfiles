@@ -29,7 +29,7 @@ cpu=$(uname -m)
 function pkginstall() {
 	if [[ $uname == linux ]]; then
 		if apt-get --version 1>/dev/null 2>/dev/null; then
-			if [[ $1 == chezmoi ]]; then
+			if [[ $1 == chezmoi || $1 == go ]]; then
 				sudo snap install --classic $1
 			elif [[ $1 == gh && cpu == armv7l && uname == linux ]]; then
 				type -p curl >/dev/null || (sudo apt update && sudo apt install curl -y)
