@@ -50,10 +50,10 @@ function pkginstall() {
 function run_script() {
 	if test -f "$(chezmoi source-path)/$1"; then
 		test -z ${DEBUG:-} ||	echo "Running $1 locally"
-		sh "$(chezmoi source-path)/$1"
+		bash "$(chezmoi source-path)/$1"
 	else
 		test -z ${DEBUG:-} || echo "Running $1 from GitHub"
-		sh -c "$(curl -fsSL $cdn/$1)"
+		bash -c "$(curl -fsSL $cdn/$1)"
 	fi
 }
 
