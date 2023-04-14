@@ -19,8 +19,8 @@ if [[ $uname == linux* ]]; then
     else
         linuxbrew_home="$HOME/.linuxbrew"
     fi
-    export LDFLAGS="-L$(linuxbrew_home)/opt/openssl@3/lib"
-    export CPPFLAGS="-I$(linuxbrew_home)/opt/openssl@3/include"
+    export LDFLAGS="-L$linuxbrew_home/opt/openssl@3/lib"
+    export CPPFLAGS="-I$linuxbrew_home/opt/openssl@3/include"
 fi
 
 npm install -g pyright # Language server
