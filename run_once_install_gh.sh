@@ -1,5 +1,8 @@
 #!/usr/bin/env bash
 
+set -euo pipefail
+test -z ${DEBUG:-} || set -x
+
 # This script installs gh, the GitHub CLI. This is helpful to be in its own
 # script because we use it to install an SSH key into GitHub, which is one of
 # the first steps of bootstrapping before we can clone the rest of the repo.
