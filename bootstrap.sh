@@ -19,7 +19,16 @@ d=$(dirname $0)
 f="functions.sh"
 test -f $d/$f && . $d/$f || (curl -s "$cdn/$f" > /tmp/$f && source /tmp/$f)
 
-install_now "chezmoi"
+if [[ $uname == linux ]]; then
+  if apt-get --version 1>/dev/null 2>/dev/null; then
+    sudo snap install --classic chezmoi
+  else
+   sudo yum install -y chezmoi
+  fi
+else
+  brew install --quiet --force chezmoi
+fi
+  
 chezmoi init --apply glacials
 
 cd $(chezmoi source-path)
