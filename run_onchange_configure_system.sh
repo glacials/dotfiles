@@ -30,4 +30,4 @@ if [[ $uname == darwin ]]; then
 fi
 
 # Cron et al.
-crontab ./cron
+crontab "$(chezmoi source-path)/cron"
