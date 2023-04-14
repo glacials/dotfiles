@@ -2,12 +2,17 @@
 
 set -euo pipefail
 test -z ${DEBUG:-} || set -x
+uname=$(uname -s | tr "[:upper:]" "[:lower:]")
 
 # This script installs casks, i.e. macOS apps available in Homebrew but not in
 # the App Store.
 echo "Installing casks"
 
 . $(chezmoi source-path)/functions.sh
+
+if [[ $uname == linux ]]; then
+	exit 0
+fi
 
 # Save the `brew list` output so we don't have to call out to brew so much
 brewlist=$(brew list --casks)
