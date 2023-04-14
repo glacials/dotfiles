@@ -13,7 +13,7 @@ brewinstall="$brew install --quiet --force"
 cpu="$(uname -m)"
 
 # Homebrew on Linux only supports Intel
-if ($uname != linux || $cpu == x86_64) && ! $brew --version 1>/dev/null 2>/dev/null; then
+if ("$uname" != "linux" || "$cpu" == "x86_64") && ! $brew --version 1>/dev/null 2>/dev/null; then
     NONINTERACTIVE=1 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
     if [[ $uname == linux ]]; then
         (echo; echo 'eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"') >> /home/glacials/.profile
