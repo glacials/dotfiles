@@ -28,13 +28,14 @@ uname=$(uname -s | tr "[:upper:]" "[:lower:]")
 if [[ $uname == linux ]]; then
     if apt-get --version 1>/dev/null 2>/dev/null; then
         pkgmgr="apt-get"
-	function pkgins() {
+	function pkginstall() {
 		if [[ $1 == chezmoi ]]; then
 			sudo snap --classic install $1
 		else
 			sudo $pkgmgr install -y
 		fi
 	}
+	pkgins="pkginstall"
     else
         pkgmgr="yum"
         pkgins="sudo $pkgmgr install -y"
