@@ -25,25 +25,21 @@ test -z ${DEBUG:-} || set -x
 # the repo is cloned.
 
 uname=$(uname -s | tr "[:upper:]" "[:lower:]")
-if [[ $uname == linux ]]; then
-    if apt-get --version 1>/dev/null 2>/dev/null; then
-        pkgmgr="apt-get"
-	function pkginstall() {
-		if [[ $1 == chezmoi ]]; then
-			sudo snap --classic install $1
+function pkginstall() {
+	if [[ $uname == linux ]]; then
+		if apt-get --version 1>/dev/null 2>/dev/null; then
+			if [[ $1 == chezmoi ]]; then
+				sudo snap install --classic $1
+			else
+				sudo apt-get install -y $1
+			fi
 		else
-			sudo $pkgmgr install -y
+			sudo yum install -y $1
 		fi
-	}
-	pkgins="pkginstall"
-    else
-        pkgmgr="yum"
-        pkgins="sudo $pkgmgr install -y"
-    fi
-else
-    pkgmgr="brew"
-    pkgins="$pkgmgr install --quiet --force"
-fi
+	else
+		brew install --quiet --force $1
+	fi
+}
 
 # run_script runs a script from the dotfiles repo. The first and only argument
 # is the name of the script to run, relative to the dotfiles repo root.
@@ -52,13 +48,13 @@ fi
 # downloaded and run. This is helpful when bootstrapping, as the dotfiles repo
 # may not be cloned yet.
 function run_script() {
-    if test -f "$(chezmoi source-path)/$1"; then
-				test -z ${DEBUG:-} ||	echo "Running $1 locally"
-        sh "$(chezmoi source-path)/$1"
-    else
-				test -z ${DEBUG:-} || echo "Running $1 from GitHub"
-        sh -c "$(curl -fsSL $cdn/$1)"
-    fi
+	if test -f "$(chezmoi source-path)/$1"; then
+		test -z ${DEBUG:-} ||	echo "Running $1 locally"
+		sh "$(chezmoi source-path)/$1"
+	else
+		test -z ${DEBUG:-} || echo "Running $1 from GitHub"
+		sh -c "$(curl -fsSL $cdn/$1)"
+	fi
 }
 
 # install_now immediately installs a package using the right package
@@ -68,7 +64,7 @@ function run_script() {
 # installation process. Otherwise, prefer install to avoid the overhead
 # of invoking the package manager multiple times.
 function install_now() {
-    test -z ${1:-} || $pkgins $1
+	test -z ${1:-} || $pkgins $1
 }
 
 # install installs a package using the right package manager for the
@@ -78,7 +74,7 @@ function install_now() {
 # overhead of invoking the package manager multiple times. If you need a package
 # right away, use install_now.
 function install() {
-    pkgs="${pkgs:-} $1"
+	pkgs="${pkgs:-} $1"
 }
 trap install_now ${pkgs:-} EXIT
 
