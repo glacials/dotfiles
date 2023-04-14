@@ -64,7 +64,7 @@ function run_script() {
 # installation process. Otherwise, prefer install to avoid the overhead
 # of invoking the package manager multiple times.
 function install_now() {
-	test -z ${1:-} || $pkgins $1
+	test -z ${1:-} || pkginstall $1
 }
 
 # install installs a package using the right package manager for the
