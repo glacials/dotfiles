@@ -9,7 +9,7 @@ echo "Installing Python and friends"
 
 . $(chezmoi source-path)/functions.sh
 
-if [[ $uname == linux* ]]; then
+if [[ $uname == darwin ]]; then
     # Runtime dependencies of pyenv (https://github.com/pyenv/pyenv/wiki#suggested-build-environment)
     pkginstall make build-essential libssl-dev zlib1g-dev \
          libbz2-dev libreadline-dev libsqlite3-dev wget curl llvm \
@@ -22,9 +22,7 @@ if [[ $uname == linux* ]]; then
     fi
     export LDFLAGS="-L$linuxbrew_home/opt/openssl@3/lib"
     export CPPFLAGS="-I$linuxbrew_home/opt/openssl@3/include"
-fi
 
-if [[ $uname == darwin ]]; then
 	npm install -g pyright # Language server
 	install_now pyenv pyenv-virtualenv
 	latest=$(pyenv install --list | sed -n '/^[[:space:]]*[0-9]\{1,\}\.[0-9]\{1,\}\.[0-9]\{1,\}[[:space:]]*$/ h;${g;p;}')
