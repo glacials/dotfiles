@@ -8,6 +8,7 @@ echo "Installing CLI tools"
 
 . $(chezmoi source-path)/functions.sh
 
+{{ if eq .chezmoi.os "darwin" }}
 brew install --quiet --force \
 		 ack `# A better grep` \
 		 awscli `# AWS CLI` \
@@ -34,6 +35,12 @@ brew install --quiet --force \
 		 wget `# Download files` \
 		 youtube-dl `# Download videos from YouTube` \
 		 zsh `# macOS ships with an older version`
+{{ else if eq .chezmoi.os "linux" }}
+  {{ if eq .chezmoi.osRelease.id "raspbian" }}
+		sudo apt-get install -y \
+			fortune `# Random quotes`
+	{{ end }}
+{{ end }}
 
 # Misc followups to above
 brew services start --quiet syncthing 1>/dev/null
