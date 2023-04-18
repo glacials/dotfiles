@@ -126,9 +126,11 @@ eval "$(rbenv init -)"
 path=('/snap/bin' $path)
 
 # fun things at shell boot
+{{ if eq .chezmoi.os "linux" }}
 {{ if eq .chezmoi.osRelease.id "raspbian" }}
 # Raspbian (at least) doesn't have a small cow
 fortune ~/.config/fortune | cowsay -n
+{{ end }}
 {{ else }}
 fortune ~/.config/fortune | cowsay -n -f small
 {{ end }}
