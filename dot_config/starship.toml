@@ -1,7 +1,7 @@
 format = """
 [](#9A348E)\
 $os\
-@$hostname\
+$hostname\
 $username\
 [](bg:#DA627D fg:#9A348E)\
 $directory\
@@ -39,6 +39,9 @@ style_user = "bg:#9A348E"
 style_root = "bg:#9A348E"
 format = '[$user ]($style)'
 disabled = false
+
+[hostname]
+style = "bg:#9A348E"
 
 # An alternative to the username module which displays a symbol that
 # represents the current operating system
