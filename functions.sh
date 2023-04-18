@@ -85,10 +85,3 @@ function install() {
 	pkgs="${pkgs:-} $1"
 }
 trap install_now ${pkgs:-} EXIT
-
-# upgrade upgrades installed packaged using the right package manager for the
-# current system.
-function upgrade() {
-	$pkgmgr update
-	$pkgmgr upgrade
-}

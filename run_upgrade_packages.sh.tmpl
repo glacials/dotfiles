@@ -11,4 +11,12 @@ echo "Upgrading packages"
 
 [[ ${debug:-} == "y" ]] && echo "Updating packages."
 
-upgrade
+{{ if eq .os "darwin" }}
+brew update
+brew upgrade
+{{ else if eq .os "linux" }}
+{{ if eq .osRelease.idLike "debian" }}
+sudo apt-get update
+sudo apt-get upgrade
+{{ end }}
+{{ end }}
