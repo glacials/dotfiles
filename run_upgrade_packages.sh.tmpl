@@ -16,7 +16,7 @@ brew update
 brew upgrade
 {{ else if eq .chezmoi.os "linux" }}
 {{ if eq .chezmoi.osRelease.idLike "debian" }}
-sudo apt-get update
-sudo apt-get upgrade
+sudo apt-get --quiet --quiet update
+sudo apt-get --quiet --quiet upgrade
 {{ end }}
 {{ end }}
