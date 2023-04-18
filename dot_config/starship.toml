@@ -1,8 +1,8 @@
 format = """
 [](#9A348E)\
 $os\
-$hostname\
 $username\
+$hostname\
 [](bg:#DA627D fg:#9A348E)\
 $directory\
 [](fg:#DA627D bg:#FCA17D)\
