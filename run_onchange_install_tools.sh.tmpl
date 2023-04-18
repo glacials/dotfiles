@@ -44,7 +44,8 @@ sudo apt-get install --quiet --quiet \
 fortune `# Random quotes` \
 cowsay `# Make animals say things`
 
-curl -sS https://starship.rs/install.sh | sh # Opinionated pre-configured prompt
+# Opinionated pre-configured prompt
+starship --version 1>/dev/null 2>/dev/null || curl -sS https://starship.rs/install.sh | sh
 {{ end }}
 {{ end }}
 
