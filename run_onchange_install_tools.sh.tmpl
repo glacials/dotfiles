@@ -41,8 +41,9 @@ defaultbrowser chrome
 {{ else if eq .chezmoi.os "linux" }}
 {{ if eq .chezmoi.osRelease.id "raspbian" }}
 sudo apt-get install --quiet --quiet \
+cowsay `# Make animals say things` \
 fortune `# Random quotes` \
-cowsay `# Make animals say things`
+neovim `# Neovim`
 
 # Opinionated pre-configured prompt
 starship --version 1>/dev/null 2>/dev/null || curl -sS https://starship.rs/install.sh | sh
