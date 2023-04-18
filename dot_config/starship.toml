@@ -43,6 +43,7 @@ disabled = false
 [hostname]
 style = "bg:#9A348E"
 format = '[$ssh_symbol$hostname ]($style)'
+ssh_symbol = '🌐'
 
 # An alternative to the username module which displays a symbol that
 # represents the current operating system
