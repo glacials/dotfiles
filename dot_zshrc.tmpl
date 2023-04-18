@@ -103,13 +103,13 @@ path+=($GOPATH/bin)
 
 # Node
 path=("$HOME/.nodenv/bin" $path)
-eval "$(nodenv init -)"
+nodenv --version 1>/dev/null 2>/dev/null && eval "$(nodenv init -)"
 
 {{ if eq .chezmoi.os "darwin" }}
 # Python
 export PYENV_ROOT="$HOME/.pyenv"
-eval "$(pyenv init -)"
-eval "$(pyenv init --path)"
+pyenv --version 1>/dev/null 2>/dev/null && eval "$(pyenv init -)"
+pyenv --version 1>/dev/null 2>/dev/null && eval "$(pyenv init --path)"
 # This causes slow every command to be slow to return when running some
 # antiviruses e.g. on work machines. Second line (be slow on cd) is a workaround
 # but still not great from
@@ -120,7 +120,7 @@ eval "$(pyenv init --path)"
 
 # Ruby
 path+=("$HOME/.rbenv/shims")
-eval "$(rbenv init -)"
+rbenv --version 1>/dev/null 2>/dev/null && eval "$(rbenv init -)"
 
 # Snap
 path=('/snap/bin' $path)
@@ -129,16 +129,20 @@ path=('/snap/bin' $path)
 {{ if eq .chezmoi.os "linux" }}
 {{ if eq .chezmoi.osRelease.id "raspbian" }}
 # Raspbian (at least) doesn't have a small cow
+fortune --version 1>/dev/null 2>/dev/null && \
+cowsay --version 1>/dev/null 2>/dev/null && \
 fortune ~/.config/fortune | cowsay -n
 {{ end }}
 {{ else }}
+fortune --version 1>/dev/null 2>/dev/null && \
+cowsay --version 1>/dev/null 2>/dev/null && \
 fortune ~/.config/fortune | cowsay -n -f small
 {{ end }}
 
 source ~/.profile
 
 # direnv
-eval "$(direnv hook zsh)"
+direnv --version 1>/dev/null 2>/dev/null && eval "$(direnv hook zsh)"
 
 # Starship
-eval "$(starship init zsh)"
+starship --version 1>/dev/null 2/dev/null && eval "$(starship init zsh)"
