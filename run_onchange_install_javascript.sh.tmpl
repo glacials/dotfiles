@@ -5,7 +5,7 @@ test -z ${DEBUG:-} || set -x
 uname=$(uname -s | tr "[:upper:]" "[:lower:]")
 
 if [[ $uname == linux ]]; then
-	exit 0
+exit 0
 fi
 
 # This script installs JavaScript and several tools in the JavaScript ecosystem.
@@ -13,22 +13,25 @@ echo "Installing JavaScript and friends"
 
 . $(chezmoi source-path)/functions.sh
 
-if [[ $uname == linux ]]; then
-	curl -fsSL https://github.com/nodenv/nodenv-installer/raw/HEAD/bin/nodenv-installer | bash
-else
-	install_now nodenv
-fi
+{{ if eq .chezmoi.os "linux" }}
+curl -fsSL https://github.com/nodenv/nodenv-installer/raw/HEAD/bin/nodenv-installer | bash
+{{ else if eq .chezmoi.os "darwin" }}
+install_now nodenv
+{{ end }}
 
-latest=$(nodenv install --list 2>/dev/null | sed -n '/^[[:space:]]*[0-9]\{1,\}\.[0-9]\{1,\}\.[0-9]\{1,\}[[:space:]]*$/ h;${g;p;}')
+latest=$(\
+nodenv install --list 2>/dev/null | \
+sed -n '/^[[:space:]]*[0-9]\{1,\}\.[0-9]\{1,\}\.[0-9]\{1,\}[[:space:]]*$/ h;${g;p;}' \
+)
 nodenv install --skip-existing $latest
 nodenv global $latest
 
 install_now npm
 npm install -g \
-		bower `# package manager` \
-		prettier `# code formatter` \
-		prettier-plugin-go-template `# format go templates in HTML` \
-		typescript `# typed JavaScript`
+bower `# package manager` \
+prettier `# code formatter` \
+prettier-plugin-go-template `# format go templates in HTML` \
+typescript `# typed JavaScript`
 
 # Override for GitHub Copilot requirements
 nodenv install --skip-existing 17.9.1

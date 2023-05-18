@@ -25,7 +25,10 @@ if [[ $uname == darwin ]]; then
 
 	npm install -g pyright # Language server
 	install_now pyenv pyenv-virtualenv
-	latest=$(pyenv install --list | sed -n '/^[[:space:]]*[0-9]\{1,\}\.[0-9]\{1,\}\.[0-9]\{1,\}[[:space:]]*$/ h;${g;p;}')
+	latest=$(\
+      pyenv install --list 2>/dev/null | \
+      sed -n '/^[[:space:]]*[0-9]\{1,\}\.[0-9]\{1,\}\.[0-9]\{1,\}[[:space:]]*$/ h;${g;p;}' \
+    )
 	pyenv install --skip-existing $latest
 	pyenv global $latest
 fi
