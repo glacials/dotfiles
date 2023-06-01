@@ -37,7 +37,7 @@ youtube-dl `# Download videos from YouTube` \
 zsh `# macOS ships with an older version`
 
 brew services start --quiet syncthing 1>/dev/null
-defaultbrowser chrome
+# defaultbrowser chrome
 {{ else if eq .chezmoi.os "linux" }}
 {{ if eq .chezmoi.osRelease.id "raspbian" }}
 sudo apt-get install --quiet --quiet \
