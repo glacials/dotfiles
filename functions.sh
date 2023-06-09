@@ -30,7 +30,7 @@ function pkginstall() {
 	if [[ $uname == linux ]]; then
 		if apt-get --version 1>/dev/null 2>/dev/null; then
 			if [[ $1 == chezmoi || $1 == go ]]; then
-				sudo snap install --classic $1
+				sudo snap install --classic $1 2>/dev/null || sudo apt-get install golang
 			elif [[ $1 == gh && cpu == armv7l && uname == linux ]]; then
 				type -p curl >/dev/null || (sudo apt update && sudo apt install curl -y)
 				curl -fsSL https://cli.github.com/packages/githubcli-archive-keyring.gpg | sudo dd of=/usr/share/keyrings/githubcli-archive-keyring.gpg \
