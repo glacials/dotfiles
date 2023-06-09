@@ -22,7 +22,7 @@ uname=$(uname -s | tr "[:upper:]" "[:lower:]")
 
 if [[ $uname == linux ]]; then
   if apt-get --version 1>/dev/null 2>/dev/null; then
-    sudo snap install --classic chezmoi
+    sudo snap install --classic chezmoi || sh -c "$(curl -fsLS get.chezmoi.io)"
   else
    sudo yum install -y chezmoi
   fi
