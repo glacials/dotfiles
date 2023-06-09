@@ -35,3 +35,4 @@ chezmoi init --apply glacials
 cd $(chezmoi source-path)
 git submodule init
 git submodule update
+chezmoi update
