@@ -55,6 +55,7 @@ app 1507890049 # Pixeur
 app 1518425043 # Boop
 app 1534275760 # LanguageTool
 app 1569813296 # 1Password for Safari
+app 6444602274 # Ivory
 
 if ! test -z "${appids_to_install:-}"; then
     mas install $appids_to_install
