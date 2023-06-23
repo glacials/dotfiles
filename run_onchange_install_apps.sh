@@ -50,7 +50,7 @@ app 1475387142 # Tailscale
 app 1478821913 # GoLinks for Safari
 app 1480068668 # Messenger
 app 1480933944 # Vimari
-app 1482454543 # Twitter
+# app 1482454543 # Twitter
 app 1507890049 # Pixeur
 app 1518425043 # Boop
 app 1534275760 # LanguageTool
