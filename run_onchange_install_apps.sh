@@ -15,6 +15,8 @@ echo "Installing App Store apps"
 
 . $(chezmoi source-path)/functions.sh
 
+install_now mas # macOS App Store CLI
+
 list=$(mas list)
 appids_to_install=""
 function app() {
@@ -25,7 +27,6 @@ function app() {
         appids_to_install="$appids_to_install$app_id "
     fi
 }
-install_now mas # macOS App Store CLI
 
 # app 408981434  # iMovie -- For some reason iMovie always reinstalls. Have
                  # Final Cut Pro now anyways so not super important.
