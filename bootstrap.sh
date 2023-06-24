@@ -18,6 +18,8 @@ cdn="https://raw.githubusercontent.com/glacials/dotfiles/main"
 d=$(dirname $0)
 f="functions.sh"
 test -f $d/$f && . $d/$f || (curl -s "$cdn/$f" > /tmp/$f && source /tmp/$f)
+h="run_once_install_homebrew.sh"
+test -f $d/$h && . $d/$h || (curl -s "$cdn/$h" > /tmp/$h && source /tmp/$h)
 uname=$(uname -s | tr "[:upper:]" "[:lower:]")
 
 if [[ $uname == linux ]]; then
