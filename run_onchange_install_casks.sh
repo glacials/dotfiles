@@ -29,7 +29,7 @@ function cask() {
 
 cask 1password # Password manager
 cask discord # Chat app
-cask docker # Containerization
+cask homebrew/cask/docker # Containerization
 cask firefox # Browser
 cask homebrew/cask-fonts/font-hack-nerd-font # Nerd fonts
 cask homebrew/cask-fonts/font-jetbrains-mono # JetBrains Mono font
@@ -40,7 +40,7 @@ cask kitty # Terminal emulator
 cask launchcontrol # App launcher
 cask railwaycat/emacsmacport/emacs-mac # macOS-native Emacs UI
 cask stay # Restore window positions when displays change
-cask syncthing # Sync files between devices
+cask homebrew/cask/syncthing # Sync files between devices
 cask visual-studio-code # Code editor
 cask vlc # Video player
 
