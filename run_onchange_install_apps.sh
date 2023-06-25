@@ -8,6 +8,8 @@ if [[ $uname != darwin ]]; then
     exit 0
 fi
 
+macosversion=$(sw_vers -productVersion | cut -d. -f1)
+
 # This script installs macOS apps from the app store. Note that because of App
 # Store API limitations, this script can only install apps that have previously
 # been installed by the current user's Apple ID.
@@ -56,7 +58,10 @@ app 1507890049 # Pixeur
 app 1518425043 # Boop
 app 1534275760 # LanguageTool
 app 1569813296 # 1Password for Safari
-app 6444602274 # Ivory
+
+if (( $macosversion > 12 )); then
+    app 6444602274 # Ivory
+fi
 
 if ! test -z "${appids_to_install:-}"; then
     mas install $appids_to_install
