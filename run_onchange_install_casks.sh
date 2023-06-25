@@ -29,7 +29,7 @@ function cask() {
 
 cask 1password # Password manager
 cask discord # Chat app
-cask homebrew/cask/docker # Containerization
+cask docker # Containerization
 cask firefox # Browser
 cask homebrew/cask-fonts/font-hack-nerd-font # Nerd fonts
 cask homebrew/cask-fonts/font-jetbrains-mono # JetBrains Mono font
@@ -40,13 +40,14 @@ cask kitty # Terminal emulator
 cask launchcontrol # App launcher
 cask railwaycat/emacsmacport/emacs-mac # macOS-native Emacs UI
 cask stay # Restore window positions when displays change
-cask homebrew/cask/syncthing # Sync files between devices
+cask syncthing # Sync files between devices
 cask visual-studio-code # Code editor
 cask vlc # Video player
 
-# Install all casks at once, to avoid the overhead of multiple invocations/
+# Install all casks at once, to avoid the overhead of multiple invocations
 if ! test -z "${casks:-}"; then
-		brew install --force --quiet ${casks}
+	# --cask forces casks when there are options for formulae (e.g. docker, syncthing)
+  brew install --cask --force --quiet ${casks}
 fi
 
 # Follow-ups
