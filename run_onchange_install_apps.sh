@@ -40,6 +40,7 @@ app 424389933  # Final Cut Pro
 app 430798174  # HazeOver
 app 441258766  # Magnet
 app 497799835  # Xcode
+app 668208984  # GIPHY Capture
 app 747648890  # Telegram
 app 775737590  # iA Writer
 app 883878097  # Server
