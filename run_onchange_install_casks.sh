@@ -38,7 +38,7 @@ cask google-chrome # Browser
 cask iterm2 # Terminal emulator
 cask kitty # Terminal emulator
 cask launchcontrol # App launcher
-cask railwaycat/emacsmacport/emacs-mac # macOS-native Emacs UI
+# cask railwaycat/emacsmacport/emacs-mac # macOS-native Emacs UI
 cask stay # Restore window positions when displays change
 cask syncthing # Sync files between devices
 cask visual-studio-code # Code editor
