@@ -47,6 +47,7 @@ app 883878097  # Server
 app 920404675  # Monodraw
 app 1046095491 # Freeze - for Amazon Glacier
 app 1085114709 # Parallels Desktop
+app 1147396723 # WhatsApp Desktop
 app 1233861775 # Acorn
 app 1246969117 # Steam Link
 app 1451544217 # Adobe Lightroom
