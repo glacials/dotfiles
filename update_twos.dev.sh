@@ -16,7 +16,9 @@ _setArgs(){
 
 _setArgs $*
 
-PUBLISHED="/Users/glacials/Library/Mobile Documents/27N4MQEA55~pro~writer/Documents/Published/"
+iAWriter="/Users/glacials/Library/Mobile Documents/27N4MQEA55~pro~writer/Documents/Published"
+Obsidian="/Users/glacials/notesmd/Writing/twos.dev"
+
 REPO=/tmp/twos.dev
 
 if [ -d $REPO ]; then
@@ -27,7 +29,8 @@ else
   cd $REPO
 fi
 
-cp -r "$PUBLISHED" "$REPO/src/warm"
+# Trailing slashes in sources makes us copy dir contents, not dir
+cp -r "$Obsidian/" "$REPO/src/warm"
 git add src/warm
 git commit -m "Automatic commit by iA Writer cron job"
 git push
