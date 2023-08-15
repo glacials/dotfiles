@@ -35,6 +35,7 @@ function app() {
 app 409183694  # Keynote
 app 409201541  # Pages
 app 409203825  # Numbers
+app 409907375  # Apple Remote Desktop
 app 411643860  # DaisyDisk
 app 424389933  # Final Cut Pro
 app 430798174  # HazeOver
