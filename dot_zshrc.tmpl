@@ -73,7 +73,8 @@ alias u='sudo apt-get update -qq && sudo apt-get -yqq upgrade && brew update -qq
 fi
 
 if [[ $uname == darwin ]]; then
-alias u='brew update && brew upgrade --quiet'
+# alias u='brew update && brew upgrade --quiet'
+alias u='chezmoi update'
 fi
 
 alias vi=vim
