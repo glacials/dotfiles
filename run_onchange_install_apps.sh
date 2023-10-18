@@ -42,6 +42,7 @@ app 430798174  # HazeOver
 app 441258766  # Magnet
 app 497799835  # Xcode
 app 668208984  # GIPHY Capture
+app 669289700  # Sweet Home 3D
 app 747648890  # Telegram
 app 775737590  # iA Writer
 app 883878097  # Server
