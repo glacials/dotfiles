@@ -36,7 +36,6 @@ cask homebrew/cask-fonts/font-jetbrains-mono # JetBrains Mono font
 cask homebrew/cask-fonts/font-source-code-pro # Source Code Pro font
 cask google-chrome # Browser
 cask iterm2 # Terminal emulator
-cask kitty # Terminal emulator
 cask launchcontrol # App launcher
 # cask railwaycat/emacsmacport/emacs-mac # macOS-native Emacs UI
 cask stay # Restore window positions when displays change
