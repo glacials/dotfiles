@@ -6,7 +6,7 @@ running scheduled tasks even when the machine (e.g. a MacBook) is asleep during
 the scheduled time.
 
 Symlinks to these files are created in `/Library/LaunchAgents` by
-`./install.sh`.
+`./run_onchange_configure_system.sh`.
 
 See more at the [LaunchAgent docs][launchagent].
 
