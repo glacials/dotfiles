@@ -5,7 +5,7 @@ successor to `cron`. I use it over `cron` specifically because it supports
 running scheduled tasks even when the machine (e.g. a MacBook) is asleep during
 the scheduled time.
 
-Symlinks to these files are created in `/Library/LaunchAgents` by
+Symlinks to these files are created in `~/Library/LaunchAgents` by
 `./run_onchange_configure_system.sh`.
 
 See more at the [LaunchAgent docs][launchagent].
