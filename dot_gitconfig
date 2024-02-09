@@ -24,6 +24,7 @@
        smudge = git-media-smudge %f
 [push]
        default = simple
+       autoSetupRemote = true
 [pull]
        rebase = true
 [init]
