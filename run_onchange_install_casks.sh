@@ -41,6 +41,7 @@ cask launchcontrol # App launcher
 cask stay # Restore window positions when displays change
 cask visual-studio-code # Code editor
 cask vlc # Video player
+cask warp # Terminal emulator
 
 # Install all casks at once, to avoid the overhead of multiple invocations
 if ! test -z "${casks:-}"; then
