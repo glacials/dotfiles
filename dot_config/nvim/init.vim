@@ -74,6 +74,7 @@ Plug 'tpope/vim-vinegar'
 
 " Color schemes
 Plug 'utensils/colors.vim'
+Plug 'sainnhe/everforest'
 
 " Show a lightbulb in the gutter when autocomplete is available
 Plug 'kosayoda/nvim-lightbulb'
@@ -281,7 +282,7 @@ syntax enable
 
 set termguicolors
 set background=dark
-colorscheme nord " Use https://vimcolorschemes.com to find more
+colorscheme everforest " Use https://vimcolorschemes.com to find more
 
 " show line numbers
 set number
