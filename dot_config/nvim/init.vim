@@ -21,7 +21,7 @@ Plug 'rrethy/vim-hexokinase', { 'do': 'make hexokinase' }
 Plug 'fholgado/minibufexpl.vim'
 
 " Completions for key sequences
-Plug 'folke/which-key'
+Plug 'folke/which-key.nvim'
 
 " Command palette
 Plug 'LinArcX/telescope-command-palette.nvim'
