@@ -20,8 +20,11 @@ Plug 'rrethy/vim-hexokinase', { 'do': 'make hexokinase' }
 " Show open buffers at the top of the screen
 Plug 'fholgado/minibufexpl.vim'
 
-" Command palette
+" Completions for key sequences
 Plug 'folke/which-key'
+
+" Command palette
+Plug 'LinArcX/telescope-command-palette.nvim'
 
 " Preview Markdown files inside Neovim
 Plug 'ellisonleao/glow.nvim'
