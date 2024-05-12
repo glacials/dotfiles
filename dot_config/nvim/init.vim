@@ -22,10 +22,6 @@ Plug 'nvim-lualine/lualine.nvim'
 " If you want to have icons in your statusline choose one of these
 Plug 'nvim-tree/nvim-web-devicons'
 
-lua << END
-require('lualine').setup()
-END
-
 " Show open buffers at the top of the screen
 Plug 'fholgado/minibufexpl.vim'
 
@@ -131,6 +127,11 @@ autocmd BufWritePre *.gohtml,*.gotmpl,*.go.tmpl,*.tmpl,*.tpl,*.html.tmpl noautoc
 " Plug 'github/copilot.vim'
 
 call plug#end()
+
+" lualine
+lua << END
+require('lualine').setup()
+END
 
 " Ruby
 let g:ale_fix_on_save = 1
