@@ -17,6 +17,11 @@ let g:plug_url_format = 'git@github.com:%s.git'
 " Colorize e.g. hex codes
 Plug 'rrethy/vim-hexokinase', { 'do': 'make hexokinase' }
 
+" Modern powerline
+Plug 'nvim-lualine/lualine.nvim'
+" If you want to have icons in your statusline choose one of these
+Plug 'nvim-tree/nvim-web-devicons'
+
 " Show open buffers at the top of the screen
 Plug 'fholgado/minibufexpl.vim'
 
