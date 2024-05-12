@@ -119,7 +119,7 @@ let g:prettier#autoformat_require_pragma = 0
 autocmd BufWritePre *.gohtml,*.gotmpl,*.go.tmpl,*.tmpl,*.tpl,*.html.tmpl noautocmd call prettier#Autoformat()
 
 " Magic
-Plug 'github/copilot.vim'
+" Plug 'github/copilot.vim'
 
 call plug#end()
 
