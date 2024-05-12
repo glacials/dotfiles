@@ -1,3 +1,4 @@
+vim.cmd([[
 """"'
 " Call vim-plug & plugins
 """"'
@@ -132,6 +133,9 @@ call plug#end()
 lua << END
 require('lualine').setup()
 END
+
+" Highlight lua in .vim files (like this one)
+let g:vimsyn_embed= 'l'
 
 " Ruby
 let g:ale_fix_on_save = 1
@@ -385,3 +389,4 @@ au FileType markdown setlocal foldlevel=99
 let g:markdown_fenced_languages = ['html', 'python', 'bash=sh', 'ruby', 'javascript', 'go']
 
 filetype plugin indent on
+]])
