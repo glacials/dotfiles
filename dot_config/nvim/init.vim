@@ -22,6 +22,10 @@ Plug 'nvim-lualine/lualine.nvim'
 " If you want to have icons in your statusline choose one of these
 Plug 'nvim-tree/nvim-web-devicons'
 
+lua << END
+require('lualine').setup()
+END
+
 " Show open buffers at the top of the screen
 Plug 'fholgado/minibufexpl.vim'
 
