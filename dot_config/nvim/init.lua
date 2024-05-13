@@ -240,10 +240,10 @@ vim.call('plug#end')
 -- ** -- ** -- START PLUGIN CONFIGURATION -- ** -- ** --
 -- ** -- ** -------------------------------- ** -- ** --
 
--- Initialize lualine.
+-- Initialize lualine. Must come after plug#end.
 require('lualine').setup()
 
--- Initialize language server. Must be after plug#end.
+-- Initialize language server. Must come after plug#end.
 local nvim_lsp = require('lspconfig')
 
 -- Use an on_attach function to only map the following keys
@@ -294,7 +294,7 @@ for _, lsp in ipairs(servers) do
   }
 end
 
--- Configure Telescope. Must be after plug#end.
+-- Configure Telescope. Must come after plug#end.
 require('telescope').setup{
   pickers = {
     find_files = {theme = "ivy"},
