@@ -1,8 +1,6 @@
-
 -- Initialize vim-plug.
--- Manages plugins.
+-- Manages plugins. TODO: Consider moving to lazy.vim.
 -- https://github.com/junegunn/vim-plug
--- TODO: Consider moving to lazy.vim.
 vim.cmd([[
 
 if empty(glob('~/.local/share/nvim/site/autoload/plug.vim'))
@@ -11,153 +9,241 @@ if empty(glob('~/.local/share/nvim/site/autoload/plug.vim'))
   vim.call.autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
 endif
 
+]])
+
+-- ** -- ** ------------------- ** -- ** --
+-- ** -- ** -- START PLUGINS -- ** -- ** --
+-- ** -- ** ------------------- ** -- ** --
+
+--
+-- Plugin tips --
+--
+-- :PlugInstall:     Install plugins.
+-- :PlugUpdate:      Update plugins.
+-- :PlugUpgrade:     Update plugin manager.
+-- :source $MYVIMRC: Reload init file.
+--
+
+vim.cmd([[
+
 call plug#begin('~/.local/share/nvim/plugged')
 let g:plug_url_format = 'git@github.com:%s.git'
 
 ]])
-  
+
 local Plug = vim.fn['plug#']
 
--- Colorize e.g. hex codes
-Plug('rrethy/vim-hexokinase', {['do'] = 'make hexokinase'})
+-- ale
+-- Language-agnostic linting server.
+Plug('https://github.com/dense-analysis/ale', {['do'] = 'gem install standardrb'})
+-- Configuration.
+vim.g.ale_fix_on_save = 1
+vim.g.ale_linters = {['ruby'] = {'standardrb'}}
+vim.g.ale_fixers = {['ruby'] = {'standardrb'}}
 
--- Modern powerline
-Plug 'nvim-lualine/lualine.nvim'
--- If you want to have icons in your statusline choose one of these
-Plug 'nvim-tree/nvim-web-devicons'
+-- chezmoi
+-- Syntax highlighting for Chezmoi-managed dotfiles.
+Plug('https://github.com/alker0/chezmoi.vim')
 
--- Show open buffers at the top of the screen
-Plug 'fholgado/minibufexpl.vim'
+-- gitv
+-- View and navigate Git output with Vim bindings.
+Plug('https://github.com/gregsexton/gitv')
 
--- Completions for key sequences
-Plug 'folke/which-key.nvim'
+-- glow
+-- Preview Markdown inside Vim.
+Plug('https://github.com/ellisonleao/glow.nvim')
 
--- Command palette
-Plug 'LinArcX/telescope-command-palette.nvim'
-
--- Preview Markdown files inside Neovim
-Plug 'ellisonleao/glow.nvim'
-
--- Preview Markdown files outside Neovim
-Plug('iamcco/markdown-preview.nvim', {['do'] = 'cd app && yarn install'})
-
-Plug 'gregsexton/gitv'
-Plug 'junegunn/vim-easy-align'
-Plug 'arcticicestudio/nord-vim'
-
--- Telescope (fuzzy file / text finder)
-Plug 'nvim-lua/plenary.nvim'
-Plug 'nvim-telescope/telescope.nvim'
-vim.cmd([[
-nnoremap <leader>ff <cmd>Telescope find_files<cr>
-nnoremap <leader>fg <cmd>Telescope live_grep<cr>
-nnoremap <leader>fb <cmd>Telescope buffers<cr>
-nnoremap <leader>fh <cmd>Telescope help_tags<cr>
-]])
--- Use Telescope UI for some LSP shortcuts
-vim.cmd([[
-nnoremap gr <cmd>Telescope lsp_references<cr>
-nnoremap <space>wa <cmd>Telescope lsp_code_actions<cr>
-nnoremap gi <cmd>Telescope lsp_implementation<cr>
-nnoremap gd <cmd>Telescope lsp_definitions<cr>
-nnoremap gD <cmd>Telescope lsp_type_definitions<cr>
-]])
--- Resume last Telescope search
-vim.cmd([[
-nnoremap <leader>g <cmd>Telescope resume<cr>
-]])
--- Telescope optional dependencies
-Plug 'kyazdani42/nvim-web-devicons'
-Plug 'neovim/nvim-lspconfig'
-Plug('nvim-telescope/telescope-fzf-native.nvim', {['do'] = 'make'})
-
-Plug 'nathanaelkane/vim-indent-guides'
-Plug 'rstacruz/vim-closer'
-Plug 'skwp/greplace.vim'
-Plug 'terryma/vim-multiple-cursors'
--- Plug 'tpope/vim-endwise' -- TODO: Causes issue on Rolo?
-
--- cs"' to change surrounding double-quotes to single-quotes
--- VS<p> to surround current line with <p></p>
-Plug 'tpope/vim-surround'
-
--- git <subcommand> as :Git <subcommand>
-Plug 'tpope/vim-fugitive'
-
--- More holistic shell commands, e.g. :Delete to delete a file + close its buffer
--- Plug 'tpope/vim-eunuch' -- TODO: Causes issue on Rolo?
-
--- Autodetect the right indentation style based on file
-Plug 'tpope/vim-sleuth'
-
--- netrw enhancements
-Plug 'tpope/vim-vinegar'
-
--- Color schemes
-Plug 'utensils/colors.vim'
-Plug 'sainnhe/everforest'
-
--- Show a lightbulb in the gutter when autocomplete is available
-Plug 'kosayoda/nvim-lightbulb'
-
--- Fix this issue https://www.reddit.com/r/neovim/comments/ugyekq/lsp_autocomplete_fails_after_07_update/
-Plug 'hrsh7th/nvim-cmp'
-
--- Language server stuff
-Plug 'neovim/nvim-lspconfig' -- Official collection of common LSP config
-Plug 'dense-analysis/ale' -- Async language-agnostic linting serve
-
--- Chezmoi
-Plug 'alker0/chezmoi.vim' -- Syntax highlighting for chezmoi-managed dotfile
-
--- Go
--- Various Go niceties (remove 'do' if removing golines as the gofmt command)
-Plug('fatih/vim-go', {['do'] = 'go install github.com/segmentio/golines@latest'})
--- Amend gofmt to also wrap lines
-vim.g.go_fmt_command = "golines"
-vim.g.go_fmt_options = {['golines'] = '-m 80 -t 2'}
-
--- Java
-Plug('mfussenegger/nvim-jdtls', {['do'] = 'brew install jdtls'}) -- Language server
-
--- Kitty config syntax highlighting.
-Plug 'fladson/vim-kitty'
-
--- Ruby
-Plug 'jlcrochet/vim-ruby'
-
--- Prettier (formatter for HTML, CSS, JS, TS, GraphQL, Markdown, JSON, ...)
-Plug('prettier/vim-prettier', {['do'] = 'yarn install --frozen-lockfile --production'})
-vim.cmd([[
-let g:prettier#autoformat = 1
-let g:prettier#autoformat_require_pragma = 0
-]])
--- With prettier-plugin-go-template installed, also cover those files
-vim.cmd([[
-autocmd BufWritePre *.gohtml,*.gotmpl,*.go.tmpl,*.tmpl,*.tpl,*.html.tmpl noautocmd call prettier#Autoformat()
-]])
-
--- Magic
--- Plug 'github/copilot.vim'
-
-vim.call('plug#end')
+-- greplace.vim
+-- Global search and replace.
+Plug('https://github.com/skwp/greplace.vim')
 
 -- lualine
+-- Modern version of Powerline.
+Plug('https://github.com/nvim-lualine/lualine.nvim')
+-- Initialization.
 require('lualine').setup()
+-- Optional dependency: nvim-web-devicons
+-- Icons for use by the status line.
+Plug('https://github.com/nvim-tree/nvim-web-devicons')
 
+-- markdown-preview
+-- Preview Markdown outside Vim.
+Plug('https://github.com/markdown-preview.nvim', {
+  ['do'] = 'cd app && yarn install'
+})
+
+-- minibufexpl
+-- Show open buffers at the top of the viewport.
+Plug('https://github.com/fholgado/minibufexpl.vim')
+
+-- Neoformat
+-- Invoke formatters automatically.
+Plug('https://github.com/sbdchd/neoformat')
+
+-- nvim-jdtls
+-- Java language server.
+Plug('https://mfussenegger/nvim/jdtls', {['do'] = 'brew install jdtls'})
+
+-- nvim-cmp
+-- Fixes a specific autocomplete issue:
+-- https://www.reddit.com/r/neovim/comments/ugyekq/lsp_autocomplete_fails_after_07_update/
+Plug('https://github.com/hrsh7th/nvim-cmp')
+
+-- nvim-lightbulb
+-- Shows a gutter lightbulb when autocompletion is available.
+Plug('https://github.com/kosayoda/nvim-lightbulb')
+
+-- nvim-lspconfig
+-- Common language server configurations for every language under the sun.
+Plug('https://github.com/neovim/nvim-lspconfig')
+
+-- telescope
+-- Live-updating fuzzy finder for lists (e.g. files, grep).
+Plug('https://github.com/nvim-telescope/telescope.nvim')
+-- Related keymaps:
+vim.api.nvim_set_keymap('n', '<Leader>ff', '<Cmd>Telescope find_files<CR>', {noremap = true, silent = true})
+vim.api.nvim_set_keymap('n', '<Leader>fg', '<Cmd>Telescope live_grep<CR>', {noremap = true, silent = true})
+vim.api.nvim_set_keymap('n', '<Leader>fb', '<Cmd>Telescope buffers<CR>', {noremap = true, silent = true})
+vim.api.nvim_set_keymap('n', '<Leader>fh', '<Cmd>Telescope help_tags<CR>', {noremap = true, silent = true})
+vim.api.nvim_set_keymap('n', 'gr <Cmd>Telescope', 'lsp_references<CR>', {noremap = true, silent = true})
+vim.api.nvim_set_keymap('n', '<Space>wa <cmd>Telescope', 'lsp_code_actions<CR>', {noremap = true, silent = true})
+vim.api.nvim_set_keymap('n', 'gi <Cmd>Telescope', 'lsp_implementation<CR>', {noremap = true, silent = true})
+vim.api.nvim_set_keymap('n', 'gd <Cmd>Telescope', 'lsp_definitions<CR>', {noremap = true, silent = true})
+vim.api.nvim_set_keymap('n', 'gD <Cmd>Telescope', 'lsp_type_definitions<CR>', {noremap = true, silent = true})
+vim.api.nvim_set_keymap('n', '<Leader>g <cmd>Telescope', 'resume<CR>', {noremap = true, silent = true})
+-- Optional dependency: nvim-web-devicons
+-- Icons for use in Telescope.
+Plug('https://github.com/nvim-tree/nvim-web-devicons')
+-- Optional dependency: plenary
+-- A library of commonly used Lua functions.
+Plug('https://github.com/nvim-lua/plenary.nvim')
+-- Optional dependency: telescope-command-palette
+-- Adds a VSCode-like command palette to Telescope.
+Plug('https://github.com/LinArcX/telescope-command-palette.nvim')
+-- Optional dependency: telescope-fzf-native.nvim
+-- Use fzf for Telescope fuzzy file search.
+Plug('https://github.com/nvim-telescope/telescope-fzf-native.nvim', {['do'] = 'make'})
+
+-- vim-closer
+-- Autoclose curly braces and other equivalents.
+Plug('https://github.com/rstacruz/vim-closer')
+
+-- vim-commentary
+-- Adds keymaps for {,un}commenting lines.
+Plug('https://github.com/tpope/vim-commentary')
+
+-- vim-easy-align
+-- Advanced line alignment.
+Plug('https://github.com/junegunn/vim-easy-align')
+-- Related keymaps:
+vim.api.nvim_set_keymap('n', 'ga', '<Plug>(EasyAlign)', {noremap = true, silent = true})
+vim.api.nvim_set_keymap('x', 'ga', '<Plug>(EasyAlign)', {noremap = true, silent = true})
+
+-- vim-endwise
+-- Autoclose curly braces and other equivalents.
+Plug('https://github.com/tpope/endwise')
+
+-- vim-eunuch
+-- Holistic shell commands (e.g. :Delete to delete a file & close its buffer).
+Plug('https://github.com/tpope/vim-eunuch')
+
+-- vim-fugitive
+-- Run git COMMAND as :Git COMMAND.
+Plug('https://github.com/tpope/vim-fugitive')
+
+-- vim-go
+-- Various Go enhancements.
+-- NOTE: Below settings replace gofmt with golines, which is stricter.
+Plug('https://github.com/fatih/vim-go', {['do'] = 'go install github.com/segmentio/golines@latest'})
 vim.cmd([[
-  
-" Highlight lua in .vim files (like this one)
-let g:vimsyn_embed= 'l'
-
-" Ruby
-let g:ale_fix_on_save = 1
-let g:ale_linters = {'ruby': ['standardrb']} " gem install standardrb
-let g:ale_fixers = {'ruby': ['standardrb']}
-
+  let g:go_fmt_command = 'golines'
+  let g:go_fmt_options = {'golines': '-m 80 -t 2'}
 ]])
 
--- Language server init (must be after plug#end)
+-- vim-hexokinase
+-- Colorize color hex codes & names.
+Plug('https://github.com/rrethy/vim-hexokinase', {['do'] = 'make hexokinase'})
+
+-- vim-indentguides
+-- Stylize indent levels.
+Plug('https://github.com/nathanaelkane/vim-indent-guides')
+
+-- vim-kitty
+-- Syntax highlighting for Kitty config files.
+Plug('https://github.com/fladson/vim-kitty')
+
+-- vim-prettier
+-- Support for Prettier, a formatter for web frontend languages.
+Plug('https://github.com/prettier/vim-prettier', {['do'] = 'yarn install --frozen-lockfile --production'})
+vim.cmd([[
+  let g:prettier#autoformat = 1
+  let g:prettier#autoformat_require_pragma = 0
+  " With prettier-plugin-go-template installed, cover additional files:
+  autocmd BufWritePre *.gohtml,*.gotmpl,*.go.tmpl,*.tmpl,*.tpl,*.html.tmpl noautocmd call prettier#Autoformat()
+]])
+
+-- vim-ruby
+-- Enhancements for Ruby.
+Plug('https://github.com/jlcrochet/vim-ruby')
+
+-- vim-sensible
+-- Sets sensible defaults to build on.
+Plug('https://github.com/tpope/vim-sensible')
+
+-- vim-sleuth
+-- Autodetect indentation settings based on file & directory.
+Plug('https://github.com/tpope/vim-sleuth')
+
+-- vim-surround
+-- cs"' to change surrounding double quotes to single;
+-- VS<p> to surround current line with <p>...</p>.
+Plug('https://github.com/tpope/vim-surround')
+
+-- vim-vinegar
+-- Enhancements to netrw.
+Plug('https://github.com/tpope/vim-vinegar')
+
+-- vim-visual-multi
+-- Multiple cursors.
+Plug('https://github.com/mg979/vim-visual-multi')
+
+-- which-key
+-- Completions for key sequences.
+Plug('https://github.com/folke/which-key.nvim')
+
+
+-------------------------
+-- START THEME PLUGINS --
+-------------------------
+
+-- colors
+-- A large collection of themes.
+Plug('https://github.com/utensils/colors.vim')
+
+-- everforest
+-- A green theme.
+Plug('https://github.com/sainnhe/everforest')
+
+-- nord-vim
+-- A blue theme.
+Plug('https://github.com/nordtheme/vim')
+
+-----------------------
+-- END THEME PLUGINS --
+-----------------------
+
+vim.call('plug#end')
+-- ** -- ** ----------------- ** -- ** --
+-- ** -- ** -- END PLUGINS -- ** -- ** --
+-- ** -- ** ----------------- ** -- ** --
+
+
+-- ** -- ** -------------------------------- ** -- ** --
+-- ** -- ** -- START PLUGIN CONFIGURATION -- ** -- ** --
+-- ** -- ** -------------------------------- ** -- ** --
+
+
+-- Initialize language server. Must be after plug#end.
 local nvim_lsp = require('lspconfig')
 
 -- Use an on_attach function to only map the following keys
@@ -198,6 +284,7 @@ local servers = {
   'pyright', -- Python: npm i -g pyright
   'solargraph', -- Ruby: gem install solargraph
 }
+
 for _, lsp in ipairs(servers) do
   nvim_lsp[lsp].setup {
     on_attach = on_attach,
@@ -207,43 +294,24 @@ for _, lsp in ipairs(servers) do
   }
 end
 
-vim.cmd([[
-  
-" Set up language servers
-lua <<EOF
-  require'lspconfig'.jdtls.setup{}      -- Java
-  require'lspconfig'.solargraph.setup{} -- Ruby
-EOF
-
-" Telescope config (must be after plug#end)
-lua << EOF
+-- Configure Telescope. Must be after plug#end.
 require('telescope').setup{
   pickers = {
-    find_files = {
-      theme = "ivy",
-    },
-    lsp_code_actions = {
-      theme = "cursor",
-    },
-    lsp_definitions = {
-      theme = "cursor",
-    },
-    lsp_implementations = {
-      theme = "dropdown",
-    },
-    lsp_range_code_actions = {
-      theme = "cursor",
-    },
-    lsp_references = {
-      theme = "dropdown",
-    },
-    lsp_type_definitions = {
-      theme = "cursor",
-    },
+    find_files = {theme = "ivy"},
+    lsp_code_actions = {theme = "cursor"},
+    lsp_definitions = {theme = "cursor"},
+    lsp_implementations = {theme = "dropdown"},
+    lsp_range_code_actions = {theme = "cursor"},
+    lsp_references = {theme = "dropdown"},
+    lsp_type_definitions = {theme = "cursor"},
   }
 }
-EOF
 
+-- ** -- ** ------------------------------ ** -- ** --
+-- ** -- ** -- END PLUGIN CONFIGURATION -- ** -- ** --
+-- ** -- ** ------------------------------ ** -- ** --
+
+vim.cmd([[
 
 """"'
 " General settings
@@ -404,4 +472,5 @@ au FileType markdown setlocal foldlevel=99
 let g:markdown_fenced_languages = ['html', 'python', 'bash=sh', 'ruby', 'javascript', 'go']
 
 filetype plugin indent on
+
 ]])
