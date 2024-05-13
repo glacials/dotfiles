@@ -60,8 +60,6 @@ Plug('https://github.com/skwp/greplace.vim')
 -- lualine
 -- Modern version of Powerline.
 Plug('https://github.com/nvim-lualine/lualine.nvim')
--- Initialization.
-require('lualine').setup()
 -- Optional dependency: nvim-web-devicons
 -- Icons for use by the status line.
 Plug('https://github.com/nvim-tree/nvim-web-devicons')
@@ -242,6 +240,8 @@ vim.call('plug#end')
 -- ** -- ** -- START PLUGIN CONFIGURATION -- ** -- ** --
 -- ** -- ** -------------------------------- ** -- ** --
 
+-- Initialize lualine.
+require('lualine').setup()
 
 -- Initialize language server. Must be after plug#end.
 local nvim_lsp = require('lspconfig')
