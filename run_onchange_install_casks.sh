@@ -31,9 +31,9 @@ cask 1password # Password manager
 cask discord # Chat app
 cask docker # Containerization
 cask firefox # Browser
-cask homebrew/cask-fonts/font-hack-nerd-font # Nerd fonts
-cask homebrew/cask-fonts/font-jetbrains-mono # JetBrains Mono font
-cask homebrew/cask-fonts/font-source-code-pro # Source Code Pro font
+cask font-hack-nerd-font # Nerd fonts
+cask font-jetbrains-mono # JetBrains Mono font
+cask font-source-code-pro # Source Code Pro font
 cask google-chrome # Browser
 cask iterm2 # Terminal emulator
 cask launchcontrol # App launcher
