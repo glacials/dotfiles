@@ -13,6 +13,7 @@ This repository does not need to be cloned and you do not need to set up an SSH
 key first. Just run:
 
 ```sh
+path+=("/opt/homebrew/bin")
 bash -c "$(curl https://raw.githubusercontent.com/glacials/dotfiles/main/bootstrap.sh)"
 ```
 
