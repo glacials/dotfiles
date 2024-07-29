@@ -49,7 +49,10 @@ function pkginstall() {
 	fi
 }
 
-# run_script runs a script from the dotfiles repo. The first and only argument
+# run_script runs a script from the dotfiles repo once.
+# If run_script has already run the script during this invocation,
+# it noops instead.
+# The first and only argument
 # is the name of the script to run, relative to the dotfiles repo root.
 #
 # If the script is available locally it is run directly. If not, it is

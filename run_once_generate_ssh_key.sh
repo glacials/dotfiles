@@ -3,6 +3,9 @@
 set -euo pipefail
 test -z ${DEBUG:-} || set -x
 
+CACHE_KEY=/tmp/glacials/chezmoi/cache/ssh_key
+test -f $CACHE_KEY && exit 0
+
 # This script generates an SSH key for the user if needed, then puts it in
 # GitHub and sets up gh to use it if needed.
 echo "Generating SSH keys"
@@ -22,3 +25,6 @@ run_script run_once_install_gh.sh
 if ! gh auth status 1>/dev/null 2>/dev/null; then
     gh auth login --git-protocol ssh --hostname github.com --web
 fi
+
+mkdir -p /tmp/glacials/chezmoi/cache
+touch $CACHE_KEY
