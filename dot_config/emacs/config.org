@@ -332,15 +332,24 @@ For Go, we need to do some work to automatically run =gofmt= and friends:
     (add-hook 'go-mode-hook #'lsp-deferred)
 #+END_SRC
 
+For Ruby:
+
+#+BEGIN_SRC emacs-lisp
+  (straight-use-package 'rubocop)
+  (require 'rubocop)
+  (add-hook 'ruby-mode-hook #'rubocop-mode) ; Enter Rubocop mode whenever Ruby mode is entered
+  (setq rubocop-autocorect-on-save t)       ; Autocorrect + autoformat on save
+#+END_SRC
+
 For YAML:
 
 #+BEGIN_SRC emacs-lisp
-  (straight-use-package 'yaml-mode)
-  (require 'yaml-mode)
-  (add-to-list 'auto-mode-alist '("\\.yml\\'" . yaml-mode))
-  (add-hook 'yaml-mode-hook
-            '(lambda ()
-               (define-key yaml-mode-map "\C-m" 'newline-and-indent)))
+    (straight-use-package 'yaml-mode)
+    (require 'yaml-mode)
+    (add-to-list 'auto-mode-alist '("\\.yml\\'" . yaml-mode))
+    (add-hook 'yaml-mode-hook
+              '(lambda ()
+                 (define-key yaml-mode-map "\C-m" 'newline-and-indent)))
 #+END_SRC
 
   Finally, some support for miscellaneous languages whose packages have
@@ -757,6 +766,24 @@ up to speed with modern standard practices.
 
 #+BEGIN_SRC emacs-lisp
   (straight-use-package 'savehist) ; Save minibuffer histories; pairs with frecency of vertico
+#+END_SRC
+
+=super-save= auto-saves buffers when they lose focus.
+Note that Emacs has a built-in auto-save,
+but it only refers to saving to temporary files.
+
+#+BEGIN_SRC emacs-lisp
+  (straight-use-package 'super-save)
+  (super-save-mode +1)
+  (setq super-save-auto-save-when-idle t)
+#+END_SRC
+
+=winner-mode= is built into Emacs but disabled by default.
+When enabled, it tracks changes to window configurations and allows undoing with
+=C-c left=.
+
+#+BEGIN_SRC emacs-lisp
+  (winner-mode)
 #+END_SRC
 
 =undo-fu= makes Emacs's undo feature more modern:
