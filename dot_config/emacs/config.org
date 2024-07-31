@@ -455,7 +455,7 @@ First, we'll set up some basic configuration.
 #+BEGIN_SRC emacs-lisp
   (setq-default org-directory "~/Library/Mobile Documents/com~apple~CloudDocs/Documents/storage/org")
   (setq-default org-default-notes-file "/Library/Mobile Documents/comappleCloudDocs/Documents/storage/org/notes.org")
-  (setq-default org-agenda-files '("/Library/Mobile Documents/comappleCloudDocs/Documents/storage/org/notes.org" org-roam-directory))
+  (setq-default org-agenda-files '("/Library/Mobile Documents/comappleCloudDocs/Documents/storage/org/notes.org" "/Library/Mobile Documents/comappleCloudDocs/Documents/storage/org-roam"))
 #+END_SRC
 
 And clean it up visually a bit:
