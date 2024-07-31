@@ -33,14 +33,14 @@ Get the boring stuff out of the way first:
 	(setq-default mac-right-option-modifier 'hyper) ; Make Right Option act as Hyper
 	(setq-default ns-function-modifier 'hyper)      ; Make Fn act as Hyper
 
-	(setq-default ring-bell-function 'ignore) ; Disable the audible bell
+	(setq-default ring-bell-function 'ignore)    ; Disable the audible bell
 	(setq-default sentence-end-double-space nil) ; End sentences with single spaces
-	(setq-default display-line-numbers t) ; Show line numbers
-	(delete-selection-mode 1) ; Delete selected text when starting to type
-	(setq-default fill-column 80) ; Wrap at 80 characters
-	(add-hook 'prog-mode-hook #'auto-fill-mode) ; Autowrap when coding
-	(add-hook 'text-mode-hook #'auto-fill-mode) ; Autowrap when writing
-	(global-hl-line-mode 1) ; Highlight cursor line
+	(setq-default display-line-numbers t)        ; Show line numbers
+	(delete-selection-mode 1)                    ; Delete selected text when starting to type
+	(setq-default fill-column 80)                ; Wrap at 80 characters
+	(add-hook 'prog-mode-hook #'auto-fill-mode)  ; Autowrap when coding
+	(add-hook 'text-mode-hook #'auto-fill-mode)  ; Autowrap when writing
+	(global-hl-line-mode 1)                      ; Highlight cursor line
 
 	;; Unicode everywhere
 	(set-charset-priority 'unicode)
@@ -60,10 +60,11 @@ Get the boring stuff out of the way first:
 Now we'll start with some of the less obvious stuff.
 
 #+BEGIN_SRC emacs-lisp
-  (ido-mode 1) ; Autocomplete M-x among other things
+  (ido-mode 1)                              ; Autocomplete M-x among other things
   (setq-default ido-enable-flex-matching t) ; Don't require exact matches in ido-mode
-  (defalias 'yes-or-no-p 'y-or-n-p) ; Allow y/n in yes/no prompts
-  ;; Make C-x k kill focused buffer instead of promptingexpand-region
+  (defalias 'yes-or-no-p 'y-or-n-p)         ; Allow y/n in yes/no prompts
+
+  ;; Make C-x k kill focused buffer instead of prompting
   (global-set-key (kbd "C-x k") #'kill-this-buffer)
 #+END_SRC
 
@@ -107,10 +108,14 @@ Some keybinds that work in macOS but are overridden by Emacs's use of modifiers:
 ** Visuals
 This section deals with minimizing visual noise and making things pretty.
 
+Set font:
+
 #+BEGIN_SRC emacs-lisp
   (add-to-list 'default-frame-alist '(font . "JetBrains Mono" ))
   (set-face-attribute 'default t :font "JetBrains Mono" )
 #+END_SRC
+
+More:
 
 #+BEGIN_SRC emacs-lisp
   ;; Delete-auto-save-files
