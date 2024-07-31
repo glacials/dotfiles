@@ -335,6 +335,8 @@ For Go, we need to do some work to automatically run =gofmt= and friends:
 For Ruby:
 
 #+BEGIN_SRC emacs-lisp
+  (add-hook 'ruby-mode-hook #'lsp) ; Init LSP whenever Ruby mode is entered
+
   (straight-use-package 'rubocop)
   (require 'rubocop)
   (add-hook 'ruby-mode-hook #'rubocop-mode) ; Enter Rubocop mode whenever Ruby mode is entered
