@@ -263,27 +263,27 @@ minibuffer near point.
   (setq-default company-minimum-prefix-length 1)
 #+END_SRC
 
-GitHub Copilot has its issues, but there's nothing like autocompleting
-an ~if err != nil { return fmt.Sprintf("helpful context: %w", err) }~
-when writing Go. There's no official Copilot package for GitHub, but
-zerolfx has a pretty good unofficial one.
-
-#+BEGIN_SRC emacs-lisp
-  (straight-use-package
-   '(copilot
-     :type git
-     :host github
-     :repo "zerolfx/copilot.el"
-     :files ("dist" "*.el")))
-  (add-hook 'prog-mode-hook 'copilot-mode)
-  (defun my/copilot-tab ()
-    (interactive)
-    (or (copilot-accept-completion) (indent-for-tab-command)))
-  (with-eval-after-load 'copilot
-    (define-key copilot-mode-map
-      (kbd "<tab>")
-      #'my/copilot-tab))
-#+END_SRC
+# GitHub Copilot has its issues, but there's nothing like autocompleting
+# an ~if err != nil { return fmt.Sprintf("helpful context: %w", err) }~
+# when writing Go. There's no official Copilot package for GitHub, but
+# zerolfx has a pretty good unofficial one.
+# 
+# #+BEGIN_SRC emacs-lisp
+#   (straight-use-package
+#    '(copilot
+#      :type git
+#      :host github
+#      :repo "zerolfx/copilot.el"
+#      :files ("dist" "*.el")))
+#   (add-hook 'prog-mode-hook 'copilot-mode)
+#   (defun my/copilot-tab ()
+#     (interactive)
+#     (or (copilot-accept-completion) (indent-for-tab-command)))
+#   (with-eval-after-load 'copilot
+#     (define-key copilot-mode-map
+#       (kbd "<tab>")
+#       #'my/copilot-tab))
+# #+END_SRC
 
 *** Splash Screen
 
