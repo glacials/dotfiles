@@ -453,9 +453,9 @@ of Org.
 First, we'll set up some basic configuration.
 
 #+BEGIN_SRC emacs-lisp
-  (setq-default org-directory "~/org")
+  (setq-default org-directory "~/Library/Mobile Documents/com~apple~CloudDocs/Documents/storage/org")
   (setq-default org-default-notes-file (concat org-directory "/notes.org"))
-  (setq-default org-agenda-files '("~/org/notes.org" "~/sync/org-roam"))
+  (setq-default org-agenda-files '((concat org-directory "/notes.org") (concat org-directory "-roam")))
 #+END_SRC
 
 And clean it up visually a bit:
@@ -477,7 +477,7 @@ Now, for some shortcuts to skip around Org Mode.
    (kbd "C-c o")
    (lambda ()
      (interactive)
-     (find-file "~/org/notes.org")))
+     (find-file (concat org-directory "/notes.org"))))
 
   ;; Drag and drop images into Org mode
   (straight-use-package 'org-download)
@@ -514,21 +514,21 @@ entry, or =C-c c h= to create a new generic note.
            "Task"
            entry
            (file+olp+datetree
-            "~/org/notes.org"
+	    (concat org-directory "/notes.org")
             "Daily log")
            "* TODO %?")
           ("h"
            "Headline"
            entry
            (file+olp+datetree
-            "~/org/notes.org"
+	    (concat org-directory "/notes.org")
             "Daily log")
            "* %?")
           ("m"
            "Meeting"
            entry
            (file+olp+datetree
-            "~/org/notes.org"
+	    (concat org-directory "/notes.org")
             "Daily log")
            "* %t %? :meeting:")))
 #+END_SRC
@@ -574,7 +574,7 @@ We'll also add [[https://www.orgroam.com/][Org-roam]], which is like wiki mode f
   (straight-use-package 'org-roam-ui)
   (straight-use-package 'emacsql)
   (straight-use-package 'emacsql-sqlite)
-  (setq-default org-roam-directory "~/sync/org-roam")
+  (setq-default org-roam-directory "/Users/ben/Library/Mobile Documents/com~apple~CloudDocs/Documents/storage/org-roam")
   (org-roam-db-autosync-mode)
   (setq-default org-roam-completion-everywhere t)
 #+end_src
@@ -666,7 +666,8 @@ is to get my calendar and email readable and writable inside Emacs.
    (string-trim
     (shell-command-to-string
      "op item get 'Emacs Google Client' --fields password"))
-   org-gcal-fetch-file-alist '(("ben@twos.dev" .  "~/org/schedule.org")))
+   org-gcal-fetch-file-alist '(("ben@twos.dev" . (concat org-directory "/schedule.org"))))
+	    
   (require 'org-gcal)
 #+END_SRC
 
