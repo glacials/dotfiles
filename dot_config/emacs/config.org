@@ -105,6 +105,26 @@ Some keybinds that work in macOS but are overridden by Emacs's use of modifiers:
      (find-file "~/.config/emacs/config.org")))
 #+END_SRC
 
+** Initialization
+
+When Emacs is booted it inherits a copy of the environment it was
+created in. This is fine when you run =emacs= from the command line,
+but when you start Emacs from somewhere like the macOS dock, it's
+missing a lot.
+
+The most important missing variable is =$PATH=, as it means Emacs
+can't access any CLI tools installed with Homebrew, Go, or the
+like. This includes Chezmoi, =gopls=, a modern version of Git, etc.
+
+The following code block installs =exec-path-from-shell=, which
+fetches environment info from the shell and copies it into Emacs
+explicitly.
+
+#+BEGIN_SRC emacs-lisp
+  (straight-use-package 'exec-path-from-shell)
+  (when (memq window-system '(mac ns x)) (exec-path-from-shell-initialize))
+#+END_SRC
+
 ** Visuals
 This section deals with minimizing visual noise and making things pretty.
 
@@ -385,24 +405,6 @@ And some final small tweaks:
 #+END_SRC
 
 *** System Tweaks
-
-When Emacs is booted it inherits a copy of the environment it was
-created in. This is fine when you run =emacs= from the command line,
-but when you start Emacs from somewhere like the macOS dock, it's
-missing a lot.
-
-The most important missing variable is =$PATH=, as it means Emacs
-can't access any CLI tools installed with Homebrew, Go, or the
-like. This includes Chezmoi, =gopls=, a modern version of Git, etc.
-
-The following code block installs =exec-path-from-shell=, which
-fetches environment info from the shell and copies it into Emacs
-explicitly.
-
-#+BEGIN_SRC emacs-lisp
-  (straight-use-package 'exec-path-from-shell)
-  (when (memq window-system '(mac ns x)) (exec-path-from-shell-initialize))
-#+END_SRC
 
 =highlight-indent-guides= makes indentation levels visually distinct
 columns down down the left side of the file, making it easy to tell at
