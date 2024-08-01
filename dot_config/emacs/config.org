@@ -68,19 +68,26 @@ Now we'll start with some of the less obvious stuff.
   (global-set-key (kbd "C-x k") #'kill-this-buffer)
 #+END_SRC
 
+This will allow us to navigate windows using
+S-<up>, S-<down>, S-<left>, and S-<right>.
+
+#+BEGIN_SRC emacs-lisp
+  (windmove-default-keybindings)
+#+END_SRC
+
 The following block makes dired mouseclicks open the in same window,
 not a new one.
 
 For details on why this binds mouse-2 even though we're trying to
 affect mouse-1, see [[https://emacs.stackexchange.com/questions/35536/dired-mouse-click-open-folder-in-the-same-window][this link]].
-  
+    
 #+BEGIN_SRC emacs-lisp
   (eval-after-load "dired"
-    '(progn
-       (define-key
-         dired-mode-map
-         [mouse-2]
-         'dired-mouse-find-file)))
+  	'(progn
+  		 (define-key
+  			dired-mode-map
+  			[mouse-2]
+  			'dired-mouse-find-file)))
 #+END_SRC
 
 Some keybinds:
@@ -96,7 +103,7 @@ Some keybinds that work in macOS but are overridden by Emacs's use of modifiers:
   (global-set-key (kbd "s-_") (lambda () (interactive) (insert "—"))) ; Em dash
 #+end_src
 
-  The last small thing: open this config file with =C-c i=:
+The last small thing: open this config file with =C-c i=:
 
 #+BEGIN_SRC emacs-lisp
   (global-set-key
@@ -148,7 +155,7 @@ More:
   (setq-default backup-directory-alist
                 '((".*" . "~/.cache/emacs")))
   (setq-default auto-save-file-name-transforms
-        '((".*" "~/.cache/emacs/" t)))
+  							'((".*" "~/.cache/emacs/" t)))
 
   ;; Delete old backups silently.
   (setq-default delete-old-versions t)
@@ -158,41 +165,41 @@ More:
 
   ;; Custom ligatures
   (setq-default prettify-symbols-alist
-        '(("TODO" . "")
-          ("BLKD" . "")        
-          ("CNCL" . "")
-          ("DONE" . "")
-          ("->>"  . "↠")
-          ("->"   . "→")
-          ("<-"   . "←")
-          ("<-"   . "←")
-          ("=>"   . "⇒")
-          ("<="   . "≤")
-          (">="   . "≥")
-          ;; Below are commented until/unless I start using them frequently.
-  ;				("[#A]" . "")
-  ;				("[#B]" . "")
-  ;				("[#C]" . "")
-  ;				("[ ]" . "")
-  ;				("[X]" . "")
-  ;				("[-]" . "")
-  ;				("#+BEGIN_SRC" . "")
-  ;				("#+END_SRC" . "―")
-  ;				(":PROPERTIES:" . "")
-  ;				(":END:" . "―")
-  ;				("#+STARTUP:" . "")
-  ;				("#+TITLE: " . "")
-  ;				("#+RESULTS:" . "")
-  ;				("#+NAME:" . "")
-  ;				("#+ROAM_TAGS:" . "")
-  ;				("#+FILETAGS:" . "")
-  ;				("#+HTML_HEAD:" . "")
-  ;				("#+SUBTITLE:" . "")
-  ;				("#+AUTHOR:" . "")
-  ;				(":Effort:" . "")
-  ;				("SCHEDULED:" . "")
-  ;				("DEADLINE:" . "")
-          ))
+  							'(("TODO" . "")
+  								("BLKD" . "")        
+  								("CNCL" . "")
+  								("DONE" . "")
+  								("->>"  . "↠")
+  								("->"   . "→")
+  								("<-"   . "←")
+  								("<-"   . "←")
+  								("=>"   . "⇒")
+  								("<="   . "≤")
+  								(">="   . "≥")
+  								;; Below are commented until/unless I start using them frequently.
+  																				;				("[#A]" . "")
+  																				;				("[#B]" . "")
+  																				;				("[#C]" . "")
+  																				;				("[ ]" . "")
+  																				;				("[X]" . "")
+  																				;				("[-]" . "")
+  																				;				("#+BEGIN_SRC" . "")
+  																				;				("#+END_SRC" . "―")
+  																				;				(":PROPERTIES:" . "")
+  																				;				(":END:" . "―")
+  																				;				("#+STARTUP:" . "")
+  																				;				("#+TITLE: " . "")
+  																				;				("#+RESULTS:" . "")
+  																				;				("#+NAME:" . "")
+  																				;				("#+ROAM_TAGS:" . "")
+  																				;				("#+FILETAGS:" . "")
+  																				;				("#+HTML_HEAD:" . "")
+  																				;				("#+SUBTITLE:" . "")
+  																				;				("#+AUTHOR:" . "")
+  																				;				(":Effort:" . "")
+  																				;				("SCHEDULED:" . "")
+  																				;				("DEADLINE:" . "")
+  								))
 #+END_SRC
 
 ** Packages
@@ -294,17 +301,17 @@ history like recent files and projects opened, and some info from
 out to =fortune= to render a random quote from my [[https://github.com/glacials/dotfiles][dotfiles repo]].
 
 #+BEGIN_SRC emacs-lisp
-   (straight-use-package 'dashboard)
-   (setq-default dashboard-items '((recents . 5)
-                           (agenda . 5)
-                           (bookmarks . 5)
-                           (projects . 5)
-                           (registers . 5)))
-   (setq-default dashboard-banner-logo-title
-         (shell-command-to-string "fortune ~/.config/fortune"))
-   (setq-default dashboard-startup-banner 'logo)
-   (require 'dashboard)
-   (dashboard-setup-startup-hook)
+  (straight-use-package 'dashboard)
+  (setq-default dashboard-items '((recents . 5)
+  																(agenda . 5)
+  																(bookmarks . 5)
+  																(projects . 5)
+  																(registers . 5)))
+  (setq-default dashboard-banner-logo-title
+  							(shell-command-to-string "fortune ~/.config/fortune"))
+  (setq-default dashboard-startup-banner 'logo)
+  (require 'dashboard)
+  (dashboard-setup-startup-hook)
 #+END_SRC
 
 *** Language Support
@@ -324,12 +331,12 @@ And how can we do any of that without the miracle of LSP and an appropriate UI f
 For Go, we need to do some work to automatically run =gofmt= and friends:
 
 #+BEGIN_SRC emacs-lisp
-    (straight-use-package 'go-mode)
-    (defun lsp-go-install-save-hooks ()
-      (add-hook 'before-save-hook #'lsp-format-buffer t t)
-      (add-hook 'before-save-hook #'lsp-organize-imports t t))
-    (add-hook 'go-mode-hook #'lsp-go-install-save-hooks)
-    (add-hook 'go-mode-hook #'lsp-deferred)
+  (straight-use-package 'go-mode)
+  (defun lsp-go-install-save-hooks ()
+    (add-hook 'before-save-hook #'lsp-format-buffer t t)
+    (add-hook 'before-save-hook #'lsp-organize-imports t t))
+  (add-hook 'go-mode-hook #'lsp-go-install-save-hooks)
+  (add-hook 'go-mode-hook #'lsp-deferred)
 #+END_SRC
 
 For Ruby:
@@ -346,16 +353,16 @@ For Ruby:
 For YAML:
 
 #+BEGIN_SRC emacs-lisp
-    (straight-use-package 'yaml-mode)
-    (require 'yaml-mode)
-    (add-to-list 'auto-mode-alist '("\\.yml\\'" . yaml-mode))
-    (add-hook 'yaml-mode-hook
-              '(lambda ()
-                 (define-key yaml-mode-map "\C-m" 'newline-and-indent)))
+  (straight-use-package 'yaml-mode)
+  (require 'yaml-mode)
+  (add-to-list 'auto-mode-alist '("\\.yml\\'" . yaml-mode))
+  (add-hook 'yaml-mode-hook
+            '(lambda ()
+               (define-key yaml-mode-map "\C-m" 'newline-and-indent)))
 #+END_SRC
 
-  Finally, some support for miscellaneous languages whose packages have
-  good enough defaults that I don't need to configure anything.
+Finally, some support for miscellaneous languages whose packages have
+good enough defaults that I don't need to configure anything.
 
 #+BEGIN_SRC emacs-lisp
   (straight-use-package 'dockerfile-mode)
