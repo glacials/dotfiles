@@ -38,6 +38,7 @@ cask font-source-code-pro # Source Code Pro font
 cask iterm2 # Terminal emulator
 cask launchcontrol # App launcher
 # cask railwaycat/emacsmacport/emacs-mac # macOS-native Emacs UI
+cask sanesidebuttons # Make MOUSE4/MOUSE5 emulate a three-fingered swipe
 cask stay # Restore window positions when displays change
 cask visual-studio-code # Code editor
 cask vlc # Video player
