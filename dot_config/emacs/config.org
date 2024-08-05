@@ -142,6 +142,17 @@ Set font:
   (set-face-attribute 'default t :font "JetBrains Mono" )
 #+END_SRC
 
+By default, Emacs's BufferMenu feature opens with =C-c C-b=.
+This opens a buffer that displays all open buffers and their statuses.
+
+Since Emacs 22, IBuffer Mode accomplishes the same thing but with a more modern
+and advanced feature set and display.
+We'll simply override the BufferMenu to use IBuffer Mode instead:
+
+#+BEGIN_SRC emacs-lisp
+  (global-set-key (kbd "C-x C-b") 'ibuffer)
+#+END_SRC
+
 More:
 
 #+BEGIN_SRC emacs-lisp
@@ -340,9 +351,6 @@ We'll also add tree-sitter bindings:
   (global-tree-sitter-mode)
   (add-hook 'tree-sitter-after-on-hook #'tree-sitter-hl-mode)
 #+END_SRC
-
-#+RESULTS:
-| tree-sitter-hl-mode |
 
 For Go, we need to do some work to automatically run =gofmt= and friends:
 
@@ -791,6 +799,14 @@ up to speed with modern standard practices.
 
 #+BEGIN_SRC emacs-lisp
   (straight-use-package 'savehist) ; Save minibuffer histories; pairs with frecency of vertico
+#+END_SRC
+
+=dired-sidebar= shows a directory explorer a la NERDTree.
+
+#+BEGIN_SRC emacs-lisp
+  (straight-use-package 'dired-sidebar)
+  (require 'dired-sidebar)
+  (dired-sidebar-toggle-sidebar)
 #+END_SRC
 
 =super-save= auto-saves buffers when they lose focus.
