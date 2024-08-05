@@ -326,7 +326,23 @@ And how can we do any of that without the miracle of LSP and an appropriate UI f
 
 #+begin_src emacs-lisp
   (straight-use-package 'flycheck)
-#+end_src
+#+END_SRC
+
+We'll also add tree-sitter bindings:
+
+#+BEGIN_SRC emacs-lisp
+  (straight-use-package 'tree-sitter)
+  (straight-use-package 'tree-sitter-langs)
+
+  (require 'tree-sitter)
+  (require 'tree-sitter-langs)
+
+  (global-tree-sitter-mode)
+  (add-hook 'tree-sitter-after-on-hook #'tree-sitter-hl-mode)
+#+END_SRC
+
+#+RESULTS:
+| tree-sitter-hl-mode |
 
 For Go, we need to do some work to automatically run =gofmt= and friends:
 
