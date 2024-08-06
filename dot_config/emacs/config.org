@@ -176,17 +176,19 @@ More:
 
   ;; Custom ligatures
   (setq-default prettify-symbols-alist
-  							'(("TODO" . "")
-  								("BLKD" . "")        
-  								("CNCL" . "")
-  								("DONE" . "")
-  								("->>"  . "↠")
-  								("->"   . "→")
-  								("<-"   . "←")
-  								("<-"   . "←")
-  								("=>"   . "⇒")
-  								("<="   . "≤")
-  								(">="   . "≥")
+  							'(("TODO"        . "")
+  								("BLKD"        . "")        
+  								("CNCL"        . "")
+  								("DONE"        . "")
+  								("->>"         . "↠")
+  								("->"          . "→")
+  								("<-"          . "←")
+  								("<-"          . "←")
+  								("=>"          . "⇒")
+  								("<="          . "≤")
+  								(">="          . "≥")
+  								("#+BEGIN_SRC" . "")
+  								("#+END_SRC"   . "―")
   								;; Below are commented until/unless I start using them frequently.
   																				;				("[#A]" . "")
   																				;				("[#B]" . "")
@@ -194,8 +196,6 @@ More:
   																				;				("[ ]" . "")
   																				;				("[X]" . "")
   																				;				("[-]" . "")
-  																				;				("#+BEGIN_SRC" . "")
-  																				;				("#+END_SRC" . "―")
   																				;				(":PROPERTIES:" . "")
   																				;				(":END:" . "―")
   																				;				("#+STARTUP:" . "")
@@ -212,6 +212,9 @@ More:
   																				;				("DEADLINE:" . "")
   								))
 #+END_SRC
+
+#+RESULTS:
+: ((TODO . ) (BLKD . ) (CNCL . ) (DONE . ) (->> . ↠) (-> . →) (<- . ←) (<- . ←) (=> . ⇒) (<= . ≤) (>= . ≥) (#+BEGIN_SRC . ) (#+END_SRC . ―))
 
 ** Packages
 
