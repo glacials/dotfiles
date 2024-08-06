@@ -778,6 +778,11 @@ bindings. It has these effects:
   SPC s= performs =C-x s=)
 - Starting a key sequence with =C-= stops God mode from affecting that sequence
   (e.g. =C-x C-s= performs itself: =C-x C-s=)
+
+The point of god-mode is to prevent "Emacs pinky",
+but after 10 years of Vim I honestly just need some level of protection between
+me and inserting random characters into files unknowingly,
+especially with hard auto-save on.
   
 #+begin_src emacs-lisp
   (straight-use-package 'god-mode)
