@@ -13,7 +13,8 @@ touch $HOME/.profile
 
 # Change to zsh if needed
 if [[ $SHELL != */zsh ]]; then
-		chsh -s /bin/zsh $(whoami)
+	install_now zsh
+	chsh -s /bin/zsh $(whoami)
 fi
 
 if [[ $uname == darwin ]]; then
