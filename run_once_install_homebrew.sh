@@ -30,8 +30,8 @@ if ! $brew --version 1>/dev/null 2>/dev/null; then
         else
 						linuxbrew_home="$HOME/.linuxbrew"
         fi
-        brew="$(linuxbrew_home)/.linuxbrew/bin/brew"
-				brewinstall="$brew install --quiet --force"
+        brew="$linuxbrew_home/.linuxbrew/bin/brew"
+	brewinstall="$brew install --quiet --force"
 
         # Homebrew asks for these on install
         $brewinstall gcc
