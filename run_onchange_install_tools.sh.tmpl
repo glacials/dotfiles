@@ -50,6 +50,10 @@ zsh `# macOS ships with an older version`
     
     # Opinionated pre-configured prompt
     starship --version 1>/dev/null 2>/dev/null || curl -sS https://starship.rs/install.sh | sh
+  {{ else if (.chezmoi.kernel.osrelease | lower | contains "microsoft") }}
+    brew install --quiet --force \
+    difftastic `# A better diff` \
+    neovim `# Neovim` \
   {{ else }}
     brew install --quiet --force \
     starship `# Opinionated pre-configured prompt`
