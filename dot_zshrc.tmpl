@@ -153,3 +153,6 @@ direnv --version 1>/dev/null 2>/dev/null && eval "$(direnv hook zsh)"
 
 # Starship
 starship --version 1>/dev/null 2/dev/null && eval "$(starship init zsh)"
+
+# Prevent zsh from tripping over ?s and &s when curling
+alias curl='noglob curl'
