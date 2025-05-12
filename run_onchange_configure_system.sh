@@ -22,8 +22,11 @@ if [[ $uname == darwin ]]; then
     defaults write com.apple.finder ShowPathbar -bool true
 
 		# Point ~/icloud to iCloud Drive
-		if ! test -e ~/icloud; then
-				ln -s ~/Library/Mobile\ Documents/com~apple~CloudDocs ~/icloud
+		if [[ "${USER}" == "glacials" ]]; then
+			 # Since work usually disables it, above is an approximation of "is iCloud on?"
+				if ! test -e ~/icloud; then
+						ln -s ~/Library/Mobile\ Documents/com~apple~CloudDocs ~/icloud
+				fi
 		fi
 
 		# Better cron for macOS (smartly handles sleep etc.)
