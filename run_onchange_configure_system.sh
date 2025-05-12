@@ -21,15 +21,20 @@ if [[ $uname == darwin ]]; then
     # Show full paths in footer of Finder windows
     defaults write com.apple.finder ShowPathbar -bool true
 
-		# Point ~/icloud to iCloud Drive
-		if [[ "${USER}" == "glacials" ]]; then
-			 # Since work usually disables it, above is an approximation of "is iCloud on?"
-				if ! test -e ~/icloud; then
-						ln -s ~/Library/Mobile\ Documents/com~apple~CloudDocs ~/icloud
-				fi
-		fi
+	# Point ~/icloud to iCloud Drive, if iCloud Drive is on
+	icloud_enabled=$(
+		defaults read MobileMeAccounts Accounts 2>/dev/null \
+		| plutil -convert json -o - - \
+		| jq -e '.[0].Services[] | select(.Name == "MOBILE_DOCUMENTS") | .Enabled == 1' >/dev/null && echo 1 || echo 0
+	)
 
-		# Better cron for macOS (smartly handles sleep etc.)
+	if [[ "$icloud_enabled" == "1" ]]; then
+		if ! test -e ~/icloud; then
+			ln -s ~/Library/Mobile\ Documents/com~apple~CloudDocs ~/icloud
+		fi
+	fi
+
+	# Better cron for macOS (smartly handles sleep etc.)
     mkdir -p ~/Library/LaunchAgents
     ln -fs $(chezmoi source-path)/LaunchAgents/* ~/Library/LaunchAgents
 fi

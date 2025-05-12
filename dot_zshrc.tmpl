@@ -14,6 +14,7 @@ fi
 
 source "$HOME/.local/share/zinit/zinit.git/zinit.zsh"
 autoload -Uz _zinit
+autoload -Uz compinit && compinit
 (( ${+_comps} )) && _comps[zinit]=_zinit
 
 # Load a few important annexes, without Turbo
@@ -47,7 +48,7 @@ alias zln="zmv -L"
 path+=("$HOME/bin:$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin")
 
 if [[ $uname == darwin ]]; then
-path+=("/Applications/Tailscale.app/Contents/MacOS")
+	path+=("/Applications/Tailscale.app/Contents/MacOS")
 fi
 
 # run history-substituted commands (e.g. containing `!!` or `!$`) without confirmation
@@ -68,12 +69,12 @@ alias rebase='export CURRENT_BRANCH=`git name-rev --name-only HEAD` && git check
 alias work='git add -p && git commit -m work && git push'
 
 if [[ $uname == linux* ]]; then
-alias u='sudo apt-get update -qq && sudo apt-get -yqq upgrade && brew update -qq && brew upgrade -qq'
+	alias u='sudo apt-get update -qq && sudo apt-get -yqq upgrade && brew update -qq && brew upgrade -qq'
 fi
 
 if [[ $uname == darwin ]]; then
-# alias u='brew update && brew upgrade --quiet'
-alias u='chezmoi update'
+	# alias u='brew update && brew upgrade --quiet'
+	alias u='chezmoi update'
 fi
 
 alias vi=vim
@@ -113,16 +114,16 @@ path=("$HOME/.nodenv/bin" $path)
 nodenv --version 1>/dev/null 2>/dev/null && eval "$(nodenv init -)"
 
 {{ if eq .chezmoi.os "darwin" }}
-# Python
-export PYENV_ROOT="$HOME/.pyenv"
-pyenv --version 1>/dev/null 2>/dev/null && eval "$(pyenv init -)"
-pyenv --version 1>/dev/null 2>/dev/null && eval "$(pyenv init --path)"
-# This causes slow every command to be slow to return when running some
-# antiviruses e.g. on work machines. Second line (be slow on cd) is a workaround
-# but still not great from
-# https://github.com/pyenv/pyenv-virtualenv/issues/259#issuecomment-1007432346
-# eval "$(pyenv virtualenv-init -)"
-# eval "$(pyenv virtualenv-init - | sed s/precmd/precwd/g)"
+	# Python
+	export PYENV_ROOT="$HOME/.pyenv"
+	pyenv --version 1>/dev/null 2>/dev/null && eval "$(pyenv init -)"
+	pyenv --version 1>/dev/null 2>/dev/null && eval "$(pyenv init --path)"
+	# This causes slow every command to be slow to return when running some
+	# antiviruses e.g. on work machines. Second line (be slow on cd) is a workaround
+	# but still not great from
+	# https://github.com/pyenv/pyenv-virtualenv/issues/259#issuecomment-1007432346
+	# eval "$(pyenv virtualenv-init -)"
+	# eval "$(pyenv virtualenv-init - | sed s/precmd/precwd/g)"
 {{ end }}
 
 # Ruby
@@ -134,16 +135,16 @@ path=('/snap/bin' $path)
 
 # fun things at shell boot
 {{ if eq .chezmoi.os "linux" }}
-{{ if eq .chezmoi.osRelease.id "raspbian" }}
-# Raspbian (at least) doesn't have a small cow
-fortune --version 1>/dev/null 2>/dev/null && \
-cowsay --version 1>/dev/null 2>/dev/null && \
-fortune ~/.config/fortune | cowsay -n
-{{ end }}
+	{{ if eq .chezmoi.osRelease.id "raspbian" }}
+		# Raspbian (at least) doesn't have a small cow
+		fortune --version 1>/dev/null 2>/dev/null && \
+		cowsay --version 1>/dev/null 2>/dev/null && \
+		fortune ~/.config/fortune | cowsay -n
+	{{ end }}
 {{ else }}
-fortune --version 1>/dev/null 2>/dev/null && \
-cowsay --version 1>/dev/null 2>/dev/null && \
-fortune ~/.config/fortune | cowsay -n -f small
+	fortune --version 1>/dev/null 2>/dev/null && \
+	cowsay --version 1>/dev/null 2>/dev/null && \
+	fortune ~/.config/fortune | cowsay -n -f small
 {{ end }}
 
 source ~/.profile
@@ -156,3 +157,10 @@ starship --version 1>/dev/null 2/dev/null && eval "$(starship init zsh)"
 
 # Prevent zsh from tripping over ?s and &s when curling
 alias curl='noglob curl'
+
+# Share history across tabs and sessions
+setopt INC_APPEND_HISTORY       # Immediately append to the history file
+setopt SHARE_HISTORY            # Share command history data
+setopt HIST_IGNORE_DUPS         # Don't record duplicate commands
+setopt HIST_FIND_NO_DUPS        # Prevent showing dups in history search
+setopt HIST_REDUCE_BLANKS       # Remove superfluous blanks
