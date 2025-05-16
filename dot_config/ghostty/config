@@ -42,7 +42,7 @@
 # # Just for example:
 # resize-overlay-duration = 4s 200ms
 
-keybind = global:cmd+grave_accent=toggle_quick_terminal
+keybind = global:cmd+escape=toggle_quick_terminal
 window-inherit-working-directory = true
 cursor-style = block
 font-family = "Monaspace Neon"
