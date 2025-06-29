@@ -16,25 +16,26 @@ return {
   ---------------------------------------------------------------------------
   -- FILETYPES & SYNTAX ------------------------------------------------------
   ---------------------------------------------------------------------------
-  -- Chezmoi syntax highlighting
+  -- chezmoi.vim: Syntax highlighting for Chezmoi files.
   { "alker0/chezmoi.vim" },
 
-  -- Kitty terminal config syntax highlighting
-  { "fladson/vim-kitty" },
-
-  -- Diffview (required by Neogit)
+  -- Diffview: Better diff handling.
+  -- Required by: Neogit
   { "sindrets/diffview.nvim" },
 
-  -- Glow: Markdown preview inside Neovim
+  -- Glow: Preview markdown inside Neovim.
   { "ellisonleao/glow.nvim" },
 
-  -- Markdown‑preview (external browser window)
+  -- vim-kitty: Syntax highlighting for Kitty config files.
+  { "fladson/vim-kitty" },
+
+  -- markdown‑preview: Preview markdown in an external browser.
   { "iamcco/markdown-preview.nvim", build = "cd app && yarn install" },
 
   ---------------------------------------------------------------------------
   -- SEARCH / NAV ------------------------------------------------------------
   ---------------------------------------------------------------------------
-  -- Telescope fuzzy‑finder
+  -- Telescope: Reusable fuzzy-finder buffer panes.
   { "nvim-telescope/telescope.nvim",
     dependencies = {
       "nvim-lua/plenary.nvim",
@@ -69,11 +70,11 @@ return {
     end
   },
 
-  -- greplace: project‑wide search & replace
+  -- greplace: Project‑wide search & replace.
   { "skwp/greplace.vim" },
 
   ---------------------------------------------------------------------------
-  -- USER‑INTERFACE ----------------------------------------------------------
+  -- USER INTERFACE ----------------------------------------------------------
   ---------------------------------------------------------------------------
   -- Icons for statuslines, telescope etc.
   { "nvim-tree/nvim-web-devicons" },
@@ -127,16 +128,16 @@ return {
   ---------------------------------------------------------------------------
   -- LSP / COMPLETION --------------------------------------------------------
   ---------------------------------------------------------------------------
-  -- nvim‑cmp completion engine (plain – you configure sources elsewhere)
+  -- nvim‑cmp: Completion engine for other sources.
   { "hrsh7th/nvim-cmp" },
 
-  -- nvim‑lightbulb: show available code actions
+  -- nvim‑lightbulb: Show available code actions.
   { "kosayoda/nvim-lightbulb" },
 
-  -- Treesitter‑context (sticky function headers)
+  -- nvim-treesitter‑context: Sticky function headers.
   { "nvim-treesitter/nvim-treesitter-context" },
 
-  -- nvim‑lspconfig: language servers
+  -- nvim‑lspconfig: Language server support.
   { "neovim/nvim-lspconfig",
     config = function()
       ---------------------------------------------------------------------
@@ -199,6 +200,8 @@ return {
       }
     end
   },
+
+  { "Exafunction/windsurf.vim" },
 
   ---------------------------------------------------------------------------
   -- EDITING UTILITIES ------------------------------------------------------
