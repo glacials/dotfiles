@@ -27,7 +27,6 @@ endif
 vim.cmd([[
 
 call plug#begin('~/.local/share/nvim/plugged')
-let g:plug_url_format = 'git@github.com:%s.git'
 
 ]])
 
@@ -35,7 +34,7 @@ local Plug = vim.fn['plug#']
 
 -- ale
 -- Language-agnostic linting server.
-Plug('https://github.com/dense-analysis/ale', {['do'] = 'gem install standardrb'})
+-- Plug('https://github.com/dense-analysis/ale', {['do'] = 'gem install standardrb'})
 -- Configuration.
 vim.g.ale_fix_on_save = 1
 vim.g.ale_linters = {['ruby'] = {'standardrb'}}
@@ -45,9 +44,10 @@ vim.g.ale_fixers = {['ruby'] = {'standardrb'}}
 -- Syntax highlighting for Chezmoi-managed dotfiles.
 Plug('https://github.com/alker0/chezmoi.vim')
 
--- gitv
--- View and navigate Git output with Vim bindings.
-Plug('https://github.com/gregsexton/gitv')
+-- Diffview.nvim
+-- Review changed files for any Git revision.
+-- Required by: Neogit.
+Plug('https://github.com/sindrets/diffview.nvim')
 
 -- glow
 -- Preview Markdown inside Vim.
@@ -66,7 +66,7 @@ Plug('https://github.com/nvim-tree/nvim-web-devicons')
 
 -- markdown-preview
 -- Preview Markdown outside Vim.
-Plug('https://github.com/markdown-preview.nvim', {
+Plug('https://github.com/iamcco/markdown-preview.nvim', {
   ['do'] = 'cd app && yarn install'
 })
 
@@ -76,11 +76,12 @@ Plug('https://github.com/fholgado/minibufexpl.vim')
 
 -- Neoformat
 -- Invoke formatters automatically.
-Plug('https://github.com/sbdchd/neoformat')
+-- Plug('https://github.com/sbdchd/neoformat')
 
--- nvim-jdtls
--- Java language server.
-Plug('https://mfussenegger/nvim/jdtls', {['do'] = 'brew install jdtls'})
+-- Neogit
+-- Interactive Git interface.
+-- Requires: Diffview.nvim.
+Plug('https://github.com/neogitorg/neogit')
 
 -- nvim-cmp
 -- Fixes a specific autocomplete issue:
@@ -95,6 +96,15 @@ Plug('https://github.com/kosayoda/nvim-lightbulb')
 -- Common language server configurations for every language under the sun.
 Plug('https://github.com/neovim/nvim-lspconfig')
 
+-- nvim-treesitter-context
+-- Makes function signatures etc. sticky at top-of-screen.
+Plug('https://github.com/nvim-treesitter/nvim-treesitter-context')
+
+-- plenary.vim
+-- Lua library of common functions.
+-- Required by: Neogit.
+Plug('https://github.com/nvim-lua/plenary.nvim')
+
 -- telescope
 -- Live-updating fuzzy finder for lists (e.g. files, grep).
 Plug('https://github.com/nvim-telescope/telescope.nvim')
@@ -103,12 +113,12 @@ vim.api.nvim_set_keymap('n', '<Leader>ff', '<Cmd>Telescope find_files<CR>', {nor
 vim.api.nvim_set_keymap('n', '<Leader>fg', '<Cmd>Telescope live_grep<CR>', {noremap = true, silent = true})
 vim.api.nvim_set_keymap('n', '<Leader>fb', '<Cmd>Telescope buffers<CR>', {noremap = true, silent = true})
 vim.api.nvim_set_keymap('n', '<Leader>fh', '<Cmd>Telescope help_tags<CR>', {noremap = true, silent = true})
-vim.api.nvim_set_keymap('n', 'gr <Cmd>Telescope', 'lsp_references<CR>', {noremap = true, silent = true})
-vim.api.nvim_set_keymap('n', '<Space>wa <cmd>Telescope', 'lsp_code_actions<CR>', {noremap = true, silent = true})
-vim.api.nvim_set_keymap('n', 'gi <Cmd>Telescope', 'lsp_implementation<CR>', {noremap = true, silent = true})
-vim.api.nvim_set_keymap('n', 'gd <Cmd>Telescope', 'lsp_definitions<CR>', {noremap = true, silent = true})
-vim.api.nvim_set_keymap('n', 'gD <Cmd>Telescope', 'lsp_type_definitions<CR>', {noremap = true, silent = true})
-vim.api.nvim_set_keymap('n', '<Leader>g <cmd>Telescope', 'resume<CR>', {noremap = true, silent = true})
+-- vim.api.nvim_set_keymap('n', 'gr <Cmd>Telescope', 'lsp_references<CR>', {noremap = true, silent = true})
+-- vim.api.nvim_set_keymap('n', '<Space>wa <cmd>Telescope', 'lsp_code_actions<CR>', {noremap = true, silent = true})
+-- vim.api.nvim_set_keymap('n', 'gi <Cmd>Telescope', 'lsp_implementation<CR>', {noremap = true, silent = true})
+-- vim.api.nvim_set_keymap('n', 'gd <Cmd>Telescope', 'lsp_definitions<CR>', {noremap = true, silent = true})
+-- vim.api.nvim_set_keymap('n', 'gD <Cmd>Telescope', 'lsp_type_definitions<CR>', {noremap = true, silent = true})
+-- vim.api.nvim_set_keymap('n', '<Leader>g <cmd>Telescope', 'resume<CR>', {noremap = true, silent = true})
 -- Optional dependency: nvim-web-devicons
 -- Icons for use in Telescope.
 Plug('https://github.com/nvim-tree/nvim-web-devicons')
@@ -139,15 +149,11 @@ vim.api.nvim_set_keymap('x', 'ga', '<Plug>(EasyAlign)', {noremap = true, silent 
 
 -- vim-endwise
 -- Autoclose curly braces and other equivalents.
-Plug('https://github.com/tpope/endwise')
+Plug('https://github.com/tpope/vim-endwise')
 
 -- vim-eunuch
 -- Holistic shell commands (e.g. :Delete to delete a file & close its buffer).
 Plug('https://github.com/tpope/vim-eunuch')
-
--- vim-fugitive
--- Run git COMMAND as :Git COMMAND.
-Plug('https://github.com/tpope/vim-fugitive')
 
 -- vim-go
 -- Various Go enhancements.
@@ -200,6 +206,12 @@ Plug('https://github.com/tpope/vim-surround')
 -- vim-vinegar
 -- Enhancements to netrw.
 Plug('https://github.com/tpope/vim-vinegar')
+vim.keymap.set('n', '<leader>e', function()
+  vim.cmd('topleft vertical 30split') -- Create vsplit on left with width 30
+  vim.cmd('Explore')                  -- Start netrw in that split
+end, { noremap = true, silent = true })
+vim.g.netrw_browse_split = 4          -- netrw: open files in previous window
+vim.g.netrw_liststyle = 3             -- netrw: "tree" display style by default
 
 -- vim-visual-multi
 -- Multiple cursors.
@@ -208,7 +220,6 @@ Plug('https://github.com/mg979/vim-visual-multi')
 -- which-key
 -- Completions for key sequences.
 Plug('https://github.com/folke/which-key.nvim')
-
 
 -------------------------
 -- START THEME PLUGINS --
@@ -243,9 +254,6 @@ vim.call('plug#end')
 -- Initialize lualine. Must come after plug#end.
 require('lualine').setup()
 
--- Initialize language server. Must come after plug#end.
-local nvim_lsp = require('lspconfig')
-
 -- Use an on_attach function to only map the following keys
 -- after the language server attaches to the current buffer
 local on_attach = function(client, bufnr)
@@ -259,10 +267,10 @@ local on_attach = function(client, bufnr)
   local opts = { noremap=true, silent=true }
 
   -- See `:help vim.lsp.*` for documentation on any of the below functions
-  -- buf_set_keymap('n', 'gD',        '<cmd>lua vim.lsp.buf.declaration()<CR>', opts) -- Overridden by Telescope (above)
-  -- buf_set_keymap('n', 'gd',        '<cmd>lua vim.lsp.buf.definition()<CR>', opts) -- Overridden by Telescope (above)
+  buf_set_keymap('n', 'gD',        '<cmd>lua vim.lsp.buf.declaration()<CR>', opts)
+  buf_set_keymap('n', 'gd',        '<cmd>lua vim.lsp.buf.definition()<CR>', opts)
   buf_set_keymap('n', 'K',         '<cmd>lua vim.lsp.buf.hover()<CR>', opts)
-  -- buf_set_keymap('n', 'gi',        '<cmd>lua vim.lsp.buf.implementation()<CR>', opts) -- Overridden by Telescope (above)
+  buf_set_keymap('n', 'gi',        '<cmd>lua vim.lsp.buf.implementation()<CR>', opts)
   buf_set_keymap('n', '<C-k>',     '<cmd>lua vim.lsp.buf.signature_help()<CR>', opts)
   buf_set_keymap('n', '<space>wa', '<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>', opts)
   buf_set_keymap('n', '<space>wr', '<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>', opts)
@@ -270,7 +278,7 @@ local on_attach = function(client, bufnr)
   buf_set_keymap('n', '<space>D',  '<cmd>lua vim.lsp.buf.type_definition()<CR>', opts)
   buf_set_keymap('n', '<space>rn', '<cmd>lua vim.lsp.buf.rename()<CR>', opts)
   buf_set_keymap('n', '<space>ca', '<cmd>lua vim.lsp.buf.code_action()<CR>', opts)
-  -- buf_set_keymap('n', 'gr',        '<cmd>lua vim.lsp.buf.references()<CR>', opts) -- Overridden by Telescope (above)
+  buf_set_keymap('n', 'gr',        '<cmd>lua vim.lsp.buf.references()<CR>', opts)
   buf_set_keymap('n', '<space>e',  '<cmd>lua vim.diagnostic.open_float()<CR>', opts)
   buf_set_keymap('n', '[d',        '<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>', opts)
   buf_set_keymap('n', ']d',        '<cmd>lua vim.lsp.diagnostic.goto_next()<CR>', opts)
@@ -279,20 +287,34 @@ local on_attach = function(client, bufnr)
 end
 
 local servers = {
-  'gopls', -- Go
-  'jdtls', -- Java
-  'pyright', -- Python: npm i -g pyright
+  'gopls',      -- Go
+  'jdtls',      -- Java
+  'pyright',    -- Python: npm i -g pyright
   'solargraph', -- Ruby: gem install solargraph
+  'tsserver',   -- TypeScript: npm install -g typescript
 }
 
+local lspconfig = require('lspconfig')
+
 for _, lsp in ipairs(servers) do
-  nvim_lsp[lsp].setup {
+  lspconfig[lsp].setup {
     on_attach = on_attach,
     flags = {
       debounce_text_changes = 150,
     }
   }
 end
+
+lspconfig.pyright.setup({
+  settings = {
+    python = {
+      analysis = {
+        exclude = {"**", "*", "**/*"},
+      },
+      pythonPath = vim.fn.getenv('VIRTUAL_ENV') and (vim.fn.getenv('VIRTUAL_ENV') .. '/bin/python') or vim.fn.getenv('PYRIGHT_PYTHON'),
+    },
+  },
+})
 
 -- Configure Telescope. Must come after plug#end.
 require('telescope').setup{
