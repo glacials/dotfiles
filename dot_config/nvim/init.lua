@@ -106,15 +106,17 @@ end, { desc = "Write current file with sudo" })
 -- ----------------------------------------------------------------------------
 -- Autocommands ---------------------------------------------------------------
 local augroup = vim.api.nvim_create_augroup
-local autocmd  = vim.api.nvim_create_autocmd
+local autocmd = vim.api.nvim_create_autocmd
 
 -- Open netrw if launched without arguments.
 augroup("ProjectDrawer", { clear = true })
-autocmd("VimEnter", {
-  group = "ProjectDrawer",
+vim.api.nvim_create_autocmd("VimEnter", {
   callback = function()
-    if vim.fn.argc() == 0 then
-      vim.cmd("Explore!")
+    if vim.fn.argc() == 1 then                     -- exactly one CLI arg
+      local arg = vim.fn.argv(0)                   -- the arg itself
+      if vim.fn.isdirectory(arg) == 1 then         -- is it a directory?
+        vim.cmd("cd " .. vim.fn.fnameescape(arg))  -- change cwd
+      end
     end
   end,
 })

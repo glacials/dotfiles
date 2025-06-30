@@ -40,6 +40,9 @@ return {
   -- SEARCH / NAV ------------------------------------------------------------
   ----------------------------------------------------------------------------
 
+  -- greplace.vim: Project‑wide search & replace.
+  { "skwp/greplace.vim" },
+
   -- telescope.nvim: Reusable fuzzy-finder buffer panes.
   { "nvim-telescope/telescope.nvim",
     dependencies = {
@@ -75,9 +78,6 @@ return {
     end
   },
 
-  -- greplace.vim: Project‑wide search & replace.
-  { "skwp/greplace.vim" },
-
   ---------------------------------------------------------------------------
   -- USER INTERFACE ----------------------------------------------------------
   ---------------------------------------------------------------------------
@@ -99,9 +99,6 @@ return {
       }
     } end
   },
-
-  -- nvim-web-devicons: Icons for statuslines, telescope etc.
-  { "nvim-tree/nvim-web-devicons" },
 
   -- Neoscroll: Smooth scrolling for ^D and friends.
   { "karb94/neoscroll.nvim",
@@ -127,6 +124,9 @@ return {
     } end
   },
 
+  -- nvim-web-devicons: Icons for statuslines, telescope etc.
+  { "nvim-tree/nvim-web-devicons" },
+
   -- toggleterm.nvim: Improved terminal window management.
   { "akinsho/toggleterm.nvim",
     version = "*",
@@ -147,7 +147,7 @@ return {
 
   -- vinegar.vim: Improvements to netrw that make it rival NERDTree.
   { "tpope/vim-vinegar",
-    config = function()
+      config = function()
       -- Open tree‑style netrw in a left split
       vim.keymap.set("n", "<leader>e", function()
         vim.cmd("topleft vertical 30split")
@@ -164,14 +164,15 @@ return {
   ---------------------------------------------------------------------------
   -- GIT & PROJECT -----------------------------------------------------------
   ---------------------------------------------------------------------------
+
+  -- Buftabline: Show buffers in the statusline.
+  { 'ap/vim-buftabline' },
+
   -- Neogit: Like Magit but for Neovim.
   { "neogitorg/neogit",
     dependencies = { "nvim-lua/plenary.nvim", "sindrets/diffview.nvim" },
     config = true
   },
-
-  -- MiniBufExpl: Show open buffers at top-of-screen.
-  { "fholgado/minibufexpl.vim" },
 
   ---------------------------------------------------------------------------
   -- LSP / COMPLETION --------------------------------------------------------
@@ -182,9 +183,6 @@ return {
 
   -- nvim‑lightbulb: Show available code actions.
   { "kosayoda/nvim-lightbulb" },
-
-  -- nvim-treesitter‑context: Sticky function headers.
-  { "nvim-treesitter/nvim-treesitter-context" },
 
   -- nvim‑lspconfig: Language server support.
   { "neovim/nvim-lspconfig",
@@ -249,6 +247,9 @@ return {
       }
     end
   },
+
+  -- nvim-treesitter‑context: Sticky function headers.
+  { "nvim-treesitter/nvim-treesitter-context" },
 
   -- windsurf.nvim: AI autocompletion.
   { "Exafunction/windsurf.vim" },
