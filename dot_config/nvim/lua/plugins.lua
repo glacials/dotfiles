@@ -16,31 +16,31 @@ return {
   ----------------------------------------------------------------------------
   -- DEBUGGING ---------------------------------------------------------------
   -------------------------------------------------------------------------------
+
+  -- nvim-dap: Debug Adapter Protocol client.
   { "mfussenegger/nvim-dap" },
 
   ----------------------------------------------------------------------------
   -- FILETYPES & SYNTAX ------------------------------------------------------
   ----------------------------------------------------------------------------
+
   -- chezmoi.vim: Syntax highlighting for Chezmoi files.
   { "alker0/chezmoi.vim" },
 
-  -- Diffview: Better diff handling.
-  -- Required by: Neogit
-  { "sindrets/diffview.nvim" },
+  -- Markdown Preview for (Neo)vim: Preview markdown in an external browser.
+  { "iamcco/markdown-preview.nvim", build = "cd app && yarn install" },
 
-  -- Glow: Preview markdown inside Neovim.
-  { "ellisonleao/glow.nvim" },
+  -- render-markdown.nvim: Preview markdown inside Neovim.
+  { "MeanderingProgrammer/render-markdown.nvim" },
 
   -- vim-kitty: Syntax highlighting for Kitty config files.
   { "fladson/vim-kitty" },
 
-  -- markdown‑preview: Preview markdown in an external browser.
-  { "iamcco/markdown-preview.nvim", build = "cd app && yarn install" },
-
   ----------------------------------------------------------------------------
   -- SEARCH / NAV ------------------------------------------------------------
   ----------------------------------------------------------------------------
-  -- Telescope: Reusable fuzzy-finder buffer panes.
+
+  -- telescope.nvim: Reusable fuzzy-finder buffer panes.
   { "nvim-telescope/telescope.nvim",
     dependencies = {
       "nvim-lua/plenary.nvim",
@@ -75,12 +75,16 @@ return {
     end
   },
 
-  -- greplace: Project‑wide search & replace.
+  -- greplace.vim: Project‑wide search & replace.
   { "skwp/greplace.vim" },
 
   ---------------------------------------------------------------------------
   -- USER INTERFACE ----------------------------------------------------------
   ---------------------------------------------------------------------------
+
+  -- illuminate.vim: Highlight other uses of the symbol under the cursor.
+  { "RRethy/vim-illuminate" },
+
   -- Indent Guides: Vertical stripes showing indentation levels.
   { "nathanaelkane/vim-indent-guides",
     config = function() vim.g.indent_guides_enable_on_vim_startup = 0 end
@@ -123,7 +127,25 @@ return {
     } end
   },
 
-  -- vinegar.vim: Improvements to netrw that rival NERDTree.
+  -- toggleterm.nvim: Improved terminal window management.
+  { "akinsho/toggleterm.nvim",
+    version = "*",
+    config = function() 
+      require("toggleterm").setup{
+        open_mapping = [[<c-\>]], -- default
+        direction = "horizontal", -- or "vertical" or "float"
+        shade_terminals = true,
+        start_in_insert = true,
+        insert_mappings = true,
+      }
+      vim.keymap.set("n", "<leader>tf", function()
+        require("toggleterm.terminal").Terminal:new({ direction = "float" }):toggle()
+      end, { desc = "Toggle floating terminal" })
+    end
+  },
+
+
+  -- vinegar.vim: Improvements to netrw that make it rival NERDTree.
   { "tpope/vim-vinegar",
     config = function()
       -- Open tree‑style netrw in a left split
@@ -142,21 +164,19 @@ return {
   ---------------------------------------------------------------------------
   -- GIT & PROJECT -----------------------------------------------------------
   ---------------------------------------------------------------------------
-  -- Plenary helper lib (required by numerous plugins)
-  { "nvim-lua/plenary.nvim" },
-
-  -- Neogit (Git UI)
+  -- Neogit: Like Magit but for Neovim.
   { "neogitorg/neogit",
     dependencies = { "nvim-lua/plenary.nvim", "sindrets/diffview.nvim" },
     config = true
   },
 
-  -- minibufexpl (buffer line)
+  -- MiniBufExpl: Show open buffers at top-of-screen.
   { "fholgado/minibufexpl.vim" },
 
   ---------------------------------------------------------------------------
   -- LSP / COMPLETION --------------------------------------------------------
   ---------------------------------------------------------------------------
+
   -- nvim‑cmp: Completion engine for other sources.
   { "hrsh7th/nvim-cmp" },
 
@@ -230,12 +250,46 @@ return {
     end
   },
 
+  -- windsurf.nvim: AI autocompletion.
   { "Exafunction/windsurf.vim" },
 
   ---------------------------------------------------------------------------
   -- EDITING UTILITIES ------------------------------------------------------
   ---------------------------------------------------------------------------
-  -- vim‑prettier formatter
+
+  -- commentary.vim: gc to comment a target, gcc to comment a line.
+  { "tpope/vim-commentary" },
+
+  -- endwise.vim: Autoclose if, do, def, etc.
+  -- Note: Does not overlap with vim-closer.
+  { "tpope/vim-endwise" },
+
+  -- eunuch.vim: Holistic shell commands (e.g. :Move to mv a file and buffer).
+  { "tpope/vim-eunuch" },
+
+  -- sleuth.vim: Auto-adjust shiftwidth and expandtab heuristically.
+  { "tpope/vim-sleuth" },
+
+  -- vim-closer: Autoclose curly braces, parentheses, brackets, etc.
+  -- Note: Does not overlap with endwise.vim.
+  { "rstacruz/vim-closer" },
+
+  -- vim-easy-align: ga to align tables, assignments, etc.
+  { "junegunn/vim-easy-align", keys = { { "ga", mode = { "n", "x" } } } },
+
+  -- vim-go: Various Go support.
+  { "fatih/vim-go",
+    build = "go install github.com/segmentio/golines@latest",
+    config = function()
+      vim.g.go_fmt_command = "golines"
+      vim.g.go_fmt_options = { golines = "-m 80 -t 2" }
+    end
+  },
+
+  -- vim-hexokinase: Show color blips by hex codes and color names.
+  { "rrethy/vim-hexokinase", build = "make hexokinase" },
+
+  -- vim‑prettier: Format JavaScript, Markdown, CSS, HTML, JSON, and friends.
   { "prettier/vim-prettier",
     build = "yarn install --frozen-lockfile --production",
     config = function()
@@ -249,46 +303,25 @@ return {
     end
   },
 
-  -- Color‑string highlighter
-  { "rrethy/vim-hexokinase", build = "make hexokinase" },
-
-  -- Autoclose pairs / structures
-  { "rstacruz/vim-closer" },
-  { "tpope/vim-endwise" },
-
-  -- Comment toggles
-  { "tpope/vim-commentary" },
-
-  -- Alignment operator
-  { "junegunn/vim-easy-align", keys = { { "ga", mode = { "n", "x" } } } },
-
-  -- UNIX helpers
-  { "tpope/vim-eunuch" },
-
-  -- Multiple cursors
-  { "mg979/vim-visual-multi" },
-
-  -- Ruby helpers
+  -- vim-ruby: Various Ruby and HAML support.
   { "jlcrochet/vim-ruby" },
 
-  -- Sensible defaults & indent autodetection
-  { "tpope/vim-sensible" },
-  { "tpope/vim-sleuth" },
-
-  -- Go development plugin (golines configured)
-  { "fatih/vim-go",
-    build = "go install github.com/segmentio/golines@latest",
-    config = function()
-      vim.g.go_fmt_command = "golines"
-      vim.g.go_fmt_options = { golines = "-m 80 -t 2" }
-    end
-  },
+  -- vim-visual-multi: ^N for multiple cursors.
+  { "mg979/vim-visual-multi" },
 
   ---------------------------------------------------------------------------
   -- THEMES -----------------------------------------------------------------
   ---------------------------------------------------------------------------
-  { "nordtheme/vim"         },
-  { "rebelot/kanagawa.nvim" },
-  { "sainnhe/everforest"    },
+
+  -- colors.vim: A collection of color schemes.
   { "utensils/colors.vim"   },
+
+  -- Everforest: A green based color scheme designed to be warm and soft.
+  { "sainnhe/everforest"    },
+
+  -- KANAGAWA.nvim: A dark scheme inspired by the Katsushika Hokusai painting.
+  { "rebelot/kanagawa.nvim" },
+
+  -- Nord: An arctic, north-bluish cleana and elegant color scheme.
+  { "nordtheme/vim"         },
 }
