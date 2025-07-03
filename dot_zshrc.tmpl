@@ -60,8 +60,10 @@ export GPG_TTY=$(tty)
 
 # Aliases
 alias amend='git add -p && git commit --amend --no-edit && git push -f'
+alias cat='bat'
 alias curl='curl --proto-default https'
 alias e="$EDITOR"
+alias find='fd'
 alias g='git status'
 alias l='ls -lh --color=auto'
 alias rebase='export CURRENT_BRANCH=`git name-rev --name-only HEAD` && git checkout master && git pull && git checkout
