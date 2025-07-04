@@ -1,5 +1,3 @@
-[diff] # Use this tool for `git diff`
-  external = difft
 [difftool "difftastic"] # Use this tool for `git difftool`
   cmd = difft "$LOCAL" "$REMOTE"
 [alias] # `git dft` is less to type than `git difftool`
