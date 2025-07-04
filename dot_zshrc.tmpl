@@ -61,14 +61,17 @@ export GPG_TTY=$(tty)
 # Aliases
 alias amend='git add -p && git commit --amend --no-edit && git push -f'
 alias cat='bat'
+alias cd='zoxide'
 alias curl='curl --proto-default https'
+alias diff='difft'
+alias du='dust'
 alias e="$EDITOR"
 alias find='fd'
 alias g='git status'
 alias l='ls -lh --color=auto'
+alias ls='eza'
 alias rebase='export CURRENT_BRANCH=`git name-rev --name-only HEAD` && git checkout master && git pull && git checkout
 `echo $CURRENT_BRANCH` && git rebase master'
-alias work='git add -p && git commit -m work && git push'
 
 if [[ $uname == linux* ]]; then
 	alias u='sudo apt-get update -qq && sudo apt-get -yqq upgrade && brew update -qq && brew upgrade -qq'
@@ -79,10 +82,10 @@ if [[ $uname == darwin ]]; then
 	alias u='chezmoi update'
 fi
 
+alias work='git add -p && git commit -m work && git push'
 alias vi=vim
 alias vim=nvim
 alias vimdiff='vim -d'
-alias diff='difft'
 
 # zsh-fzf-history-search config
 export ZSH_FZF_HISTORY_SEARCH_FZF_EXTRA_ARGS='--height 40%'
@@ -160,3 +163,9 @@ setopt SHARE_HISTORY            # Share command history data
 setopt HIST_IGNORE_DUPS         # Don't record duplicate commands
 setopt HIST_FIND_NO_DUPS        # Prevent showing dups in history search
 setopt HIST_REDUCE_BLANKS       # Remove superfluous blanks
+
+# Start a zellij session
+if command -v zellij &> /dev/null && [ -z "$ZELLIJ" ] && [[ -z "$TMUX" ]]; then
+  zellij
+  exit
+fi

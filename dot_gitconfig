@@ -1,34 +1,36 @@
-[user]
-       name = glacials
-       email = ben@twos.dev
-
-### Diff config ###
 [diff] # Use this tool for `git diff`
-       external = difft
+  external = difft
 [difftool "difftastic"] # Use this tool for `git difftool`
-       cmd = difft "$LOCAL" "$REMOTE"
-[pager] # Use a pager for large output, just like other git commands
-       difftool = true
+  cmd = difft "$LOCAL" "$REMOTE"
 [alias] # `git dft` is less to type than `git difftool`
-       dft = difftool
-### End diff config ###
-
-[merge]
-  conflictstyle = diff3
-       tool = vimdiff
+  dft = difftool
 [core]
-       editor = nvim
-       excludesfile = ~/.config/git/ignore
+  editor = nvim
+  excludesfile = ~/.config/git/ignore
+  pager = delta
+[delta]
+  dark = true      # or light = true, or omit for auto-detection
+  navigate = true  # use n and N to move between diff sections
 [filter "media"]
-       clean = git-media-clean %f
-       smudge = git-media-smudge %f
-[push]
-       default = simple
-       autoSetupRemote = true
-[pull]
-       rebase = true
+  clean = git-media-clean %f
+  smudge = git-media-smudge %f
 [init]
-       defaultBranch = main
+  defaultBranch = main
+[interactive]
+  diffFilter = delta --color-only
+[merge]
+  conflictstyle = zdiff3
+  tool = vimdiff
+[pager] # Use a pager for large output, just like other git commands
+  difftool = true
+[pull]
+  rebase = true
+[push]
+  autoSetupRemote = true
+  default = simple
+[user]
+  email = ben@twos.dev
+  name = glacials
 # Can uncomment once installing dotfiles on a fresh machine is very stable.
 # Until then, a single failure screws install.sh up because this replacement
 # stops Homebrew from being installed until your SSH key is in GitHub, which
