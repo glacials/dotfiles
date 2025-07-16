@@ -52,7 +52,6 @@ end
 -- ----------------------------------------------------------------------------
 -- Globals --------------------------------------------------------------------
 vim.g.hardtime_default_on              = 1
-vim.g.mapleader                        = " "          -- set <space> as <leader>
 vim.g.markdown_folding                 = 1
 vim.g.markdown_fenced_languages        = { "html", "python", "bash=sh", "ruby", "javascript", "go" }
 
