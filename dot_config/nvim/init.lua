@@ -1,3 +1,7 @@
+-- ---------------------------------------------------------------------------
+-- Must-Do-First Items -------------------------------------------------------
+vim.g.mapleader                        = " "          -- set <space> as <leader>
+
 -- Bootstrap lazy.nvim for plugin management (unchanged)
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not vim.loop.fs_stat(lazypath) then
@@ -52,7 +56,6 @@ end
 -- ----------------------------------------------------------------------------
 -- Globals --------------------------------------------------------------------
 vim.g.hardtime_default_on              = 1
-vim.g.mapleader                        = " "          -- set <space> as <leader>
 vim.g.markdown_folding                 = 1
 vim.g.markdown_fenced_languages        = { "html", "python", "bash=sh", "ruby", "javascript", "go" }
 
