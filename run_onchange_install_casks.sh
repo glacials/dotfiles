@@ -50,7 +50,3 @@ if ! test -z "${casks:-}"; then
 	# --cask forces casks when there are options for formulae (e.g. docker, syncthing)
   brew install --cask --force --quiet ${casks}
 fi
-
-# Follow-ups
-defaults write com.googlecode.iterm2.plist PrefsCustomFolder -string "~/.config/iterm2"
-defaults write com.googlecode.iterm2.plist LoadPrefsFromCustomFolder -bool true
