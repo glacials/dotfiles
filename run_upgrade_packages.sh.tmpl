@@ -12,11 +12,11 @@ echo "Upgrading packages"
 [[ ${debug:-} == "y" ]] && echo "Updating packages."
 
 {{ if eq .chezmoi.os "darwin" }}
-brew update
-brew upgrade
+  brew update
+  brew upgrade
 {{ else if eq .chezmoi.os "linux" }}
-{{ if eq .chezmoi.osRelease.idLike "debian" }}
-sudo apt-get --quiet --quiet update
-sudo apt-get --quiet --quiet upgrade
-{{ end }}
+  {{ if eq .chezmoi.osRelease.idLike "debian" }}
+    sudo apt-get --quiet --quiet update
+    sudo apt-get --quiet --quiet upgrade
+  {{ end }}
 {{ end }}
