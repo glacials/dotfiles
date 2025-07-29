@@ -79,13 +79,6 @@ path+=($GOPATH/bin)
 path=("$HOME/.nodenv/bin" $path)
 nodenv --version 1>/dev/null 2>/dev/null && eval "$(nodenv init -)"
 
-{{ if eq .chezmoi.os "darwin" }}
-	# Python
-	export PYENV_ROOT="$HOME/.pyenv"
-	eval "$(pyenv init -)"
-	eval "$(pyenv init --path)"
-{{ end }}
-
 # Ruby
 path+=("$HOME/.rbenv/shims")
 rbenv --version 1>/dev/null 2>/dev/null && eval "$(rbenv init -)"
