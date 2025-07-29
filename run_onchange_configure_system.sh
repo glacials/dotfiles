@@ -11,15 +11,9 @@ echo "Setting preferences"
 # Create $HOME/.profile (for secret things that shouldn't go in this repo)
 touch $HOME/.profile
 
-# Change to zsh if needed
-if [[ $SHELL != */zsh ]]; then
-	install_now zsh
-	chsh -s /bin/zsh $(whoami)
-fi
-
 if [[ $uname == darwin ]]; then
-    # Show full paths in footer of Finder windows
-    defaults write com.apple.finder ShowPathbar -bool true
+	# Show full paths in footer of Finder windows
+	defaults write com.apple.finder ShowPathbar -bool true
 
 	# Point ~/icloud to iCloud Drive, if iCloud Drive is on
 	icloud_enabled=$(
@@ -27,17 +21,10 @@ if [[ $uname == darwin ]]; then
 		| plutil -convert json -o - - \
 		| jq -e '.[0].Services[] | select(.Name == "MOBILE_DOCUMENTS") | .Enabled == 1' >/dev/null && echo 1 || echo 0
 	)
-
+	
 	if [[ "$icloud_enabled" == "1" ]]; then
 		if ! test -e ~/icloud; then
 			ln -s ~/Library/Mobile\ Documents/com~apple~CloudDocs ~/icloud
 		fi
 	fi
-
-	# Better cron for macOS (smartly handles sleep etc.)
-    mkdir -p ~/Library/LaunchAgents
-    ln -fs $(chezmoi source-path)/LaunchAgents/* ~/Library/LaunchAgents
 fi
-
-# Cron et al.
-crontab "$(chezmoi source-path)/cron"
