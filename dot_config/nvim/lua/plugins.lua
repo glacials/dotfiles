@@ -248,6 +248,13 @@ return {
     end
   },
 
+  -- nvim-treesitter: tree-sitter features.
+  { "nvim-treesitter/nvim-treesitter",
+    lazy = false,
+    branch = 'main',
+    build = ':TSUpdate',
+  },
+
   -- nvim-treesitter‑context: Sticky function headers.
   { "nvim-treesitter/nvim-treesitter-context" },
 
