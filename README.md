@@ -1,6 +1,25 @@
 # dotfiles
 
-This repository fully bootstraps a new machine to be configured how I like it.
+> [!NOTE]
+> I'm currently migrating this repository from
+> [Chezmoi](https://www.chezmoi.io/)-based
+> to
+> [GNU Stow](https://www.gnu.org/software/stow/).
+> The instructions below may be temporarily inconsistent with the new setup.
+>
+> I've used Chezmoi for this repo for three years, which has been a sufficient trial.
+> It's a powerful tool but I found myself learning and/or fighting with its patterns
+> no less than I had with Bash and Make before switching.
+>
+> Its `run_onchange_*` and related scripts encouraged me to make the whole repo a one-button machine setup/upgrade,
+> but I haven't been setting up machines frequently enough to get any pay off.
+> And when I do set up machines it's usually an ephemeral remote devbox,
+> meaning I don't need 90% of my dotfiles and setup scripts (e.g. App Store, casks, `rbenv`, etc.).
+>
+> This has made Stow, which is simpler and focused on piecemeal installation,
+> feel like a better fit.
+
+This repository holds my configuration files for macOS and Linux. bootstraps a new machine to be configured how I like it.
 It sets up dotfiles, installs programs and development tools I use, and does
 several miscellaneous things I've automated out of my new machine setup process.
 
@@ -9,13 +28,31 @@ needs.
 
 ## Installation
 
-This repository does not need to be cloned and you do not need to set up an SSH
-key first. Just run:
+### Prerequisites
+
+If coming from a new machine, you only need:
+
+- [Homebrew](https://brew.sh/)
+- [GNU Stow](https://www.gnu.org/software/stow/)
+- Your SSH key in GitHub
+
+#### Copy-paste Install Of Prerequisites
 
 ```sh
-path+=("/opt/homebrew/bin")
-bash -c "$(curl https://raw.githubusercontent.com/glacials/dotfiles/main/bootstrap.sh)"
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+/opt/homebrew/bin/brew install stow
 ```
+
+### Clone & Stow
+
+```sh
+mkdir -p ~/pj
+git clone git@github.com:glacials/dotfiles ~/pj/dotfiles
+stow --dotfiles --dir ~/pj/dotfiles --target ~
+```
+
+Start a new shell.
+After this step, future invocations of `stow` do not need the `--dir` and `--target` options.
 
 ### Troubleshooting
 
