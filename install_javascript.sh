@@ -13,11 +13,11 @@ echo "Installing JavaScript and friends"
 
 . $(chezmoi source-path)/functions.sh
 
-{{ if eq .chezmoi.os "linux" }}
-curl -fsSL https://github.com/nodenv/nodenv-installer/raw/HEAD/bin/nodenv-installer | bash
-{{ else if eq .chezmoi.os "darwin" }}
-install_now nodenv
-{{ end }}
+if [[ $uname == linux ]]; then
+	curl -fsSL https://github.com/nodenv/nodenv-installer/raw/HEAD/bin/nodenv-installer | bash
+else
+	install_now nodenv
+fi
 
 latest=$(\
 nodenv install --list 2>/dev/null | \
