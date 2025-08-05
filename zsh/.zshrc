@@ -33,6 +33,7 @@ alias l='ls -h --color=auto'
 alias lr='eza --long --tree'
 alias ls='eza --git --hyperlink --icons --long --octal-permissions --no-user --time-style=relative'
 alias rebase='export CURRENT_BRANCH=`git name-rev --name-only HEAD` && git checkout master && git pull && git checkout `echo $CURRENT_BRANCH` && git rebase master'
+alias stowall='stow nvim stow zsh'
 alias stowdotfiles='stowgit add -p && stowgit commit && stowgit pull && stowgit push'
 alias stowgit='git --git-dir ~/pj/dotfiles'
 
