@@ -35,6 +35,7 @@ opt.listchars     = { tab = "  ", trail = " " }
 opt.mouse         = "a"                               -- allow mouse interaction
 opt.number        = true                                    -- show line numbers
 opt.scrolloff     = 6      -- keep 6 lines above/below the cursor when scrolling
+opt.signcolumn    = "yes"                             -- always show left gutter
 opt.shiftwidth    = 2
 opt.showtabline   = 2
 opt.smartindent   = true                  -- stay indented after pressing return

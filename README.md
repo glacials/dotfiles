@@ -38,9 +38,18 @@ If coming from a new machine, you only need:
 
 #### Copy-paste Install Of Prerequisites
 
+This will install Homebrew and GNU Stow:
+
 ```sh
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 /opt/homebrew/bin/brew install stow
+```
+
+This will generate an SSH key and add it to your GitHub account:
+
+```sh
+ssh-keygen -N ""
+gh auth login --git-protocol ssh --hostname github.com --web
 ```
 
 ### Clone & Stow
