@@ -30,6 +30,7 @@ alias e="$EDITOR"
 alias find='fd'
 alias g='git status'
 alias l='ls -h --color=auto'
+alias la='ls -a'
 alias lr='eza --long --tree'
 alias ls='eza --git --hyperlink --icons --long --octal-permissions --no-user --time-style=relative'
 alias noedit='git add -p && git commit --amend --no-edit'
