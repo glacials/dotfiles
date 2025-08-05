@@ -1,0 +1,4 @@
+--dir ~/pj/dotfiles
+--dotfiles
+--target ~
+--verbose=1

@@ -2,7 +2,7 @@ uname=$(uname -s | tr "[:upper:]" "[:lower:]")
 
 ZSH_THEME="pygmalion"
 
-# zsh setup
+# zsh setup.
 autoload -Uz zmv
 alias zcp="zmv -C"
 alias zln="zmv -L"
@@ -13,14 +13,14 @@ if [[ $uname == darwin ]]; then
 	path+=("/Applications/Tailscale.app/Contents/MacOS")
 fi
 
-# run history-substituted commands (e.g. containing `!!` or `!$`) without confirmation
+# Run history-substituted commands (e.g. `!!`, `!$`) without confirmation.
 unsetopt histverify
 
-# General env vars
+# General environment variables.
 export EDITOR='nvim'
 export GPG_TTY=$(tty)
 
-# Aliases
+# Aliases.
 alias amend='git add -p && git commit --amend --no-edit && git push -f'
 alias cat='bat'
 alias curl='curl --proto-default https'
@@ -29,18 +29,19 @@ alias du='dust'
 alias e="$EDITOR"
 alias find='fd'
 alias g='git status'
-alias l='ls -lh --color=auto'
-alias ls='eza'
+alias l='ls -h --color=auto'
+alias lr='eza --long --tree'
+alias ls='eza --git --hyperlink --icons --long --octal-permissions --no-user --time-style=relative'
 alias rebase='export CURRENT_BRANCH=`git name-rev --name-only HEAD` && git checkout master && git pull && git checkout `echo $CURRENT_BRANCH` && git rebase master'
-alias stow='stow --dotfiles --dir ~/pj/dotfiles --target ~'
+alias stowdotfiles='stowgit add -p && stowgit commit && stowgit pull && stowgit push'
+alias stowgit='git --git-dir ~/pj/dotfiles'
 
 if [[ $uname == linux* ]]; then
 	alias u='sudo apt-get update -qq && sudo apt-get -yqq upgrade && brew update -qq && brew upgrade -qq'
 fi
 
 if [[ $uname == darwin ]]; then
-	# alias u='brew update && brew upgrade --quiet'
-	alias u='chezmoi update'
+	alias u='brew update && brew upgrade --quiet'
 fi
 
 alias work='git add -p && git commit -m work && git push'
@@ -48,21 +49,19 @@ alias vi=vim
 alias vim=nvim
 alias vimdiff='vim -d'
 
-# zsh-fzf-history-search config
 export ZSH_FZF_HISTORY_SEARCH_FZF_EXTRA_ARGS='--height 40%'
 
-# OS-specific
-# Raspbian
+# Raspbian.
 path+=("/sbin")
 
-# Emacs
+# Emacs.
 path+=("$HOME/.config/emacs/bin")
 
-# Haskell
+# Haskell.
 path+=("$HOME/.local/bin")
 [ -f "/Users/glacials/.ghcup/env" ] && source "/Users/glacials/.ghcup/env" # ghcup-env
 
-# Homebrew
+# Homebrew.
 export HOMEBREW_NO_ENV_HINTS=1
 if [[ $uname == linux* ]]; then
 	path+=($HOME/.linuxbrew/bin)
@@ -71,24 +70,24 @@ else
 	path=('/opt/homebrew/bin' $path)
 fi
 
-# Go
+# Go.
 export GOPATH=~/go
 path+=($GOPATH/bin)
 
-# Node
+# Node.
 path=("$HOME/.nodenv/bin" $path)
 nodenv --version 1>/dev/null 2>/dev/null && eval "$(nodenv init -)"
 
-# Ruby
+# Ruby.
 path+=("$HOME/.rbenv/shims")
 rbenv --version 1>/dev/null 2>/dev/null && eval "$(rbenv init -)"
 
-# Snap
+# Snap.
 path=('/snap/bin' $path)
 
-# fun things at shell boot
+# Fun things at shell boot.
 if [[ $uname == linux* ]]; then
-	# Raspbian (at least) doesn't have a small cow
+	# Raspbian doesn't have a small cow.
 	fortune --version 1>/dev/null 2>/dev/null && \
 	cowsay --version 1>/dev/null 2>/dev/null && \
 	fortune ~/.config/fortune | cowsay -n
