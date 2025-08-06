@@ -57,11 +57,14 @@ gh auth login --git-protocol ssh --hostname github.com --web
 ```sh
 mkdir -p ~/pj
 git clone git@github.com:glacials/dotfiles ~/pj/dotfiles
-stow --dotfiles --dir ~/pj/dotfiles --target ~
+cd ~/pj/dotfiles
+stow nvim stow zsh
 ```
 
 Start a new shell.
-After this step, future invocations of `stow` do not need the `--dir` and `--target` options.
+After this step,
+future invocations of `stow` will have access to the global `.stowrc`,
+and therefore will not need to be run from inside `~/pj/dotfiles`.
 
 ### Troubleshooting
 

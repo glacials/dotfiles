@@ -2,6 +2,10 @@ uname=$(uname -s | tr "[:upper:]" "[:lower:]")
 
 ZSH_THEME="pygmalion"
 
+# Autocompletions.
+autoload -Uz compinit
+compinit
+
 # zsh setup.
 autoload -Uz zmv
 alias zcp="zmv -C"
