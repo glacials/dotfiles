@@ -19,7 +19,7 @@ if [[ $uname == darwin ]]; then
   defaultbrowser `# Set default web browser from CLI` \
   difftastic `# A better diff` \
   direnv `# Auto-source .envrc files` \
-  dua `# An interactive du` \
+  dua-cli `# An interactive du` \
   eza `# A better ls` \
   fd `# A better find` \
   ffmpeg `# Image and video manipulation` \
@@ -29,6 +29,7 @@ if [[ $uname == darwin ]]; then
   git `# macOS ships with an older version` \
   imagemagick `# Image manipulation` \
   jq `# JSON manipulation` \
+  mosh `# A more reslient ssh` \
   nvim `# Neovim` \
   ripgrep `# A better grep` \
   starship `# Opinionated pre-configured prompt` \
