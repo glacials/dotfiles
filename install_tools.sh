@@ -14,7 +14,6 @@ if [[ $uname == darwin ]]; then
   awscli `# AWS CLI` \
   bash `# macOS ships with an olerd version` \
   bat `# A better cat` \
-  chezmoi `# Probably already installed, but for good measure` \
   cowsay `# Make animals say things` \
   defaultbrowser `# Set default web browser from CLI` \
   difftastic `# A better diff` \
