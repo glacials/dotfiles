@@ -166,7 +166,10 @@ return {
   ---------------------------------------------------------------------------
 
   -- Buftabline: Show buffers in the statusline.
-  { 'ap/vim-buftabline' },
+  { 'akinsho/bufferline.nvim' },
+
+  -- gitsigns.nvim: Deep buffer integration for Git.
+  { 'lewis6991/gitsigns.nvim' },
 
   -- Neogit: Like Magit but for Neovim.
   { "neogitorg/neogit",
