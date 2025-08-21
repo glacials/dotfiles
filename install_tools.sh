@@ -2,11 +2,12 @@
 
 set -euo pipefail
 test -z ${DEBUG:-} || set -x
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
 # This script installs various CLI tools.
 echo "Installing CLI tools"
 
-. $(chezmoi source-path)/functions.sh
+. "$SCRIPT_DIR/functions.sh"
 
 if [[ $uname == darwin ]]; then
   brew install --quiet --force \
