@@ -10,6 +10,8 @@ echo "Installing CLI tools"
 . "$SCRIPT_DIR/functions.sh"
 
 if [[ $uname == darwin ]]; then
+  corepack enable `# Modern way to install yarn`
+
   brew install --quiet --force \
   ack `# A better grep` \
   awscli `# AWS CLI` \

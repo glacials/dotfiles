@@ -19,6 +19,9 @@ else
 	install_now nodenv
 fi
 
+# Modern way to install yarn
+corepack enable
+
 latest=$(\
 nodenv install --list 2>/dev/null | \
 sed -n '/^[[:space:]]*[0-9]\{1,\}\.[0-9]\{1,\}\.[0-9]\{1,\}[[:space:]]*$/ h;${g;p;}' \
