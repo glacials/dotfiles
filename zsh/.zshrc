@@ -29,6 +29,8 @@ alias amend='git add -p && git commit --amend --no-edit && git push -f'
 alias cat='bat'
 alias curl='curl --proto-default https'
 alias diff='difft'
+alias dotfiles='git -C ~/pj/dotfiles'
+alias dotfiles-sync='dotfiles add -p && dotfiles commit && dotfiles pull && dotfiles push'
 alias du='dust'
 alias e="$EDITOR"
 alias find='fd'
@@ -40,8 +42,6 @@ alias ls='eza --git --hyperlink --icons --long --octal-permissions --no-user --t
 alias noedit='git add -p && git commit --amend --no-edit'
 alias rebase='export CURRENT_BRANCH=`git name-rev --name-only HEAD` && git checkout master && git pull && git checkout `echo $CURRENT_BRANCH` && git rebase master'
 alias stowall='stow ghostty nvim stow zsh'
-alias stowdotfiles='stowgit add -p && stowgit commit && stowgit pull && stowgit push'
-alias stowgit='git --git-dir ~/pj/dotfiles'
 
 if [[ $uname == linux* ]]; then
 	alias u='sudo apt-get update -qq && sudo apt-get -yqq upgrade && brew update -qq && brew upgrade -qq'

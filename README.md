@@ -1,8 +1,8 @@
 # dotfiles
 
 > [!NOTE]
-> I'm currently migrating this repository from
-> [Chezmoi](https://www.chezmoi.io/)-based
+> I've recently migrated this repository from
+> [Chezmoi](https://www.chezmoi.io/)
 > to
 > [GNU Stow](https://www.gnu.org/software/stow/).
 > The instructions below may be temporarily inconsistent with the new setup.
@@ -19,9 +19,13 @@
 > This has made Stow, which is simpler and focused on piecemeal installation,
 > feel like a better fit.
 
-This repository holds my configuration files for macOS and Linux. bootstraps a new machine to be configured how I like it.
-It sets up dotfiles, installs programs and development tools I use, and does
-several miscellaneous things I've automated out of my new machine setup process.
+This repository holds my configuration files for macOS and Linux.
+It also holds a handful of install scripts that together can set up a machine,
+or separately can nudge a machine into the states I need it to be in.
+
+I have found this to be easier to manage than declarative tools,
+especially in face of various restrictions or assumptions about work machines,
+while not sacrificing much utility.
 
 It will work for anyone, but it is very opinionated and custom built for my own
 needs.
@@ -48,6 +52,7 @@ This will install Homebrew and GNU Stow:
 This will generate an SSH key and add it to your GitHub account:
 
 ```sh
+brew install gh
 ssh-keygen -N ""
 gh auth login --git-protocol ssh --hostname github.com --web
 ```
@@ -66,25 +71,37 @@ After this step,
 future invocations of `stow` will have access to the global `.stowrc`,
 and therefore will not need to be run from inside `~/pj/dotfiles`.
 
-### Troubleshooting
-
-If the first run fails for some reason and later runs refuse to clone, try `rm
-~/.gitconfig`, as it forces `git@github.com` over `https://github.com`, which will
-fail if the installation didn't yet set up SSH keys for you.
-
 ### Updates
 
-To make updates to dotfiles, use `chezmoi edit --apply $FILE`. Updates will be
-automatically committed and pushed.
+After updating symlinked dotfiles,
+you can use one of these aliases
+(defined in `~/.zshrc`)
+to easily commit and push changes:
+
+```sh
+dotfiles      # alias for `git -C ~/pj/dotfiles`
+dotfiles-sync # alias for `dotfiles add -p && dotfiles commit && dotfiles pull & dotfiles push`
+```
 
 ## Caveats
 
 This project aims to be compatible with macOS and Linux; however it gets far
 more real-world testing on macOS, so Linux support may trip over a thing or two.
 
+## Troubleshooting
+
+If the first run fails for some reason and later runs refuse to clone, try `rm
+~/.gitconfig`, as it forces `git@github.com` over `https://github.com`, which will
+fail if the installation didn't yet set up SSH keys for you.
+
 ## History
 
 This started as a series of dotfiles, then a Makefile to link them, then an
 install script to manage installation of common tools and differences between
-operating systems. Today, dotfile management is outsourced to
-[`chezmoi`](https://github.com/twpayne/chezmoi).
+operating systems,
+then a [`chezmoi`](https://github.com/twpayne/chezmoi)-powered
+machine bootstrapper.
+
+Today, management is handled much more simply by
+[GNU Stow](https://www.gnu.org/software/stow/)
+and machine bootstrapping is split up into a la carte shell scripts.
