@@ -168,6 +168,14 @@ return {
   -- Buftabline: Show buffers in the statusline.
   { 'akinsho/bufferline.nvim' },
 
+  -- gitlinker.nvim: Open GitHub (etc.) links to lines of code.
+  { "ruifm/gitlinker.nvim",
+    dependencies = { "nvim-lua/plenary.nvim", "sindrets/diffview.nvim" },
+    config = function() 
+      require("gitlinker").setup()
+    end
+  },
+
   -- gitsigns.nvim: Deep buffer integration for Git.
   { 'lewis6991/gitsigns.nvim' },
 
