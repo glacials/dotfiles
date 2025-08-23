@@ -286,6 +286,9 @@ return {
   -- eunuch.vim: Holistic shell commands (e.g. :Move to mv a file and buffer).
   { "tpope/vim-eunuch" },
 
+  -- last-look.nvim: Show diff of unsaved buffer(s) before quitting.
+  { "glacials/last-look.nvim" },
+
   -- sleuth.vim: Auto-adjust shiftwidth and expandtab heuristically.
   { "tpope/vim-sleuth" },
 
