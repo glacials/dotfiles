@@ -301,7 +301,10 @@ return {
 
   -- vim-go: Various Go support.
   { "fatih/vim-go",
-    build = "go install github.com/segmentio/golines@latest",
+    build = function()
+      vim.fn.system("go install github.com/segmentio/golines@latest")
+      vim.cmd("GoInstallBinaries")
+    end,
     config = function()
       vim.g.go_fmt_command = "golines"
       vim.g.go_fmt_options = { golines = "-m 80 -t 2" }

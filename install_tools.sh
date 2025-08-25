@@ -37,6 +37,8 @@ if [[ $uname == darwin ]]; then
   starship `# Opinionated pre-configured prompt` \
   tmux `# Terminal multiplexer` \
   tree `# Pretty-print directory hierarchies` \
+  tree-sitter `# tree-sitter library for editor language servers` \
+  tree-sitter-cli `# tree-sitter CLI for editor language servers` \
   watch `# Run a command repeatedly` \
   wget `# Download files` \
   xh `# A better HTTP curl` \
