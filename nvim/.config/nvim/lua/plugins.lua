@@ -74,7 +74,7 @@ return {
       -- map("n", "gd",        "<Cmd>Telescope lsp_definitions<CR>",      { silent = true })
       -- map("n", "gD",        "<Cmd>Telescope lsp_type_definitions<CR>", { silent = true })
       -- map("n", "<Space>wa", "<Cmd>Telescope lsp_code_actions<CR>",     { silent = true })
-      -- map("n", "<Leader>g", "<Cmd>Telescope resume<CR>",               { silent = true })
+      map("n", "<Leader>gg", "<Cmd>Telescope resume<CR>",               { silent = true })
     end
   },
 
