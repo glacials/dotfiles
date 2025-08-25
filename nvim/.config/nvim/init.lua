@@ -65,6 +65,8 @@ pcall(vim.cmd, "colorscheme kanagawa")
 -- Keymaps --------------------------------------------------------------------
 local map = vim.keymap.set
 local silent = { noremap = true, silent = true }
+-- Yank to the black hole register when using `c`.
+map("n", "c", '"_c', { noremap = true })
 -- Soft‑wrap aware j/k
 map("n", "j", "gj", silent)
 map("n", "k", "gk", silent)
