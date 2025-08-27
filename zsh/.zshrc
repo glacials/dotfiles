@@ -120,3 +120,14 @@ setopt HIST_FIND_NO_DUPS        # Prevent showing dups in history search
 setopt HIST_REDUCE_BLANKS       # Remove superfluous blanks
 
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
+
+# atuin (better ^R autocomplete)
+if command -v atuin >/dev/null 2>&1; then
+	eval "$(atuin init zsh)"
+fi
+
+# The following lines have been added by Docker Desktop to enable Docker CLI completions.
+fpath=(/Users/bc/.docker/completions $fpath)
+autoload -Uz compinit
+compinit
+# End of Docker CLI completions

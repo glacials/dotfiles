@@ -14,6 +14,7 @@ if [[ $uname == darwin ]]; then
 
   brew install --quiet --force \
   ack `# A better grep` \
+  atuin `# A better ^R autocomplete` \
   awscli `# AWS CLI` \
   bash `# macOS ships with an olerd version` \
   bat `# A better cat` \
