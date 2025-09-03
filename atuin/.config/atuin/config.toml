@@ -223,10 +223,6 @@ enter_accept = true
 # Defaults to true. The right arrow key performs the same functionality as Tab and copies the selected line to the command line to be modified.
 # accept_past_line_end = true
 
-[settings]
-keymap_mode = "emacs"
-disable_up_key = true
-
 [sync]
 # Enable sync v2 by default
 # This ensures that sync v2 is enabled for new installs only
