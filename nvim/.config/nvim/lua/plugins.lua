@@ -189,6 +189,40 @@ return {
   -- LSP / COMPLETION --------------------------------------------------------
   ---------------------------------------------------------------------------
 
+  -- conform.nvim: LSP autoformatter.
+  {
+    'stevearc/conform.nvim',
+    event = { "BufWritePre" },
+    cmd = { "ConformInfo" },
+    -- This will provide type hinting with LuaLS
+    ---@module "conform"
+    ---@type conform.setupOpts
+    opts = {
+      -- Define your formatters
+      formatters_by_ft = {
+        lua = { "stylua" },
+        python = { "isort", "black" },
+        javascript = { "prettierd", "prettier", stop_after_first = true },
+      },
+      -- Set default options
+      default_format_opts = {
+        lsp_format = "fallback",
+      },
+      -- Set up format-on-save
+      format_on_save = { timeout_ms = 500 },
+      -- Customize formatters
+      formatters = {
+        shfmt = {
+          append_args = { "-i", "2" },
+        },
+      },
+    },
+    init = function()
+      -- If you want the formatexpr, here is the place to set it
+      vim.o.formatexpr = "v:lua.require'conform'.formatexpr()"
+    end,
+  },
+
   -- nvim‑cmp: Completion engine for other sources.
   { "hrsh7th/nvim-cmp" },
 
@@ -269,6 +303,9 @@ return {
   -- nvim-treesitter‑context: Sticky function headers.
   { "nvim-treesitter/nvim-treesitter-context" },
 
+  -- Trouble: Pretty buffers to list LSP diagnostics, references, etc.
+  { "folke/trouble.nvim" },
+
   -- windsurf.nvim: AI autocompletion.
   { "Exafunction/windsurf.vim" },
 
@@ -313,20 +350,6 @@ return {
 
   -- vim-hexokinase: Show color blips by hex codes and color names.
   { "rrethy/vim-hexokinase", build = "make hexokinase" },
-
-  -- vim‑prettier: Format JavaScript, Markdown, CSS, HTML, JSON, and friends.
-  { "prettier/vim-prettier",
-    build = "yarn install --frozen-lockfile --production",
-    config = function()
-      vim.g["prettier#autoformat"]               = 1
-      vim.g["prettier#autoformat_require_pragma"] = 0
-      vim.cmd [[
-        autocmd BufWritePre
-          \ *.gohtml,*.gotmpl,*.go.tmpl,*.tmpl,*.tpl,*.html.tmpl
-          \ noautocmd call prettier#Autoformat()
-      ]]
-    end
-  },
 
   -- vim-ruby: Various Ruby and HAML support.
   { "jlcrochet/vim-ruby" },

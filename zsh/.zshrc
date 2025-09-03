@@ -25,7 +25,8 @@ export EDITOR='nvim'
 export GPG_TTY=$(tty)
 
 # Aliases.
-alias amend='git add -p && git commit --amend --no-edit && git push -f'
+alias add='git add -p && git commit && git push'
+alias amend='git add -p && git commit --amend --no-edit && git push'
 alias cat='bat'
 alias curl='curl --proto-default https'
 alias diff='difft'

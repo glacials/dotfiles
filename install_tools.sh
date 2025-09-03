@@ -36,6 +36,7 @@ if [[ $uname == darwin ]]; then
   nvim `# Neovim` \
   ripgrep `# A better grep` \
   starship `# Opinionated pre-configured prompt` \
+  stylua `# Lua formatter` \
   tmux `# Terminal multiplexer` \
   tree `# Pretty-print directory hierarchies` \
   tree-sitter `# tree-sitter library for editor language servers` \
