@@ -6,6 +6,20 @@ ZSH_THEME="pygmalion"
 autoload -Uz compinit
 compinit
 
+# Vim mode.
+bindkey -v
+export KEYTIMEOUT=1 # faster ESC for Vim mode.
+
+# Show Vim mode in prompt.
+function zle-keymap-select {
+  if [[ $KEYMAP == vicmd ]] ; then
+    echo -ne '\e]0;NORMAL\a'
+  else
+    echo -ne '\e]0;INSERT\a'
+  fi
+}
+zle -N zle-keymap-select
+
 # zsh setup.
 autoload -Uz zmv
 alias zcp="zmv -C"
