@@ -45,7 +45,8 @@ alias cat='bat'
 alias curl='curl --proto-default https'
 alias diff='difft'
 alias dotfiles='git -C ~/pj/dotfiles'
-alias dotfiles-sync='dotfiles add -p && dotfiles commit && dotfiles pull --quiet && dotfiles push --quiet'
+# Use grouping to do exactly the steps we need, never avoiding a pull.
+alias dotfiles-sync='dotfiles add -p && { dotfiles diff --cached --quiet || dotfiles commit; dotfiles pull --quiet && dotfiles push --quiet; }'
 alias du='dust'
 alias e="$EDITOR"
 alias find='fd'
