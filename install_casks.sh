@@ -3,6 +3,7 @@
 set -euo pipefail
 test -z ${DEBUG:-} || set -x
 uname=$(uname -s | tr "[:upper:]" "[:lower:]")
+DOTFILES_DIR="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)"
 
 if [[ $uname == linux ]]; then
 	exit 0
@@ -12,7 +13,7 @@ fi
 # the App Store.
 echo "Installing casks"
 
-. $(chezmoi source-path)/functions.sh
+. $DOTFILES_DIR/functions.sh
 
 # Save the `brew list` output so we don't have to call out to brew so much
 brewlist=$(brew list --casks)

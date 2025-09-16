@@ -3,6 +3,7 @@
 set -euo pipefail
 test -z ${DEBUG:-} || set -x
 uname=$(uname -s | tr "[:upper:]" "[:lower:]")
+DOTFILES_DIR="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)"
 
 if [[ $uname != darwin ]]; then
     exit 0
@@ -15,7 +16,7 @@ macosversion=$(sw_vers -productVersion | cut -d. -f1)
 # been installed by the current user's Apple ID.
 echo "Installing App Store apps"
 
-. $(chezmoi source-path)/functions.sh
+. $DOTFILES_DIR/functions.sh
 
 install_now mas # macOS App Store CLI
 

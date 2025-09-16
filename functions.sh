@@ -2,6 +2,7 @@
 
 set -euo pipefail
 test -z ${DEBUG:-} || set -x
+DOTFILES_DIR="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)"
 
 # This script defines several functions used by other scripts. It does not do
 # anything on its own.
@@ -59,9 +60,9 @@ function pkginstall() {
 # downloaded and run. This is helpful when bootstrapping, as the dotfiles repo
 # may not be cloned yet.
 function run_script() {
-	if test -f "$(chezmoi source-path)/$1"; then
+	if test -f "$DOTFILES_DIR/$1"; then
 		test -z ${DEBUG:-} ||	echo "Running $1 locally"
-		bash "$(chezmoi source-path)/$1"
+		bash "$DOTFILES_DIR/$1"
 	else
 		test -z ${DEBUG:-} || echo "Running $1 from GitHub"
 		bash -c "$(curl -fsSL $cdn/$1)"

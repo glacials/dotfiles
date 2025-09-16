@@ -2,12 +2,13 @@
 
 set -euo pipefail
 test -z ${DEBUG:-} || set -x
+DOTFILES_DIR="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)"
 
 # This script installs Ruby and several tools in the Ruby ecosystem.
 test -z ${SKIP_RUBY:-} || exit 0
 echo "Installing Ruby and friends"
 
-. $(chezmoi source-path)/functions.sh
+. $DOTFILES_DIR/functions.sh
 
 install_now rbenv ruby-build solargraph
 

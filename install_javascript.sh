@@ -3,6 +3,7 @@
 set -euo pipefail
 test -z ${DEBUG:-} || set -x
 uname=$(uname -s | tr "[:upper:]" "[:lower:]")
+DOTFILES_DIR="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)"
 
 if [[ $uname == linux ]]; then
 exit 0
@@ -11,7 +12,7 @@ fi
 # This script installs JavaScript and several tools in the JavaScript ecosystem.
 echo "Installing JavaScript and friends"
 
-. $(chezmoi source-path)/functions.sh
+. $DOTFILES_DIR/functions.sh
 
 if [[ $uname == linux ]]; then
 	curl -fsSL https://github.com/nodenv/nodenv-installer/raw/HEAD/bin/nodenv-installer | bash

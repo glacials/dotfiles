@@ -2,8 +2,9 @@
 
 set -euo pipefail
 test -z ${DEBUG:-} || set -x
+DOTFILES_DIR="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)"
 
-CACHE_KEY=/tmp/glacials/chezmoi/cache/gh
+CACHE_KEY=/tmp/glacials/dotfiles/cache/gh
 test -f $CACHE_KEY && exit 0
 
 # This script installs gh, the GitHub CLI. This is helpful to be in its own
@@ -13,7 +14,7 @@ echo "Installing gh"
 
 cdn="https://raw.githubusercontent.com/glacials/dotfiles/main"
 f="functions.sh"
-d="$(chezmoi source-path)"
+d=$DOTFILES_DIR
 test -f $d/$f && . $d/$f || (curl -s "$cdn/$f" > /tmp/$f && . /tmp/$f)
 
 if ! gh --version 1>/dev/null 2>/dev/null; then
@@ -22,5 +23,5 @@ if ! gh --version 1>/dev/null 2>/dev/null; then
 	install_now gh
 fi
 
-mkdir -p /tmp/glacials/chezmoi/cache
+mkdir -p /tmp/glacials/dotfiles/cache
 touch $CACHE_KEY

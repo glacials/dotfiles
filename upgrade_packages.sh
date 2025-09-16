@@ -2,12 +2,13 @@
 
 set -euo pipefail
 test -z ${DEBUG:-} || set -x
+DOTFILES_DIR="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)"
 
 # This script installs/updates the packages installed on the system. It is
 # designed to be run occasionally.
 echo "Upgrading packages"
 
-. $(chezmoi source-path)/functions.sh
+. $DOTFILES_DIR/functions.sh
 
 [[ ${debug:-} == "y" ]] && echo "Updating packages."
 

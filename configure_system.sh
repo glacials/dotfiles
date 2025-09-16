@@ -2,11 +2,12 @@
 
 set -euo pipefail
 test -z ${DEBUG:-} || set -x
+DOTFILES_DIR="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)"
 
 # This script sets miscellaneous system preferences.
 echo "Setting preferences"
 
-. $(chezmoi source-path)/functions.sh
+. $DOTFILES_DIR/functions.sh
 
 # Create $HOME/.profile (for secret things that shouldn't go in this repo)
 touch $HOME/.profile

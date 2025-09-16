@@ -3,11 +3,12 @@
 set -euo pipefail
 test -z ${DEBUG:-} || set -x
 uname=$(uname -s | tr "[:upper:]" "[:lower:]")
+DOTFILES_DIR="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)"
 
 # This script installs Python and several tools in the Python ecosystem.
 echo "Installing Python and friends"
 
-. $(chezmoi source-path)/functions.sh
+. $SCRIPT_DIR/functions.sh
 
 if [[ $uname == darwin ]]; then
 	# Runtime dependencies of pyenv (https://github.com/pyenv/pyenv/wiki#suggested-build-environment)
