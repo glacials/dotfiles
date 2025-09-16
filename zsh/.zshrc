@@ -41,23 +41,26 @@ export GPG_TTY=$(tty)
 # Aliases.
 alias add='git add -p && git commit && git push'
 alias amend='git add -p && git commit --amend --no-edit && git push'
-alias cat='bat'
 alias curl='curl --proto-default https'
-alias diff='difft'
 alias dotfiles='git -C ~/pj/dotfiles'
 # Use grouping to do exactly the steps we need, never avoiding a pull.
 alias dotfiles-sync='dotfiles add -p && { dotfiles diff --cached --quiet || dotfiles commit; dotfiles pull --quiet && dotfiles push --quiet; }'
-alias du='dust'
 alias e="$EDITOR"
-alias find='fd'
 alias g='git status'
 alias l='ls -h --color=auto'
 alias la='ls -a'
-alias lr='eza --long --tree'
-alias ls='eza --hyperlink --icons --long --octal-permissions --no-user --time-style=relative'
 alias noedit='git add -p && git commit --amend --no-edit'
 alias rebase='export CURRENT_BRANCH=`git name-rev --name-only HEAD` && git checkout master && git pull && git checkout `echo $CURRENT_BRANCH` && git rebase master'
 alias stowall='stow ghostty nvim stow zsh'
+
+# Drop-in replacement aliases.
+which -s bat   && alias cat='bat'
+which -s difft && alias diff='difft'
+which -s dust  && alias du='dust'
+which -s eza   && alias lr='eza --long --tree'
+which -s eza   && alias ls='eza --hyperlink --icons --long --octal-permissions --no-user --time-style=relative'
+which -s fd    && alias find='fd'
+which -s nvim  && alias vim=nvim
 
 if [[ $uname == linux* ]]; then
 	alias u='sudo apt-get update -qq && sudo apt-get -yqq upgrade && brew update -qq && brew upgrade -qq'
@@ -69,7 +72,6 @@ fi
 
 alias work='git add -p && git commit -m work && git push'
 alias vi=vim
-alias vim=nvim
 alias vimdiff='vim -d'
 
 export ZSH_FZF_HISTORY_SEARCH_FZF_EXTRA_ARGS='--height 40%'
@@ -120,7 +122,7 @@ else
 	fortune ~/.config/fortune | cowsay -n -f small
 fi
 
-source ~/.profile
+test -f ~/.profile && source ~/.profile
 
 # direnv
 direnv --version 1>/dev/null 2>/dev/null && eval "$(direnv hook zsh)"

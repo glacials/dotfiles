@@ -10,14 +10,13 @@ echo "Installing CLI tools"
 . "$SCRIPT_DIR/functions.sh"
 
 if [[ $uname == darwin ]]; then
-  corepack enable `# Modern way to install yarn`
-
   brew install --quiet --force \
   ack `# A better grep` \
   atuin `# A better ^R autocomplete` \
   awscli `# AWS CLI` \
   bash `# macOS ships with an olerd version` \
   bat `# A better cat` \
+  corepack `# Modern JavaScript manager` \
   cowsay `# Make animals say things` \
   defaultbrowser `# Set default web browser from CLI` \
   difftastic `# A better diff` \
@@ -71,6 +70,8 @@ else
     starship `# Opinionated pre-configured prompt`
   fi
 fi
+
+corepack enable `# Modern way to install yarn`
 
 cargo install \
 du-dust `# A better and faster du` \
