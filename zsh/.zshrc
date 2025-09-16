@@ -54,13 +54,14 @@ alias rebase='export CURRENT_BRANCH=`git name-rev --name-only HEAD` && git check
 alias stowall='stow ghostty nvim stow zsh'
 
 # Drop-in replacement aliases.
-which -s bat   && alias cat='bat'
-which -s difft && alias diff='difft'
-which -s dust  && alias du='dust'
-which -s eza   && alias lr='eza --long --tree'
-which -s eza   && alias ls='eza --hyperlink --icons --long --octal-permissions --no-user --time-style=relative'
-which -s fd    && alias find='fd'
-which -s nvim  && alias vim=nvim
+# (`command which` bypasses the builtin, which doesn't support -s)
+command which -s bat   && alias cat='bat'
+command which -s difft && alias diff='difft'
+command which -s dust  && alias du='dust'
+command which -s eza   && alias lr='eza --long --tree'
+command which -s eza   && alias ls='eza --hyperlink --icons --long --octal-permissions --no-user --time-style=relative'
+command which -s fd    && alias find='fd'
+command which -s nvim  && alias vim=nvim
 
 if [[ $uname == linux* ]]; then
 	alias u='sudo apt-get update -qq && sudo apt-get -yqq upgrade && brew update -qq && brew upgrade -qq'
