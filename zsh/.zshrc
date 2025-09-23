@@ -39,7 +39,7 @@ export EDITOR='nvim'
 export GPG_TTY=$(tty)
 
 # Aliases.
-alias add='git add -p && git commit && git push'
+alias add='git add -p && git commit ; git push'
 alias amend='git add -p && git commit --amend --no-edit && git push'
 alias curl='curl --proto-default https'
 alias dotfiles='git -C ~/pj/dotfiles'
@@ -122,8 +122,6 @@ else
 	cowsay --version 1>/dev/null 2>/dev/null && \
 	fortune ~/.config/fortune | cowsay -n -f small
 fi
-
-test -f ~/.profile && source ~/.profile
 
 # direnv
 direnv --version 1>/dev/null 2>/dev/null && eval "$(direnv hook zsh)"
