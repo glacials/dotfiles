@@ -39,7 +39,6 @@ export EDITOR='nvim'
 export GPG_TTY=$(tty)
 
 # Aliases.
-alias add='git add -p && git commit ; git push'
 alias amend='git add -p && git commit --amend --no-edit && git push'
 alias curl='curl --proto-default https'
 alias dotfiles='git -C ~/pj/dotfiles'
@@ -62,6 +61,17 @@ command which -s eza   && alias lr='eza --long --tree'
 command which -s eza   && alias ls='eza --hyperlink --icons --long --octal-permissions --no-user --time-style=relative'
 command which -s fd    && alias find='fd'
 command which -s nvim  && alias vim=nvim
+
+add() {
+  git add -p && git commit || return
+
+  # check if branch already has an upstream
+  if git rev-parse --abbrev-ref --symbolic-full-name @{u} >/dev/null 2>&1; then
+    git push
+  else
+    git push -u origin HEAD
+  fi
+}
 
 if [[ $uname == linux* ]]; then
 	alias u='sudo apt-get update -qq && sudo apt-get -yqq upgrade && brew update -qq && brew upgrade -qq'
