@@ -46,6 +46,7 @@ alias dotfiles='git -C ~/pj/dotfiles'
 alias dotfiles-sync='dotfiles add -p && { dotfiles diff --cached --quiet || dotfiles commit; dotfiles pull --quiet && dotfiles push --quiet; }'
 alias e="$EDITOR"
 alias g='git status'
+alias grc='git rebase --continue'
 alias l='ls -h --color=auto'
 alias la='ls -a'
 alias noedit='git add -p && git commit --amend --no-edit'
@@ -81,6 +82,7 @@ if [[ $uname == darwin ]]; then
 	alias u='brew update && brew upgrade --quiet'
 fi
 
+alias w='git add -p && git commit -m work'
 alias work='git add -p && git commit -m work && git push'
 alias vi=vim
 alias vimdiff='vim -d'
